@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-br from-slate-100 via-white to-slate-200 text-slate-800;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.card {
+  @apply bg-white/80 backdrop-blur rounded-2xl shadow p-5 transition hover:shadow-xl;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-xl font-medium text-white transition active:scale-95;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.input {
+  @apply flex items-center gap-2 bg-white/80 backdrop-blur p-3 rounded-xl shadow;
+}
