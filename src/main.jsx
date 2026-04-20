@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
-import { PatientProvider } from "./context/PatientContext";
-import { Toaster } from "react-hot-toast";
+import { ThemePreferenceProvider } from "./context/ThemePreferenceContext";
+import { AppToaster } from "./components/AppToaster";
+import { AppShell } from "./components/AppShell";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <PatientProvider>
-      <Toaster />
-      <App />
-    </PatientProvider>
-  </AuthProvider>
+  <ThemePreferenceProvider>
+    <AuthProvider>
+      <AppToaster />
+      <AppShell />
+    </AuthProvider>
+  </ThemePreferenceProvider>
 );

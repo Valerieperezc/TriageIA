@@ -1,29 +1,99 @@
-import { createContext, useContext, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { isSupabaseConfigured } from "../lib/appConfig";
+import { AuthContext } from "./auth-context";
 
-const AuthContext = createContext();
-export const useAuth = () => useContext(AuthContext);
+const LOCAL_SESSION_KEY = "triageia:local-user";
+let authServicePromise = null;
 
-const USERS = [
-  { email: "admin@triage.com", role: "admin" },
-  { email: "medico@triage.com", role: "medico" },
-  { email: "recepcion@triage.com", role: "recepcion" },
-  { email: "enfermeria@triage.com", role: "enfermeria" },
-];
+function readLocalSession() {
+  try {
+    const raw = localStorage.getItem(LOCAL_SESSION_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function loadAuthService() {
+  if (!authServicePromise) {
+    authServicePromise = import("../services/authService");
+  }
+  return authServicePromise;
+}
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    if (!isSupabaseConfigured) {
+      return readLocalSession();
+    }
+    return null;
+  });
+  const [loading, setLoading] = useState(isSupabaseConfigured);
 
-  const login = (email) => {
-    const found = USERS.find(u => u.email === email);
-    if (!found) return false;
-    setUser(found);
+  useEffect(() => {
+    if (!isSupabaseConfigured) {
+      return undefined;
+    }
+
+    let mounted = true;
+    let unsubscribe = () => {};
+
+    loadAuthService()
+      .then(async ({ getCurrentSupabaseUser, subscribeSupabaseAuth }) => {
+        const sessionUser = await getCurrentSupabaseUser();
+        if (!mounted) return;
+        setUser(sessionUser ?? null);
+        setLoading(false);
+        unsubscribe = subscribeSupabaseAuth((nextUser) => {
+          if (!mounted) return;
+          setUser(nextUser);
+        });
+      })
+      .catch(() => {
+        if (!mounted) return;
+        setUser(null);
+        setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+      unsubscribe();
+    };
+  }, []);
+
+  const login = async (email, password) => {
+    const authService = await loadAuthService();
+    if (!isSupabaseConfigured) {
+      const localUser = authService.loginLocalDemo(email, password);
+      if (!localUser) return false;
+      setUser(localUser);
+      return true;
+    }
+
+    const loggedUser = await authService.loginSupabase(email, password);
+    if (!loggedUser) return false;
+    setUser(loggedUser);
     return true;
   };
 
-  const logout = () => setUser(null);
+  const logout = async () => {
+    const authService = await loadAuthService();
+    if (!isSupabaseConfigured) {
+      authService.clearLocalSession();
+      setUser(null);
+      return;
+    }
+    await authService.logoutSupabase();
+    setUser(null);
+  };
+
+  const value = useMemo(
+    () => ({ user, login, logout, loading, isSupabaseConfigured }),
+    [user, loading]
+  );
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
