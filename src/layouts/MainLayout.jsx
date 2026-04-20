@@ -3,11 +3,13 @@ import Topbar from "../components/Topbar";
 
 export default function MainLayout({ children }) {
   return (
-    <div className="flex">
+    <div className="min-h-screen">
       <Sidebar />
-      <main className="flex-1 p-6">
-        <Topbar />
-        {children}
+      <main className="px-4 py-4 md:ml-72 md:px-8 md:py-6">
+        <div className="mx-auto max-w-7xl space-y-6">
+          <Topbar />
+          {children}
+        </div>
       </main>
     </div>
   );
