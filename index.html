@@ -1,10 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/pwa-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>triageia</title>
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="apple-mobile-web-app-title" content="TriageIA" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="Plataforma de triaje clínico con acceso seguro, monitoreo operativo y experiencia instalable en web y móvil."
+    />
+    <title>TriageIA</title>
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("triageia-theme");
+        const theme =
+          savedTheme ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -11,7 +11,7 @@ export default function PatientDetail(){
   const minutes = Math.floor((Date.now()-p.createdAt)/60000);
 
   return (
-    <div className="card space-y-3">
+    <div className="card space-y-4">
 
       <h1 className="text-xl font-bold">{p.name}</h1>
 
@@ -21,7 +21,7 @@ export default function PatientDetail(){
       <p><b>Estado:</b> {p.status}</p>
       <p><b>Tiempo:</b> {minutes} min</p>
 
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2 sm:flex-row">
         <button
           onClick={()=>updateStatus(id,"En atención")}
           className="btn bg-orange-500">

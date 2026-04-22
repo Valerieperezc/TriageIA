@@ -40,22 +40,32 @@ export default function Triage() {
   };
 
   return (
-    <div className="card max-w-md space-y-3">
+    <div className="card mx-auto w-full max-w-2xl space-y-4">
+      <div>
+        <h1 className="text-2xl font-bold">Registrar paciente</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          Captura datos básicos y obtén una clasificación inicial.
+        </p>
+      </div>
 
-      <input className="input" placeholder="Nombre"
-        onChange={e => setForm({...form, name:e.target.value})} />
+      <div className="grid gap-3 md:grid-cols-2">
+        <input className="input" placeholder="Nombre"
+          onChange={e => setForm({...form, name:e.target.value})} />
 
-      <input className="input" placeholder="Edad"
-        onChange={e => setForm({...form, age:e.target.value})} />
+        <input className="input" placeholder="Edad"
+          onChange={e => setForm({...form, age:e.target.value})} />
+      </div>
 
       <input className="input" placeholder="Síntoma principal"
         onChange={e => setForm({...form, symptom:e.target.value})} />
 
-      <input className="input" placeholder="Temperatura"
-        onChange={e => setForm({...form, temp:e.target.value})} />
+      <div className="grid gap-3 md:grid-cols-2">
+        <input className="input" placeholder="Temperatura"
+          onChange={e => setForm({...form, temp:e.target.value})} />
 
-      <input className="input" placeholder="Frecuencia cardíaca"
-        onChange={e => setForm({...form, fc:e.target.value})} />
+        <input className="input" placeholder="Frecuencia cardíaca"
+          onChange={e => setForm({...form, fc:e.target.value})} />
+      </div>
 
       {triage && (
         <div className={`p-3 rounded-xl ${

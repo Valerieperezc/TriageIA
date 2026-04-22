@@ -1,7 +1,7 @@
 import { usePatients } from "../context/PatientContext";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { Activity, AlertTriangle, Clock, Users } from "lucide-react";
 
 export default function Dashboard() {
@@ -20,12 +20,12 @@ export default function Dashboard() {
     <motion.div
       whileHover={{ scale: 1.03 }}
       onClick={() => navigate(route)}
-      className="card flex items-center gap-4 cursor-pointer"
+      className="card flex cursor-pointer items-center gap-4"
     >
-      <div className="bg-gray-100 p-3 rounded-xl">{icon}</div>
+      <div className="rounded-xl bg-gray-100 p-3 dark:bg-slate-800">{icon}</div>
 
       <div>
-        <p className="text-gray-500 text-sm">{title}</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">{title}</p>
         <p className="text-xl font-bold">{value}</p>
       </div>
     </motion.div>
@@ -34,23 +34,22 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
 
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
         <div>
           <h1 className="text-3xl font-bold">Dashboard</h1>
-          <p className="text-gray-500">Sistema de triage</p>
+          <p className="text-slate-500 dark:text-slate-400">Sistema de triage</p>
         </div>
 
         <button
           onClick={() => navigate("/triage")}
-          className="btn btn-primary"
+          className="btn btn-primary w-full sm:w-auto"
         >
           + Registrar Paciente
         </button>
       </div>
 
-      {/* 🔥 CARDS CON FILTRO */}
-      <div className="grid md:grid-cols-4 gap-4">
+      <div className="grid gap-4 md:grid-cols-4">
 
         <Card
           icon={<Users className="text-blue-600" />}
@@ -82,16 +81,26 @@ export default function Dashboard() {
 
       </div>
 
-      {/* 📊 GRÁFICA */}
-      <div className="card flex justify-center">
-        <PieChart width={300} height={300}>
-          <Pie data={data} dataKey="value">
-            {data.map((_, i) => (
-              <Cell key={i} fill={COLORS[i]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
+      <div className="card">
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold">Distribución de triage</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Vista general de prioridades activas.
+          </p>
+        </div>
+
+        <div className="h-72 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie data={data} dataKey="value" innerRadius={55} outerRadius={90}>
+                {data.map((_, i) => (
+                  <Cell key={i} fill={COLORS[i]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
     </div>

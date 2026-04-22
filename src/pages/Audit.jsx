@@ -4,9 +4,9 @@ export default function Audit(){
   const { history } = usePatients();
 
   return (
-    <div>
+    <div className="space-y-3">
       {history.map((h,i)=>(
-        <div key={i} className="card mb-2">
+        <div key={i} className="card">
           {h.name} - {h.action} - {h.date}
         </div>
       ))}

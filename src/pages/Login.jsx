@@ -1,39 +1,46 @@
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Mail, HeartPulse } from "lucide-react";
+import { Mail, HeartPulse, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     if (!email || !email.includes("@")) {
       return toast.error("Ingresa un correo válido");
     }
 
-    const ok = login(email);
-
-    if (!ok) {
-      return toast.error("Usuario no autorizado ❌");
+    if (!password) {
+      return toast.error("Ingresa tu contraseña");
     }
 
-    toast.success("Bienvenido 🚀");
-    navigate("/"); // 🔥 aquí ocurre el cambio de pantalla
+    const ok = login(email, password);
+
+    if (!ok) {
+      return toast.error("Credenciales no autorizadas");
+    }
+
+    toast.success("Bienvenido");
+    navigate("/");
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
+    <div className="relative flex min-h-screen items-center justify-center px-4 py-8">
+      <div className="absolute right-4 top-4">
+        <ThemeToggle />
+      </div>
 
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-[350px]">
-
-        {/* LOGO */}
-        <div className="flex items-center gap-2 mb-6">
-          <div className="bg-blue-100 p-2 rounded-xl">
-            <HeartPulse className="text-blue-600 w-6 h-6" />
+      <div className="w-full max-w-[350px] rounded-2xl bg-white p-8 shadow-lg dark:bg-slate-900">
+        <div className="mb-6 flex items-center gap-2">
+          <div className="rounded-xl bg-blue-100 p-2 dark:bg-blue-500/10">
+            <HeartPulse className="h-6 w-6 text-blue-600 dark:text-blue-400" />
           </div>
           <h1 className="text-xl font-bold">TriageIA</h1>
         </div>
@@ -42,25 +49,38 @@ export default function Login() {
           Bienvenido
         </h2>
 
-        <p className="text-sm text-gray-500 mb-6">
-          Ingresa tu correo autorizado
+        <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">
+          Ingresa tus credenciales para acceder a la plataforma
         </p>
 
-        {/* INPUT */}
-        <div className="input mb-4">
-          <Mail className="text-gray-400 w-4 h-4" />
+        <div className="input-shell mb-4">
+          <Mail className="h-4 w-4 text-slate-400" />
           <input
             type="email"
-            placeholder="usuario@uninorte.edu.co"
+            className="w-full bg-transparent py-3 text-sm text-inherit placeholder:text-slate-400"
+            placeholder="correo@triage.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") handleLogin(); // 🔥 ENTER funciona
+              if (e.key === "Enter") handleLogin();
             }}
           />
         </div>
 
-        {/* BOTÓN */}
+        <div className="input-shell mb-5">
+          <LockKeyhole className="h-4 w-4 text-slate-400" />
+          <input
+            type="password"
+            className="w-full bg-transparent py-3 text-sm text-inherit placeholder:text-slate-400"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleLogin();
+            }}
+          />
+        </div>
+
         <button
           onClick={handleLogin}
           className="btn btn-primary w-full"
@@ -68,9 +88,8 @@ export default function Login() {
           Ingresar al sistema
         </button>
 
-        {/* AYUDA */}
-        <p className="text-xs text-gray-400 mt-4 text-center">
-          Ejemplo: admin@triage.com o @uninorte.edu.co
+        <p className="mt-4 text-center text-xs text-slate-400 dark:text-slate-500">
+          Acceso exclusivo para personal autorizado de TriageIA
         </p>
 
       </div>

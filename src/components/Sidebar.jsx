@@ -10,7 +10,7 @@ export default function Sidebar() {
       className={`flex items-center gap-3 p-3 rounded-xl transition ${
         pathname === to
           ? "bg-blue-600 text-white"
-          : "hover:bg-gray-100"
+          : "hover:bg-gray-100 dark:hover:bg-slate-800"
       }`}
     >
       {icon} {label}
@@ -18,8 +18,8 @@ export default function Sidebar() {
   );
 
   return (
-    <aside className="w-64 bg-white/80 backdrop-blur p-6 hidden md:flex flex-col shadow">
-      <h1 className="font-bold mb-6 text-lg">TriageIA</h1>
+    <aside className="hidden w-64 flex-col bg-white/80 p-6 shadow backdrop-blur md:flex dark:bg-slate-900/85">
+      <h1 className="mb-6 text-lg font-bold">TriageIA</h1>
 
       {item("/", <LayoutDashboard />, "Dashboard")}
       {item("/patients", <Users />, "Pacientes")}

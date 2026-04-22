@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -7,6 +8,7 @@ import Triage from "./pages/Triage";
 import PatientDetail from "./pages/PatientDetail";
 import Audit from "./pages/Audit";
 import MainLayout from "./layouts/MainLayout";
+import SplashScreen from "./components/SplashScreen";
 
 function Private({ children }) {
   const { user } = useAuth();
@@ -14,6 +16,20 @@ function Private({ children }) {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setShowSplash(false);
+    }, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (showSplash) {
+    return <SplashScreen />;
+  }
+
   return (
     <BrowserRouter>
       <Routes>

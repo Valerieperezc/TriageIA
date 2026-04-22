@@ -27,12 +27,12 @@ export default function Patients() {
             }`}
           >
 
-            <div className="flex justify-between">
+            <div className="flex items-start justify-between gap-4">
 
-              <div>
+              <div className="min-w-0">
                 <p className="font-bold">{p.name}</p>
-                <p className="text-xs">{p.symptom}</p>
-                <p className="text-xs text-gray-500">
+                <p className="truncate text-xs">{p.symptom}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   {minutes} min
                 </p>
               </div>
