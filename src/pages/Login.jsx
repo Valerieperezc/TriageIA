@@ -6,7 +6,6 @@ import {
   Lock,
   Moon,
   Sun,
-  ShieldCheck,
   Activity,
   Sparkles,
 } from "lucide-react";
@@ -88,7 +87,7 @@ export default function Login() {
           <div className="relative z-10">
             <div className="flex items-center gap-3">
               <div className="rounded-2xl bg-white/15 p-2.5 backdrop-blur">
-                <ShieldCheck className="h-6 w-6" />
+                <HeartPulse className="h-6 w-6" />
               </div>
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/70">
@@ -143,7 +142,7 @@ export default function Login() {
           <div className="w-full max-w-md">
             <div className="mb-8 flex items-center gap-3 lg:hidden">
               <div className="rounded-2xl bg-brand-gradient p-2.5 text-white shadow-soft">
-                <ShieldCheck className="h-5 w-5" />
+                <HeartPulse className="h-5 w-5" />
               </div>
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.16em] text-ink-500 dark:text-ink-400">
