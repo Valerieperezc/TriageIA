@@ -23,6 +23,11 @@ test-results/
 /coverage/
 coverage/
 
+# Datasets descargados (datos reales: nunca commitear)
+/data/raw/
+*.rdata
+*.RData
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

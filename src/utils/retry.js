@@ -4,6 +4,16 @@ function wait(ms) {
   });
 }
 
+/** Evita promesas colgadas (p. ej. red o Supabase sin respuesta). */
+export function withTimeout(promise, ms, message = "La operación tardó demasiado") {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(message)), ms);
+    }),
+  ]);
+}
+
 /**
  * Ejecuta una tarea asincrona con reintentos opcionales.
  * - `delaysMs`: backoff por intento fallido (ej. [300, 1000]).

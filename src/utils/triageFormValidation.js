@@ -6,6 +6,13 @@ export const TRIAGE_FORM_LIMITS = {
   tempMax: 45,
   fcMin: 25,
   fcMax: 250,
+  /** Frecuencia respiratoria (rpm) */
+  frMin: 4,
+  frMax: 70,
+  bpSysMin: 50,
+  bpSysMax: 280,
+  bpDiaMin: 20,
+  bpDiaMax: 180,
   spo2Min: 50,
   spo2Max: 100,
   painMin: 0,
@@ -45,6 +52,12 @@ export function validateTriageForm(raw, options = {}) {
     tempMax,
     fcMin,
     fcMax,
+    frMin,
+    frMax,
+    bpSysMin,
+    bpSysMax,
+    bpDiaMin,
+    bpDiaMax,
     spo2Min,
     spo2Max,
     painMin,
@@ -108,6 +121,63 @@ export function validateTriageForm(raw, options = {}) {
     }
   }
 
+  const frStr =
+    raw?.respiratoryRate === "" || raw?.respiratoryRate == null
+      ? ""
+      : String(raw.respiratoryRate).trim();
+  let frNum;
+  if (frStr === "") {
+    errors.respiratoryRate = "La frecuencia respiratoria es obligatoria.";
+  } else {
+    frNum = Number(frStr.replace(",", "."));
+    if (!Number.isFinite(frNum) || !Number.isInteger(frNum)) {
+      errors.respiratoryRate = "Indica la FR en rpm (número entero).";
+    } else if (frNum < frMin || frNum > frMax) {
+      errors.respiratoryRate = `FR fuera de rango (${frMin}–${frMax} rpm).`;
+    }
+  }
+
+  const sysStr =
+    raw?.bpSystolic === "" || raw?.bpSystolic == null
+      ? ""
+      : String(raw.bpSystolic).trim();
+  const diaStr =
+    raw?.bpDiastolic === "" || raw?.bpDiastolic == null
+      ? ""
+      : String(raw.bpDiastolic).trim();
+  let bpSysNum;
+  let bpDiaNum;
+  if (sysStr === "") {
+    errors.bpSystolic = "La presión sistólica es obligatoria.";
+  } else {
+    bpSysNum = Number(sysStr.replace(",", "."));
+    if (!Number.isFinite(bpSysNum) || !Number.isInteger(bpSysNum)) {
+      errors.bpSystolic = "Indica la TA sistólica en mmHg (entero).";
+    } else if (bpSysNum < bpSysMin || bpSysNum > bpSysMax) {
+      errors.bpSystolic = `Sistólica fuera de rango (${bpSysMin}–${bpSysMax} mmHg).`;
+    }
+  }
+  if (diaStr === "") {
+    errors.bpDiastolic = "La presión diastólica es obligatoria.";
+  } else {
+    bpDiaNum = Number(diaStr.replace(",", "."));
+    if (!Number.isFinite(bpDiaNum) || !Number.isInteger(bpDiaNum)) {
+      errors.bpDiastolic = "Indica la TA diastólica en mmHg (entero).";
+    } else if (bpDiaNum < bpDiaMin || bpDiaNum > bpDiaMax) {
+      errors.bpDiastolic = `Diastólica fuera de rango (${bpDiaMin}–${bpDiaMax} mmHg).`;
+    }
+  }
+  if (
+    errors.bpSystolic === undefined &&
+    errors.bpDiastolic === undefined &&
+    Number.isFinite(bpSysNum) &&
+    Number.isFinite(bpDiaNum) &&
+    bpDiaNum >= bpSysNum
+  ) {
+    errors.bpDiastolic =
+      "La diastólica debe ser menor que la sistólica (revisa los valores).";
+  }
+
   const spo2Str =
     raw?.spo2 === "" || raw?.spo2 == null ? "" : String(raw.spo2).trim();
   let spo2Num = null;
@@ -133,13 +203,14 @@ export function validateTriageForm(raw, options = {}) {
   }
 
   const alteredConsciousness = Boolean(raw?.alteredConsciousness);
-  const respiratoryDistress = Boolean(raw?.respiratoryDistress);
 
   const documentId = trimOrEmpty(raw?.documentId);
   const sex = trimOrEmpty(raw?.sex);
   const phone = trimOrEmpty(raw?.phone);
   const companion = trimOrEmpty(raw?.companion);
   const allergies = trimOrEmpty(raw?.allergies);
+  const religion = trimOrEmpty(raw?.religion);
+  const bloodType = trimOrEmpty(raw?.bloodType);
 
   const arrivedRaw = raw?.arrivedAt;
   let arrivedAtMs;
@@ -168,15 +239,19 @@ export function validateTriageForm(raw, options = {}) {
       symptom,
       temp: tempRounded,
       fc: fcNum,
+      respiratoryRate: frNum,
+      bpSystolic: bpSysNum,
+      bpDiastolic: bpDiaNum,
       spo2: spo2Num,
       pain: painNum,
       alteredConsciousness,
-      respiratoryDistress,
       documentId: documentId || null,
       sex: sex || null,
       phone: phone || null,
       companion: companion || null,
       allergies: allergies || null,
+      religion: religion || null,
+      bloodType: bloodType || null,
       arrivedAt: arrivedAtMs,
       fastTrack,
     },
@@ -199,6 +274,18 @@ export function validateTriagePayload(input) {
         ? ""
         : String(input.temp),
     fc: input?.fc === undefined || input?.fc === null ? "" : String(input.fc),
+    respiratoryRate:
+      input?.respiratoryRate === undefined || input?.respiratoryRate === null
+        ? ""
+        : String(input.respiratoryRate),
+    bpSystolic:
+      input?.bpSystolic === undefined || input?.bpSystolic === null
+        ? ""
+        : String(input.bpSystolic),
+    bpDiastolic:
+      input?.bpDiastolic === undefined || input?.bpDiastolic === null
+        ? ""
+        : String(input.bpDiastolic),
     spo2:
       input?.spo2 === undefined || input?.spo2 === null
         ? ""
@@ -208,12 +295,13 @@ export function validateTriagePayload(input) {
         ? ""
         : String(input.pain),
     alteredConsciousness: input?.alteredConsciousness,
-    respiratoryDistress: input?.respiratoryDistress,
     documentId: input?.documentId ?? "",
     sex: input?.sex ?? "",
     phone: input?.phone ?? "",
     companion: input?.companion ?? "",
     allergies: input?.allergies ?? "",
+    religion: input?.religion ?? "",
+    bloodType: input?.bloodType ?? "",
     arrivedAt: input?.arrivedAt,
     fastTrack: input?.fastTrack,
   });

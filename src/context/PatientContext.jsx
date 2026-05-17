@@ -121,10 +121,18 @@ export function PatientProvider({ children }) {
   }, [retryStats]);
 
   const loadData = useCallback(async () => {
+    if (!user) {
+      setPatients([]);
+      setHistory([]);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
     let hadRetry = false;
-    const isAdmin = user?.role === "admin";
+    const isAdmin = user.role === "admin";
 
     try {
       const [patientsData, eventsData] = await retryAsync(
@@ -155,7 +163,7 @@ export function PatientProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }, [markFailedLoad, markRecoveredLoad, markRetry, user?.role]);
+  }, [markFailedLoad, markRecoveredLoad, markRetry, user]);
 
   useEffect(() => {
     loadData();
@@ -171,7 +179,9 @@ export function PatientProvider({ children }) {
       spo2: values.spo2,
       pain: values.pain,
       alteredConsciousness: values.alteredConsciousness,
-      respiratoryDistress: values.respiratoryDistress,
+      respiratoryRate: values.respiratoryRate,
+      bpSystolic: values.bpSystolic,
+      bpDiastolic: values.bpDiastolic,
     });
     const payload = {
       id: createUuid(),

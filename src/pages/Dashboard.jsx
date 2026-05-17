@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { usePatients } from "../hooks/usePatients";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -9,13 +9,10 @@ import {
   ArrowUpRight,
   CalendarDays,
   Clock,
-  Download,
   ListTree,
   MinusCircle,
   Plus,
-  RotateCcw,
   Timer,
-  TrendingUp,
   Users,
 } from "lucide-react";
 import {
@@ -26,7 +23,12 @@ import {
 } from "../utils/dashboardMetrics";
 import { CRITICAL_ALARM_URL } from "../constants/alarm";
 import { useSoundPreference } from "../hooks/useSoundPreference";
-import { usePostLoginPerf } from "../hooks/usePostLoginPerf";
+import { useAuth } from "../hooks/useAuth";
+import { RoleWelcomeBanner } from "../components/RoleWelcomeBanner";
+import {
+  getRoleWorkspaceSubtitle,
+  getRoleWorkspaceTitle,
+} from "../utils/roleConfig";
 
 const DashboardTriageChart = lazy(() =>
   import("../components/DashboardTriageChart").then((module) => ({
@@ -157,18 +159,13 @@ function TriageCard({ level, count, Icon, iconClass, accent, onClick }) {
 }
 
 export default function Dashboard() {
-  const { patients, loading, error, reload, canCreatePatient } = usePatients();
+  const { user } = useAuth();
+  const { patients, loading, error, reload, canCreatePatient, canSetInAttention } =
+    usePatients();
   const { soundEnabled } = useSoundPreference();
   const navigate = useNavigate();
+  const role = user?.role;
   const [now, setNow] = useState(() => Date.now());
-  const {
-    summary: postLoginPerf,
-    resetHistory: resetPostLoginHistory,
-    downloadPostLoginPerfFile,
-  } = usePostLoginPerf({
-    recordSessionNavigationSample: true,
-    syncSummaryOnStorageEvents: true,
-  });
   const prevCriticalInQueueRef = useRef(null);
 
   useEffect(() => {
@@ -196,19 +193,6 @@ export default function Dashboard() {
     () => computeQueueMetrics(todaysPatients, now),
     [todaysPatients, now]
   );
-
-  const resetPostLoginPerfWithToast = useCallback(() => {
-    resetPostLoginHistory();
-    toast.success("Telemetría post-login reiniciada");
-  }, [resetPostLoginHistory]);
-
-  const exportPostLoginPerfCsv = useCallback(() => {
-    if (!downloadPostLoginPerfFile()) {
-      toast.error("No hay datos de telemetría para exportar");
-      return;
-    }
-    toast.success("CSV de telemetría descargado");
-  }, [downloadPostLoginPerfFile]);
 
   useEffect(() => {
     const n = metrics.criticalInQueueCount;
@@ -239,7 +223,7 @@ export default function Dashboard() {
           (TRIAGE_ORDER[a.triage] ?? Number.POSITIVE_INFINITY) -
           (TRIAGE_ORDER[b.triage] ?? Number.POSITIVE_INFINITY);
         if (triageDiff !== 0) return triageDiff;
-        return waitReferenceMs(a) - waitReferenceMs(b);
+        return waitReferenceMs(a, now) - waitReferenceMs(b, now);
       })
       .map((p, index) => ({
         ...p,
@@ -251,7 +235,7 @@ export default function Dashboard() {
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-6">
-        {/* Header */}
+        <RoleWelcomeBanner />
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
@@ -262,58 +246,41 @@ export default function Dashboard() {
               className="page-title mt-2"
               data-testid="dashboard-title"
             >
-              Dashboard clínico
+              {getRoleWorkspaceTitle(role)}
             </h1>
+            <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
+              {getRoleWorkspaceSubtitle(role)}
+            </p>
             <p
-              className="mt-1 text-sm text-ink-500 dark:text-ink-400 capitalize"
+              className="mt-1 text-xs text-ink-400 dark:text-ink-500 capitalize"
               data-testid="dashboard-today-label"
             >
               {todayLabel}
             </p>
-            {postLoginPerf.samples > 0 ? (
-              <div className="mt-3 space-y-2">
-                <p
-                  className="text-xs text-ink-500 dark:text-ink-400"
-                  data-testid="post-login-nav-ms"
-                >
-                  Última transición post-login: {postLoginPerf.lastMs} ms ·
-                  Promedio: {postLoginPerf.avgMs} ms ({postLoginPerf.samples}{" "}
-                  muestra(s))
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    className="btn btn-secondary text-xs"
-                    onClick={exportPostLoginPerfCsv}
-                    data-testid="post-login-perf-export"
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    Exportar CSV
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary text-xs"
-                    onClick={resetPostLoginPerfWithToast}
-                    data-testid="post-login-perf-reset"
-                  >
-                    <RotateCcw className="h-3.5 w-3.5" />
-                    Limpiar métrica
-                  </button>
-                </div>
-              </div>
-            ) : null}
           </div>
 
-          {canCreatePatient && (
-            <button
-              type="button"
-              onClick={() => navigate("/triage")}
-              className="btn btn-primary self-start md:self-end"
-            >
-              <Plus className="h-4 w-4" />
-              Registrar paciente
-            </button>
-          )}
+          <div className="flex flex-wrap gap-2 self-start md:self-end">
+            {canCreatePatient ? (
+              <button
+                type="button"
+                onClick={() => navigate("/triage")}
+                className="btn btn-primary"
+              >
+                <Plus className="h-4 w-4" />
+                Registrar paciente
+              </button>
+            ) : null}
+            {canSetInAttention ? (
+              <button
+                type="button"
+                onClick={() => navigate("/patients?sort=triage")}
+                className="btn btn-secondary"
+                data-testid="dashboard-go-queue"
+              >
+                Ver cola de atención
+              </button>
+            ) : null}
+          </div>
         </div>
 
         {/* Alerta crítica */}
@@ -357,7 +324,7 @@ export default function Dashboard() {
         {/* KPIs cola */}
         <div
           data-testid="dashboard-queue-metrics"
-          className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4"
+          className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3"
         >
           <KpiCard
             icon={Users}
@@ -372,13 +339,6 @@ export default function Dashboard() {
             value={`${metrics.avgWaitMinutes} min`}
             hint="Promedio en cola hoy"
             accent="emerald"
-          />
-          <KpiCard
-            icon={TrendingUp}
-            label="Espera máxima"
-            value={`${metrics.longestWaitMinutes} min`}
-            hint="Paciente con más demora"
-            accent="amber"
           />
           <KpiCard
             icon={AlertTriangle}

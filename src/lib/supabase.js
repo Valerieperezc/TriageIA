@@ -4,7 +4,7 @@ import {
   supabaseUrl,
 } from "./appConfig";
 
-export { isSupabaseConfigured };
+export { isSupabaseConfigured, supabaseAnonKey, supabaseUrl };
 
 let supabaseClientPromise = null;
 

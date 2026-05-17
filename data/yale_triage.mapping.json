@@ -1,0 +1,12 @@
+{
+  "namePrefix": "Paciente ",
+  "nameFromColumn": null,
+  "age": "Age",
+  "sex": "Gender",
+  "symptomColumns": ["Symptom"],
+  "symptomSeparator": " / ",
+  "temp": "Body Temperature (Celsius)",
+  "fc": "Heart Rate (bpm)",
+  "spo2": "Oxygen Saturation (%)",
+  "pain": "Pain (0-10)"
+}

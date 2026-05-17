@@ -51,7 +51,12 @@ function normalizeLocalPatient(p) {
     spo2: p.spo2 ?? null,
     pain: p.pain ?? null,
     alteredConsciousness: Boolean(p.alteredConsciousness),
-    respiratoryDistress: Boolean(p.respiratoryDistress),
+    respiratoryRate:
+      p.respiratoryRate != null ? Number(p.respiratoryRate) : null,
+    bpSystolic: p.bpSystolic != null ? Number(p.bpSystolic) : null,
+    bpDiastolic: p.bpDiastolic != null ? Number(p.bpDiastolic) : null,
+    religion: p.religion ?? null,
+    bloodType: p.bloodType ?? null,
     fastTrack: Boolean(p.fastTrack),
   };
 }
@@ -84,7 +89,16 @@ function mapDbPatient(patient) {
     spo2: patient.spo2 ?? null,
     pain: patient.pain ?? null,
     alteredConsciousness: Boolean(patient.altered_consciousness),
-    respiratoryDistress: Boolean(patient.respiratory_distress),
+    respiratoryRate:
+      patient.respiratory_rate != null
+        ? Number(patient.respiratory_rate)
+        : null,
+    bpSystolic:
+      patient.bp_systolic != null ? Number(patient.bp_systolic) : null,
+    bpDiastolic:
+      patient.bp_diastolic != null ? Number(patient.bp_diastolic) : null,
+    religion: patient.religion ?? null,
+    bloodType: patient.blood_type ?? null,
     fastTrack: Boolean(patient.fast_track),
   };
 }
@@ -112,7 +126,11 @@ function toSupabaseInsertRow(payload) {
     spo2: payload.spo2 ?? null,
     pain: payload.pain ?? null,
     altered_consciousness: Boolean(payload.alteredConsciousness),
-    respiratory_distress: Boolean(payload.respiratoryDistress),
+    respiratory_rate: payload.respiratoryRate ?? null,
+    bp_systolic: payload.bpSystolic ?? null,
+    bp_diastolic: payload.bpDiastolic ?? null,
+    religion: payload.religion ?? null,
+    blood_type: payload.bloodType ?? null,
     fast_track: Boolean(payload.fastTrack),
   };
 }
@@ -229,6 +247,8 @@ const DEMO_PATCH_KEYS = new Set([
   "phone",
   "companion",
   "allergies",
+  "religion",
+  "bloodType",
 ]);
 
 function toSupabaseDemographicsPatch(patch) {
@@ -240,6 +260,8 @@ function toSupabaseDemographicsPatch(patch) {
   if (patch.phone !== undefined) out.phone = patch.phone;
   if (patch.companion !== undefined) out.companion = patch.companion;
   if (patch.allergies !== undefined) out.allergies = patch.allergies;
+  if (patch.religion !== undefined) out.religion = patch.religion;
+  if (patch.bloodType !== undefined) out.blood_type = patch.bloodType;
   return out;
 }
 

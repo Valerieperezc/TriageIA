@@ -6,36 +6,50 @@ import {
   ShieldCheck,
   Stethoscope,
   AlertTriangle,
+  Settings,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { usePatients } from "../hooks/usePatients";
+import { accountInitials, roleLabel } from "../utils/accountProfile";
+import {
+  getRoleCapabilityLabels,
+  getSidebarNavOrder,
+} from "../utils/roleConfig";
 
-function roleLabel(role) {
-  switch (role) {
-    case "admin":
-      return "Administrador";
-    case "medico":
-      return "Médico";
-    case "enfermeria":
-      return "Enfermería";
-    case "recepcion":
-      return "Recepción";
-    default:
-      return role ?? "Invitado";
-  }
-}
-
-function roleInitials(email) {
-  if (!email) return "U";
-  const base = email.split("@")[0] ?? "";
-  const parts = base.split(/[._-]/).filter(Boolean);
-  if (parts.length === 0) return base.slice(0, 2).toUpperCase();
-  return parts
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join("");
-}
+const NAV_DEF = {
+  dashboard: {
+    to: "/",
+    end: true,
+    icon: LayoutDashboard,
+    label: "Dashboard",
+    visible: () => true,
+  },
+  patients: {
+    to: "/patients",
+    icon: Users,
+    label: "Pacientes",
+    visible: () => true,
+  },
+  triage: {
+    to: "/triage",
+    icon: Stethoscope,
+    label: "Registrar triage",
+    visible: (_user, { canCreatePatient }) => canCreatePatient,
+  },
+  audit: {
+    to: "/audit",
+    icon: ClipboardList,
+    label: "Historial",
+    visible: (user) => user?.role === "admin",
+  },
+  settings: {
+    to: "/settings",
+    icon: Settings,
+    label: "Configuración",
+    visible: () => true,
+  },
+};
 
 export default function Sidebar() {
   const { pathname } = useLocation();
@@ -50,6 +64,18 @@ export default function Sidebar() {
     [patients]
   );
 
+  const navItems = useMemo(() => {
+    const order = getSidebarNavOrder(user?.role);
+    return order
+      .map((key) => NAV_DEF[key])
+      .filter((def) => def && def.visible(user, { canCreatePatient }));
+  }, [user, canCreatePatient]);
+
+  const capabilityLabels = useMemo(
+    () => getRoleCapabilityLabels(user?.role),
+    [user?.role]
+  );
+
   const navItemClass = ({ isActive }) =>
     `group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
       isActive
@@ -59,8 +85,7 @@ export default function Sidebar() {
 
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden w-72 border-r border-ink-200/70 bg-white/80 p-5 backdrop-blur-xl md:flex md:flex-col dark:border-ink-800 dark:bg-ink-900/80">
-      {/* Brand */}
-      <div className="mb-8 flex items-center gap-3">
+      <div className="mb-6 flex items-center gap-3">
         <div className="rounded-2xl bg-brand-gradient p-2.5 text-white shadow-soft">
           <ShieldCheck className="h-5 w-5" />
         </div>
@@ -74,47 +99,57 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Navegación */}
       <div className="space-y-1">
         <p className="section-title mb-2 px-2">Navegación</p>
-        <NavLink to="/" className={navItemClass} end>
-          <LayoutDashboard className="h-4 w-4" />
-          <span className="flex-1">Dashboard</span>
-        </NavLink>
-        <NavLink to="/patients" className={navItemClass}>
-          <Users className="h-4 w-4" />
-          <span className="flex-1">Pacientes</span>
-          {criticalInQueue > 0 && (
-            <span
-              data-testid="sidebar-critical-badge"
-              className={`inline-flex min-w-[1.5rem] items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                pathname === "/patients"
-                  ? "bg-white text-red-600"
-                  : "bg-red-500 text-white"
-              }`}
-              title="Críticos (CTAS I) en espera"
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const showCritical =
+            item.to === "/patients" && criticalInQueue > 0;
+          return (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={navItemClass}
             >
-              {criticalInQueue}
-            </span>
-          )}
-        </NavLink>
-        {canCreatePatient && (
-          <NavLink to="/triage" className={navItemClass}>
-            <Stethoscope className="h-4 w-4" />
-            <span className="flex-1">Registrar triage</span>
-          </NavLink>
-        )}
-        {user?.role === "admin" && (
-          <NavLink to="/audit" className={navItemClass}>
-            <ClipboardList className="h-4 w-4" />
-            <span className="flex-1">Historial</span>
-          </NavLink>
-        )}
+              <Icon className="h-4 w-4" />
+              <span className="flex-1">{item.label}</span>
+              {showCritical ? (
+                <span
+                  data-testid="sidebar-critical-badge"
+                  className={`inline-flex min-w-[1.5rem] items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
+                    pathname === "/patients"
+                      ? "bg-white text-red-600"
+                      : "bg-red-500 text-white"
+                  }`}
+                  title="Críticos (CTAS I) en espera"
+                >
+                  {criticalInQueue}
+                </span>
+              ) : null}
+            </NavLink>
+          );
+        })}
       </div>
 
-      {/* Estado de cola crítica */}
       <div
-        className={`mt-6 rounded-2xl border p-4 transition ${
+        className="mt-4 rounded-2xl border border-ink-200 bg-ink-50/80 p-3 dark:border-ink-700 dark:bg-ink-800/50"
+        data-testid="sidebar-role-capabilities"
+      >
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">
+          Tu rol · {roleLabel(user?.role)}
+        </p>
+        <ul className="mt-2 space-y-1 text-[11px] text-ink-600 dark:text-ink-300">
+          {capabilityLabels.slice(0, 4).map((line) => (
+            <li key={line} className="leading-snug">
+              · {line}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div
+        className={`mt-3 rounded-2xl border p-4 transition ${
           criticalInQueue > 0
             ? "border-red-300/70 bg-red-50 dark:border-red-900/60 dark:bg-red-950/40"
             : "border-ink-200 bg-ink-50 dark:border-ink-700 dark:bg-ink-800/60"
@@ -141,15 +176,14 @@ export default function Sidebar() {
         </p>
       </div>
 
-      {/* Usuario */}
       <div className="mt-auto rounded-2xl border border-ink-200 bg-white/70 p-3 shadow-soft-sm dark:border-ink-700 dark:bg-ink-800/70">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-gradient text-sm font-bold text-white shadow-soft">
-            {roleInitials(user?.email)}
+            {accountInitials(user)}
           </div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-ink-900 dark:text-ink-100">
-              {user?.email ?? "Invitado"}
+              {user?.displayName?.trim() || user?.email || "Invitado"}
             </p>
             <p className="text-[11px] font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
               {roleLabel(user?.role)}

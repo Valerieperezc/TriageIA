@@ -22,6 +22,19 @@ const TRIAGE_PREVIEW_LABEL = {
   V: "No urgente",
 };
 
+const BLOOD_TYPE_OPTIONS = [
+  { value: "", label: "No indicado" },
+  { value: "A+", label: "A+" },
+  { value: "A-", label: "A-" },
+  { value: "B+", label: "B+" },
+  { value: "B-", label: "B-" },
+  { value: "AB+", label: "AB+" },
+  { value: "AB-", label: "AB-" },
+  { value: "O+", label: "O+" },
+  { value: "O-", label: "O-" },
+  { value: "desconocido", label: "Desconocido" },
+];
+
 function Field({ label, error, children }) {
   return (
     <div className="space-y-1">
@@ -60,6 +73,13 @@ function toDateTimeLocalValue(ms) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
+function parseIntOrNaN(raw) {
+  const s = raw === "" || raw == null ? "" : String(raw).trim();
+  if (s === "") return NaN;
+  const n = Number(s.replace(",", "."));
+  return Number.isFinite(n) && Number.isInteger(n) ? n : NaN;
+}
+
 export default function Triage() {
   const { addPatient, canCreatePatient, loading, error, reload } = usePatients();
 
@@ -70,15 +90,19 @@ export default function Triage() {
     symptom: "",
     temp: "",
     fc: "",
+    respiratoryRate: "",
+    bpSystolic: "",
+    bpDiastolic: "",
     spo2: "",
     pain: "",
     alteredConsciousness: false,
-    respiratoryDistress: false,
     documentId: "",
     sex: "",
     phone: "",
     companion: "",
     allergies: "",
+    religion: "",
+    bloodType: "",
     arrivedAt: toDateTimeLocalValue(Date.now()),
   }));
   const [fieldErrors, setFieldErrors] = useState({});
@@ -87,7 +111,17 @@ export default function Triage() {
     const t = parseTempInput(form.temp);
     const fcRaw = form.fc === "" || form.fc == null ? "" : String(form.fc).trim();
     const f = fcRaw === "" ? NaN : Number(fcRaw.replace(",", "."));
-    if (!Number.isFinite(t) || !Number.isFinite(f) || !Number.isInteger(f)) {
+    const fr = parseIntOrNaN(form.respiratoryRate);
+    const sys = parseIntOrNaN(form.bpSystolic);
+    const dia = parseIntOrNaN(form.bpDiastolic);
+    if (
+      !Number.isFinite(t) ||
+      !Number.isFinite(f) ||
+      !Number.isInteger(f) ||
+      !Number.isFinite(fr) ||
+      !Number.isFinite(sys) ||
+      !Number.isFinite(dia)
+    ) {
       return null;
     }
     const spo2Raw = form.spo2 === "" || form.spo2 == null ? "" : String(form.spo2).trim();
@@ -98,15 +132,19 @@ export default function Triage() {
       spo2: Number.isFinite(spo2) ? spo2 : null,
       pain: Number.isFinite(pain) ? pain : null,
       alteredConsciousness: form.alteredConsciousness,
-      respiratoryDistress: form.respiratoryDistress,
+      respiratoryRate: fr,
+      bpSystolic: sys,
+      bpDiastolic: dia,
     });
   }, [
     form.temp,
     form.fc,
+    form.respiratoryRate,
+    form.bpSystolic,
+    form.bpDiastolic,
     form.spo2,
     form.pain,
     form.alteredConsciousness,
-    form.respiratoryDistress,
   ]);
 
   const updateField = (key, value) => {
@@ -138,7 +176,9 @@ export default function Triage() {
         spo2: result.values.spo2,
         pain: result.values.pain,
         alteredConsciousness: result.values.alteredConsciousness,
-        respiratoryDistress: result.values.respiratoryDistress,
+        respiratoryRate: result.values.respiratoryRate,
+        bpSystolic: result.values.bpSystolic,
+        bpDiastolic: result.values.bpDiastolic,
       });
       await addPatient({
         ...result.values,
@@ -155,15 +195,19 @@ export default function Triage() {
         symptom: "",
         temp: "",
         fc: "",
+        respiratoryRate: "",
+        bpSystolic: "",
+        bpDiastolic: "",
         spo2: "",
         pain: "",
         alteredConsciousness: false,
-        respiratoryDistress: false,
         documentId: "",
         sex: "",
         phone: "",
         companion: "",
         allergies: "",
+        religion: "",
+        bloodType: "",
         arrivedAt: toDateTimeLocalValue(Date.now()),
       });
       setFieldErrors({});
@@ -184,11 +228,9 @@ export default function Triage() {
             <Stethoscope className="h-3 w-3" />
             Registro de triage
           </span>
-          <h1 className="page-title mt-2">Registrar paciente</h1>
-          <p className="page-subtitle mt-1">
-            Triage ampliado con signos vitales y criterios de gravedad.
-            Temperatura en °C y frecuencia cardíaca en lpm.
-          </p>
+          <h1 className="page-title mt-2" data-testid="triage-page-title">
+            Registrar paciente
+          </h1>
         </div>
 
         {/* Fast track */}
@@ -222,7 +264,8 @@ export default function Triage() {
             </span>
             <p className="mt-1">
               <strong>Modo urgencia:</strong> nombre y síntoma pueden quedar
-              genéricos; completa temperatura y FC.
+              genéricos; completa temperatura, FC, frecuencia respiratoria y
+              presión arterial.
             </p>
           </div>
         ) : null}
@@ -320,10 +363,7 @@ export default function Triage() {
 
         {/* Vitales */}
         <section className="card space-y-4">
-          <SectionHeader
-            title="Signos y gravedad"
-            description="Campos marcados como opcionales mejoran la clasificación."
-          />
+          <SectionHeader title="Signos vitales y gravedad" />
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="Temperatura (°C)" error={fieldErrors.temp}>
               <input
@@ -345,6 +385,51 @@ export default function Triage() {
                 onChange={(e) => updateField("fc", e.target.value)}
               />
             </Field>
+            <Field
+              label="Frecuencia respiratoria (rpm)"
+              error={fieldErrors.respiratoryRate}
+            >
+              <input
+                data-testid="triage-respiratory-rate"
+                className="input w-full"
+                inputMode="numeric"
+                placeholder="Ej. 16"
+                value={form.respiratoryRate}
+                onChange={(e) => updateField("respiratoryRate", e.target.value)}
+              />
+            </Field>
+            <div className="grid grid-cols-2 gap-3 md:col-span-2 md:grid-cols-2">
+              <Field
+                label="TA sistólica (mmHg)"
+                error={fieldErrors.bpSystolic}
+              >
+                <input
+                  data-testid="triage-bp-systolic"
+                  className="input w-full"
+                  inputMode="numeric"
+                  placeholder="Ej. 120"
+                  value={form.bpSystolic}
+                  onChange={(e) =>
+                    updateField("bpSystolic", e.target.value)
+                  }
+                />
+              </Field>
+              <Field
+                label="TA diastólica (mmHg)"
+                error={fieldErrors.bpDiastolic}
+              >
+                <input
+                  data-testid="triage-bp-diastolic"
+                  className="input w-full"
+                  inputMode="numeric"
+                  placeholder="Ej. 80"
+                  value={form.bpDiastolic}
+                  onChange={(e) =>
+                    updateField("bpDiastolic", e.target.value)
+                  }
+                />
+              </Field>
+            </div>
             <Field label="SpO₂ (%) — opcional" error={fieldErrors.spo2}>
               <input
                 data-testid="triage-spo2"
@@ -367,36 +452,20 @@ export default function Triage() {
             </Field>
           </div>
 
-          <div className="grid gap-2 md:grid-cols-2">
-            <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm transition hover:border-brand-400 dark:border-ink-700 dark:bg-ink-800/60">
-              <input
-                data-testid="triage-altered-consciousness"
-                type="checkbox"
-                className="h-4 w-4 accent-brand-600"
-                checked={form.alteredConsciousness}
-                onChange={(e) =>
-                  updateField("alteredConsciousness", e.target.checked)
-                }
-              />
-              <span className="text-ink-700 dark:text-ink-200">
-                Alteración del nivel de conciencia
-              </span>
-            </label>
-            <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm transition hover:border-brand-400 dark:border-ink-700 dark:bg-ink-800/60">
-              <input
-                data-testid="triage-respiratory-distress"
-                type="checkbox"
-                className="h-4 w-4 accent-brand-600"
-                checked={form.respiratoryDistress}
-                onChange={(e) =>
-                  updateField("respiratoryDistress", e.target.checked)
-                }
-              />
-              <span className="text-ink-700 dark:text-ink-200">
-                Dificultad respiratoria evidente
-              </span>
-            </label>
-          </div>
+          <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm transition hover:border-brand-400 dark:border-ink-700 dark:bg-ink-800/60">
+            <input
+              data-testid="triage-altered-consciousness"
+              type="checkbox"
+              className="h-4 w-4 accent-brand-600"
+              checked={form.alteredConsciousness}
+              onChange={(e) =>
+                updateField("alteredConsciousness", e.target.checked)
+              }
+            />
+            <span className="text-ink-700 dark:text-ink-200">
+              Alteración del nivel de conciencia
+            </span>
+          </label>
         </section>
 
         {/* Identificación */}
@@ -404,7 +473,7 @@ export default function Triage() {
           <section className="card space-y-4">
             <SectionHeader
               title="Identificación"
-              description="Opcional al ingreso; puede completarse después."
+              description="Opcional al ingreso; puede completarse después en el detalle del paciente."
             />
             <div className="grid gap-4 md:grid-cols-2">
               <Field label="Documento" error={fieldErrors.documentId}>
@@ -449,6 +518,29 @@ export default function Triage() {
                   onChange={(e) => updateField("companion", e.target.value)}
                 />
               </Field>
+              <Field label="Religión — opcional" error={fieldErrors.religion}>
+                <input
+                  data-testid="triage-religion"
+                  className="input w-full"
+                  placeholder="Puede dejarse en blanco y completarse después"
+                  value={form.religion}
+                  onChange={(e) => updateField("religion", e.target.value)}
+                />
+              </Field>
+              <Field label="Tipo de sangre — opcional" error={fieldErrors.bloodType}>
+                <select
+                  data-testid="triage-blood-type"
+                  className="input w-full"
+                  value={form.bloodType}
+                  onChange={(e) => updateField("bloodType", e.target.value)}
+                >
+                  {BLOOD_TYPE_OPTIONS.map((o) => (
+                    <option key={o.value || "none"} value={o.value}>
+                      {o.label}
+                    </option>
+                  ))}
+                </select>
+              </Field>
               <div className="md:col-span-2">
                 <Field label="Alergias" error={fieldErrors.allergies}>
                   <input
@@ -485,7 +577,8 @@ export default function Triage() {
             </div>
           ) : (
             <p className="text-xs text-ink-500 dark:text-ink-400">
-              Completa temperatura y FC para ver la clasificación prevista.
+              Completa temperatura, FC, frecuencia respiratoria y presión arterial
+              para ver la clasificación prevista.
             </p>
           )}
 

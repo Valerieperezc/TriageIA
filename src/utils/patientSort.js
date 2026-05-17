@@ -17,7 +17,7 @@ export function parseSortParam(raw) {
 }
 
 function waitMinutes(p, now) {
-  return Math.floor((now - waitReferenceMs(p)) / 60000);
+  return Math.floor((now - waitReferenceMs(p, now)) / 60000);
 }
 
 /**

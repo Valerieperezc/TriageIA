@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   HeartPulse,
@@ -12,6 +12,7 @@ import {
   HardDrive,
 } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
+import { accountInitials, roleLabel } from "../utils/accountProfile";
 import { useSoundPreference } from "../hooks/useSoundPreference";
 import { useTheme } from "../hooks/useTheme";
 import { usePatients } from "../hooks/usePatients";
@@ -30,11 +31,20 @@ export default function Topbar() {
     : "N/A";
   const retryHealth = classifyRetryHealth(retryStats);
   const prevRetryHealthLevelRef = useRef(retryHealth.level);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const handleLogout = async () => {
-    await logout();
-    toast.success("Sesión cerrada");
-    nav("/login");
+    if (loggingOut) return;
+    setLoggingOut(true);
+    try {
+      await logout();
+      toast.success("Sesión cerrada");
+    } catch {
+      toast.error("No se pudo cerrar sesión por completo");
+    } finally {
+      setLoggingOut(false);
+      nav("/login", { replace: true });
+    }
   };
 
   useEffect(() => {
@@ -78,14 +88,17 @@ export default function Topbar() {
         {/* User card — desktop */}
         <div className="hidden items-center gap-3 rounded-xl border border-ink-200 bg-ink-50 px-3 py-1.5 md:flex dark:border-ink-700 dark:bg-ink-800/70">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-gradient text-xs font-bold text-white">
-            {(user?.email ?? "U").slice(0, 1).toUpperCase()}
+            {accountInitials(user)}
           </div>
           <div className="min-w-0">
             <p className="max-w-[200px] truncate text-xs font-semibold text-ink-800 dark:text-ink-100">
-              {user?.email}
+              {user?.displayName?.trim() || user?.email}
             </p>
-            <p className="text-[10px] font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
-              {user?.role}
+            <p
+              className="text-[10px] font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400"
+              data-testid="topbar-user-role"
+            >
+              {roleLabel(user?.role)}
             </p>
           </div>
         </div>
@@ -154,11 +167,13 @@ export default function Topbar() {
           <button
             type="button"
             onClick={handleLogout}
+            disabled={loggingOut}
             className="btn btn-secondary"
             title="Cerrar sesión"
+            data-testid="logout-button"
           >
             <LogOut className="h-4 w-4" />
-            <span className="hidden sm:inline">Salir</span>
+            <span className="hidden sm:inline">{loggingOut ? "Saliendo..." : "Salir"}</span>
           </button>
         </div>
       </div>

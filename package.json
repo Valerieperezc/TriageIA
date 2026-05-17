@@ -12,7 +12,12 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "deploy:check": "node scripts/deployCheck.mjs"
+    "deploy:check": "node scripts/deployCheck.mjs",
+    "seed:dataset": "node scripts/seedDataset.mjs",
+    "data:generate": "node scripts/generateSyntheticDataset.mjs --out data/synthetic_patients.csv --rows 2000 --seed 42",
+    "data:seed-sql": "node scripts/seedDataset.mjs --csv data/synthetic_patients.csv --mapping data/synthetic_patients.mapping.json --out data/synthetic_seed.sql",
+    "data:yale-extract": "python scripts/extractKaggleTriage.py --out data/yale_triage.csv --limit 10000 --seed 42",
+    "data:yale-sql": "node scripts/seedDataset.mjs --csv data/yale_triage.csv --mapping data/yale_triage.mapping.json --out data/yale_seed.sql"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.0",
@@ -36,6 +41,7 @@
     "@vitest/coverage-v8": "^4.1.4",
     "autoprefixer": "^10.4.27",
     "babel-plugin-react-compiler": "^1.0.0",
+    "csv-parse": "^5.6.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",

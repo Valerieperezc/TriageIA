@@ -13,6 +13,14 @@ describe("minutesSince", () => {
   it("computes whole minutes", () => {
     expect(minutesSince(0, 120_000)).toBe(2);
   });
+
+  it("no devuelve minutos negativos si el inicio está en el futuro", () => {
+    expect(minutesSince(1_000_000_000_000, 0)).toBe(0);
+  });
+
+  it("devuelve 0 si los instantes no son finitos", () => {
+    expect(minutesSince(NaN, 100)).toBe(0);
+  });
 });
 
 describe("waitReferenceMs / minutesWaiting", () => {
@@ -23,8 +31,35 @@ describe("waitReferenceMs / minutesWaiting", () => {
       createdAt: now - 5 * 60_000,
       arrivedAt: now - 20 * 60_000,
     };
-    expect(waitReferenceMs(p)).toBe(now - 20 * 60_000);
+    expect(waitReferenceMs(p, now)).toBe(now - 20 * 60_000);
     expect(minutesWaiting(p, now)).toBe(20);
+  });
+
+  it("mismo día local y llegada >17h antes del alta: usa created (arrived_at de seed vs created_at real)", () => {
+    const created = new Date(2026, 4, 14, 20, 0, 0).getTime();
+    const arrived = created - 18 * 60 * 60 * 1000;
+    const refNow = created + 30 * 60 * 1000;
+    const p = { createdAt: created, arrivedAt: arrived };
+    expect(waitReferenceMs(p, refNow)).toBe(created);
+    expect(minutesWaiting(p, refNow)).toBe(30);
+  });
+
+  it("mismo día local y llegada pocas horas antes del alta: sigue desde la llegada", () => {
+    const created = new Date(2026, 4, 14, 18, 0, 0).getTime();
+    const arrived = created - 4 * 60 * 60 * 1000;
+    const refNow = created + 60 * 1000;
+    const p = { createdAt: created, arrivedAt: arrived };
+    expect(waitReferenceMs(p, refNow)).toBe(arrived);
+    expect(minutesWaiting(p, refNow)).toBe(4 * 60 + 1);
+  });
+
+  it("llegada posterior al alta (datos inconsistentes): usa created", () => {
+    const created = new Date(2026, 4, 14, 10, 0, 0).getTime();
+    const arrived = created + 5 * 60 * 1000;
+    const refNow = created + 20 * 60 * 1000;
+    const p = { createdAt: created, arrivedAt: arrived };
+    expect(waitReferenceMs(p, refNow)).toBe(created);
+    expect(minutesWaiting(p, refNow)).toBe(20);
   });
 });
 
@@ -100,7 +135,7 @@ describe("filterPatientsOfDay", () => {
   const earlierToday = new Date(2026, 3, 20, 1, 0, 0).getTime();
   const lateToday = new Date(2026, 3, 20, 23, 30, 0).getTime();
 
-  it("incluye solo pacientes cuya llegada/registro es del día actual", () => {
+  it("incluye solo pacientes cuyo registro en sistema (createdAt) es del día actual", () => {
     const patients = [
       { id: "a", createdAt: earlierToday, arrivedAt: earlierToday },
       { id: "b", createdAt: lateToday, arrivedAt: null },
@@ -110,13 +145,13 @@ describe("filterPatientsOfDay", () => {
     expect(result.map((p) => p.id)).toEqual(["a", "b"]);
   });
 
-  it("usa arrivedAt por encima de createdAt cuando existe", () => {
+  it("usa createdAt para el día aunque arrivedAt sea otro día local (p. ej. UTC en seeds)", () => {
     const patients = [
       { id: "a", createdAt: yesterday, arrivedAt: earlierToday },
       { id: "b", createdAt: earlierToday, arrivedAt: yesterday },
     ];
     const result = filterPatientsOfDay(patients, now);
-    expect(result.map((p) => p.id)).toEqual(["a"]);
+    expect(result.map((p) => p.id)).toEqual(["b"]);
   });
 
   it("retorna lista vacía si no hay coincidencias", () => {

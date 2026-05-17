@@ -15,7 +15,17 @@ async function loginLocalMedico(page) {
   await page.getByTestId("login-email").fill("medico@triage.com");
   await page.getByTestId("login-password").fill("123456");
   await page.getByTestId("login-submit").click();
-  await expect(page.getByTestId("dashboard-title")).toBeVisible({
+  await expect(page.getByTestId("patients-title")).toBeVisible({
+    timeout: 20_000,
+  });
+}
+
+async function loginLocalRecepcion(page) {
+  await page.goto("/login");
+  await page.getByTestId("login-email").fill("recepcion@triage.com");
+  await page.getByTestId("login-password").fill("123456");
+  await page.getByTestId("login-submit").click();
+  await expect(page.getByTestId("triage-page-title")).toBeVisible({
     timeout: 20_000,
   });
 }
@@ -25,17 +35,38 @@ test.describe("smoke local", () => {
     await loginLocalAdmin(page);
   });
 
+  test("cerrar sesion con Salir vuelve al login", async ({ page }) => {
+    await loginLocalAdmin(page);
+    await page.getByTestId("logout-button").click();
+    await expect(page.getByTestId("login-submit")).toBeVisible({ timeout: 10_000 });
+    await page.goto("/");
+    await expect(page.getByTestId("login-submit")).toBeVisible();
+  });
+
   test("navega a pacientes tras login", async ({ page }) => {
     await loginLocalAdmin(page);
     await page.goto("/patients");
     await expect(page.getByPlaceholder("Nombre o síntoma")).toBeVisible();
   });
 
-  test("rol medico no accede a auditoria: redirige al dashboard", async ({ page }) => {
+  test("rol medico no accede a auditoria: redirige al inicio del rol", async ({ page }) => {
     await loginLocalMedico(page);
     await page.goto("/audit");
-    await expect(page.getByTestId("dashboard-title")).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByTestId("patients-title")).toBeVisible({ timeout: 15_000 });
     await expect(page.getByRole("heading", { name: "Historial" })).toHaveCount(0);
+  });
+
+  test("rol recepcion entra a registrar triage", async ({ page }) => {
+    await loginLocalRecepcion(page);
+    await expect(page.getByTestId("role-welcome-banner")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Registrar triage" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Historial" })).toHaveCount(0);
+  });
+
+  test("rol medico no ve registrar triage en el menu", async ({ page }) => {
+    await loginLocalMedico(page);
+    await expect(page.getByRole("link", { name: "Registrar triage" })).toHaveCount(0);
+    await expect(page.getByTestId("sidebar-role-capabilities")).toBeVisible();
   });
 
   test("ingreso minimo: solo vitales y nombre generico", async ({ page }) => {
@@ -44,6 +75,9 @@ test.describe("smoke local", () => {
     await page.getByTestId("triage-fast-track").check();
     await page.getByTestId("triage-temp").fill("39.5");
     await page.getByTestId("triage-fc").fill("110");
+    await page.getByTestId("triage-respiratory-rate").fill("18");
+    await page.getByTestId("triage-bp-systolic").fill("118");
+    await page.getByTestId("triage-bp-diastolic").fill("76");
     await page.getByTestId("triage-submit").click();
     await page.goto("/patients");
     await expect(
@@ -62,7 +96,10 @@ test.describe("smoke local", () => {
     await page.getByTestId("triage-symptom").fill("Dolor abdominal");
     await page.getByTestId("triage-temp").fill("41");
     await page.getByTestId("triage-fc").fill("95");
-    await expect(page.getByTestId("triage-preview")).toContainText("Nivel I");
+    await page.getByTestId("triage-respiratory-rate").fill("16");
+    await page.getByTestId("triage-bp-systolic").fill("122");
+    await page.getByTestId("triage-bp-diastolic").fill("78");
+    await expect(page.getByTestId("triage-preview")).toContainText("CTAS I");
     await page.getByTestId("triage-submit").click();
 
     await page.goto("/patients");
@@ -79,17 +116,19 @@ test.describe("smoke local", () => {
     await expect(page.getByText("Actor: admin@triage.com", { exact: false }).first()).toBeVisible();
   });
 
-  test("auditoria: telemetria post-login en historial y limpiar", async ({ page }) => {
+  test("configuracion: telemetria post-login y limpiar", async ({ page }) => {
     await loginLocalAdmin(page);
-    await page.goto("/audit");
+    await page.goto("/settings");
 
-    await expect(page.getByTestId("audit-post-login-summary")).toBeVisible({
+    await expect(page.getByTestId("settings-post-login-summary")).toBeVisible({
       timeout: 15_000,
     });
-    await expect(page.getByTestId("audit-post-login-summary")).toContainText("Última:");
+    await expect(page.getByTestId("settings-post-login-summary")).toContainText(
+      "Última transición:"
+    );
 
-    await page.getByTestId("audit-post-login-reset").click();
-    await expect(page.getByTestId("audit-post-login-empty")).toBeVisible();
+    await page.getByTestId("settings-post-login-reset").click();
+    await expect(page.getByTestId("settings-post-login-empty")).toBeVisible();
   });
 
   test("telemetria de reintentos persistida se puede limpiar", async ({ page }) => {

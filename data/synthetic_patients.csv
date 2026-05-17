@@ -1,0 +1,2001 @@
+Age,Gender,Symptom 1,Symptom 2,Symptom 3,Body Temperature (Celsius),Heart Rate (bpm),Oxygen Saturation (%),Pain (0-10),Diagnosis,Severity,Treatment Plan
+51,Female,Headache,Vomiting,Fatigue,37.1,91,98,4,Cold,Mild,Rest and hydration
+31,Female,Abdominal pain,Diarrhea,Cough,36.9,90,96,0,Healthy,Mild,Rest and hydration
+2,Female,Vomiting,Cough,Sore throat,39,107,96,5,Flu,Moderate,Outpatient medication
+7,Female,Sore throat,Abdominal pain,Headache,40.2,160,88,8,Acute respiratory failure,Severe,ICU admission
+28,Female,Abdominal pain,Dizziness,Runny nose,37.9,119,94,3,Gastroenteritis,Moderate,Outpatient medication
+4,Male,Diarrhea,Runny nose,Fever,39.8,143,89,6,Severe asthma exacerbation,Severe,Hospital admission
+58,Female,Diarrhea,Runny nose,Chest pain,38.6,103,95,6,Flu,Moderate,Outpatient medication
+51,Female,Back pain,Loss of appetite,Chest pain,38.6,102,93,4,Gastroenteritis,Moderate,Outpatient medication
+77,Male,Loss of appetite,Fever,Back pain,36.4,85,99,2,Cold,Mild,Rest and hydration
+62,Male,Abdominal pain,Runny nose,Fatigue,39.9,127,88,7,Severe asthma exacerbation,Severe,Hospital admission
+68,Female,Runny nose,Sore throat,Diarrhea,40.5,137,78,10,Acute respiratory failure,Severe,ICU admission
+36,Male,Sore throat,Back pain,Diarrhea,39.2,99,93,4,Bronchitis,Moderate,Outpatient medication
+38,Female,Chest pain,Shortness of breath,Runny nose,38.3,107,95,5,Bronchitis,Moderate,Outpatient medication
+34,Male,Abdominal pain,Sore throat,Headache,38.8,103,93,3,Flu,Moderate,Outpatient medication
+40,Male,Dizziness,Runny nose,Body ache,36.8,65,100,4,Healthy,Mild,Rest and hydration
+30,Female,Body ache,Sore throat,Chest pain,37,95,98,4,Allergy,Mild,Rest and hydration
+0,Male,Vomiting,Dizziness,Body ache,37.6,89,99,4,Allergy,Mild,Rest and hydration
+39,Female,Abdominal pain,Shortness of breath,Back pain,37.1,71,100,1,Cold,Mild,Rest and hydration
+8,Female,Back pain,Loss of appetite,Chest pain,40.9,135,81,8,Septic shock,Severe,ICU admission
+43,Female,Body ache,Dizziness,Headache,38.7,108,94,5,Bronchitis,Moderate,Outpatient medication
+35,Male,Vomiting,Fatigue,Diarrhea,38.6,111,94,3,Flu,Moderate,Outpatient medication
+77,Female,Chest pain,Vomiting,Fever,40,116,90,8,Pneumonia,Severe,Hospital admission
+12,Female,Abdominal pain,Body ache,Nausea,37.3,78,96,0,Cold,Mild,Rest and hydration
+46,Female,Vomiting,Back pain,Cough,39.4,125,89,8,Severe asthma exacerbation,Severe,Hospital admission
+95,Male,Vomiting,Loss of appetite,Back pain,38.8,109,96,5,Flu,Moderate,Outpatient medication
+46,Female,Vomiting,Back pain,Runny nose,37.3,71,99,4,Allergy,Mild,Rest and hydration
+82,Female,Chest pain,Shortness of breath,Diarrhea,39,111,96,3,Gastroenteritis,Moderate,Outpatient medication
+85,Male,Abdominal pain,Body ache,Dizziness,38.8,99,96,5,Gastroenteritis,Moderate,Outpatient medication
+6,Female,Abdominal pain,Chest pain,Nausea,38.7,113,95,3,Flu,Moderate,Outpatient medication
+17,Female,Loss of appetite,Abdominal pain,Fever,38.8,123,92,9,Pneumonia,Severe,Hospital admission
+93,Male,Fever,Abdominal pain,Fatigue,36.9,70,97,2,Allergy,Mild,Rest and hydration
+58,Female,Dizziness,Runny nose,Fever,37.9,95,94,4,Flu,Moderate,Outpatient medication
+72,Male,Abdominal pain,Cough,Body ache,37.3,73,97,2,Allergy,Mild,Rest and hydration
+10,Male,Loss of appetite,Dizziness,Chest pain,40.1,120,88,8,Severe asthma exacerbation,Severe,Hospital admission
+60,Male,Abdominal pain,Diarrhea,Nausea,38.1,118,95,3,Gastroenteritis,Moderate,Outpatient medication
+61,Male,Shortness of breath,Dizziness,Body ache,36.6,91,98,3,Cold,Mild,Rest and hydration
+24,Male,Headache,Back pain,Sore throat,38.5,108,95,6,Bronchitis,Moderate,Outpatient medication
+92,Male,Sore throat,Vomiting,Body ache,39.4,130,89,6,Pneumonia,Severe,Hospital admission
+38,Male,Vomiting,Cough,Dizziness,36.3,92,99,4,Healthy,Mild,Rest and hydration
+66,Male,Vomiting,Nausea,Chest pain,39.6,115,92,8,Pneumonia,Severe,Hospital admission
+47,Female,Fatigue,Abdominal pain,Runny nose,39.4,116,91,7,Pneumonia,Severe,Hospital admission
+58,Female,Diarrhea,Back pain,Body ache,38.5,95,96,5,Flu,Moderate,Outpatient medication
+67,Female,Loss of appetite,Diarrhea,Back pain,39.2,120,96,7,Gastroenteritis,Moderate,Outpatient medication
+12,Male,Nausea,Runny nose,Abdominal pain,39.9,125,93,9,Pneumonia,Severe,Hospital admission
+30,Male,Dizziness,Cough,Headache,36.5,82,97,4,Healthy,Mild,Rest and hydration
+70,Male,Abdominal pain,Runny nose,Sore throat,38.6,118,94,7,Bronchitis,Moderate,Outpatient medication
+39,Female,Back pain,Headache,Diarrhea,36.3,83,99,2,Healthy,Mild,Rest and hydration
+43,Male,Back pain,Headache,Abdominal pain,37.2,80,98,4,Healthy,Mild,Rest and hydration
+0,Male,Runny nose,Cough,Fever,36.9,62,99,0,Healthy,Mild,Rest and hydration
+62,Male,Dizziness,Diarrhea,Cough,38.7,110,96,5,Bronchitis,Moderate,Outpatient medication
+43,Male,Headache,Dizziness,Body ache,36.6,93,100,2,Healthy,Mild,Rest and hydration
+75,Female,Dizziness,Shortness of breath,Runny nose,38.5,118,93,4,Flu,Moderate,Outpatient medication
+55,Male,Abdominal pain,Diarrhea,Back pain,36.6,94,97,1,Allergy,Mild,Rest and hydration
+32,Male,Back pain,Diarrhea,Fatigue,38.5,104,94,5,Flu,Moderate,Outpatient medication
+66,Female,Diarrhea,Loss of appetite,Chest pain,37.1,76,98,3,Healthy,Mild,Rest and hydration
+13,Female,Chest pain,Fatigue,Cough,38,111,94,5,Flu,Moderate,Outpatient medication
+22,Male,Fatigue,Abdominal pain,Shortness of breath,36.7,82,98,0,Allergy,Mild,Rest and hydration
+52,Female,Back pain,Chest pain,Headache,39.7,133,92,7,Severe asthma exacerbation,Severe,Hospital admission
+24,Female,Headache,Cough,Runny nose,37.9,108,95,7,Bronchitis,Moderate,Outpatient medication
+66,Female,Runny nose,Fever,Fatigue,39.1,105,95,5,Bronchitis,Moderate,Outpatient medication
+36,Female,Loss of appetite,Runny nose,Sore throat,38.6,107,95,5,Gastroenteritis,Moderate,Outpatient medication
+80,Male,Cough,Sore throat,Fever,38,103,96,5,Bronchitis,Moderate,Outpatient medication
+90,Male,Shortness of breath,Body ache,Fatigue,38.6,101,93,4,Gastroenteritis,Moderate,Outpatient medication
+76,Female,Diarrhea,Cough,Abdominal pain,40,120,93,9,Pneumonia,Severe,Hospital admission
+26,Male,Cough,Chest pain,Vomiting,38.4,95,96,4,Gastroenteritis,Moderate,Outpatient medication
+21,Female,Back pain,Body ache,Loss of appetite,39.1,136,91,6,Severe asthma exacerbation,Severe,Hospital admission
+74,Female,Sore throat,Headache,Cough,41.4,157,85,9,Septic shock,Severe,ICU admission
+56,Female,Sore throat,Vomiting,Chest pain,36.3,69,100,2,Allergy,Mild,Rest and hydration
+10,Male,Runny nose,Shortness of breath,Back pain,39.1,114,93,4,Bronchitis,Moderate,Outpatient medication
+66,Female,Abdominal pain,Vomiting,Cough,40,136,91,9,Pneumonia,Severe,Hospital admission
+29,Female,Sore throat,Fatigue,Abdominal pain,38.7,109,94,4,Bronchitis,Moderate,Outpatient medication
+57,Female,Abdominal pain,Diarrhea,Runny nose,39,107,96,5,Flu,Moderate,Outpatient medication
+31,Female,Runny nose,Chest pain,Loss of appetite,37.5,63,98,1,Allergy,Mild,Rest and hydration
+62,Female,Shortness of breath,Back pain,Cough,39.1,114,94,4,Flu,Moderate,Outpatient medication
+32,Male,Dizziness,Headache,Fatigue,37.9,115,93,5,Gastroenteritis,Moderate,Outpatient medication
+45,Female,Fatigue,Body ache,Runny nose,38.8,112,94,5,Bronchitis,Moderate,Outpatient medication
+38,Male,Fatigue,Dizziness,Shortness of breath,36.5,83,99,4,Healthy,Mild,Rest and hydration
+87,Female,Chest pain,Loss of appetite,Sore throat,36.3,81,96,3,Cold,Mild,Rest and hydration
+31,Male,Back pain,Nausea,Dizziness,40,140,89,7,Severe asthma exacerbation,Severe,Hospital admission
+9,Female,Runny nose,Nausea,Sore throat,38.7,111,94,6,Gastroenteritis,Moderate,Outpatient medication
+66,Female,Chest pain,Back pain,Body ache,36.3,91,99,1,Allergy,Mild,Rest and hydration
+63,Female,Loss of appetite,Chest pain,Shortness of breath,39.5,116,89,9,Severe asthma exacerbation,Severe,Hospital admission
+31,Male,Runny nose,Fatigue,Shortness of breath,37.6,83,97,1,Cold,Mild,Rest and hydration
+95,Female,Chest pain,Body ache,Headache,38.6,106,95,5,Bronchitis,Moderate,Outpatient medication
+45,Male,Abdominal pain,Loss of appetite,Vomiting,38,103,93,3,Gastroenteritis,Moderate,Outpatient medication
+61,Male,Nausea,Fever,Loss of appetite,38.5,101,95,5,Bronchitis,Moderate,Outpatient medication
+79,Male,Loss of appetite,Dizziness,Nausea,36.3,69,97,2,Allergy,Mild,Rest and hydration
+44,Female,Dizziness,Back pain,Chest pain,40,143,92,7,Severe asthma exacerbation,Severe,Hospital admission
+6,Female,Fatigue,Back pain,Runny nose,39.8,145,89,6,Severe asthma exacerbation,Severe,Hospital admission
+45,Female,Body ache,Dizziness,Loss of appetite,39.2,115,96,7,Bronchitis,Moderate,Outpatient medication
+56,Male,Sore throat,Body ache,Headache,38.7,100,96,3,Flu,Moderate,Outpatient medication
+25,Female,Shortness of breath,Fatigue,Runny nose,39.8,121,89,8,Pneumonia,Severe,Hospital admission
+72,Female,Dizziness,Abdominal pain,Sore throat,36.6,74,97,0,Allergy,Mild,Rest and hydration
+62,Female,Back pain,Abdominal pain,Headache,36.5,78,100,4,Healthy,Mild,Rest and hydration
+8,Male,Headache,Abdominal pain,Runny nose,39.1,117,88,6,Pneumonia,Severe,Hospital admission
+83,Male,Shortness of breath,Vomiting,Sore throat,36.6,84,98,4,Healthy,Mild,Rest and hydration
+11,Female,Abdominal pain,Fever,Sore throat,38.6,120,94,4,Flu,Moderate,Outpatient medication
+36,Female,Nausea,Fever,Vomiting,38.8,98,93,4,Flu,Moderate,Outpatient medication
+93,Female,Chest pain,Abdominal pain,Sore throat,39.1,100,95,5,Gastroenteritis,Moderate,Outpatient medication
+45,Female,Fatigue,Vomiting,Sore throat,36.7,76,96,1,Healthy,Mild,Rest and hydration
+35,Male,Body ache,Cough,Nausea,39,112,94,5,Flu,Moderate,Outpatient medication
+23,Male,Vomiting,Chest pain,Body ache,39.6,130,92,7,Severe asthma exacerbation,Severe,Hospital admission
+74,Female,Body ache,Loss of appetite,Vomiting,38.1,99,93,6,Gastroenteritis,Moderate,Outpatient medication
+34,Female,Loss of appetite,Fatigue,Chest pain,39.2,117,95,5,Flu,Moderate,Outpatient medication
+29,Male,Chest pain,Fatigue,Loss of appetite,37.4,81,96,1,Allergy,Mild,Rest and hydration
+40,Female,Dizziness,Loss of appetite,Fatigue,36.5,63,98,3,Cold,Mild,Rest and hydration
+74,Female,Dizziness,Fatigue,Headache,36.3,60,99,0,Cold,Mild,Rest and hydration
+40,Male,Fever,Body ache,Back pain,39.5,129,90,9,Pneumonia,Severe,Hospital admission
+2,Male,Cough,Sore throat,Body ache,37.2,73,97,3,Healthy,Mild,Rest and hydration
+18,Female,Chest pain,Fever,Headache,40.2,133,93,7,Pneumonia,Severe,Hospital admission
+23,Female,Headache,Runny nose,Back pain,38.7,106,94,4,Gastroenteritis,Moderate,Outpatient medication
+74,Male,Back pain,Headache,Loss of appetite,39.3,127,90,8,Pneumonia,Severe,Hospital admission
+65,Male,Headache,Fever,Loss of appetite,36.9,61,99,3,Allergy,Mild,Rest and hydration
+70,Female,Headache,Body ache,Nausea,38.5,120,96,3,Bronchitis,Moderate,Outpatient medication
+24,Female,Diarrhea,Back pain,Sore throat,38,113,95,3,Flu,Moderate,Outpatient medication
+25,Female,Vomiting,Fatigue,Nausea,38.4,101,94,3,Flu,Moderate,Outpatient medication
+19,Male,Headache,Runny nose,Chest pain,37,83,100,3,Healthy,Mild,Rest and hydration
+27,Male,Fever,Runny nose,Dizziness,38.9,108,94,5,Flu,Moderate,Outpatient medication
+25,Female,Cough,Chest pain,Runny nose,37,68,96,4,Allergy,Mild,Rest and hydration
+16,Male,Sore throat,Shortness of breath,Back pain,36.3,73,96,0,Cold,Mild,Rest and hydration
+81,Male,Dizziness,Sore throat,Runny nose,38.5,113,93,5,Gastroenteritis,Moderate,Outpatient medication
+69,Male,Fever,Headache,Back pain,39.8,126,92,7,Pneumonia,Severe,Hospital admission
+62,Male,Dizziness,Chest pain,Fatigue,39,134,91,8,Severe asthma exacerbation,Severe,Hospital admission
+40,Female,Fever,Runny nose,Diarrhea,41.1,154,84,8,Acute respiratory failure,Severe,ICU admission
+58,Female,Loss of appetite,Nausea,Cough,41.3,165,80,10,Septic shock,Severe,ICU admission
+21,Male,Shortness of breath,Headache,Runny nose,39.1,95,96,4,Bronchitis,Moderate,Outpatient medication
+86,Female,Headache,Loss of appetite,Back pain,37.2,68,100,2,Allergy,Mild,Rest and hydration
+28,Female,Back pain,Cough,Dizziness,37.1,78,99,3,Cold,Mild,Rest and hydration
+59,Male,Fever,Nausea,Sore throat,38.3,116,93,3,Bronchitis,Moderate,Outpatient medication
+76,Female,Sore throat,Fatigue,Shortness of breath,39.6,132,93,8,Severe asthma exacerbation,Severe,Hospital admission
+65,Male,Abdominal pain,Back pain,Headache,37.9,118,96,3,Flu,Moderate,Outpatient medication
+65,Female,Fever,Loss of appetite,Nausea,36.4,93,100,3,Allergy,Mild,Rest and hydration
+26,Male,Body ache,Sore throat,Abdominal pain,37.2,83,96,2,Allergy,Mild,Rest and hydration
+60,Female,Diarrhea,Cough,Sore throat,37.1,92,97,1,Healthy,Mild,Rest and hydration
+3,Female,Fever,Headache,Fatigue,37.4,65,96,2,Allergy,Mild,Rest and hydration
+7,Female,Dizziness,Headache,Diarrhea,38.9,98,96,5,Flu,Moderate,Outpatient medication
+62,Male,Nausea,Chest pain,Body ache,38.5,120,95,5,Gastroenteritis,Moderate,Outpatient medication
+59,Female,Runny nose,Cough,Chest pain,37.5,75,98,1,Healthy,Mild,Rest and hydration
+52,Male,Fatigue,Loss of appetite,Vomiting,38.1,113,94,6,Gastroenteritis,Moderate,Outpatient medication
+32,Male,Shortness of breath,Body ache,Loss of appetite,36.9,91,97,2,Cold,Mild,Rest and hydration
+45,Female,Abdominal pain,Dizziness,Chest pain,36.7,69,100,1,Cold,Mild,Rest and hydration
+9,Female,Chest pain,Vomiting,Fever,36.8,71,100,1,Allergy,Mild,Rest and hydration
+11,Female,Abdominal pain,Cough,Back pain,36.4,62,96,4,Cold,Mild,Rest and hydration
+27,Male,Back pain,Dizziness,Loss of appetite,37.5,73,100,3,Allergy,Mild,Rest and hydration
+57,Female,Vomiting,Fatigue,Diarrhea,39.2,127,89,9,Severe asthma exacerbation,Severe,Hospital admission
+66,Female,Vomiting,Diarrhea,Fever,36.5,64,97,1,Cold,Mild,Rest and hydration
+83,Female,Dizziness,Nausea,Loss of appetite,40,118,93,9,Severe asthma exacerbation,Severe,Hospital admission
+35,Male,Abdominal pain,Nausea,Sore throat,39.7,127,90,6,Pneumonia,Severe,Hospital admission
+29,Female,Shortness of breath,Sore throat,Abdominal pain,38.9,135,88,7,Pneumonia,Severe,Hospital admission
+75,Male,Shortness of breath,Vomiting,Fever,37.4,68,96,1,Cold,Mild,Rest and hydration
+70,Male,Sore throat,Chest pain,Fatigue,39.1,104,93,4,Flu,Moderate,Outpatient medication
+55,Male,Nausea,Loss of appetite,Abdominal pain,37.1,75,100,3,Cold,Mild,Rest and hydration
+75,Female,Runny nose,Sore throat,Back pain,36.7,70,97,4,Cold,Mild,Rest and hydration
+21,Male,Sore throat,Loss of appetite,Diarrhea,38.1,116,96,5,Bronchitis,Moderate,Outpatient medication
+15,Male,Fever,Diarrhea,Vomiting,37.8,112,94,7,Flu,Moderate,Outpatient medication
+29,Male,Body ache,Cough,Abdominal pain,40.1,144,91,8,Pneumonia,Severe,Hospital admission
+56,Male,Chest pain,Body ache,Back pain,37.9,111,93,6,Flu,Moderate,Outpatient medication
+56,Female,Nausea,Vomiting,Back pain,40.2,138,91,9,Pneumonia,Severe,Hospital admission
+46,Female,Shortness of breath,Fatigue,Vomiting,37.6,95,98,3,Healthy,Mild,Rest and hydration
+0,Male,Runny nose,Nausea,Loss of appetite,40.3,139,87,9,Septic shock,Severe,ICU admission
+65,Male,Abdominal pain,Nausea,Sore throat,38,116,95,7,Gastroenteritis,Moderate,Outpatient medication
+56,Female,Fever,Runny nose,Shortness of breath,38,114,95,7,Flu,Moderate,Outpatient medication
+71,Female,Abdominal pain,Diarrhea,Headache,36.9,71,96,4,Allergy,Mild,Rest and hydration
+48,Male,Runny nose,Body ache,Shortness of breath,40.1,170,82,8,Acute respiratory failure,Severe,ICU admission
+20,Male,Runny nose,Vomiting,Nausea,38.3,111,95,6,Gastroenteritis,Moderate,Outpatient medication
+37,Male,Nausea,Dizziness,Vomiting,37.6,90,98,3,Allergy,Mild,Rest and hydration
+3,Female,Vomiting,Dizziness,Chest pain,37.4,76,96,0,Healthy,Mild,Rest and hydration
+8,Female,Abdominal pain,Runny nose,Chest pain,36.6,67,96,1,Healthy,Mild,Rest and hydration
+88,Male,Nausea,Headache,Fever,40.8,134,79,8,Septic shock,Severe,ICU admission
+22,Male,Loss of appetite,Shortness of breath,Runny nose,37.9,95,95,7,Bronchitis,Moderate,Outpatient medication
+93,Male,Cough,Vomiting,Headache,39.2,96,94,5,Bronchitis,Moderate,Outpatient medication
+82,Female,Cough,Runny nose,Fever,37.2,88,99,2,Allergy,Mild,Rest and hydration
+67,Male,Headache,Chest pain,Sore throat,39.3,130,91,7,Pneumonia,Severe,Hospital admission
+51,Male,Dizziness,Body ache,Runny nose,39.5,134,89,6,Severe asthma exacerbation,Severe,Hospital admission
+63,Female,Diarrhea,Back pain,Abdominal pain,38.8,143,93,9,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Runny nose,Shortness of breath,Back pain,39,115,96,5,Flu,Moderate,Outpatient medication
+71,Male,Loss of appetite,Fatigue,Diarrhea,39.3,137,93,8,Severe asthma exacerbation,Severe,Hospital admission
+60,Female,Abdominal pain,Runny nose,Fever,36.6,84,99,3,Healthy,Mild,Rest and hydration
+4,Female,Fatigue,Fever,Headache,37.2,92,98,2,Healthy,Mild,Rest and hydration
+69,Female,Back pain,Loss of appetite,Diarrhea,39.8,152,87,8,Septic shock,Severe,ICU admission
+40,Male,Dizziness,Fever,Headache,37.2,81,97,4,Cold,Mild,Rest and hydration
+69,Male,Fatigue,Shortness of breath,Headache,37.4,78,96,2,Allergy,Mild,Rest and hydration
+28,Male,Headache,Cough,Nausea,41.1,133,89,9,Acute respiratory failure,Severe,ICU admission
+3,Female,Dizziness,Vomiting,Fatigue,39.6,137,91,7,Severe asthma exacerbation,Severe,Hospital admission
+55,Female,Runny nose,Diarrhea,Back pain,36.3,61,99,0,Allergy,Mild,Rest and hydration
+25,Female,Chest pain,Fatigue,Dizziness,37.4,77,100,2,Cold,Mild,Rest and hydration
+66,Female,Abdominal pain,Fever,Body ache,39,111,96,3,Flu,Moderate,Outpatient medication
+59,Male,Fever,Back pain,Vomiting,38.8,102,93,5,Gastroenteritis,Moderate,Outpatient medication
+0,Female,Abdominal pain,Chest pain,Shortness of breath,38.2,105,95,5,Flu,Moderate,Outpatient medication
+16,Male,Headache,Chest pain,Body ache,39,126,89,9,Pneumonia,Severe,Hospital admission
+59,Male,Fatigue,Shortness of breath,Abdominal pain,39.4,140,91,6,Severe asthma exacerbation,Severe,Hospital admission
+70,Female,Sore throat,Dizziness,Runny nose,38.4,117,94,6,Flu,Moderate,Outpatient medication
+4,Female,Body ache,Sore throat,Diarrhea,39.1,104,94,5,Bronchitis,Moderate,Outpatient medication
+72,Male,Cough,Body ache,Dizziness,37.6,81,96,4,Cold,Mild,Rest and hydration
+58,Male,Nausea,Fever,Cough,38.8,105,95,6,Flu,Moderate,Outpatient medication
+57,Female,Sore throat,Runny nose,Vomiting,38,114,94,7,Bronchitis,Moderate,Outpatient medication
+45,Male,Runny nose,Abdominal pain,Shortness of breath,40,169,79,8,Septic shock,Severe,ICU admission
+60,Female,Nausea,Vomiting,Headache,39.9,137,93,9,Severe asthma exacerbation,Severe,Hospital admission
+41,Female,Headache,Fever,Vomiting,40,132,93,9,Pneumonia,Severe,Hospital admission
+17,Male,Fatigue,Diarrhea,Abdominal pain,36.4,95,97,0,Cold,Mild,Rest and hydration
+82,Male,Dizziness,Cough,Runny nose,36.6,74,96,3,Healthy,Mild,Rest and hydration
+81,Female,Runny nose,Abdominal pain,Fatigue,38.9,110,96,6,Gastroenteritis,Moderate,Outpatient medication
+51,Male,Shortness of breath,Cough,Back pain,38.2,105,93,4,Bronchitis,Moderate,Outpatient medication
+62,Female,Diarrhea,Loss of appetite,Abdominal pain,37.3,60,100,1,Healthy,Mild,Rest and hydration
+67,Male,Sore throat,Dizziness,Shortness of breath,37,94,98,4,Healthy,Mild,Rest and hydration
+41,Male,Body ache,Fever,Headache,38.5,116,93,7,Gastroenteritis,Moderate,Outpatient medication
+55,Male,Fatigue,Headache,Shortness of breath,39.8,142,93,9,Severe asthma exacerbation,Severe,Hospital admission
+17,Male,Runny nose,Abdominal pain,Cough,39.5,131,89,6,Pneumonia,Severe,Hospital admission
+37,Female,Cough,Sore throat,Dizziness,36.4,89,100,0,Allergy,Mild,Rest and hydration
+72,Female,Fever,Shortness of breath,Body ache,39,128,88,6,Pneumonia,Severe,Hospital admission
+24,Male,Shortness of breath,Back pain,Vomiting,36.9,65,99,0,Allergy,Mild,Rest and hydration
+62,Female,Loss of appetite,Sore throat,Shortness of breath,40,121,93,6,Severe asthma exacerbation,Severe,Hospital admission
+60,Male,Sore throat,Fever,Cough,36.3,94,96,4,Healthy,Mild,Rest and hydration
+86,Male,Abdominal pain,Diarrhea,Runny nose,37,72,99,2,Cold,Mild,Rest and hydration
+47,Male,Headache,Loss of appetite,Fatigue,40.2,117,91,6,Pneumonia,Severe,Hospital admission
+62,Male,Back pain,Dizziness,Vomiting,39.7,139,89,6,Pneumonia,Severe,Hospital admission
+74,Female,Shortness of breath,Sore throat,Dizziness,36.9,85,98,4,Allergy,Mild,Rest and hydration
+21,Female,Chest pain,Fever,Body ache,39,115,89,8,Pneumonia,Severe,Hospital admission
+41,Female,Vomiting,Body ache,Chest pain,38.7,120,94,5,Gastroenteritis,Moderate,Outpatient medication
+68,Male,Runny nose,Fatigue,Dizziness,39.1,106,95,7,Gastroenteritis,Moderate,Outpatient medication
+46,Female,Chest pain,Loss of appetite,Dizziness,38.2,119,95,6,Gastroenteritis,Moderate,Outpatient medication
+4,Male,Cough,Dizziness,Shortness of breath,39.1,106,93,7,Gastroenteritis,Moderate,Outpatient medication
+33,Female,Shortness of breath,Dizziness,Sore throat,37.6,95,98,4,Healthy,Mild,Rest and hydration
+43,Female,Cough,Fever,Abdominal pain,38.4,110,94,6,Flu,Moderate,Outpatient medication
+36,Male,Loss of appetite,Cough,Dizziness,39.2,122,90,8,Severe asthma exacerbation,Severe,Hospital admission
+11,Male,Fever,Shortness of breath,Body ache,36.6,89,97,4,Healthy,Mild,Rest and hydration
+85,Male,Loss of appetite,Diarrhea,Back pain,36.4,64,96,3,Healthy,Mild,Rest and hydration
+93,Male,Diarrhea,Fever,Shortness of breath,38.3,96,95,7,Bronchitis,Moderate,Outpatient medication
+36,Female,Body ache,Dizziness,Loss of appetite,37.2,84,98,4,Cold,Mild,Rest and hydration
+48,Female,Diarrhea,Body ache,Vomiting,36.8,74,97,2,Allergy,Mild,Rest and hydration
+47,Male,Chest pain,Shortness of breath,Headache,36.8,75,96,4,Cold,Mild,Rest and hydration
+46,Male,Body ache,Shortness of breath,Loss of appetite,38.8,119,95,6,Gastroenteritis,Moderate,Outpatient medication
+62,Male,Nausea,Vomiting,Loss of appetite,39.1,96,94,7,Bronchitis,Moderate,Outpatient medication
+8,Female,Abdominal pain,Chest pain,Runny nose,36.6,94,96,2,Healthy,Mild,Rest and hydration
+40,Male,Body ache,Headache,Shortness of breath,38.9,95,93,3,Bronchitis,Moderate,Outpatient medication
+31,Male,Cough,Body ache,Loss of appetite,39.2,98,95,7,Gastroenteritis,Moderate,Outpatient medication
+93,Female,Nausea,Runny nose,Headache,38.6,120,94,6,Gastroenteritis,Moderate,Outpatient medication
+44,Female,Loss of appetite,Fever,Nausea,40.1,118,92,7,Severe asthma exacerbation,Severe,Hospital admission
+61,Female,Back pain,Abdominal pain,Shortness of breath,39.4,126,88,8,Severe asthma exacerbation,Severe,Hospital admission
+32,Male,Abdominal pain,Nausea,Back pain,36.8,69,100,0,Allergy,Mild,Rest and hydration
+49,Male,Vomiting,Fatigue,Chest pain,38.3,103,96,3,Gastroenteritis,Moderate,Outpatient medication
+41,Female,Diarrhea,Headache,Fatigue,37.4,80,100,2,Allergy,Mild,Rest and hydration
+75,Female,Chest pain,Shortness of breath,Nausea,38.4,108,95,5,Bronchitis,Moderate,Outpatient medication
+58,Male,Sore throat,Fatigue,Cough,39.1,101,96,6,Gastroenteritis,Moderate,Outpatient medication
+35,Male,Fever,Body ache,Chest pain,37.3,61,96,1,Healthy,Mild,Rest and hydration
+88,Male,Abdominal pain,Fatigue,Back pain,36.4,76,96,4,Cold,Mild,Rest and hydration
+55,Male,Body ache,Loss of appetite,Cough,37.1,95,96,3,Healthy,Mild,Rest and hydration
+87,Male,Nausea,Abdominal pain,Sore throat,38.9,95,96,4,Bronchitis,Moderate,Outpatient medication
+62,Female,Sore throat,Nausea,Vomiting,38.5,100,94,3,Flu,Moderate,Outpatient medication
+14,Female,Body ache,Diarrhea,Shortness of breath,40,138,89,7,Severe asthma exacerbation,Severe,Hospital admission
+44,Male,Dizziness,Fever,Diarrhea,39.1,116,93,6,Severe asthma exacerbation,Severe,Hospital admission
+28,Female,Sore throat,Nausea,Dizziness,37.3,72,98,1,Allergy,Mild,Rest and hydration
+71,Female,Shortness of breath,Abdominal pain,Diarrhea,38.3,104,94,5,Gastroenteritis,Moderate,Outpatient medication
+9,Male,Cough,Dizziness,Loss of appetite,38.1,95,95,3,Flu,Moderate,Outpatient medication
+84,Female,Fatigue,Cough,Sore throat,36.4,74,98,3,Allergy,Mild,Rest and hydration
+12,Male,Cough,Back pain,Shortness of breath,37.8,112,96,7,Bronchitis,Moderate,Outpatient medication
+68,Male,Cough,Loss of appetite,Nausea,37.2,63,99,0,Cold,Mild,Rest and hydration
+42,Female,Chest pain,Headache,Back pain,37.2,86,99,0,Healthy,Mild,Rest and hydration
+73,Male,Nausea,Loss of appetite,Abdominal pain,39,114,96,3,Gastroenteritis,Moderate,Outpatient medication
+32,Female,Headache,Vomiting,Runny nose,38.3,110,95,3,Gastroenteritis,Moderate,Outpatient medication
+85,Male,Nausea,Chest pain,Fever,38.9,108,95,4,Bronchitis,Moderate,Outpatient medication
+79,Female,Vomiting,Chest pain,Fatigue,38.2,98,95,5,Bronchitis,Moderate,Outpatient medication
+59,Female,Sore throat,Headache,Chest pain,39.1,119,95,4,Bronchitis,Moderate,Outpatient medication
+40,Female,Shortness of breath,Sore throat,Headache,37.1,85,98,1,Healthy,Mild,Rest and hydration
+6,Female,Cough,Shortness of breath,Chest pain,38.4,96,94,5,Gastroenteritis,Moderate,Outpatient medication
+4,Male,Runny nose,Nausea,Back pain,37.5,73,99,3,Allergy,Mild,Rest and hydration
+87,Male,Body ache,Chest pain,Dizziness,37.9,103,95,5,Flu,Moderate,Outpatient medication
+59,Male,Cough,Body ache,Runny nose,39,101,96,7,Bronchitis,Moderate,Outpatient medication
+35,Female,Fatigue,Cough,Loss of appetite,36.7,78,100,1,Allergy,Mild,Rest and hydration
+36,Female,Vomiting,Cough,Abdominal pain,36.7,92,99,2,Cold,Mild,Rest and hydration
+54,Male,Sore throat,Headache,Dizziness,37.1,62,97,4,Cold,Mild,Rest and hydration
+69,Male,Chest pain,Headache,Shortness of breath,38.6,102,93,7,Bronchitis,Moderate,Outpatient medication
+27,Female,Nausea,Diarrhea,Vomiting,37.1,92,99,3,Allergy,Mild,Rest and hydration
+56,Female,Runny nose,Sore throat,Nausea,36.4,84,98,2,Cold,Mild,Rest and hydration
+53,Female,Fever,Runny nose,Chest pain,38.9,114,95,7,Gastroenteritis,Moderate,Outpatient medication
+17,Female,Dizziness,Chest pain,Cough,37.4,70,96,1,Cold,Mild,Rest and hydration
+53,Female,Abdominal pain,Loss of appetite,Headache,36.4,61,99,3,Allergy,Mild,Rest and hydration
+74,Male,Fatigue,Nausea,Diarrhea,39.3,128,93,9,Pneumonia,Severe,Hospital admission
+34,Male,Fever,Diarrhea,Cough,39.1,120,91,9,Severe asthma exacerbation,Severe,Hospital admission
+47,Male,Back pain,Diarrhea,Vomiting,36.9,80,100,4,Cold,Mild,Rest and hydration
+74,Male,Cough,Runny nose,Dizziness,37.1,80,100,0,Cold,Mild,Rest and hydration
+65,Male,Sore throat,Chest pain,Dizziness,37.2,65,98,4,Allergy,Mild,Rest and hydration
+30,Male,Sore throat,Fever,Shortness of breath,36.6,79,97,3,Allergy,Mild,Rest and hydration
+65,Female,Back pain,Headache,Nausea,37,92,99,2,Healthy,Mild,Rest and hydration
+23,Male,Fever,Fatigue,Nausea,39.1,97,94,5,Bronchitis,Moderate,Outpatient medication
+65,Female,Abdominal pain,Shortness of breath,Runny nose,37.5,63,97,2,Cold,Mild,Rest and hydration
+62,Male,Shortness of breath,Back pain,Fatigue,38.5,99,95,3,Gastroenteritis,Moderate,Outpatient medication
+1,Female,Sore throat,Dizziness,Cough,38.7,107,94,7,Flu,Moderate,Outpatient medication
+46,Female,Loss of appetite,Runny nose,Cough,38.2,97,95,7,Gastroenteritis,Moderate,Outpatient medication
+73,Female,Back pain,Sore throat,Chest pain,38.3,95,95,4,Gastroenteritis,Moderate,Outpatient medication
+23,Male,Vomiting,Fatigue,Fever,39.9,153,81,10,Acute respiratory failure,Severe,ICU admission
+59,Male,Nausea,Headache,Loss of appetite,37,85,97,3,Allergy,Mild,Rest and hydration
+93,Female,Headache,Loss of appetite,Body ache,38.2,98,95,7,Bronchitis,Moderate,Outpatient medication
+95,Male,Diarrhea,Vomiting,Fever,37.6,62,100,1,Healthy,Mild,Rest and hydration
+79,Female,Chest pain,Back pain,Vomiting,37.9,114,96,3,Flu,Moderate,Outpatient medication
+69,Male,Shortness of breath,Abdominal pain,Sore throat,40.2,141,89,6,Pneumonia,Severe,Hospital admission
+63,Female,Diarrhea,Nausea,Body ache,37.9,104,95,7,Bronchitis,Moderate,Outpatient medication
+50,Female,Nausea,Back pain,Chest pain,37,63,100,2,Cold,Mild,Rest and hydration
+66,Female,Dizziness,Sore throat,Headache,36.5,76,98,4,Healthy,Mild,Rest and hydration
+47,Female,Chest pain,Abdominal pain,Fever,37.1,91,96,4,Allergy,Mild,Rest and hydration
+69,Male,Vomiting,Headache,Body ache,37.5,80,98,4,Healthy,Mild,Rest and hydration
+44,Female,Abdominal pain,Headache,Fatigue,38.2,104,94,5,Gastroenteritis,Moderate,Outpatient medication
+60,Female,Abdominal pain,Back pain,Loss of appetite,40,117,88,8,Severe asthma exacerbation,Severe,Hospital admission
+43,Male,Headache,Runny nose,Sore throat,38.6,95,96,6,Flu,Moderate,Outpatient medication
+80,Male,Body ache,Chest pain,Nausea,38,110,94,7,Flu,Moderate,Outpatient medication
+77,Female,Back pain,Sore throat,Loss of appetite,36.8,70,100,1,Cold,Mild,Rest and hydration
+44,Male,Back pain,Loss of appetite,Fatigue,40.2,126,90,7,Pneumonia,Severe,Hospital admission
+68,Female,Back pain,Loss of appetite,Chest pain,38.5,114,95,4,Gastroenteritis,Moderate,Outpatient medication
+65,Female,Vomiting,Body ache,Shortness of breath,36.5,84,98,3,Cold,Mild,Rest and hydration
+36,Female,Diarrhea,Chest pain,Fever,37.5,90,96,1,Healthy,Mild,Rest and hydration
+21,Male,Sore throat,Vomiting,Diarrhea,39.5,133,93,7,Pneumonia,Severe,Hospital admission
+37,Male,Sore throat,Abdominal pain,Vomiting,38.3,115,94,3,Flu,Moderate,Outpatient medication
+68,Male,Runny nose,Vomiting,Body ache,36.2,81,100,1,Healthy,Mild,Rest and hydration
+1,Female,Loss of appetite,Cough,Shortness of breath,38.7,97,94,7,Flu,Moderate,Outpatient medication
+37,Male,Nausea,Fever,Chest pain,38.3,96,95,5,Gastroenteritis,Moderate,Outpatient medication
+36,Male,Headache,Fatigue,Cough,36.5,93,97,0,Cold,Mild,Rest and hydration
+52,Male,Fatigue,Fever,Shortness of breath,38.7,115,93,6,Flu,Moderate,Outpatient medication
+16,Female,Diarrhea,Sore throat,Fatigue,36.4,83,98,3,Allergy,Mild,Rest and hydration
+53,Male,Fever,Vomiting,Dizziness,38.4,105,95,6,Flu,Moderate,Outpatient medication
+92,Male,Chest pain,Nausea,Dizziness,36.6,62,96,0,Allergy,Mild,Rest and hydration
+58,Female,Dizziness,Sore throat,Fever,40,145,86,10,Acute respiratory failure,Severe,ICU admission
+48,Male,Abdominal pain,Nausea,Vomiting,37.1,71,96,3,Healthy,Mild,Rest and hydration
+64,Male,Fever,Nausea,Fatigue,37.3,89,98,2,Cold,Mild,Rest and hydration
+50,Male,Back pain,Diarrhea,Runny nose,37.4,81,97,4,Cold,Mild,Rest and hydration
+18,Female,Vomiting,Abdominal pain,Sore throat,38.1,101,93,5,Flu,Moderate,Outpatient medication
+93,Female,Vomiting,Chest pain,Fatigue,38.1,105,93,6,Gastroenteritis,Moderate,Outpatient medication
+26,Male,Sore throat,Fever,Chest pain,38.9,113,93,6,Flu,Moderate,Outpatient medication
+29,Male,Diarrhea,Loss of appetite,Chest pain,39.4,138,88,6,Severe asthma exacerbation,Severe,Hospital admission
+70,Female,Loss of appetite,Shortness of breath,Headache,37.4,83,98,2,Allergy,Mild,Rest and hydration
+89,Female,Diarrhea,Loss of appetite,Back pain,39.8,140,89,9,Septic shock,Severe,ICU admission
+75,Female,Fatigue,Loss of appetite,Nausea,36.9,85,98,4,Cold,Mild,Rest and hydration
+60,Male,Sore throat,Headache,Dizziness,38.3,116,96,3,Bronchitis,Moderate,Outpatient medication
+67,Male,Dizziness,Shortness of breath,Body ache,38,100,94,7,Gastroenteritis,Moderate,Outpatient medication
+50,Female,Dizziness,Shortness of breath,Nausea,38.8,114,95,3,Bronchitis,Moderate,Outpatient medication
+50,Male,Cough,Back pain,Runny nose,39.5,143,89,6,Severe asthma exacerbation,Severe,Hospital admission
+50,Male,Runny nose,Diarrhea,Nausea,41.4,155,84,9,Septic shock,Severe,ICU admission
+59,Female,Cough,Loss of appetite,Vomiting,38.4,101,95,3,Bronchitis,Moderate,Outpatient medication
+22,Female,Back pain,Cough,Runny nose,36.3,86,98,1,Healthy,Mild,Rest and hydration
+71,Female,Vomiting,Cough,Abdominal pain,39.8,141,83,9,Septic shock,Severe,ICU admission
+3,Female,Sore throat,Cough,Nausea,37,84,100,0,Healthy,Mild,Rest and hydration
+95,Female,Sore throat,Abdominal pain,Back pain,37.5,74,99,1,Allergy,Mild,Rest and hydration
+88,Male,Body ache,Cough,Fatigue,39.2,119,89,6,Severe asthma exacerbation,Severe,Hospital admission
+68,Male,Vomiting,Body ache,Runny nose,37.1,70,97,1,Allergy,Mild,Rest and hydration
+61,Male,Back pain,Vomiting,Loss of appetite,39.9,139,88,6,Pneumonia,Severe,Hospital admission
+81,Male,Loss of appetite,Fatigue,Shortness of breath,36.9,84,97,3,Healthy,Mild,Rest and hydration
+33,Female,Cough,Headache,Loss of appetite,36.7,75,99,2,Allergy,Mild,Rest and hydration
+33,Male,Back pain,Cough,Headache,37.6,68,96,3,Cold,Mild,Rest and hydration
+32,Female,Back pain,Vomiting,Loss of appetite,39.7,127,93,6,Severe asthma exacerbation,Severe,Hospital admission
+73,Male,Shortness of breath,Fever,Diarrhea,39,113,94,5,Bronchitis,Moderate,Outpatient medication
+37,Female,Fever,Fatigue,Shortness of breath,39,116,95,4,Gastroenteritis,Moderate,Outpatient medication
+17,Female,Fatigue,Shortness of breath,Loss of appetite,36.3,90,98,4,Healthy,Mild,Rest and hydration
+68,Male,Fever,Nausea,Sore throat,36.8,70,99,0,Allergy,Mild,Rest and hydration
+80,Male,Nausea,Sore throat,Runny nose,37.6,78,96,4,Cold,Mild,Rest and hydration
+89,Male,Abdominal pain,Sore throat,Fatigue,38.5,96,93,6,Gastroenteritis,Moderate,Outpatient medication
+95,Male,Body ache,Abdominal pain,Runny nose,38.3,101,95,4,Flu,Moderate,Outpatient medication
+20,Female,Nausea,Shortness of breath,Body ache,38.6,110,94,7,Gastroenteritis,Moderate,Outpatient medication
+54,Male,Chest pain,Vomiting,Cough,37.4,80,96,1,Healthy,Mild,Rest and hydration
+49,Female,Headache,Loss of appetite,Sore throat,36.8,84,97,3,Cold,Mild,Rest and hydration
+19,Male,Chest pain,Runny nose,Sore throat,38.9,107,93,3,Gastroenteritis,Moderate,Outpatient medication
+33,Female,Fatigue,Nausea,Body ache,36.7,62,99,4,Healthy,Mild,Rest and hydration
+11,Female,Loss of appetite,Abdominal pain,Diarrhea,39.4,139,88,9,Pneumonia,Severe,Hospital admission
+6,Female,Nausea,Diarrhea,Cough,38.8,139,89,6,Severe asthma exacerbation,Severe,Hospital admission
+54,Male,Loss of appetite,Chest pain,Shortness of breath,39,103,94,3,Gastroenteritis,Moderate,Outpatient medication
+71,Female,Cough,Headache,Sore throat,37.3,60,99,2,Allergy,Mild,Rest and hydration
+63,Female,Back pain,Nausea,Vomiting,39,117,93,3,Flu,Moderate,Outpatient medication
+49,Female,Nausea,Vomiting,Chest pain,36.3,62,97,3,Allergy,Mild,Rest and hydration
+57,Female,Sore throat,Chest pain,Back pain,36.9,65,100,0,Allergy,Mild,Rest and hydration
+70,Female,Fatigue,Shortness of breath,Back pain,37,91,96,0,Allergy,Mild,Rest and hydration
+12,Female,Loss of appetite,Diarrhea,Shortness of breath,36.4,75,99,0,Healthy,Mild,Rest and hydration
+94,Female,Shortness of breath,Vomiting,Headache,36.5,64,98,2,Cold,Mild,Rest and hydration
+44,Female,Back pain,Runny nose,Body ache,38.1,100,96,6,Flu,Moderate,Outpatient medication
+81,Female,Sore throat,Fatigue,Runny nose,38.1,113,93,7,Flu,Moderate,Outpatient medication
+34,Male,Nausea,Vomiting,Runny nose,40.6,150,81,8,Septic shock,Severe,ICU admission
+78,Male,Headache,Loss of appetite,Vomiting,36.3,78,100,4,Healthy,Mild,Rest and hydration
+40,Male,Diarrhea,Sore throat,Shortness of breath,36.2,76,96,3,Allergy,Mild,Rest and hydration
+19,Female,Loss of appetite,Back pain,Cough,39,109,93,6,Bronchitis,Moderate,Outpatient medication
+56,Female,Cough,Fatigue,Abdominal pain,38.9,108,94,6,Gastroenteritis,Moderate,Outpatient medication
+66,Male,Cough,Dizziness,Nausea,37.1,89,99,2,Allergy,Mild,Rest and hydration
+56,Female,Chest pain,Nausea,Cough,37.6,95,99,4,Healthy,Mild,Rest and hydration
+74,Female,Sore throat,Abdominal pain,Chest pain,38.8,127,88,9,Pneumonia,Severe,Hospital admission
+7,Male,Headache,Shortness of breath,Fever,38.9,144,92,7,Pneumonia,Severe,Hospital admission
+55,Male,Fatigue,Back pain,Vomiting,39.2,107,96,6,Flu,Moderate,Outpatient medication
+6,Male,Shortness of breath,Dizziness,Vomiting,36.5,73,98,1,Healthy,Mild,Rest and hydration
+56,Female,Shortness of breath,Headache,Loss of appetite,36.9,89,96,3,Cold,Mild,Rest and hydration
+1,Male,Loss of appetite,Abdominal pain,Dizziness,36.3,61,96,2,Allergy,Mild,Rest and hydration
+2,Female,Shortness of breath,Runny nose,Abdominal pain,37.4,91,97,1,Allergy,Mild,Rest and hydration
+72,Female,Shortness of breath,Runny nose,Dizziness,36.4,81,96,1,Cold,Mild,Rest and hydration
+41,Male,Cough,Fatigue,Dizziness,38.4,100,95,6,Flu,Moderate,Outpatient medication
+52,Female,Headache,Fatigue,Sore throat,39.1,95,96,6,Bronchitis,Moderate,Outpatient medication
+19,Male,Back pain,Runny nose,Fatigue,36.5,94,97,4,Cold,Mild,Rest and hydration
+53,Female,Cough,Chest pain,Dizziness,40.2,122,90,6,Pneumonia,Severe,Hospital admission
+50,Female,Headache,Body ache,Sore throat,37.3,67,97,2,Healthy,Mild,Rest and hydration
+69,Female,Chest pain,Dizziness,Vomiting,36.5,61,96,4,Healthy,Mild,Rest and hydration
+92,Female,Shortness of breath,Runny nose,Diarrhea,38.2,101,94,3,Gastroenteritis,Moderate,Outpatient medication
+56,Male,Nausea,Sore throat,Shortness of breath,38.4,109,93,7,Gastroenteritis,Moderate,Outpatient medication
+55,Male,Dizziness,Back pain,Headache,38.4,120,95,6,Gastroenteritis,Moderate,Outpatient medication
+37,Female,Chest pain,Back pain,Nausea,37,93,98,0,Cold,Mild,Rest and hydration
+55,Female,Loss of appetite,Chest pain,Body ache,39.8,127,93,6,Severe asthma exacerbation,Severe,Hospital admission
+26,Male,Cough,Diarrhea,Abdominal pain,36.4,71,100,0,Allergy,Mild,Rest and hydration
+29,Female,Runny nose,Diarrhea,Dizziness,38.9,118,96,6,Bronchitis,Moderate,Outpatient medication
+90,Female,Back pain,Fatigue,Diarrhea,37.6,85,96,1,Allergy,Mild,Rest and hydration
+94,Male,Abdominal pain,Nausea,Cough,40.7,165,78,10,Septic shock,Severe,ICU admission
+65,Female,Loss of appetite,Nausea,Back pain,37.3,93,96,1,Allergy,Mild,Rest and hydration
+56,Female,Diarrhea,Fatigue,Dizziness,38.6,115,96,5,Gastroenteritis,Moderate,Outpatient medication
+94,Male,Sore throat,Fever,Shortness of breath,40.5,155,78,10,Acute respiratory failure,Severe,ICU admission
+30,Male,Sore throat,Diarrhea,Shortness of breath,38.7,119,93,6,Gastroenteritis,Moderate,Outpatient medication
+43,Male,Abdominal pain,Vomiting,Runny nose,37.4,95,96,4,Allergy,Mild,Rest and hydration
+62,Female,Fever,Nausea,Body ache,39,121,91,9,Pneumonia,Severe,Hospital admission
+38,Female,Fatigue,Nausea,Diarrhea,36.5,65,96,0,Cold,Mild,Rest and hydration
+69,Female,Vomiting,Dizziness,Headache,37.3,62,99,0,Allergy,Mild,Rest and hydration
+91,Female,Fever,Headache,Fatigue,36.4,67,97,0,Allergy,Mild,Rest and hydration
+57,Male,Fatigue,Back pain,Chest pain,40,126,90,6,Pneumonia,Severe,Hospital admission
+66,Female,Fatigue,Back pain,Fever,37.2,63,97,3,Allergy,Mild,Rest and hydration
+11,Male,Cough,Abdominal pain,Body ache,36.6,92,99,1,Allergy,Mild,Rest and hydration
+45,Male,Shortness of breath,Body ache,Loss of appetite,41,159,88,9,Acute respiratory failure,Severe,ICU admission
+76,Male,Nausea,Headache,Vomiting,39.8,129,91,8,Severe asthma exacerbation,Severe,Hospital admission
+73,Male,Sore throat,Fever,Runny nose,37.3,64,99,2,Cold,Mild,Rest and hydration
+78,Male,Vomiting,Diarrhea,Dizziness,39,116,89,7,Severe asthma exacerbation,Severe,Hospital admission
+37,Male,Fever,Abdominal pain,Runny nose,38.8,113,95,3,Flu,Moderate,Outpatient medication
+72,Female,Fatigue,Headache,Abdominal pain,36.4,77,100,2,Cold,Mild,Rest and hydration
+69,Male,Fatigue,Body ache,Loss of appetite,38.2,96,93,6,Bronchitis,Moderate,Outpatient medication
+64,Male,Diarrhea,Back pain,Shortness of breath,40,132,88,9,Severe asthma exacerbation,Severe,Hospital admission
+87,Male,Vomiting,Fatigue,Body ache,38.1,120,93,4,Gastroenteritis,Moderate,Outpatient medication
+74,Female,Shortness of breath,Cough,Body ache,37.4,63,98,3,Allergy,Mild,Rest and hydration
+63,Male,Abdominal pain,Diarrhea,Body ache,37.5,91,97,0,Healthy,Mild,Rest and hydration
+43,Female,Back pain,Vomiting,Sore throat,38.8,104,96,3,Bronchitis,Moderate,Outpatient medication
+68,Male,Diarrhea,Cough,Loss of appetite,37.3,81,96,1,Allergy,Mild,Rest and hydration
+3,Male,Chest pain,Fatigue,Body ache,36.8,66,97,3,Cold,Mild,Rest and hydration
+50,Male,Diarrhea,Chest pain,Dizziness,38.9,118,95,5,Flu,Moderate,Outpatient medication
+40,Female,Body ache,Nausea,Chest pain,40.1,130,92,7,Pneumonia,Severe,Hospital admission
+73,Female,Chest pain,Body ache,Abdominal pain,36.5,86,96,0,Healthy,Mild,Rest and hydration
+0,Female,Body ache,Loss of appetite,Diarrhea,39.7,129,89,7,Severe asthma exacerbation,Severe,Hospital admission
+66,Female,Shortness of breath,Nausea,Cough,41,158,89,8,Septic shock,Severe,ICU admission
+75,Female,Runny nose,Shortness of breath,Headache,40.2,123,93,6,Severe asthma exacerbation,Severe,Hospital admission
+45,Female,Abdominal pain,Sore throat,Runny nose,36.5,83,97,2,Cold,Mild,Rest and hydration
+52,Female,Chest pain,Diarrhea,Fever,37.4,60,98,1,Healthy,Mild,Rest and hydration
+69,Male,Fever,Nausea,Headache,38.5,115,95,3,Gastroenteritis,Moderate,Outpatient medication
+55,Female,Abdominal pain,Vomiting,Cough,36.2,75,100,1,Cold,Mild,Rest and hydration
+67,Male,Diarrhea,Body ache,Loss of appetite,37.1,94,100,4,Cold,Mild,Rest and hydration
+61,Female,Back pain,Chest pain,Dizziness,37.5,81,97,0,Healthy,Mild,Rest and hydration
+35,Male,Fatigue,Dizziness,Headache,40.3,149,87,10,Acute respiratory failure,Severe,ICU admission
+33,Female,Vomiting,Fever,Dizziness,36.9,79,98,2,Healthy,Mild,Rest and hydration
+3,Male,Nausea,Cough,Diarrhea,36.5,76,98,0,Allergy,Mild,Rest and hydration
+2,Male,Dizziness,Sore throat,Fever,36.3,63,99,0,Healthy,Mild,Rest and hydration
+51,Male,Abdominal pain,Chest pain,Body ache,38.6,116,94,6,Gastroenteritis,Moderate,Outpatient medication
+58,Female,Cough,Shortness of breath,Abdominal pain,38.4,101,96,6,Flu,Moderate,Outpatient medication
+56,Female,Cough,Fatigue,Body ache,41.1,166,88,8,Acute respiratory failure,Severe,ICU admission
+84,Male,Shortness of breath,Fatigue,Diarrhea,36.3,72,97,2,Cold,Mild,Rest and hydration
+84,Female,Shortness of breath,Diarrhea,Dizziness,39.9,133,93,6,Pneumonia,Severe,Hospital admission
+87,Female,Body ache,Chest pain,Runny nose,36.3,60,100,1,Cold,Mild,Rest and hydration
+63,Female,Dizziness,Back pain,Vomiting,39.7,116,92,9,Severe asthma exacerbation,Severe,Hospital admission
+69,Female,Loss of appetite,Cough,Headache,36.5,79,97,3,Allergy,Mild,Rest and hydration
+85,Male,Sore throat,Runny nose,Back pain,39,143,90,6,Pneumonia,Severe,Hospital admission
+32,Male,Back pain,Fever,Nausea,37.2,85,100,0,Healthy,Mild,Rest and hydration
+89,Female,Headache,Diarrhea,Runny nose,36.6,84,97,4,Healthy,Mild,Rest and hydration
+82,Female,Sore throat,Fatigue,Runny nose,37.1,62,100,4,Allergy,Mild,Rest and hydration
+71,Male,Diarrhea,Nausea,Body ache,37.3,74,100,3,Cold,Mild,Rest and hydration
+31,Male,Abdominal pain,Shortness of breath,Body ache,39,95,95,4,Gastroenteritis,Moderate,Outpatient medication
+2,Male,Chest pain,Fatigue,Nausea,37,64,100,2,Healthy,Mild,Rest and hydration
+28,Male,Fatigue,Diarrhea,Sore throat,37.2,94,98,1,Cold,Mild,Rest and hydration
+71,Male,Shortness of breath,Dizziness,Loss of appetite,39.9,142,89,10,Septic shock,Severe,ICU admission
+86,Female,Sore throat,Fatigue,Runny nose,38.7,104,93,5,Gastroenteritis,Moderate,Outpatient medication
+1,Female,Headache,Sore throat,Fever,37.2,67,99,2,Allergy,Mild,Rest and hydration
+33,Male,Sore throat,Back pain,Vomiting,37.4,62,100,3,Healthy,Mild,Rest and hydration
+3,Female,Dizziness,Headache,Diarrhea,36.4,64,96,1,Cold,Mild,Rest and hydration
+34,Female,Sore throat,Fatigue,Diarrhea,36.7,84,97,0,Allergy,Mild,Rest and hydration
+1,Female,Headache,Chest pain,Vomiting,36.5,71,100,1,Allergy,Mild,Rest and hydration
+9,Female,Body ache,Nausea,Diarrhea,36.4,75,98,1,Allergy,Mild,Rest and hydration
+38,Female,Cough,Fatigue,Nausea,39.2,96,96,5,Flu,Moderate,Outpatient medication
+41,Female,Dizziness,Body ache,Fever,39.1,97,96,4,Flu,Moderate,Outpatient medication
+62,Female,Body ache,Shortness of breath,Fever,37.8,118,94,5,Bronchitis,Moderate,Outpatient medication
+80,Female,Vomiting,Diarrhea,Loss of appetite,37.8,96,96,6,Bronchitis,Moderate,Outpatient medication
+91,Male,Abdominal pain,Cough,Nausea,39.2,141,92,7,Pneumonia,Severe,Hospital admission
+42,Female,Fatigue,Vomiting,Loss of appetite,39.7,136,91,6,Severe asthma exacerbation,Severe,Hospital admission
+30,Male,Fever,Dizziness,Diarrhea,37.3,70,99,2,Healthy,Mild,Rest and hydration
+62,Female,Shortness of breath,Dizziness,Abdominal pain,36.4,83,98,0,Cold,Mild,Rest and hydration
+88,Female,Back pain,Body ache,Loss of appetite,38.2,100,93,3,Gastroenteritis,Moderate,Outpatient medication
+54,Male,Nausea,Headache,Fatigue,38,100,95,4,Bronchitis,Moderate,Outpatient medication
+57,Female,Cough,Runny nose,Back pain,39.1,122,90,8,Severe asthma exacerbation,Severe,Hospital admission
+69,Male,Nausea,Fever,Abdominal pain,36.2,83,100,2,Cold,Mild,Rest and hydration
+91,Female,Diarrhea,Dizziness,Headache,36.8,60,99,2,Cold,Mild,Rest and hydration
+94,Male,Fatigue,Nausea,Sore throat,39.3,126,91,7,Severe asthma exacerbation,Severe,Hospital admission
+46,Male,Nausea,Back pain,Fever,37.3,65,96,1,Cold,Mild,Rest and hydration
+33,Male,Shortness of breath,Sore throat,Back pain,37.1,68,96,3,Healthy,Mild,Rest and hydration
+29,Female,Vomiting,Cough,Headache,38,98,93,4,Gastroenteritis,Moderate,Outpatient medication
+44,Male,Dizziness,Headache,Vomiting,37.5,67,98,0,Healthy,Mild,Rest and hydration
+52,Male,Abdominal pain,Headache,Body ache,36.3,76,97,1,Cold,Mild,Rest and hydration
+38,Female,Cough,Diarrhea,Chest pain,39,97,96,5,Bronchitis,Moderate,Outpatient medication
+7,Male,Back pain,Chest pain,Runny nose,39.7,143,93,9,Pneumonia,Severe,Hospital admission
+47,Female,Dizziness,Fatigue,Chest pain,38.7,110,95,4,Flu,Moderate,Outpatient medication
+34,Female,Diarrhea,Cough,Nausea,36.5,60,97,2,Allergy,Mild,Rest and hydration
+70,Male,Abdominal pain,Runny nose,Cough,37.9,108,96,4,Bronchitis,Moderate,Outpatient medication
+51,Female,Shortness of breath,Cough,Diarrhea,38.3,117,94,6,Bronchitis,Moderate,Outpatient medication
+56,Female,Runny nose,Nausea,Body ache,38.9,140,88,8,Severe asthma exacerbation,Severe,Hospital admission
+38,Male,Back pain,Nausea,Fatigue,36.6,73,96,4,Healthy,Mild,Rest and hydration
+65,Female,Sore throat,Dizziness,Nausea,37.5,63,99,0,Healthy,Mild,Rest and hydration
+68,Male,Chest pain,Headache,Nausea,37.3,95,96,3,Healthy,Mild,Rest and hydration
+43,Female,Sore throat,Abdominal pain,Vomiting,38.2,95,96,4,Flu,Moderate,Outpatient medication
+60,Male,Abdominal pain,Sore throat,Vomiting,37,65,100,1,Cold,Mild,Rest and hydration
+62,Female,Body ache,Sore throat,Loss of appetite,38.7,110,94,4,Bronchitis,Moderate,Outpatient medication
+75,Female,Cough,Headache,Dizziness,38,117,93,5,Bronchitis,Moderate,Outpatient medication
+35,Male,Abdominal pain,Nausea,Vomiting,37.9,120,94,5,Flu,Moderate,Outpatient medication
+92,Female,Diarrhea,Vomiting,Fatigue,37.5,65,97,0,Cold,Mild,Rest and hydration
+89,Female,Dizziness,Loss of appetite,Back pain,41.2,159,84,10,Acute respiratory failure,Severe,ICU admission
+41,Female,Diarrhea,Body ache,Sore throat,39.2,134,92,9,Severe asthma exacerbation,Severe,Hospital admission
+39,Male,Diarrhea,Fatigue,Fever,38.2,96,95,5,Gastroenteritis,Moderate,Outpatient medication
+39,Female,Vomiting,Loss of appetite,Dizziness,36.7,70,100,2,Allergy,Mild,Rest and hydration
+4,Female,Fatigue,Fever,Abdominal pain,38.1,116,93,6,Flu,Moderate,Outpatient medication
+40,Male,Dizziness,Cough,Back pain,37.5,67,99,4,Allergy,Mild,Rest and hydration
+56,Male,Fatigue,Vomiting,Fever,39.2,97,94,4,Bronchitis,Moderate,Outpatient medication
+0,Female,Diarrhea,Fever,Chest pain,40,142,93,7,Pneumonia,Severe,Hospital admission
+41,Female,Vomiting,Shortness of breath,Headache,38.5,112,93,4,Flu,Moderate,Outpatient medication
+62,Male,Loss of appetite,Fever,Nausea,39.6,145,92,8,Pneumonia,Severe,Hospital admission
+36,Female,Runny nose,Cough,Dizziness,37.3,83,99,4,Healthy,Mild,Rest and hydration
+5,Male,Abdominal pain,Dizziness,Nausea,38.3,101,95,7,Flu,Moderate,Outpatient medication
+35,Male,Back pain,Chest pain,Sore throat,40,143,80,9,Acute respiratory failure,Severe,ICU admission
+67,Male,Back pain,Fever,Dizziness,37.9,109,96,5,Bronchitis,Moderate,Outpatient medication
+28,Male,Nausea,Chest pain,Headache,37,68,100,0,Healthy,Mild,Rest and hydration
+47,Male,Fever,Back pain,Headache,36.4,77,99,2,Healthy,Mild,Rest and hydration
+62,Female,Chest pain,Sore throat,Headache,38.1,100,93,3,Bronchitis,Moderate,Outpatient medication
+12,Male,Back pain,Nausea,Abdominal pain,37,69,96,0,Healthy,Mild,Rest and hydration
+59,Female,Abdominal pain,Fatigue,Fever,39.5,142,93,6,Severe asthma exacerbation,Severe,Hospital admission
+29,Male,Diarrhea,Cough,Runny nose,36.5,80,98,4,Healthy,Mild,Rest and hydration
+32,Female,Vomiting,Abdominal pain,Runny nose,39.9,134,91,7,Severe asthma exacerbation,Severe,Hospital admission
+6,Male,Body ache,Sore throat,Cough,40.4,149,87,9,Acute respiratory failure,Severe,ICU admission
+56,Male,Headache,Diarrhea,Fever,38.5,98,93,3,Gastroenteritis,Moderate,Outpatient medication
+43,Female,Diarrhea,Runny nose,Dizziness,39,111,95,5,Gastroenteritis,Moderate,Outpatient medication
+75,Female,Loss of appetite,Nausea,Dizziness,37.5,93,98,3,Allergy,Mild,Rest and hydration
+95,Female,Body ache,Nausea,Loss of appetite,38.2,96,93,6,Bronchitis,Moderate,Outpatient medication
+22,Male,Loss of appetite,Fatigue,Dizziness,39.1,137,90,6,Severe asthma exacerbation,Severe,Hospital admission
+38,Female,Shortness of breath,Back pain,Runny nose,37.6,67,100,2,Healthy,Mild,Rest and hydration
+64,Female,Sore throat,Chest pain,Headache,38.3,116,93,7,Gastroenteritis,Moderate,Outpatient medication
+52,Male,Back pain,Runny nose,Nausea,36.9,88,99,3,Healthy,Mild,Rest and hydration
+24,Female,Headache,Fatigue,Runny nose,38.5,107,94,7,Bronchitis,Moderate,Outpatient medication
+13,Male,Fatigue,Runny nose,Sore throat,38.6,103,94,7,Bronchitis,Moderate,Outpatient medication
+27,Female,Nausea,Abdominal pain,Runny nose,39.1,102,93,7,Flu,Moderate,Outpatient medication
+27,Male,Chest pain,Sore throat,Back pain,39.9,120,88,8,Pneumonia,Severe,Hospital admission
+48,Male,Shortness of breath,Headache,Back pain,37.6,92,99,2,Healthy,Mild,Rest and hydration
+34,Female,Body ache,Diarrhea,Runny nose,37.2,95,100,3,Allergy,Mild,Rest and hydration
+63,Female,Body ache,Abdominal pain,Shortness of breath,38.3,103,93,3,Bronchitis,Moderate,Outpatient medication
+67,Male,Diarrhea,Shortness of breath,Sore throat,37.1,76,97,4,Cold,Mild,Rest and hydration
+68,Female,Chest pain,Dizziness,Fatigue,38.4,114,94,5,Bronchitis,Moderate,Outpatient medication
+24,Female,Shortness of breath,Diarrhea,Vomiting,38.5,111,93,6,Bronchitis,Moderate,Outpatient medication
+9,Female,Runny nose,Headache,Cough,39,101,93,3,Flu,Moderate,Outpatient medication
+60,Male,Nausea,Body ache,Shortness of breath,38.5,106,93,5,Gastroenteritis,Moderate,Outpatient medication
+6,Female,Fatigue,Headache,Back pain,37,61,98,0,Allergy,Mild,Rest and hydration
+35,Male,Fatigue,Shortness of breath,Nausea,39.2,117,88,6,Severe asthma exacerbation,Severe,Hospital admission
+3,Female,Cough,Runny nose,Loss of appetite,37.3,61,96,2,Cold,Mild,Rest and hydration
+70,Male,Abdominal pain,Fatigue,Diarrhea,37.1,83,98,0,Allergy,Mild,Rest and hydration
+66,Female,Headache,Shortness of breath,Fever,37,60,100,0,Allergy,Mild,Rest and hydration
+39,Female,Nausea,Back pain,Headache,37.4,89,100,0,Allergy,Mild,Rest and hydration
+39,Female,Diarrhea,Dizziness,Nausea,37.1,76,98,0,Healthy,Mild,Rest and hydration
+7,Female,Headache,Dizziness,Shortness of breath,40,140,88,9,Severe asthma exacerbation,Severe,Hospital admission
+1,Male,Runny nose,Fatigue,Sore throat,39.6,129,90,7,Pneumonia,Severe,Hospital admission
+81,Male,Nausea,Chest pain,Abdominal pain,37.5,60,99,1,Healthy,Mild,Rest and hydration
+49,Male,Abdominal pain,Sore throat,Fever,36.2,95,97,4,Allergy,Mild,Rest and hydration
+90,Male,Sore throat,Headache,Shortness of breath,38.2,104,96,3,Flu,Moderate,Outpatient medication
+48,Female,Vomiting,Chest pain,Cough,40.2,142,83,9,Acute respiratory failure,Severe,ICU admission
+62,Female,Vomiting,Shortness of breath,Nausea,38.9,120,90,6,Pneumonia,Severe,Hospital admission
+63,Female,Loss of appetite,Fatigue,Dizziness,38.7,119,95,4,Flu,Moderate,Outpatient medication
+71,Female,Nausea,Fever,Shortness of breath,39.9,127,88,7,Pneumonia,Severe,Hospital admission
+90,Male,Fatigue,Nausea,Back pain,36.3,80,96,2,Allergy,Mild,Rest and hydration
+50,Male,Abdominal pain,Back pain,Fatigue,36.8,93,99,2,Healthy,Mild,Rest and hydration
+26,Female,Nausea,Fever,Cough,38.1,112,96,4,Flu,Moderate,Outpatient medication
+5,Female,Dizziness,Diarrhea,Headache,37,76,98,1,Allergy,Mild,Rest and hydration
+1,Male,Chest pain,Shortness of breath,Vomiting,36.9,79,100,0,Healthy,Mild,Rest and hydration
+46,Male,Runny nose,Diarrhea,Cough,38.2,104,95,6,Flu,Moderate,Outpatient medication
+73,Male,Fatigue,Shortness of breath,Cough,36.8,66,98,3,Healthy,Mild,Rest and hydration
+57,Female,Headache,Body ache,Abdominal pain,36.3,66,98,2,Allergy,Mild,Rest and hydration
+60,Female,Abdominal pain,Diarrhea,Shortness of breath,37.1,70,97,0,Healthy,Mild,Rest and hydration
+13,Female,Headache,Body ache,Vomiting,37.2,73,100,0,Healthy,Mild,Rest and hydration
+21,Male,Abdominal pain,Cough,Sore throat,36.3,79,97,4,Allergy,Mild,Rest and hydration
+23,Male,Nausea,Fatigue,Sore throat,36.2,72,97,1,Healthy,Mild,Rest and hydration
+52,Male,Nausea,Fatigue,Abdominal pain,37.1,92,96,3,Allergy,Mild,Rest and hydration
+77,Male,Back pain,Fatigue,Fever,39,98,96,5,Flu,Moderate,Outpatient medication
+47,Male,Back pain,Vomiting,Loss of appetite,38.7,103,95,5,Bronchitis,Moderate,Outpatient medication
+73,Male,Sore throat,Diarrhea,Body ache,36.9,63,98,1,Cold,Mild,Rest and hydration
+50,Female,Body ache,Abdominal pain,Fever,37.3,74,99,1,Cold,Mild,Rest and hydration
+31,Male,Diarrhea,Shortness of breath,Back pain,36.9,82,96,1,Healthy,Mild,Rest and hydration
+63,Male,Cough,Abdominal pain,Dizziness,38.6,113,93,3,Flu,Moderate,Outpatient medication
+76,Female,Dizziness,Runny nose,Abdominal pain,39.4,121,88,8,Pneumonia,Severe,Hospital admission
+3,Male,Fatigue,Runny nose,Nausea,36.3,78,99,0,Healthy,Mild,Rest and hydration
+1,Male,Fever,Headache,Chest pain,39.6,131,88,7,Pneumonia,Severe,Hospital admission
+73,Male,Vomiting,Abdominal pain,Nausea,37.4,86,98,1,Allergy,Mild,Rest and hydration
+33,Male,Body ache,Back pain,Loss of appetite,37.8,118,96,7,Gastroenteritis,Moderate,Outpatient medication
+94,Female,Shortness of breath,Loss of appetite,Vomiting,37.4,83,98,1,Allergy,Mild,Rest and hydration
+82,Male,Cough,Body ache,Fatigue,38.8,132,88,6,Severe asthma exacerbation,Severe,Hospital admission
+43,Male,Fatigue,Abdominal pain,Diarrhea,38,99,95,4,Flu,Moderate,Outpatient medication
+33,Female,Nausea,Dizziness,Runny nose,39.8,127,91,6,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Loss of appetite,Headache,Nausea,36.9,83,100,0,Allergy,Mild,Rest and hydration
+6,Female,Abdominal pain,Shortness of breath,Chest pain,40.9,161,88,9,Acute respiratory failure,Severe,ICU admission
+67,Female,Abdominal pain,Runny nose,Fever,37.4,67,97,0,Allergy,Mild,Rest and hydration
+31,Male,Cough,Body ache,Headache,39.6,140,91,6,Severe asthma exacerbation,Severe,Hospital admission
+37,Male,Nausea,Chest pain,Shortness of breath,37.9,95,94,5,Gastroenteritis,Moderate,Outpatient medication
+20,Female,Chest pain,Abdominal pain,Runny nose,37.6,67,100,4,Healthy,Mild,Rest and hydration
+55,Female,Runny nose,Abdominal pain,Body ache,39.7,143,91,7,Severe asthma exacerbation,Severe,Hospital admission
+15,Female,Diarrhea,Nausea,Fever,36.8,77,96,0,Allergy,Mild,Rest and hydration
+68,Female,Chest pain,Back pain,Headache,37.4,94,100,0,Healthy,Mild,Rest and hydration
+54,Male,Runny nose,Sore throat,Fatigue,40.1,120,88,8,Pneumonia,Severe,Hospital admission
+28,Female,Cough,Diarrhea,Shortness of breath,37.6,68,98,4,Healthy,Mild,Rest and hydration
+56,Female,Runny nose,Sore throat,Loss of appetite,36.6,63,98,0,Healthy,Mild,Rest and hydration
+79,Male,Body ache,Chest pain,Runny nose,36.4,84,100,2,Healthy,Mild,Rest and hydration
+65,Male,Fever,Abdominal pain,Nausea,36.6,84,96,4,Cold,Mild,Rest and hydration
+17,Female,Back pain,Cough,Chest pain,37,66,100,1,Allergy,Mild,Rest and hydration
+13,Female,Nausea,Fever,Headache,38.8,118,94,4,Bronchitis,Moderate,Outpatient medication
+5,Male,Fever,Dizziness,Back pain,36.4,60,100,2,Allergy,Mild,Rest and hydration
+93,Male,Nausea,Back pain,Sore throat,36.7,65,98,2,Cold,Mild,Rest and hydration
+64,Male,Dizziness,Runny nose,Back pain,37.3,67,99,4,Cold,Mild,Rest and hydration
+44,Female,Headache,Chest pain,Vomiting,36.7,65,96,1,Allergy,Mild,Rest and hydration
+66,Female,Loss of appetite,Fatigue,Diarrhea,40.5,156,85,9,Septic shock,Severe,ICU admission
+5,Male,Diarrhea,Shortness of breath,Fatigue,38.8,140,88,9,Pneumonia,Severe,Hospital admission
+75,Male,Chest pain,Dizziness,Shortness of breath,37.9,108,95,6,Gastroenteritis,Moderate,Outpatient medication
+55,Female,Headache,Fatigue,Shortness of breath,39,139,90,9,Severe asthma exacerbation,Severe,Hospital admission
+75,Male,Chest pain,Headache,Cough,37.4,68,98,3,Healthy,Mild,Rest and hydration
+43,Male,Vomiting,Cough,Fever,37.1,87,97,0,Cold,Mild,Rest and hydration
+76,Female,Nausea,Cough,Chest pain,36.7,79,99,1,Allergy,Mild,Rest and hydration
+43,Female,Cough,Sore throat,Body ache,37.4,65,99,0,Healthy,Mild,Rest and hydration
+8,Male,Fatigue,Dizziness,Runny nose,37.9,107,95,6,Bronchitis,Moderate,Outpatient medication
+95,Male,Headache,Fatigue,Abdominal pain,39.4,134,92,8,Pneumonia,Severe,Hospital admission
+73,Male,Cough,Back pain,Loss of appetite,40.5,148,78,9,Septic shock,Severe,ICU admission
+72,Male,Diarrhea,Headache,Back pain,37.2,87,98,2,Allergy,Mild,Rest and hydration
+47,Male,Shortness of breath,Dizziness,Diarrhea,39.9,132,79,9,Acute respiratory failure,Severe,ICU admission
+0,Male,Fatigue,Vomiting,Back pain,36.7,89,100,3,Cold,Mild,Rest and hydration
+92,Female,Chest pain,Runny nose,Nausea,37.5,84,97,0,Cold,Mild,Rest and hydration
+74,Female,Loss of appetite,Sore throat,Fatigue,37.5,93,96,1,Healthy,Mild,Rest and hydration
+65,Male,Fever,Back pain,Chest pain,37.6,71,97,4,Cold,Mild,Rest and hydration
+46,Male,Diarrhea,Vomiting,Body ache,36.7,77,98,2,Cold,Mild,Rest and hydration
+60,Female,Shortness of breath,Nausea,Vomiting,36.6,81,98,3,Cold,Mild,Rest and hydration
+60,Female,Body ache,Shortness of breath,Chest pain,38.7,96,93,3,Flu,Moderate,Outpatient medication
+38,Male,Loss of appetite,Abdominal pain,Fatigue,36.5,79,96,0,Cold,Mild,Rest and hydration
+59,Female,Chest pain,Diarrhea,Fatigue,41,167,81,8,Septic shock,Severe,ICU admission
+30,Female,Abdominal pain,Back pain,Headache,38.9,99,94,5,Gastroenteritis,Moderate,Outpatient medication
+70,Female,Sore throat,Fever,Dizziness,39.4,133,93,9,Pneumonia,Severe,Hospital admission
+42,Male,Abdominal pain,Fever,Shortness of breath,38.9,134,92,8,Pneumonia,Severe,Hospital admission
+52,Male,Body ache,Cough,Sore throat,38.2,98,93,7,Gastroenteritis,Moderate,Outpatient medication
+42,Male,Fatigue,Dizziness,Fever,37.5,94,97,4,Healthy,Mild,Rest and hydration
+71,Male,Headache,Diarrhea,Abdominal pain,38.1,107,94,7,Bronchitis,Moderate,Outpatient medication
+88,Male,Shortness of breath,Fatigue,Body ache,36.5,79,96,2,Healthy,Mild,Rest and hydration
+65,Male,Body ache,Runny nose,Diarrhea,39.2,99,94,5,Flu,Moderate,Outpatient medication
+65,Male,Sore throat,Back pain,Loss of appetite,38.8,118,93,3,Bronchitis,Moderate,Outpatient medication
+13,Male,Runny nose,Nausea,Fever,36.9,63,99,2,Allergy,Mild,Rest and hydration
+56,Male,Fever,Runny nose,Diarrhea,37.3,66,97,4,Allergy,Mild,Rest and hydration
+36,Female,Cough,Abdominal pain,Headache,38.8,118,94,6,Bronchitis,Moderate,Outpatient medication
+77,Female,Back pain,Abdominal pain,Sore throat,39.5,137,91,8,Pneumonia,Severe,Hospital admission
+47,Male,Headache,Runny nose,Chest pain,36.9,79,100,3,Allergy,Mild,Rest and hydration
+61,Female,Runny nose,Shortness of breath,Chest pain,39.6,131,88,7,Pneumonia,Severe,Hospital admission
+32,Male,Loss of appetite,Dizziness,Back pain,40.9,134,87,10,Septic shock,Severe,ICU admission
+51,Male,Abdominal pain,Chest pain,Vomiting,38.5,95,93,5,Flu,Moderate,Outpatient medication
+22,Male,Shortness of breath,Cough,Fever,39.7,121,88,8,Pneumonia,Severe,Hospital admission
+66,Female,Nausea,Fatigue,Vomiting,38.3,95,95,6,Gastroenteritis,Moderate,Outpatient medication
+11,Female,Body ache,Runny nose,Fever,37.8,105,93,3,Bronchitis,Moderate,Outpatient medication
+9,Female,Loss of appetite,Chest pain,Body ache,38.5,119,95,7,Flu,Moderate,Outpatient medication
+37,Female,Diarrhea,Chest pain,Vomiting,40.1,117,91,6,Pneumonia,Severe,Hospital admission
+5,Male,Dizziness,Diarrhea,Back pain,38.8,102,94,6,Gastroenteritis,Moderate,Outpatient medication
+87,Female,Cough,Fatigue,Runny nose,39.4,115,93,7,Pneumonia,Severe,Hospital admission
+15,Female,Body ache,Diarrhea,Runny nose,37.1,82,96,4,Healthy,Mild,Rest and hydration
+64,Female,Diarrhea,Fever,Fatigue,38.9,107,96,5,Gastroenteritis,Moderate,Outpatient medication
+38,Male,Nausea,Abdominal pain,Chest pain,39.1,115,94,5,Bronchitis,Moderate,Outpatient medication
+30,Male,Body ache,Headache,Abdominal pain,36.7,67,97,0,Allergy,Mild,Rest and hydration
+45,Male,Shortness of breath,Back pain,Nausea,37.3,70,97,3,Allergy,Mild,Rest and hydration
+23,Female,Sore throat,Chest pain,Dizziness,39.1,113,93,3,Gastroenteritis,Moderate,Outpatient medication
+72,Male,Body ache,Chest pain,Sore throat,37.4,77,100,2,Cold,Mild,Rest and hydration
+31,Male,Dizziness,Sore throat,Cough,37.6,84,100,4,Healthy,Mild,Rest and hydration
+93,Female,Nausea,Dizziness,Headache,36.3,71,100,2,Healthy,Mild,Rest and hydration
+39,Female,Chest pain,Loss of appetite,Back pain,40.1,133,85,8,Acute respiratory failure,Severe,ICU admission
+61,Male,Back pain,Dizziness,Fever,37.3,85,97,4,Allergy,Mild,Rest and hydration
+21,Male,Sore throat,Body ache,Shortness of breath,40.1,121,89,7,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Nausea,Runny nose,Loss of appetite,37,73,97,3,Allergy,Mild,Rest and hydration
+95,Female,Shortness of breath,Headache,Runny nose,36.8,72,99,2,Cold,Mild,Rest and hydration
+85,Female,Dizziness,Fatigue,Runny nose,37.2,70,96,3,Cold,Mild,Rest and hydration
+84,Male,Diarrhea,Back pain,Dizziness,36.4,66,98,2,Allergy,Mild,Rest and hydration
+72,Male,Abdominal pain,Vomiting,Headache,38.4,115,94,7,Flu,Moderate,Outpatient medication
+58,Female,Fever,Headache,Back pain,38.2,120,96,7,Bronchitis,Moderate,Outpatient medication
+88,Male,Back pain,Vomiting,Nausea,39.6,130,91,9,Pneumonia,Severe,Hospital admission
+58,Male,Runny nose,Body ache,Chest pain,38.6,99,93,4,Flu,Moderate,Outpatient medication
+29,Female,Headache,Fatigue,Nausea,39.7,140,89,7,Pneumonia,Severe,Hospital admission
+1,Male,Chest pain,Fever,Headache,36.9,62,98,0,Cold,Mild,Rest and hydration
+21,Female,Vomiting,Body ache,Cough,38.8,106,93,3,Bronchitis,Moderate,Outpatient medication
+18,Female,Headache,Shortness of breath,Cough,36.7,67,96,0,Allergy,Mild,Rest and hydration
+67,Male,Diarrhea,Loss of appetite,Fatigue,39.3,124,90,8,Severe asthma exacerbation,Severe,Hospital admission
+63,Male,Headache,Cough,Body ache,39.3,129,93,8,Pneumonia,Severe,Hospital admission
+46,Male,Dizziness,Runny nose,Chest pain,38.5,101,94,5,Gastroenteritis,Moderate,Outpatient medication
+83,Male,Diarrhea,Headache,Dizziness,36.3,89,96,0,Healthy,Mild,Rest and hydration
+46,Male,Abdominal pain,Dizziness,Fever,38.9,145,91,7,Pneumonia,Severe,Hospital admission
+74,Female,Loss of appetite,Fatigue,Back pain,38.4,107,94,4,Gastroenteritis,Moderate,Outpatient medication
+49,Male,Dizziness,Loss of appetite,Shortness of breath,37,62,97,3,Allergy,Mild,Rest and hydration
+77,Female,Back pain,Fatigue,Chest pain,39.9,128,91,9,Severe asthma exacerbation,Severe,Hospital admission
+60,Male,Fatigue,Fever,Nausea,41.4,163,83,8,Acute respiratory failure,Severe,ICU admission
+73,Male,Shortness of breath,Dizziness,Abdominal pain,36.7,88,97,4,Healthy,Mild,Rest and hydration
+13,Male,Diarrhea,Loss of appetite,Back pain,37.4,84,100,4,Cold,Mild,Rest and hydration
+41,Female,Fever,Shortness of breath,Runny nose,39,112,95,7,Flu,Moderate,Outpatient medication
+0,Female,Nausea,Cough,Dizziness,37,73,98,4,Healthy,Mild,Rest and hydration
+7,Female,Shortness of breath,Dizziness,Abdominal pain,39.2,128,93,7,Pneumonia,Severe,Hospital admission
+58,Female,Loss of appetite,Shortness of breath,Chest pain,38.1,99,93,7,Gastroenteritis,Moderate,Outpatient medication
+23,Male,Shortness of breath,Abdominal pain,Loss of appetite,38.3,111,94,5,Flu,Moderate,Outpatient medication
+65,Male,Vomiting,Sore throat,Runny nose,38.7,105,95,3,Flu,Moderate,Outpatient medication
+22,Male,Abdominal pain,Body ache,Back pain,37,86,98,0,Healthy,Mild,Rest and hydration
+75,Male,Shortness of breath,Back pain,Vomiting,39.2,112,96,6,Gastroenteritis,Moderate,Outpatient medication
+41,Male,Sore throat,Fever,Abdominal pain,39.6,117,92,6,Severe asthma exacerbation,Severe,Hospital admission
+20,Male,Fatigue,Nausea,Abdominal pain,37.9,98,93,6,Flu,Moderate,Outpatient medication
+19,Female,Fatigue,Nausea,Fever,36.3,73,97,1,Healthy,Mild,Rest and hydration
+32,Male,Back pain,Fatigue,Runny nose,36.4,85,98,2,Allergy,Mild,Rest and hydration
+16,Male,Nausea,Back pain,Runny nose,36.9,60,96,1,Cold,Mild,Rest and hydration
+72,Male,Dizziness,Cough,Shortness of breath,39,118,89,7,Severe asthma exacerbation,Severe,Hospital admission
+74,Male,Nausea,Abdominal pain,Runny nose,37.5,83,99,0,Allergy,Mild,Rest and hydration
+82,Female,Headache,Abdominal pain,Nausea,38.1,112,96,5,Gastroenteritis,Moderate,Outpatient medication
+0,Female,Shortness of breath,Headache,Sore throat,38.6,119,95,4,Bronchitis,Moderate,Outpatient medication
+30,Female,Fatigue,Shortness of breath,Runny nose,36.9,91,96,2,Allergy,Mild,Rest and hydration
+95,Female,Shortness of breath,Sore throat,Dizziness,37.9,97,96,5,Gastroenteritis,Moderate,Outpatient medication
+28,Female,Headache,Body ache,Back pain,36.9,89,96,4,Cold,Mild,Rest and hydration
+84,Female,Headache,Runny nose,Fever,39,111,96,3,Flu,Moderate,Outpatient medication
+63,Male,Sore throat,Runny nose,Body ache,39.3,145,91,9,Pneumonia,Severe,Hospital admission
+14,Female,Sore throat,Headache,Nausea,36.7,67,99,0,Cold,Mild,Rest and hydration
+69,Male,Diarrhea,Chest pain,Nausea,38.2,109,94,4,Flu,Moderate,Outpatient medication
+2,Male,Body ache,Cough,Dizziness,38.9,134,92,6,Pneumonia,Severe,Hospital admission
+6,Male,Loss of appetite,Runny nose,Nausea,37.1,88,100,0,Cold,Mild,Rest and hydration
+47,Female,Fatigue,Fever,Chest pain,38.3,114,94,6,Bronchitis,Moderate,Outpatient medication
+68,Male,Sore throat,Loss of appetite,Nausea,36.7,82,96,4,Healthy,Mild,Rest and hydration
+53,Female,Shortness of breath,Loss of appetite,Dizziness,38.8,115,96,3,Flu,Moderate,Outpatient medication
+61,Female,Sore throat,Chest pain,Fever,38.9,118,96,3,Bronchitis,Moderate,Outpatient medication
+35,Male,Dizziness,Fatigue,Chest pain,36.6,72,99,0,Allergy,Mild,Rest and hydration
+22,Male,Shortness of breath,Headache,Body ache,38.6,98,94,3,Bronchitis,Moderate,Outpatient medication
+82,Female,Nausea,Sore throat,Dizziness,36.4,78,96,3,Healthy,Mild,Rest and hydration
+35,Male,Dizziness,Diarrhea,Chest pain,39.1,130,88,7,Pneumonia,Severe,Hospital admission
+91,Male,Loss of appetite,Nausea,Back pain,36.8,90,97,1,Healthy,Mild,Rest and hydration
+34,Male,Fever,Vomiting,Runny nose,38.8,100,95,6,Gastroenteritis,Moderate,Outpatient medication
+11,Female,Diarrhea,Vomiting,Fatigue,37.2,65,97,4,Cold,Mild,Rest and hydration
+60,Female,Shortness of breath,Body ache,Vomiting,38.2,104,96,5,Flu,Moderate,Outpatient medication
+25,Female,Fatigue,Vomiting,Runny nose,37.1,77,100,4,Allergy,Mild,Rest and hydration
+45,Male,Shortness of breath,Diarrhea,Fever,36.6,92,99,3,Allergy,Mild,Rest and hydration
+72,Male,Nausea,Abdominal pain,Vomiting,38.2,96,96,4,Gastroenteritis,Moderate,Outpatient medication
+30,Male,Fever,Fatigue,Runny nose,37.3,92,97,4,Cold,Mild,Rest and hydration
+23,Female,Headache,Nausea,Chest pain,39.7,150,79,10,Acute respiratory failure,Severe,ICU admission
+10,Female,Abdominal pain,Fever,Diarrhea,38.3,100,93,3,Bronchitis,Moderate,Outpatient medication
+71,Male,Vomiting,Fever,Runny nose,36.4,92,96,2,Healthy,Mild,Rest and hydration
+9,Female,Sore throat,Chest pain,Nausea,39.1,104,95,5,Bronchitis,Moderate,Outpatient medication
+78,Female,Dizziness,Loss of appetite,Back pain,41.3,170,87,10,Septic shock,Severe,ICU admission
+65,Male,Body ache,Abdominal pain,Dizziness,37.9,111,96,7,Gastroenteritis,Moderate,Outpatient medication
+46,Male,Headache,Abdominal pain,Fatigue,39.6,118,88,7,Pneumonia,Severe,Hospital admission
+49,Female,Runny nose,Nausea,Sore throat,37.1,90,98,1,Cold,Mild,Rest and hydration
+68,Male,Vomiting,Headache,Fatigue,36.8,91,99,2,Cold,Mild,Rest and hydration
+70,Female,Runny nose,Chest pain,Shortness of breath,38.3,98,96,4,Bronchitis,Moderate,Outpatient medication
+7,Female,Fatigue,Sore throat,Back pain,36.8,63,100,4,Cold,Mild,Rest and hydration
+84,Male,Loss of appetite,Fever,Body ache,38.9,144,88,6,Pneumonia,Severe,Hospital admission
+90,Female,Chest pain,Sore throat,Abdominal pain,37.6,83,96,3,Cold,Mild,Rest and hydration
+79,Female,Nausea,Back pain,Headache,37.2,79,100,4,Cold,Mild,Rest and hydration
+50,Female,Chest pain,Fatigue,Shortness of breath,39.2,121,89,9,Severe asthma exacerbation,Severe,Hospital admission
+64,Female,Headache,Dizziness,Body ache,38.7,108,96,5,Flu,Moderate,Outpatient medication
+53,Female,Loss of appetite,Shortness of breath,Back pain,37.6,70,96,4,Healthy,Mild,Rest and hydration
+62,Male,Headache,Fatigue,Cough,36.8,65,98,2,Healthy,Mild,Rest and hydration
+56,Male,Loss of appetite,Back pain,Cough,36.3,60,100,4,Cold,Mild,Rest and hydration
+81,Male,Abdominal pain,Nausea,Diarrhea,38.8,116,96,3,Bronchitis,Moderate,Outpatient medication
+17,Female,Sore throat,Body ache,Runny nose,40.9,163,85,9,Acute respiratory failure,Severe,ICU admission
+70,Female,Headache,Shortness of breath,Abdominal pain,39.8,125,89,7,Pneumonia,Severe,Hospital admission
+52,Female,Vomiting,Nausea,Runny nose,38.5,100,95,7,Flu,Moderate,Outpatient medication
+0,Male,Headache,Cough,Body ache,37,71,98,1,Healthy,Mild,Rest and hydration
+77,Male,Abdominal pain,Loss of appetite,Fever,38.9,111,95,6,Flu,Moderate,Outpatient medication
+79,Female,Dizziness,Sore throat,Body ache,37.3,95,97,3,Healthy,Mild,Rest and hydration
+62,Male,Shortness of breath,Nausea,Cough,37.2,79,99,3,Healthy,Mild,Rest and hydration
+71,Male,Loss of appetite,Sore throat,Body ache,38.2,117,96,4,Gastroenteritis,Moderate,Outpatient medication
+34,Female,Shortness of breath,Headache,Diarrhea,38.5,99,95,6,Bronchitis,Moderate,Outpatient medication
+46,Female,Back pain,Headache,Dizziness,39.8,140,93,7,Severe asthma exacerbation,Severe,Hospital admission
+43,Female,Nausea,Chest pain,Back pain,38,111,93,7,Bronchitis,Moderate,Outpatient medication
+55,Male,Body ache,Fatigue,Nausea,37.5,84,97,4,Cold,Mild,Rest and hydration
+59,Female,Vomiting,Fever,Chest pain,37,69,99,1,Allergy,Mild,Rest and hydration
+88,Female,Headache,Chest pain,Body ache,37.3,76,97,3,Allergy,Mild,Rest and hydration
+25,Female,Abdominal pain,Diarrhea,Runny nose,36.2,71,98,4,Allergy,Mild,Rest and hydration
+38,Female,Runny nose,Body ache,Cough,37,91,99,1,Allergy,Mild,Rest and hydration
+18,Male,Body ache,Headache,Sore throat,36.4,60,97,3,Healthy,Mild,Rest and hydration
+2,Male,Shortness of breath,Diarrhea,Runny nose,38.3,104,95,7,Gastroenteritis,Moderate,Outpatient medication
+77,Male,Back pain,Shortness of breath,Fatigue,38.1,97,96,5,Bronchitis,Moderate,Outpatient medication
+84,Male,Vomiting,Sore throat,Shortness of breath,37.4,74,96,4,Allergy,Mild,Rest and hydration
+63,Female,Sore throat,Fever,Abdominal pain,38.5,107,95,4,Flu,Moderate,Outpatient medication
+18,Male,Abdominal pain,Headache,Nausea,38.5,106,95,6,Gastroenteritis,Moderate,Outpatient medication
+4,Female,Dizziness,Body ache,Loss of appetite,37.5,74,99,4,Allergy,Mild,Rest and hydration
+43,Female,Loss of appetite,Fever,Sore throat,36.2,68,100,0,Allergy,Mild,Rest and hydration
+8,Male,Fatigue,Back pain,Vomiting,37.2,92,98,4,Allergy,Mild,Rest and hydration
+58,Male,Loss of appetite,Shortness of breath,Chest pain,36.6,93,96,3,Allergy,Mild,Rest and hydration
+49,Male,Shortness of breath,Vomiting,Sore throat,37,77,99,3,Cold,Mild,Rest and hydration
+85,Male,Abdominal pain,Back pain,Fatigue,36.4,87,98,4,Cold,Mild,Rest and hydration
+16,Female,Fatigue,Chest pain,Dizziness,38.8,128,90,9,Severe asthma exacerbation,Severe,Hospital admission
+78,Male,Diarrhea,Fatigue,Fever,39.6,127,89,7,Severe asthma exacerbation,Severe,Hospital admission
+60,Male,Runny nose,Shortness of breath,Back pain,38.7,103,94,4,Flu,Moderate,Outpatient medication
+63,Male,Sore throat,Headache,Fever,38.7,120,93,7,Flu,Moderate,Outpatient medication
+40,Female,Diarrhea,Body ache,Headache,37.1,65,99,1,Cold,Mild,Rest and hydration
+69,Female,Body ache,Runny nose,Nausea,37.4,74,97,2,Allergy,Mild,Rest and hydration
+30,Female,Vomiting,Sore throat,Fatigue,37.2,87,97,1,Cold,Mild,Rest and hydration
+28,Female,Fever,Loss of appetite,Headache,37,79,96,3,Cold,Mild,Rest and hydration
+64,Male,Sore throat,Back pain,Diarrhea,37.1,88,99,4,Cold,Mild,Rest and hydration
+51,Male,Headache,Fever,Fatigue,38.9,106,93,5,Flu,Moderate,Outpatient medication
+39,Female,Loss of appetite,Abdominal pain,Headache,37.9,107,96,7,Flu,Moderate,Outpatient medication
+9,Male,Runny nose,Body ache,Diarrhea,37.2,89,96,1,Cold,Mild,Rest and hydration
+18,Female,Cough,Loss of appetite,Diarrhea,39.3,116,89,7,Pneumonia,Severe,Hospital admission
+51,Male,Vomiting,Back pain,Headache,38.8,121,89,8,Pneumonia,Severe,Hospital admission
+65,Female,Headache,Body ache,Back pain,36.5,81,96,3,Cold,Mild,Rest and hydration
+31,Female,Loss of appetite,Headache,Vomiting,38.2,97,95,7,Gastroenteritis,Moderate,Outpatient medication
+81,Male,Vomiting,Abdominal pain,Chest pain,39,100,94,7,Gastroenteritis,Moderate,Outpatient medication
+70,Male,Runny nose,Loss of appetite,Chest pain,37.9,106,93,6,Flu,Moderate,Outpatient medication
+83,Female,Sore throat,Runny nose,Nausea,39.2,113,95,3,Gastroenteritis,Moderate,Outpatient medication
+46,Female,Diarrhea,Chest pain,Body ache,38.5,111,95,5,Flu,Moderate,Outpatient medication
+15,Male,Abdominal pain,Back pain,Runny nose,37.3,79,97,4,Allergy,Mild,Rest and hydration
+1,Male,Cough,Sore throat,Body ache,37.1,93,96,3,Allergy,Mild,Rest and hydration
+21,Male,Abdominal pain,Vomiting,Nausea,36.4,83,96,2,Cold,Mild,Rest and hydration
+26,Male,Abdominal pain,Runny nose,Shortness of breath,37,71,96,1,Allergy,Mild,Rest and hydration
+56,Male,Nausea,Back pain,Cough,37.1,73,97,3,Cold,Mild,Rest and hydration
+80,Female,Chest pain,Loss of appetite,Shortness of breath,37.4,89,99,4,Cold,Mild,Rest and hydration
+7,Female,Headache,Shortness of breath,Cough,36.9,90,96,0,Healthy,Mild,Rest and hydration
+24,Female,Cough,Dizziness,Diarrhea,36.4,86,97,1,Healthy,Mild,Rest and hydration
+24,Male,Abdominal pain,Shortness of breath,Nausea,37.8,106,94,5,Flu,Moderate,Outpatient medication
+79,Male,Chest pain,Fatigue,Sore throat,36.4,88,96,0,Cold,Mild,Rest and hydration
+40,Male,Nausea,Vomiting,Sore throat,36.7,85,98,3,Healthy,Mild,Rest and hydration
+19,Female,Cough,Abdominal pain,Headache,37.9,113,95,6,Gastroenteritis,Moderate,Outpatient medication
+72,Male,Shortness of breath,Abdominal pain,Diarrhea,39.9,132,92,8,Pneumonia,Severe,Hospital admission
+35,Female,Runny nose,Nausea,Vomiting,39.6,119,88,8,Severe asthma exacerbation,Severe,Hospital admission
+92,Female,Fever,Vomiting,Dizziness,37.9,120,93,6,Gastroenteritis,Moderate,Outpatient medication
+73,Male,Sore throat,Dizziness,Loss of appetite,37.4,73,99,4,Cold,Mild,Rest and hydration
+1,Male,Abdominal pain,Runny nose,Shortness of breath,39.1,98,96,7,Bronchitis,Moderate,Outpatient medication
+43,Male,Loss of appetite,Back pain,Cough,37.3,91,97,3,Allergy,Mild,Rest and hydration
+43,Male,Fever,Headache,Diarrhea,37.2,85,98,4,Allergy,Mild,Rest and hydration
+31,Female,Shortness of breath,Nausea,Dizziness,38.7,108,96,7,Flu,Moderate,Outpatient medication
+33,Male,Shortness of breath,Headache,Nausea,41.3,134,78,10,Septic shock,Severe,ICU admission
+35,Male,Nausea,Loss of appetite,Chest pain,36.7,70,97,3,Healthy,Mild,Rest and hydration
+67,Male,Runny nose,Headache,Cough,39.2,138,88,8,Pneumonia,Severe,Hospital admission
+38,Male,Shortness of breath,Vomiting,Headache,38.6,118,94,4,Bronchitis,Moderate,Outpatient medication
+11,Female,Loss of appetite,Nausea,Shortness of breath,38.7,111,96,4,Bronchitis,Moderate,Outpatient medication
+34,Female,Diarrhea,Dizziness,Body ache,36.2,73,96,4,Healthy,Mild,Rest and hydration
+7,Female,Fever,Cough,Loss of appetite,40.2,142,89,9,Severe asthma exacerbation,Severe,Hospital admission
+78,Female,Fatigue,Chest pain,Loss of appetite,39.2,111,94,3,Gastroenteritis,Moderate,Outpatient medication
+75,Male,Runny nose,Cough,Diarrhea,36.5,85,98,2,Allergy,Mild,Rest and hydration
+66,Male,Nausea,Shortness of breath,Back pain,36.7,75,98,2,Cold,Mild,Rest and hydration
+74,Female,Dizziness,Nausea,Headache,37,66,99,3,Cold,Mild,Rest and hydration
+59,Female,Chest pain,Loss of appetite,Cough,37.9,100,95,4,Bronchitis,Moderate,Outpatient medication
+35,Female,Abdominal pain,Nausea,Sore throat,36.9,72,98,3,Healthy,Mild,Rest and hydration
+17,Female,Headache,Body ache,Back pain,38,101,95,6,Bronchitis,Moderate,Outpatient medication
+58,Female,Shortness of breath,Cough,Abdominal pain,36.8,76,100,0,Cold,Mild,Rest and hydration
+44,Male,Runny nose,Nausea,Headache,38.9,119,95,3,Flu,Moderate,Outpatient medication
+18,Female,Runny nose,Back pain,Sore throat,38.2,116,96,6,Gastroenteritis,Moderate,Outpatient medication
+67,Female,Sore throat,Runny nose,Vomiting,36.8,83,99,2,Healthy,Mild,Rest and hydration
+71,Male,Headache,Dizziness,Shortness of breath,38.3,112,95,7,Bronchitis,Moderate,Outpatient medication
+6,Male,Loss of appetite,Chest pain,Cough,37.6,82,97,2,Healthy,Mild,Rest and hydration
+73,Male,Body ache,Diarrhea,Chest pain,37,68,100,3,Cold,Mild,Rest and hydration
+46,Male,Shortness of breath,Sore throat,Runny nose,39.1,110,95,4,Bronchitis,Moderate,Outpatient medication
+2,Female,Fatigue,Body ache,Fever,41.4,156,84,8,Septic shock,Severe,ICU admission
+58,Female,Abdominal pain,Back pain,Chest pain,37,88,96,2,Allergy,Mild,Rest and hydration
+45,Female,Shortness of breath,Nausea,Diarrhea,38.6,100,93,7,Gastroenteritis,Moderate,Outpatient medication
+54,Female,Runny nose,Loss of appetite,Nausea,38.9,117,88,7,Severe asthma exacerbation,Severe,Hospital admission
+21,Male,Loss of appetite,Fever,Fatigue,40.2,124,93,9,Pneumonia,Severe,Hospital admission
+66,Female,Shortness of breath,Cough,Loss of appetite,36.3,74,96,1,Allergy,Mild,Rest and hydration
+33,Male,Diarrhea,Nausea,Headache,38,120,93,3,Flu,Moderate,Outpatient medication
+43,Female,Runny nose,Body ache,Back pain,37.3,72,99,4,Cold,Mild,Rest and hydration
+54,Male,Shortness of breath,Sore throat,Back pain,37.1,60,98,1,Allergy,Mild,Rest and hydration
+39,Male,Abdominal pain,Vomiting,Back pain,37.8,106,96,3,Gastroenteritis,Moderate,Outpatient medication
+2,Female,Sore throat,Abdominal pain,Chest pain,37,67,97,1,Allergy,Mild,Rest and hydration
+41,Female,Runny nose,Fatigue,Cough,38.8,117,93,8,Severe asthma exacerbation,Severe,Hospital admission
+81,Female,Back pain,Fever,Fatigue,39.7,145,92,8,Pneumonia,Severe,Hospital admission
+8,Female,Vomiting,Back pain,Sore throat,36.5,69,99,1,Allergy,Mild,Rest and hydration
+62,Male,Back pain,Runny nose,Dizziness,37.3,79,98,0,Allergy,Mild,Rest and hydration
+64,Female,Fever,Loss of appetite,Diarrhea,38.9,120,94,3,Gastroenteritis,Moderate,Outpatient medication
+35,Female,Fatigue,Shortness of breath,Abdominal pain,37,82,99,1,Healthy,Mild,Rest and hydration
+62,Male,Back pain,Fatigue,Chest pain,39.1,130,89,7,Pneumonia,Severe,Hospital admission
+37,Female,Shortness of breath,Chest pain,Fever,39,133,91,7,Severe asthma exacerbation,Severe,Hospital admission
+51,Male,Abdominal pain,Fever,Cough,37.9,103,96,7,Gastroenteritis,Moderate,Outpatient medication
+88,Female,Abdominal pain,Fatigue,Cough,38,114,95,7,Flu,Moderate,Outpatient medication
+67,Male,Cough,Sore throat,Runny nose,40.1,133,92,8,Severe asthma exacerbation,Severe,Hospital admission
+66,Female,Abdominal pain,Dizziness,Loss of appetite,36.9,77,96,2,Healthy,Mild,Rest and hydration
+2,Female,Headache,Chest pain,Back pain,37.1,71,96,2,Allergy,Mild,Rest and hydration
+89,Female,Nausea,Cough,Back pain,39.3,141,92,6,Severe asthma exacerbation,Severe,Hospital admission
+30,Male,Nausea,Body ache,Diarrhea,39,104,94,3,Gastroenteritis,Moderate,Outpatient medication
+28,Male,Fatigue,Loss of appetite,Headache,37.8,95,95,7,Gastroenteritis,Moderate,Outpatient medication
+64,Female,Fatigue,Cough,Fever,38.8,111,94,6,Flu,Moderate,Outpatient medication
+77,Male,Fever,Vomiting,Diarrhea,39.4,121,93,6,Pneumonia,Severe,Hospital admission
+57,Male,Fatigue,Abdominal pain,Cough,36.9,88,96,3,Allergy,Mild,Rest and hydration
+14,Female,Headache,Fever,Loss of appetite,38.5,112,95,7,Bronchitis,Moderate,Outpatient medication
+48,Male,Sore throat,Abdominal pain,Loss of appetite,36.7,88,100,2,Healthy,Mild,Rest and hydration
+23,Male,Dizziness,Body ache,Vomiting,39.9,130,90,9,Severe asthma exacerbation,Severe,Hospital admission
+86,Female,Nausea,Dizziness,Shortness of breath,38.5,98,94,3,Bronchitis,Moderate,Outpatient medication
+87,Male,Dizziness,Back pain,Headache,36.5,70,99,1,Allergy,Mild,Rest and hydration
+23,Male,Fever,Diarrhea,Back pain,36.8,89,99,3,Cold,Mild,Rest and hydration
+50,Male,Diarrhea,Nausea,Abdominal pain,38.7,109,95,7,Gastroenteritis,Moderate,Outpatient medication
+29,Female,Loss of appetite,Chest pain,Nausea,39,131,93,9,Severe asthma exacerbation,Severe,Hospital admission
+77,Female,Fatigue,Abdominal pain,Runny nose,40.6,153,80,9,Septic shock,Severe,ICU admission
+25,Male,Vomiting,Loss of appetite,Abdominal pain,38.2,103,93,4,Gastroenteritis,Moderate,Outpatient medication
+3,Female,Runny nose,Diarrhea,Cough,39.2,107,95,4,Bronchitis,Moderate,Outpatient medication
+56,Male,Diarrhea,Fever,Fatigue,38.3,101,93,5,Flu,Moderate,Outpatient medication
+54,Female,Shortness of breath,Loss of appetite,Fever,39.1,116,93,6,Gastroenteritis,Moderate,Outpatient medication
+51,Female,Headache,Abdominal pain,Runny nose,39.2,104,94,7,Gastroenteritis,Moderate,Outpatient medication
+65,Female,Shortness of breath,Fatigue,Dizziness,37.2,69,100,1,Allergy,Mild,Rest and hydration
+56,Female,Fatigue,Sore throat,Shortness of breath,38.7,99,96,6,Bronchitis,Moderate,Outpatient medication
+67,Female,Diarrhea,Chest pain,Back pain,39.7,142,90,7,Pneumonia,Severe,Hospital admission
+71,Male,Shortness of breath,Diarrhea,Cough,37.4,93,99,4,Cold,Mild,Rest and hydration
+95,Female,Back pain,Body ache,Cough,37.1,68,97,0,Cold,Mild,Rest and hydration
+75,Male,Dizziness,Body ache,Vomiting,40.4,170,85,8,Septic shock,Severe,ICU admission
+21,Female,Abdominal pain,Runny nose,Headache,39.4,128,92,9,Pneumonia,Severe,Hospital admission
+32,Female,Fatigue,Chest pain,Nausea,37.5,85,98,2,Cold,Mild,Rest and hydration
+28,Male,Fatigue,Headache,Fever,36.8,86,97,4,Healthy,Mild,Rest and hydration
+59,Male,Headache,Shortness of breath,Sore throat,39,106,95,7,Bronchitis,Moderate,Outpatient medication
+66,Female,Cough,Shortness of breath,Vomiting,36.8,94,98,3,Healthy,Mild,Rest and hydration
+51,Female,Diarrhea,Dizziness,Sore throat,37.4,72,99,2,Healthy,Mild,Rest and hydration
+18,Female,Back pain,Fatigue,Runny nose,37.1,71,100,1,Allergy,Mild,Rest and hydration
+74,Male,Sore throat,Abdominal pain,Headache,38,100,93,7,Flu,Moderate,Outpatient medication
+7,Female,Diarrhea,Dizziness,Headache,36.6,63,98,2,Cold,Mild,Rest and hydration
+4,Male,Sore throat,Loss of appetite,Body ache,37.2,67,97,4,Allergy,Mild,Rest and hydration
+55,Male,Cough,Fever,Vomiting,36.3,86,98,3,Healthy,Mild,Rest and hydration
+29,Female,Loss of appetite,Dizziness,Abdominal pain,36.7,87,97,3,Healthy,Mild,Rest and hydration
+46,Female,Loss of appetite,Vomiting,Body ache,40.5,165,80,9,Septic shock,Severe,ICU admission
+47,Female,Runny nose,Headache,Nausea,38.8,102,94,5,Gastroenteritis,Moderate,Outpatient medication
+67,Female,Nausea,Sore throat,Headache,36.9,92,100,2,Allergy,Mild,Rest and hydration
+67,Female,Loss of appetite,Runny nose,Nausea,37,83,96,2,Healthy,Mild,Rest and hydration
+58,Female,Abdominal pain,Fatigue,Sore throat,37.4,67,96,1,Cold,Mild,Rest and hydration
+65,Male,Headache,Body ache,Back pain,36.4,86,100,4,Healthy,Mild,Rest and hydration
+38,Male,Fatigue,Cough,Chest pain,39.4,118,93,9,Pneumonia,Severe,Hospital admission
+39,Male,Runny nose,Fever,Shortness of breath,37.5,71,97,2,Healthy,Mild,Rest and hydration
+75,Female,Headache,Fever,Back pain,37.2,61,98,4,Healthy,Mild,Rest and hydration
+59,Female,Vomiting,Runny nose,Back pain,36.5,72,99,3,Cold,Mild,Rest and hydration
+55,Male,Loss of appetite,Shortness of breath,Fatigue,36.5,87,96,1,Cold,Mild,Rest and hydration
+72,Female,Body ache,Headache,Cough,38.5,116,95,6,Bronchitis,Moderate,Outpatient medication
+14,Female,Body ache,Vomiting,Diarrhea,37.6,84,98,4,Allergy,Mild,Rest and hydration
+60,Male,Back pain,Body ache,Fatigue,39.1,145,93,7,Pneumonia,Severe,Hospital admission
+42,Female,Loss of appetite,Shortness of breath,Body ache,38.2,106,93,7,Flu,Moderate,Outpatient medication
+60,Female,Sore throat,Loss of appetite,Fatigue,37,69,98,2,Cold,Mild,Rest and hydration
+55,Female,Loss of appetite,Chest pain,Shortness of breath,38.7,113,93,5,Bronchitis,Moderate,Outpatient medication
+46,Male,Dizziness,Nausea,Shortness of breath,39.4,145,92,8,Pneumonia,Severe,Hospital admission
+81,Female,Vomiting,Loss of appetite,Body ache,39.2,126,88,6,Pneumonia,Severe,Hospital admission
+48,Male,Back pain,Vomiting,Loss of appetite,38.7,98,96,5,Bronchitis,Moderate,Outpatient medication
+41,Male,Cough,Nausea,Fatigue,37.9,100,96,5,Flu,Moderate,Outpatient medication
+19,Female,Runny nose,Fatigue,Nausea,36.6,63,98,0,Healthy,Mild,Rest and hydration
+35,Female,Cough,Sore throat,Fatigue,39.3,126,89,9,Severe asthma exacerbation,Severe,Hospital admission
+76,Male,Runny nose,Fatigue,Dizziness,41.2,146,80,9,Acute respiratory failure,Severe,ICU admission
+32,Male,Diarrhea,Fatigue,Back pain,38,107,95,7,Gastroenteritis,Moderate,Outpatient medication
+63,Male,Shortness of breath,Loss of appetite,Dizziness,36.2,79,96,0,Allergy,Mild,Rest and hydration
+13,Female,Cough,Loss of appetite,Runny nose,38,106,95,5,Bronchitis,Moderate,Outpatient medication
+61,Male,Chest pain,Body ache,Runny nose,37.2,70,96,1,Cold,Mild,Rest and hydration
+27,Male,Cough,Dizziness,Vomiting,37,81,99,1,Healthy,Mild,Rest and hydration
+17,Female,Runny nose,Body ache,Cough,36.5,91,100,4,Cold,Mild,Rest and hydration
+42,Female,Cough,Headache,Diarrhea,39.5,141,89,9,Pneumonia,Severe,Hospital admission
+12,Male,Vomiting,Body ache,Fever,37.8,114,95,6,Bronchitis,Moderate,Outpatient medication
+31,Male,Shortness of breath,Headache,Vomiting,38,107,94,3,Bronchitis,Moderate,Outpatient medication
+2,Male,Fatigue,Loss of appetite,Back pain,39.4,116,92,8,Severe asthma exacerbation,Severe,Hospital admission
+23,Male,Chest pain,Diarrhea,Dizziness,37.4,83,99,1,Allergy,Mild,Rest and hydration
+94,Male,Back pain,Shortness of breath,Nausea,36.8,62,98,1,Allergy,Mild,Rest and hydration
+40,Male,Cough,Vomiting,Sore throat,37.9,118,95,7,Gastroenteritis,Moderate,Outpatient medication
+93,Female,Body ache,Sore throat,Shortness of breath,39.6,129,90,7,Pneumonia,Severe,Hospital admission
+55,Male,Chest pain,Fever,Diarrhea,37.3,92,98,2,Healthy,Mild,Rest and hydration
+36,Male,Dizziness,Body ache,Shortness of breath,37.2,75,100,1,Healthy,Mild,Rest and hydration
+22,Female,Back pain,Body ache,Runny nose,36.7,62,100,2,Allergy,Mild,Rest and hydration
+8,Male,Shortness of breath,Back pain,Runny nose,36.2,68,97,4,Allergy,Mild,Rest and hydration
+49,Male,Body ache,Runny nose,Fatigue,38.7,120,93,7,Gastroenteritis,Moderate,Outpatient medication
+92,Male,Fatigue,Abdominal pain,Loss of appetite,36.4,95,99,3,Cold,Mild,Rest and hydration
+74,Female,Chest pain,Loss of appetite,Fever,38.2,104,95,7,Gastroenteritis,Moderate,Outpatient medication
+44,Male,Fever,Loss of appetite,Shortness of breath,40,123,89,8,Severe asthma exacerbation,Severe,Hospital admission
+73,Female,Headache,Vomiting,Cough,36.9,65,99,4,Healthy,Mild,Rest and hydration
+65,Male,Body ache,Chest pain,Fatigue,38.9,140,91,9,Severe asthma exacerbation,Severe,Hospital admission
+94,Female,Nausea,Vomiting,Loss of appetite,37,80,100,4,Allergy,Mild,Rest and hydration
+0,Male,Back pain,Cough,Fever,36.4,84,100,3,Allergy,Mild,Rest and hydration
+0,Male,Sore throat,Fever,Cough,38.3,99,96,3,Gastroenteritis,Moderate,Outpatient medication
+35,Female,Body ache,Diarrhea,Shortness of breath,36.6,67,97,1,Allergy,Mild,Rest and hydration
+90,Male,Diarrhea,Headache,Runny nose,39.5,137,88,6,Pneumonia,Severe,Hospital admission
+91,Male,Dizziness,Body ache,Fever,38,96,94,7,Gastroenteritis,Moderate,Outpatient medication
+64,Male,Abdominal pain,Vomiting,Nausea,36.4,93,100,3,Healthy,Mild,Rest and hydration
+18,Female,Diarrhea,Nausea,Fatigue,37.6,71,100,2,Healthy,Mild,Rest and hydration
+24,Female,Cough,Headache,Body ache,39.2,103,94,5,Gastroenteritis,Moderate,Outpatient medication
+81,Male,Vomiting,Fatigue,Chest pain,36.7,77,99,1,Allergy,Mild,Rest and hydration
+21,Female,Back pain,Dizziness,Loss of appetite,37.1,86,100,2,Cold,Mild,Rest and hydration
+62,Male,Diarrhea,Vomiting,Nausea,38.7,120,93,7,Gastroenteritis,Moderate,Outpatient medication
+11,Male,Runny nose,Dizziness,Vomiting,36.6,66,100,0,Cold,Mild,Rest and hydration
+32,Male,Cough,Loss of appetite,Runny nose,36.4,77,97,1,Healthy,Mild,Rest and hydration
+66,Male,Vomiting,Nausea,Sore throat,40,137,93,7,Severe asthma exacerbation,Severe,Hospital admission
+68,Female,Headache,Abdominal pain,Diarrhea,36.4,89,97,0,Healthy,Mild,Rest and hydration
+10,Female,Abdominal pain,Dizziness,Chest pain,37.6,74,98,4,Healthy,Mild,Rest and hydration
+70,Female,Headache,Fever,Dizziness,36.9,93,99,4,Cold,Mild,Rest and hydration
+61,Male,Chest pain,Cough,Vomiting,39.4,129,88,9,Pneumonia,Severe,Hospital admission
+35,Male,Abdominal pain,Back pain,Nausea,37,70,97,4,Allergy,Mild,Rest and hydration
+56,Female,Vomiting,Fever,Nausea,37.1,86,100,4,Healthy,Mild,Rest and hydration
+80,Male,Body ache,Vomiting,Nausea,36.7,70,97,1,Healthy,Mild,Rest and hydration
+18,Female,Fever,Body ache,Chest pain,36.3,93,98,2,Cold,Mild,Rest and hydration
+57,Female,Back pain,Body ache,Shortness of breath,40.7,136,89,10,Septic shock,Severe,ICU admission
+56,Male,Fever,Cough,Body ache,37.5,62,96,4,Cold,Mild,Rest and hydration
+24,Female,Body ache,Fever,Headache,36.8,66,97,0,Cold,Mild,Rest and hydration
+67,Female,Nausea,Fever,Back pain,37.9,108,93,4,Bronchitis,Moderate,Outpatient medication
+26,Female,Headache,Nausea,Sore throat,39.2,116,88,8,Severe asthma exacerbation,Severe,Hospital admission
+75,Male,Fatigue,Runny nose,Shortness of breath,36.4,61,100,4,Healthy,Mild,Rest and hydration
+46,Male,Sore throat,Cough,Fatigue,36.8,87,99,1,Healthy,Mild,Rest and hydration
+64,Female,Sore throat,Dizziness,Headache,36.9,88,98,1,Cold,Mild,Rest and hydration
+91,Male,Back pain,Nausea,Shortness of breath,37.9,104,93,7,Flu,Moderate,Outpatient medication
+2,Female,Sore throat,Loss of appetite,Cough,36.3,78,96,3,Cold,Mild,Rest and hydration
+59,Female,Chest pain,Back pain,Nausea,36.3,87,99,2,Healthy,Mild,Rest and hydration
+63,Female,Fever,Nausea,Body ache,39.7,136,89,9,Septic shock,Severe,ICU admission
+0,Male,Body ache,Runny nose,Vomiting,37.4,60,97,3,Cold,Mild,Rest and hydration
+7,Male,Sore throat,Chest pain,Body ache,36.3,64,99,0,Cold,Mild,Rest and hydration
+20,Male,Loss of appetite,Fatigue,Cough,36.7,63,99,3,Healthy,Mild,Rest and hydration
+93,Female,Nausea,Dizziness,Vomiting,39,136,88,7,Pneumonia,Severe,Hospital admission
+74,Female,Dizziness,Cough,Runny nose,39.6,121,91,7,Pneumonia,Severe,Hospital admission
+71,Female,Loss of appetite,Headache,Sore throat,36.7,63,98,0,Allergy,Mild,Rest and hydration
+72,Male,Sore throat,Nausea,Abdominal pain,36.5,76,99,2,Healthy,Mild,Rest and hydration
+5,Male,Fatigue,Sore throat,Headache,37.3,87,96,2,Cold,Mild,Rest and hydration
+64,Male,Diarrhea,Nausea,Runny nose,36.8,79,100,0,Allergy,Mild,Rest and hydration
+36,Male,Fatigue,Vomiting,Fever,38.7,114,94,7,Flu,Moderate,Outpatient medication
+48,Female,Abdominal pain,Headache,Shortness of breath,39.1,143,89,8,Pneumonia,Severe,Hospital admission
+83,Male,Sore throat,Runny nose,Loss of appetite,38.6,119,94,6,Gastroenteritis,Moderate,Outpatient medication
+46,Male,Loss of appetite,Sore throat,Cough,37.1,66,98,0,Allergy,Mild,Rest and hydration
+68,Female,Nausea,Runny nose,Sore throat,36.6,95,98,0,Healthy,Mild,Rest and hydration
+91,Male,Chest pain,Fever,Diarrhea,39.3,139,88,9,Pneumonia,Severe,Hospital admission
+58,Male,Diarrhea,Dizziness,Fever,38.8,108,96,7,Flu,Moderate,Outpatient medication
+21,Female,Nausea,Headache,Shortness of breath,37.5,90,96,4,Allergy,Mild,Rest and hydration
+47,Male,Runny nose,Abdominal pain,Cough,37.2,75,96,2,Allergy,Mild,Rest and hydration
+94,Male,Dizziness,Fatigue,Shortness of breath,37.6,76,98,2,Allergy,Mild,Rest and hydration
+75,Male,Shortness of breath,Runny nose,Dizziness,38.7,109,96,3,Gastroenteritis,Moderate,Outpatient medication
+29,Male,Fatigue,Abdominal pain,Vomiting,36.6,72,96,4,Healthy,Mild,Rest and hydration
+66,Female,Headache,Diarrhea,Shortness of breath,38,98,93,3,Gastroenteritis,Moderate,Outpatient medication
+1,Female,Chest pain,Diarrhea,Fatigue,39.3,143,91,8,Pneumonia,Severe,Hospital admission
+7,Female,Diarrhea,Loss of appetite,Headache,36.7,69,96,4,Cold,Mild,Rest and hydration
+49,Female,Runny nose,Diarrhea,Shortness of breath,40.8,156,86,9,Septic shock,Severe,ICU admission
+64,Female,Headache,Cough,Diarrhea,37.2,72,98,3,Cold,Mild,Rest and hydration
+70,Male,Runny nose,Sore throat,Fatigue,39.4,137,92,8,Severe asthma exacerbation,Severe,Hospital admission
+72,Male,Abdominal pain,Sore throat,Nausea,38,116,96,5,Gastroenteritis,Moderate,Outpatient medication
+10,Female,Headache,Back pain,Dizziness,38,114,95,4,Bronchitis,Moderate,Outpatient medication
+39,Female,Shortness of breath,Chest pain,Sore throat,36.7,83,100,4,Allergy,Mild,Rest and hydration
+35,Male,Runny nose,Nausea,Abdominal pain,37.3,80,98,3,Healthy,Mild,Rest and hydration
+29,Male,Nausea,Abdominal pain,Vomiting,37.9,111,96,6,Bronchitis,Moderate,Outpatient medication
+73,Female,Chest pain,Fatigue,Shortness of breath,37.6,72,96,3,Allergy,Mild,Rest and hydration
+49,Male,Diarrhea,Cough,Loss of appetite,36.9,81,97,4,Allergy,Mild,Rest and hydration
+85,Female,Back pain,Cough,Fever,36.5,79,98,0,Healthy,Mild,Rest and hydration
+49,Male,Abdominal pain,Sore throat,Chest pain,38.7,95,96,6,Gastroenteritis,Moderate,Outpatient medication
+15,Male,Runny nose,Cough,Abdominal pain,38.9,96,96,5,Gastroenteritis,Moderate,Outpatient medication
+44,Female,Cough,Nausea,Runny nose,39.1,137,90,6,Severe asthma exacerbation,Severe,Hospital admission
+60,Female,Cough,Nausea,Diarrhea,37.9,106,96,6,Gastroenteritis,Moderate,Outpatient medication
+62,Male,Loss of appetite,Body ache,Dizziness,38,102,94,7,Gastroenteritis,Moderate,Outpatient medication
+59,Female,Shortness of breath,Diarrhea,Nausea,39.1,119,92,6,Severe asthma exacerbation,Severe,Hospital admission
+75,Female,Fever,Vomiting,Back pain,36.5,78,99,2,Cold,Mild,Rest and hydration
+44,Male,Fatigue,Dizziness,Headache,36.5,84,99,4,Cold,Mild,Rest and hydration
+53,Male,Fever,Body ache,Shortness of breath,36.7,74,97,0,Healthy,Mild,Rest and hydration
+13,Female,Abdominal pain,Loss of appetite,Body ache,38.1,96,93,4,Gastroenteritis,Moderate,Outpatient medication
+29,Female,Sore throat,Nausea,Body ache,40.6,130,82,8,Acute respiratory failure,Severe,ICU admission
+29,Male,Diarrhea,Chest pain,Loss of appetite,38,105,93,7,Flu,Moderate,Outpatient medication
+30,Male,Loss of appetite,Body ache,Diarrhea,39.1,107,94,3,Gastroenteritis,Moderate,Outpatient medication
+78,Male,Loss of appetite,Fatigue,Chest pain,38.4,119,94,5,Flu,Moderate,Outpatient medication
+3,Female,Chest pain,Abdominal pain,Fatigue,37,84,99,1,Cold,Mild,Rest and hydration
+29,Male,Fatigue,Fever,Shortness of breath,38,100,96,6,Bronchitis,Moderate,Outpatient medication
+4,Male,Chest pain,Fever,Back pain,39.2,132,93,7,Pneumonia,Severe,Hospital admission
+64,Male,Shortness of breath,Fatigue,Back pain,38.7,96,95,3,Bronchitis,Moderate,Outpatient medication
+11,Male,Cough,Back pain,Chest pain,38.6,116,93,7,Bronchitis,Moderate,Outpatient medication
+64,Male,Nausea,Runny nose,Dizziness,36.5,62,98,0,Allergy,Mild,Rest and hydration
+68,Female,Cough,Vomiting,Fever,38.5,120,94,5,Gastroenteritis,Moderate,Outpatient medication
+67,Female,Body ache,Fever,Abdominal pain,40,136,90,7,Pneumonia,Severe,Hospital admission
+31,Female,Headache,Loss of appetite,Abdominal pain,38.6,96,93,5,Flu,Moderate,Outpatient medication
+89,Female,Shortness of breath,Nausea,Vomiting,37.5,85,100,3,Healthy,Mild,Rest and hydration
+50,Male,Chest pain,Dizziness,Body ache,39.1,143,88,8,Pneumonia,Severe,Hospital admission
+9,Male,Vomiting,Sore throat,Fatigue,36.8,81,96,3,Allergy,Mild,Rest and hydration
+72,Female,Fever,Nausea,Sore throat,36.6,92,96,3,Cold,Mild,Rest and hydration
+38,Female,Fever,Loss of appetite,Runny nose,39.1,124,93,6,Severe asthma exacerbation,Severe,Hospital admission
+89,Male,Diarrhea,Sore throat,Chest pain,39,97,93,4,Bronchitis,Moderate,Outpatient medication
+59,Male,Runny nose,Body ache,Loss of appetite,39.8,139,89,6,Severe asthma exacerbation,Severe,Hospital admission
+89,Female,Abdominal pain,Fatigue,Runny nose,37.3,69,99,2,Cold,Mild,Rest and hydration
+35,Female,Runny nose,Cough,Body ache,37,94,96,3,Allergy,Mild,Rest and hydration
+30,Female,Diarrhea,Shortness of breath,Dizziness,37.3,79,97,1,Healthy,Mild,Rest and hydration
+66,Male,Headache,Chest pain,Diarrhea,37.8,108,94,4,Bronchitis,Moderate,Outpatient medication
+7,Female,Back pain,Diarrhea,Loss of appetite,39.4,122,91,7,Pneumonia,Severe,Hospital admission
+70,Female,Back pain,Loss of appetite,Runny nose,39.2,120,88,6,Severe asthma exacerbation,Severe,Hospital admission
+21,Female,Back pain,Dizziness,Nausea,37.4,61,99,2,Allergy,Mild,Rest and hydration
+28,Female,Chest pain,Nausea,Fatigue,38.7,116,96,7,Bronchitis,Moderate,Outpatient medication
+42,Male,Dizziness,Sore throat,Body ache,36.4,80,100,3,Healthy,Mild,Rest and hydration
+86,Female,Runny nose,Shortness of breath,Dizziness,38.7,119,95,7,Gastroenteritis,Moderate,Outpatient medication
+83,Male,Dizziness,Chest pain,Shortness of breath,38,107,93,7,Bronchitis,Moderate,Outpatient medication
+49,Male,Fever,Back pain,Dizziness,39.1,115,96,7,Flu,Moderate,Outpatient medication
+1,Female,Nausea,Vomiting,Cough,36.6,93,98,1,Allergy,Mild,Rest and hydration
+2,Female,Cough,Nausea,Runny nose,39,109,93,5,Bronchitis,Moderate,Outpatient medication
+58,Male,Nausea,Chest pain,Vomiting,38.6,118,95,4,Bronchitis,Moderate,Outpatient medication
+16,Female,Back pain,Runny nose,Cough,39.7,116,92,7,Severe asthma exacerbation,Severe,Hospital admission
+31,Female,Abdominal pain,Fever,Shortness of breath,37.5,83,100,2,Allergy,Mild,Rest and hydration
+88,Female,Shortness of breath,Back pain,Vomiting,37.2,78,97,3,Healthy,Mild,Rest and hydration
+45,Female,Body ache,Vomiting,Cough,38.3,102,94,7,Gastroenteritis,Moderate,Outpatient medication
+67,Male,Vomiting,Body ache,Runny nose,37.6,93,98,1,Cold,Mild,Rest and hydration
+69,Male,Nausea,Cough,Chest pain,36.9,71,97,1,Cold,Mild,Rest and hydration
+75,Male,Loss of appetite,Body ache,Vomiting,36.7,87,98,3,Allergy,Mild,Rest and hydration
+73,Female,Loss of appetite,Dizziness,Abdominal pain,36.3,77,98,2,Allergy,Mild,Rest and hydration
+38,Male,Back pain,Vomiting,Fatigue,38.3,103,94,7,Flu,Moderate,Outpatient medication
+61,Female,Shortness of breath,Fatigue,Back pain,38,109,94,6,Bronchitis,Moderate,Outpatient medication
+22,Male,Body ache,Nausea,Diarrhea,38.7,110,94,7,Flu,Moderate,Outpatient medication
+94,Female,Cough,Chest pain,Back pain,36.6,82,99,0,Healthy,Mild,Rest and hydration
+31,Male,Fever,Headache,Shortness of breath,36.6,81,99,4,Cold,Mild,Rest and hydration
+42,Female,Diarrhea,Dizziness,Shortness of breath,36.7,70,99,4,Healthy,Mild,Rest and hydration
+72,Female,Vomiting,Headache,Fever,36.4,68,97,4,Allergy,Mild,Rest and hydration
+54,Male,Back pain,Headache,Runny nose,37.3,71,98,1,Healthy,Mild,Rest and hydration
+75,Female,Headache,Dizziness,Runny nose,38.2,117,96,3,Flu,Moderate,Outpatient medication
+49,Female,Abdominal pain,Headache,Sore throat,36.9,86,100,1,Healthy,Mild,Rest and hydration
+22,Female,Fatigue,Headache,Runny nose,36.9,92,97,4,Healthy,Mild,Rest and hydration
+4,Female,Vomiting,Dizziness,Fatigue,37.4,90,96,3,Allergy,Mild,Rest and hydration
+32,Female,Loss of appetite,Runny nose,Sore throat,36.4,77,100,0,Cold,Mild,Rest and hydration
+35,Male,Headache,Fever,Body ache,36.3,64,99,1,Allergy,Mild,Rest and hydration
+32,Female,Diarrhea,Abdominal pain,Headache,36.8,85,97,0,Healthy,Mild,Rest and hydration
+32,Female,Runny nose,Loss of appetite,Fatigue,40.1,125,90,8,Pneumonia,Severe,Hospital admission
+51,Male,Dizziness,Sore throat,Abdominal pain,38.1,106,94,4,Bronchitis,Moderate,Outpatient medication
+13,Male,Nausea,Dizziness,Body ache,37.4,83,98,3,Allergy,Mild,Rest and hydration
+69,Female,Fever,Loss of appetite,Shortness of breath,38.6,115,93,3,Flu,Moderate,Outpatient medication
+30,Male,Back pain,Vomiting,Chest pain,37.3,89,99,3,Healthy,Mild,Rest and hydration
+36,Male,Nausea,Chest pain,Dizziness,36.4,75,99,4,Cold,Mild,Rest and hydration
+13,Male,Shortness of breath,Body ache,Diarrhea,39.2,109,95,3,Bronchitis,Moderate,Outpatient medication
+34,Female,Runny nose,Dizziness,Chest pain,36.3,66,97,4,Cold,Mild,Rest and hydration
+27,Male,Nausea,Diarrhea,Shortness of breath,37.2,63,96,3,Allergy,Mild,Rest and hydration
+32,Female,Dizziness,Nausea,Fever,38.9,102,93,7,Gastroenteritis,Moderate,Outpatient medication
+95,Female,Back pain,Cough,Body ache,36.3,78,96,3,Cold,Mild,Rest and hydration
+43,Female,Loss of appetite,Sore throat,Diarrhea,40.2,134,88,9,Severe asthma exacerbation,Severe,Hospital admission
+40,Male,Sore throat,Cough,Body ache,38.8,104,94,3,Bronchitis,Moderate,Outpatient medication
+68,Female,Back pain,Nausea,Dizziness,37.9,118,94,5,Flu,Moderate,Outpatient medication
+30,Female,Vomiting,Fever,Sore throat,39,106,94,6,Flu,Moderate,Outpatient medication
+13,Male,Sore throat,Diarrhea,Fatigue,40.3,141,78,9,Acute respiratory failure,Severe,ICU admission
+70,Male,Chest pain,Diarrhea,Headache,38.8,98,95,7,Flu,Moderate,Outpatient medication
+45,Female,Headache,Cough,Runny nose,37.5,62,98,2,Healthy,Mild,Rest and hydration
+74,Female,Shortness of breath,Body ache,Back pain,37.1,62,97,3,Allergy,Mild,Rest and hydration
+8,Female,Loss of appetite,Vomiting,Back pain,36.9,66,99,4,Allergy,Mild,Rest and hydration
+77,Female,Abdominal pain,Fever,Nausea,37.2,94,97,4,Healthy,Mild,Rest and hydration
+68,Male,Dizziness,Vomiting,Headache,40.8,162,86,9,Septic shock,Severe,ICU admission
+15,Female,Nausea,Runny nose,Chest pain,40.6,131,79,10,Septic shock,Severe,ICU admission
+52,Male,Diarrhea,Nausea,Fatigue,37.6,72,100,3,Healthy,Mild,Rest and hydration
+30,Male,Abdominal pain,Back pain,Fever,37.6,77,96,3,Allergy,Mild,Rest and hydration
+89,Female,Fatigue,Cough,Diarrhea,37.5,83,98,0,Healthy,Mild,Rest and hydration
+26,Female,Headache,Back pain,Chest pain,39.1,126,93,6,Severe asthma exacerbation,Severe,Hospital admission
+70,Male,Loss of appetite,Shortness of breath,Diarrhea,36.9,71,99,3,Cold,Mild,Rest and hydration
+69,Female,Abdominal pain,Dizziness,Fatigue,38.5,99,93,4,Bronchitis,Moderate,Outpatient medication
+26,Male,Shortness of breath,Vomiting,Headache,38.2,118,95,3,Gastroenteritis,Moderate,Outpatient medication
+16,Male,Fever,Runny nose,Cough,38.3,99,96,3,Bronchitis,Moderate,Outpatient medication
+1,Male,Loss of appetite,Runny nose,Cough,38.2,107,93,4,Gastroenteritis,Moderate,Outpatient medication
+43,Female,Dizziness,Shortness of breath,Sore throat,39.5,125,93,8,Pneumonia,Severe,Hospital admission
+63,Male,Shortness of breath,Headache,Diarrhea,37.3,65,96,2,Cold,Mild,Rest and hydration
+7,Male,Fever,Sore throat,Runny nose,37.3,74,100,3,Allergy,Mild,Rest and hydration
+19,Female,Vomiting,Sore throat,Loss of appetite,38.2,99,95,6,Gastroenteritis,Moderate,Outpatient medication
+59,Female,Loss of appetite,Headache,Shortness of breath,39.9,131,91,9,Severe asthma exacerbation,Severe,Hospital admission
+60,Female,Headache,Abdominal pain,Nausea,36.2,69,98,0,Healthy,Mild,Rest and hydration
+77,Female,Shortness of breath,Cough,Fever,38.9,139,88,7,Pneumonia,Severe,Hospital admission
+34,Male,Sore throat,Runny nose,Chest pain,37.1,76,98,1,Cold,Mild,Rest and hydration
+63,Male,Back pain,Shortness of breath,Fever,41.1,137,88,8,Acute respiratory failure,Severe,ICU admission
+92,Male,Chest pain,Diarrhea,Headache,37.1,95,100,3,Allergy,Mild,Rest and hydration
+72,Male,Diarrhea,Abdominal pain,Dizziness,36.5,72,99,4,Allergy,Mild,Rest and hydration
+6,Male,Chest pain,Loss of appetite,Fever,38,115,93,5,Gastroenteritis,Moderate,Outpatient medication
+66,Female,Diarrhea,Fatigue,Loss of appetite,40.8,161,88,9,Acute respiratory failure,Severe,ICU admission
+11,Male,Cough,Diarrhea,Sore throat,39.4,133,89,9,Severe asthma exacerbation,Severe,Hospital admission
+28,Female,Back pain,Vomiting,Fatigue,37.3,61,96,1,Cold,Mild,Rest and hydration
+83,Female,Vomiting,Sore throat,Fatigue,40.8,153,87,8,Septic shock,Severe,ICU admission
+5,Female,Body ache,Abdominal pain,Loss of appetite,38.2,105,96,7,Flu,Moderate,Outpatient medication
+39,Male,Body ache,Vomiting,Chest pain,38.7,101,96,4,Bronchitis,Moderate,Outpatient medication
+45,Female,Fever,Headache,Dizziness,37.2,62,99,2,Healthy,Mild,Rest and hydration
+28,Female,Shortness of breath,Nausea,Fatigue,38.8,119,93,4,Gastroenteritis,Moderate,Outpatient medication
+42,Male,Vomiting,Cough,Nausea,39.9,126,92,8,Severe asthma exacerbation,Severe,Hospital admission
+62,Female,Fever,Shortness of breath,Headache,38.7,100,96,3,Flu,Moderate,Outpatient medication
+4,Male,Shortness of breath,Chest pain,Body ache,38,103,93,4,Gastroenteritis,Moderate,Outpatient medication
+62,Male,Runny nose,Dizziness,Fever,37.2,65,98,4,Allergy,Mild,Rest and hydration
+16,Female,Runny nose,Shortness of breath,Sore throat,36.5,68,100,0,Healthy,Mild,Rest and hydration
+48,Male,Fever,Back pain,Loss of appetite,37.3,67,98,3,Allergy,Mild,Rest and hydration
+86,Male,Nausea,Abdominal pain,Vomiting,40.7,135,86,8,Acute respiratory failure,Severe,ICU admission
+81,Male,Vomiting,Chest pain,Abdominal pain,37,84,97,2,Cold,Mild,Rest and hydration
+48,Male,Runny nose,Diarrhea,Vomiting,36.5,62,98,2,Healthy,Mild,Rest and hydration
+38,Female,Loss of appetite,Abdominal pain,Cough,36.7,73,100,3,Healthy,Mild,Rest and hydration
+46,Female,Fatigue,Body ache,Chest pain,36.5,89,98,2,Cold,Mild,Rest and hydration
+27,Female,Cough,Back pain,Shortness of breath,39.5,141,89,6,Severe asthma exacerbation,Severe,Hospital admission
+59,Female,Fatigue,Abdominal pain,Sore throat,38.1,107,95,3,Gastroenteritis,Moderate,Outpatient medication
+26,Male,Runny nose,Body ache,Abdominal pain,38.5,109,93,5,Gastroenteritis,Moderate,Outpatient medication
+63,Male,Body ache,Chest pain,Abdominal pain,36.8,89,97,2,Allergy,Mild,Rest and hydration
+67,Female,Fatigue,Back pain,Body ache,38.7,97,93,7,Flu,Moderate,Outpatient medication
+65,Female,Headache,Runny nose,Vomiting,38.4,117,94,3,Flu,Moderate,Outpatient medication
+65,Female,Sore throat,Back pain,Loss of appetite,36.5,74,100,4,Cold,Mild,Rest and hydration
+51,Male,Fever,Loss of appetite,Cough,37.5,81,97,3,Cold,Mild,Rest and hydration
+95,Male,Headache,Back pain,Shortness of breath,36.9,65,99,3,Cold,Mild,Rest and hydration
+52,Male,Abdominal pain,Nausea,Diarrhea,39.2,127,88,7,Pneumonia,Severe,Hospital admission
+52,Male,Runny nose,Dizziness,Back pain,37.4,85,96,2,Cold,Mild,Rest and hydration
+20,Male,Dizziness,Loss of appetite,Chest pain,38.9,107,95,5,Bronchitis,Moderate,Outpatient medication
+69,Male,Shortness of breath,Nausea,Runny nose,37.4,91,98,3,Healthy,Mild,Rest and hydration
+61,Male,Runny nose,Fatigue,Vomiting,36.3,93,97,3,Cold,Mild,Rest and hydration
+72,Female,Body ache,Abdominal pain,Cough,39.7,140,90,8,Pneumonia,Severe,Hospital admission
+29,Female,Vomiting,Loss of appetite,Abdominal pain,37.3,84,99,3,Healthy,Mild,Rest and hydration
+41,Male,Shortness of breath,Body ache,Sore throat,36.4,67,99,4,Allergy,Mild,Rest and hydration
+11,Female,Chest pain,Fatigue,Loss of appetite,36.3,63,96,1,Allergy,Mild,Rest and hydration
+1,Male,Chest pain,Runny nose,Sore throat,38.9,135,89,9,Severe asthma exacerbation,Severe,Hospital admission
+51,Male,Sore throat,Diarrhea,Vomiting,36.4,62,99,1,Cold,Mild,Rest and hydration
+40,Female,Back pain,Body ache,Chest pain,37,89,99,2,Cold,Mild,Rest and hydration
+28,Male,Shortness of breath,Cough,Sore throat,37.9,107,96,6,Bronchitis,Moderate,Outpatient medication
+64,Male,Sore throat,Headache,Nausea,39.4,137,93,8,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Vomiting,Runny nose,Fatigue,36.7,81,96,4,Healthy,Mild,Rest and hydration
+41,Female,Cough,Back pain,Runny nose,37.6,60,100,2,Healthy,Mild,Rest and hydration
+13,Female,Dizziness,Fatigue,Runny nose,37.2,73,99,2,Cold,Mild,Rest and hydration
+87,Male,Fatigue,Sore throat,Diarrhea,39.5,134,93,8,Severe asthma exacerbation,Severe,Hospital admission
+23,Male,Loss of appetite,Vomiting,Cough,39.2,122,93,8,Severe asthma exacerbation,Severe,Hospital admission
+58,Male,Nausea,Sore throat,Abdominal pain,37.9,117,95,4,Bronchitis,Moderate,Outpatient medication
+66,Female,Chest pain,Cough,Dizziness,38,114,96,4,Flu,Moderate,Outpatient medication
+56,Female,Runny nose,Loss of appetite,Nausea,39,114,93,6,Bronchitis,Moderate,Outpatient medication
+53,Male,Runny nose,Diarrhea,Abdominal pain,40.1,115,88,9,Severe asthma exacerbation,Severe,Hospital admission
+74,Female,Loss of appetite,Nausea,Body ache,37.4,67,97,1,Healthy,Mild,Rest and hydration
+47,Female,Chest pain,Back pain,Headache,37.3,83,96,1,Healthy,Mild,Rest and hydration
+58,Male,Sore throat,Body ache,Diarrhea,39.7,136,92,8,Severe asthma exacerbation,Severe,Hospital admission
+75,Female,Shortness of breath,Headache,Vomiting,38.6,98,95,4,Gastroenteritis,Moderate,Outpatient medication
+57,Female,Vomiting,Sore throat,Nausea,38.3,116,95,5,Bronchitis,Moderate,Outpatient medication
+56,Male,Abdominal pain,Chest pain,Vomiting,39,115,93,5,Bronchitis,Moderate,Outpatient medication
+3,Female,Fatigue,Body ache,Abdominal pain,37.2,86,99,1,Cold,Mild,Rest and hydration
+71,Female,Diarrhea,Cough,Dizziness,38.9,129,93,9,Pneumonia,Severe,Hospital admission
+24,Male,Chest pain,Fever,Loss of appetite,40.1,134,89,8,Pneumonia,Severe,Hospital admission
+80,Male,Body ache,Fever,Fatigue,39.2,134,91,8,Pneumonia,Severe,Hospital admission
+52,Male,Body ache,Runny nose,Diarrhea,38,106,95,5,Bronchitis,Moderate,Outpatient medication
+0,Male,Shortness of breath,Nausea,Chest pain,36.3,62,96,2,Healthy,Mild,Rest and hydration
+32,Male,Back pain,Fatigue,Fever,37.5,89,96,4,Healthy,Mild,Rest and hydration
+71,Male,Back pain,Loss of appetite,Fatigue,40,143,90,7,Pneumonia,Severe,Hospital admission
+69,Female,Dizziness,Abdominal pain,Fatigue,39.2,130,92,9,Severe asthma exacerbation,Severe,Hospital admission
+45,Female,Nausea,Dizziness,Abdominal pain,36.7,71,98,4,Allergy,Mild,Rest and hydration
+93,Female,Sore throat,Shortness of breath,Nausea,39.2,111,96,5,Bronchitis,Moderate,Outpatient medication
+65,Female,Dizziness,Vomiting,Fever,38.6,101,96,7,Gastroenteritis,Moderate,Outpatient medication
+93,Female,Nausea,Fatigue,Loss of appetite,37.8,118,94,4,Flu,Moderate,Outpatient medication
+60,Female,Shortness of breath,Diarrhea,Fever,37.1,85,98,2,Healthy,Mild,Rest and hydration
+76,Male,Loss of appetite,Sore throat,Headache,39.2,119,94,7,Flu,Moderate,Outpatient medication
+74,Male,Body ache,Shortness of breath,Dizziness,39.7,145,89,6,Pneumonia,Severe,Hospital admission
+44,Female,Cough,Vomiting,Body ache,38.8,102,96,4,Bronchitis,Moderate,Outpatient medication
+56,Male,Runny nose,Back pain,Shortness of breath,37.8,100,94,4,Gastroenteritis,Moderate,Outpatient medication
+72,Female,Nausea,Fatigue,Cough,36.8,75,98,2,Allergy,Mild,Rest and hydration
+64,Male,Nausea,Sore throat,Vomiting,36.8,95,96,0,Cold,Mild,Rest and hydration
+52,Male,Diarrhea,Fever,Abdominal pain,38.9,116,96,4,Gastroenteritis,Moderate,Outpatient medication
+66,Male,Runny nose,Back pain,Cough,36.2,63,99,4,Cold,Mild,Rest and hydration
+30,Female,Shortness of breath,Chest pain,Abdominal pain,37.9,109,95,6,Flu,Moderate,Outpatient medication
+36,Female,Dizziness,Loss of appetite,Runny nose,36.6,87,98,0,Allergy,Mild,Rest and hydration
+89,Male,Runny nose,Loss of appetite,Body ache,36.5,78,96,2,Healthy,Mild,Rest and hydration
+75,Female,Nausea,Dizziness,Back pain,38.2,116,94,7,Bronchitis,Moderate,Outpatient medication
+72,Male,Fever,Nausea,Dizziness,37.9,103,94,4,Gastroenteritis,Moderate,Outpatient medication
+2,Female,Loss of appetite,Cough,Dizziness,37.3,76,96,4,Cold,Mild,Rest and hydration
+92,Male,Diarrhea,Body ache,Nausea,41,163,81,8,Acute respiratory failure,Severe,ICU admission
+70,Female,Dizziness,Back pain,Diarrhea,39.1,112,96,3,Flu,Moderate,Outpatient medication
+57,Female,Loss of appetite,Sore throat,Abdominal pain,38.2,102,95,3,Flu,Moderate,Outpatient medication
+18,Female,Back pain,Body ache,Headache,41,145,83,9,Acute respiratory failure,Severe,ICU admission
+62,Female,Fever,Dizziness,Fatigue,36.5,85,96,4,Healthy,Mild,Rest and hydration
+88,Male,Runny nose,Diarrhea,Abdominal pain,36.8,71,100,1,Allergy,Mild,Rest and hydration
+69,Female,Sore throat,Back pain,Abdominal pain,38.4,117,94,5,Flu,Moderate,Outpatient medication
+77,Female,Body ache,Cough,Nausea,36.4,90,98,1,Healthy,Mild,Rest and hydration
+50,Male,Sore throat,Dizziness,Cough,36.3,60,98,1,Cold,Mild,Rest and hydration
+35,Female,Back pain,Nausea,Headache,39.6,170,85,9,Septic shock,Severe,ICU admission
+72,Female,Dizziness,Sore throat,Fever,38.8,99,94,5,Gastroenteritis,Moderate,Outpatient medication
+30,Female,Fever,Chest pain,Runny nose,39.5,115,88,8,Severe asthma exacerbation,Severe,Hospital admission
+88,Male,Cough,Body ache,Runny nose,40.1,136,91,7,Pneumonia,Severe,Hospital admission
+52,Female,Chest pain,Body ache,Loss of appetite,38.2,96,93,6,Bronchitis,Moderate,Outpatient medication
+50,Male,Vomiting,Chest pain,Loss of appetite,38.9,143,93,6,Severe asthma exacerbation,Severe,Hospital admission
+29,Female,Dizziness,Abdominal pain,Fever,38.5,99,94,7,Flu,Moderate,Outpatient medication
+0,Female,Back pain,Chest pain,Runny nose,37.1,87,100,4,Allergy,Mild,Rest and hydration
+70,Female,Chest pain,Cough,Body ache,37.2,64,96,1,Healthy,Mild,Rest and hydration
+41,Male,Chest pain,Fever,Back pain,36.4,70,98,4,Healthy,Mild,Rest and hydration
+39,Female,Chest pain,Fever,Fatigue,37.2,82,99,2,Cold,Mild,Rest and hydration
+17,Male,Headache,Fatigue,Loss of appetite,39.1,102,94,3,Bronchitis,Moderate,Outpatient medication
+44,Female,Cough,Headache,Abdominal pain,36.5,87,97,4,Allergy,Mild,Rest and hydration
+31,Male,Dizziness,Cough,Runny nose,40.6,151,83,10,Septic shock,Severe,ICU admission
+63,Female,Shortness of breath,Cough,Diarrhea,38.6,106,95,7,Gastroenteritis,Moderate,Outpatient medication
+56,Male,Abdominal pain,Diarrhea,Vomiting,39,118,89,8,Pneumonia,Severe,Hospital admission
+70,Male,Chest pain,Headache,Diarrhea,37,82,96,3,Healthy,Mild,Rest and hydration
+37,Female,Dizziness,Runny nose,Sore throat,38.7,120,93,6,Flu,Moderate,Outpatient medication
+22,Female,Vomiting,Fatigue,Diarrhea,37,66,99,0,Allergy,Mild,Rest and hydration
+42,Female,Fatigue,Abdominal pain,Body ache,37,76,97,1,Healthy,Mild,Rest and hydration
+59,Male,Sore throat,Diarrhea,Chest pain,37.1,61,99,0,Allergy,Mild,Rest and hydration
+56,Male,Runny nose,Sore throat,Diarrhea,37.3,63,96,3,Cold,Mild,Rest and hydration
+59,Male,Loss of appetite,Back pain,Cough,37.4,65,100,0,Allergy,Mild,Rest and hydration
+37,Female,Runny nose,Chest pain,Sore throat,40.1,120,89,7,Pneumonia,Severe,Hospital admission
+26,Male,Shortness of breath,Runny nose,Loss of appetite,40.1,145,90,8,Pneumonia,Severe,Hospital admission
+80,Female,Shortness of breath,Runny nose,Nausea,36.3,88,97,2,Allergy,Mild,Rest and hydration
+54,Male,Shortness of breath,Sore throat,Nausea,38,110,93,4,Gastroenteritis,Moderate,Outpatient medication
+66,Female,Chest pain,Sore throat,Fatigue,38.9,131,89,7,Severe asthma exacerbation,Severe,Hospital admission
+94,Female,Cough,Shortness of breath,Diarrhea,37.9,112,95,3,Bronchitis,Moderate,Outpatient medication
+2,Male,Nausea,Shortness of breath,Body ache,38.1,108,94,4,Gastroenteritis,Moderate,Outpatient medication
+76,Male,Abdominal pain,Vomiting,Fatigue,36.6,65,96,1,Allergy,Mild,Rest and hydration
+33,Female,Fatigue,Cough,Fever,38.9,115,88,7,Severe asthma exacerbation,Severe,Hospital admission
+88,Male,Back pain,Headache,Chest pain,38.7,98,94,3,Bronchitis,Moderate,Outpatient medication
+36,Male,Vomiting,Body ache,Cough,37.5,83,96,4,Cold,Mild,Rest and hydration
+9,Female,Chest pain,Nausea,Runny nose,38.7,119,95,5,Bronchitis,Moderate,Outpatient medication
+76,Female,Abdominal pain,Dizziness,Back pain,41.1,158,87,10,Acute respiratory failure,Severe,ICU admission
+14,Male,Chest pain,Shortness of breath,Dizziness,36.6,79,99,2,Allergy,Mild,Rest and hydration
+16,Male,Dizziness,Chest pain,Fever,36.6,87,96,3,Allergy,Mild,Rest and hydration
+60,Female,Loss of appetite,Chest pain,Fever,38.8,101,95,6,Bronchitis,Moderate,Outpatient medication
+57,Male,Shortness of breath,Loss of appetite,Chest pain,36.9,76,98,3,Cold,Mild,Rest and hydration
+81,Male,Back pain,Fever,Nausea,39.3,134,88,9,Severe asthma exacerbation,Severe,Hospital admission
+60,Female,Sore throat,Runny nose,Fever,38.3,116,93,4,Flu,Moderate,Outpatient medication
+43,Female,Dizziness,Shortness of breath,Vomiting,37.5,62,98,2,Allergy,Mild,Rest and hydration
+4,Female,Diarrhea,Shortness of breath,Sore throat,39.1,114,95,7,Bronchitis,Moderate,Outpatient medication
+4,Female,Shortness of breath,Abdominal pain,Vomiting,37.9,98,95,7,Flu,Moderate,Outpatient medication
+87,Male,Loss of appetite,Shortness of breath,Body ache,38.7,120,93,4,Flu,Moderate,Outpatient medication
+50,Male,Shortness of breath,Fatigue,Fever,39.2,120,91,8,Severe asthma exacerbation,Severe,Hospital admission
+90,Male,Abdominal pain,Vomiting,Shortness of breath,38,98,94,6,Flu,Moderate,Outpatient medication
+71,Male,Chest pain,Runny nose,Back pain,36.9,63,97,3,Healthy,Mild,Rest and hydration
+10,Male,Dizziness,Cough,Runny nose,37.2,86,100,3,Allergy,Mild,Rest and hydration
+49,Female,Abdominal pain,Runny nose,Body ache,38.4,96,95,4,Bronchitis,Moderate,Outpatient medication
+42,Female,Fever,Body ache,Cough,40,127,91,6,Pneumonia,Severe,Hospital admission
+75,Female,Fever,Fatigue,Abdominal pain,39.1,112,93,7,Flu,Moderate,Outpatient medication
+65,Female,Loss of appetite,Cough,Dizziness,36.3,79,100,0,Allergy,Mild,Rest and hydration
+7,Female,Headache,Sore throat,Back pain,37.5,68,100,0,Cold,Mild,Rest and hydration
+65,Female,Back pain,Abdominal pain,Diarrhea,36.4,87,98,4,Cold,Mild,Rest and hydration
+30,Male,Runny nose,Shortness of breath,Back pain,38.8,112,95,4,Bronchitis,Moderate,Outpatient medication
+10,Male,Cough,Shortness of breath,Back pain,37.6,73,98,0,Healthy,Mild,Rest and hydration
+62,Male,Sore throat,Runny nose,Nausea,36.9,83,97,1,Allergy,Mild,Rest and hydration
+15,Female,Fever,Cough,Body ache,38.2,117,93,4,Bronchitis,Moderate,Outpatient medication
+61,Male,Headache,Chest pain,Abdominal pain,37.1,85,100,3,Healthy,Mild,Rest and hydration
+68,Male,Diarrhea,Abdominal pain,Back pain,38.3,111,94,7,Gastroenteritis,Moderate,Outpatient medication
+69,Male,Sore throat,Shortness of breath,Chest pain,37.3,60,99,3,Cold,Mild,Rest and hydration
+83,Female,Fever,Back pain,Nausea,37.5,88,97,2,Healthy,Mild,Rest and hydration
+71,Female,Runny nose,Nausea,Fatigue,38.9,103,94,5,Bronchitis,Moderate,Outpatient medication
+27,Female,Body ache,Dizziness,Diarrhea,38.1,113,96,7,Bronchitis,Moderate,Outpatient medication
+66,Female,Fatigue,Loss of appetite,Vomiting,37.3,91,100,1,Cold,Mild,Rest and hydration
+78,Male,Sore throat,Runny nose,Body ache,38.5,113,95,4,Flu,Moderate,Outpatient medication
+70,Female,Chest pain,Nausea,Fatigue,39,145,88,7,Severe asthma exacerbation,Severe,Hospital admission
+41,Male,Loss of appetite,Shortness of breath,Fatigue,38.9,103,95,5,Gastroenteritis,Moderate,Outpatient medication
+63,Male,Diarrhea,Chest pain,Fatigue,36.4,79,97,3,Cold,Mild,Rest and hydration
+44,Female,Fever,Abdominal pain,Vomiting,36.8,90,99,1,Cold,Mild,Rest and hydration
+38,Male,Body ache,Sore throat,Abdominal pain,36.7,76,98,0,Cold,Mild,Rest and hydration
+51,Female,Diarrhea,Fatigue,Cough,36.8,63,97,4,Cold,Mild,Rest and hydration
+30,Male,Back pain,Runny nose,Abdominal pain,37.4,87,100,0,Allergy,Mild,Rest and hydration
+15,Female,Vomiting,Nausea,Shortness of breath,39.1,98,94,7,Gastroenteritis,Moderate,Outpatient medication
+67,Female,Dizziness,Abdominal pain,Cough,37,65,98,1,Allergy,Mild,Rest and hydration
+55,Male,Shortness of breath,Back pain,Dizziness,37.8,98,96,7,Gastroenteritis,Moderate,Outpatient medication
+39,Male,Vomiting,Runny nose,Body ache,36.4,85,99,1,Allergy,Mild,Rest and hydration
+89,Female,Cough,Vomiting,Headache,39.5,127,88,8,Pneumonia,Severe,Hospital admission
+69,Female,Loss of appetite,Runny nose,Chest pain,40.1,132,93,6,Severe asthma exacerbation,Severe,Hospital admission
+67,Female,Diarrhea,Headache,Nausea,38.6,116,96,4,Flu,Moderate,Outpatient medication
+66,Female,Dizziness,Abdominal pain,Sore throat,37.9,95,96,6,Gastroenteritis,Moderate,Outpatient medication
+13,Male,Sore throat,Fatigue,Runny nose,36.3,95,96,4,Cold,Mild,Rest and hydration
+54,Male,Chest pain,Fever,Shortness of breath,39.5,140,93,6,Pneumonia,Severe,Hospital admission
+84,Male,Loss of appetite,Body ache,Fatigue,39.2,111,94,6,Flu,Moderate,Outpatient medication
+26,Female,Shortness of breath,Dizziness,Back pain,40.1,116,88,7,Pneumonia,Severe,Hospital admission
+16,Female,Sore throat,Fatigue,Shortness of breath,39.1,120,96,3,Bronchitis,Moderate,Outpatient medication
+13,Male,Back pain,Fatigue,Body ache,38.3,99,95,6,Bronchitis,Moderate,Outpatient medication
+54,Female,Body ache,Abdominal pain,Cough,38.9,103,96,6,Bronchitis,Moderate,Outpatient medication
+63,Male,Sore throat,Loss of appetite,Abdominal pain,39.5,121,91,6,Severe asthma exacerbation,Severe,Hospital admission
+46,Female,Abdominal pain,Fatigue,Chest pain,38.5,98,94,3,Flu,Moderate,Outpatient medication
+81,Male,Runny nose,Sore throat,Vomiting,36.4,75,98,0,Cold,Mild,Rest and hydration
+73,Male,Headache,Shortness of breath,Dizziness,37.9,114,93,7,Gastroenteritis,Moderate,Outpatient medication
+23,Male,Cough,Back pain,Chest pain,37.4,62,97,0,Healthy,Mild,Rest and hydration
+41,Male,Runny nose,Shortness of breath,Vomiting,41.3,151,85,8,Septic shock,Severe,ICU admission
+19,Female,Body ache,Cough,Runny nose,38.5,108,94,6,Flu,Moderate,Outpatient medication
+50,Male,Diarrhea,Chest pain,Fatigue,38.9,108,95,6,Flu,Moderate,Outpatient medication
+56,Male,Nausea,Runny nose,Cough,38.9,100,93,5,Bronchitis,Moderate,Outpatient medication
+57,Female,Nausea,Back pain,Headache,38.5,117,93,6,Flu,Moderate,Outpatient medication
+17,Female,Abdominal pain,Fatigue,Dizziness,41,166,84,10,Septic shock,Severe,ICU admission
+85,Female,Headache,Nausea,Abdominal pain,39.8,129,91,9,Pneumonia,Severe,Hospital admission
+51,Male,Vomiting,Abdominal pain,Sore throat,37,88,98,3,Allergy,Mild,Rest and hydration
+74,Male,Back pain,Headache,Vomiting,39.1,107,96,3,Bronchitis,Moderate,Outpatient medication
+56,Female,Abdominal pain,Loss of appetite,Back pain,36.8,73,99,2,Healthy,Mild,Rest and hydration
+27,Male,Fever,Headache,Loss of appetite,36.4,78,96,1,Allergy,Mild,Rest and hydration
+24,Female,Runny nose,Abdominal pain,Fever,36.5,67,100,1,Allergy,Mild,Rest and hydration
+6,Female,Abdominal pain,Shortness of breath,Fatigue,36.2,85,96,1,Healthy,Mild,Rest and hydration
+47,Female,Body ache,Headache,Diarrhea,38.9,113,95,3,Gastroenteritis,Moderate,Outpatient medication
+79,Female,Diarrhea,Back pain,Abdominal pain,36.9,67,98,1,Healthy,Mild,Rest and hydration
+13,Female,Dizziness,Diarrhea,Vomiting,36.3,76,100,3,Healthy,Mild,Rest and hydration
+73,Male,Nausea,Fever,Vomiting,36.3,71,96,1,Healthy,Mild,Rest and hydration
+33,Female,Abdominal pain,Runny nose,Loss of appetite,39.3,119,89,8,Severe asthma exacerbation,Severe,Hospital admission
+81,Female,Fatigue,Loss of appetite,Abdominal pain,37.2,95,98,2,Healthy,Mild,Rest and hydration
+35,Male,Abdominal pain,Vomiting,Fever,38.1,115,95,3,Gastroenteritis,Moderate,Outpatient medication
+74,Female,Abdominal pain,Headache,Cough,38,97,96,4,Flu,Moderate,Outpatient medication
+71,Female,Chest pain,Abdominal pain,Headache,36.6,61,99,3,Allergy,Mild,Rest and hydration
+62,Female,Abdominal pain,Fever,Cough,37.3,89,99,0,Healthy,Mild,Rest and hydration
+26,Male,Loss of appetite,Runny nose,Shortness of breath,38,109,96,5,Flu,Moderate,Outpatient medication
+33,Male,Nausea,Headache,Shortness of breath,38.2,103,95,3,Gastroenteritis,Moderate,Outpatient medication
+57,Female,Shortness of breath,Diarrhea,Sore throat,38.6,96,93,6,Bronchitis,Moderate,Outpatient medication
+66,Female,Shortness of breath,Cough,Fatigue,36.8,79,97,4,Allergy,Mild,Rest and hydration
+38,Female,Back pain,Chest pain,Cough,36.7,75,96,1,Allergy,Mild,Rest and hydration
+14,Male,Vomiting,Runny nose,Loss of appetite,38.3,99,94,3,Gastroenteritis,Moderate,Outpatient medication
+69,Female,Abdominal pain,Diarrhea,Sore throat,37.4,86,96,2,Allergy,Mild,Rest and hydration
+40,Female,Chest pain,Body ache,Headache,39,99,95,4,Gastroenteritis,Moderate,Outpatient medication
+40,Female,Vomiting,Fever,Dizziness,39.1,114,96,4,Bronchitis,Moderate,Outpatient medication
+35,Male,Vomiting,Abdominal pain,Shortness of breath,39.2,104,96,3,Flu,Moderate,Outpatient medication
+22,Male,Cough,Chest pain,Dizziness,39.6,137,90,9,Pneumonia,Severe,Hospital admission
+7,Male,Vomiting,Abdominal pain,Shortness of breath,37.1,70,100,4,Healthy,Mild,Rest and hydration
+25,Female,Chest pain,Body ache,Nausea,38.4,104,95,7,Flu,Moderate,Outpatient medication
+77,Female,Runny nose,Fever,Body ache,39,110,94,6,Gastroenteritis,Moderate,Outpatient medication
+7,Female,Loss of appetite,Vomiting,Sore throat,38.1,99,93,5,Gastroenteritis,Moderate,Outpatient medication
+53,Female,Nausea,Chest pain,Body ache,38,120,95,7,Flu,Moderate,Outpatient medication
+23,Male,Runny nose,Headache,Loss of appetite,36.3,87,100,1,Cold,Mild,Rest and hydration
+49,Male,Runny nose,Vomiting,Abdominal pain,38.8,95,96,4,Flu,Moderate,Outpatient medication
+42,Male,Runny nose,Headache,Diarrhea,37.5,76,100,2,Healthy,Mild,Rest and hydration
+88,Male,Diarrhea,Dizziness,Body ache,36.9,60,97,3,Allergy,Mild,Rest and hydration
+65,Female,Body ache,Back pain,Nausea,36.8,75,96,4,Cold,Mild,Rest and hydration
+32,Female,Dizziness,Sore throat,Body ache,36.3,72,98,0,Healthy,Mild,Rest and hydration
+21,Male,Sore throat,Dizziness,Diarrhea,39.8,134,91,6,Severe asthma exacerbation,Severe,Hospital admission
+31,Male,Runny nose,Body ache,Loss of appetite,36.6,85,96,0,Healthy,Mild,Rest and hydration
+20,Male,Fatigue,Diarrhea,Nausea,39.1,129,90,8,Pneumonia,Severe,Hospital admission
+41,Male,Diarrhea,Dizziness,Nausea,37.8,95,96,7,Gastroenteritis,Moderate,Outpatient medication
+26,Male,Fatigue,Runny nose,Abdominal pain,38.8,103,93,6,Bronchitis,Moderate,Outpatient medication
+46,Male,Body ache,Sore throat,Nausea,38.3,114,96,5,Bronchitis,Moderate,Outpatient medication
+66,Female,Dizziness,Abdominal pain,Sore throat,38.9,103,94,6,Bronchitis,Moderate,Outpatient medication
+9,Male,Cough,Body ache,Dizziness,39.2,103,94,4,Gastroenteritis,Moderate,Outpatient medication
+76,Male,Chest pain,Shortness of breath,Headache,37.1,79,98,3,Healthy,Mild,Rest and hydration
+66,Female,Chest pain,Headache,Vomiting,37.2,86,98,4,Cold,Mild,Rest and hydration
+56,Male,Shortness of breath,Nausea,Fever,36.4,93,97,4,Allergy,Mild,Rest and hydration
+8,Male,Shortness of breath,Abdominal pain,Runny nose,36.8,92,96,2,Healthy,Mild,Rest and hydration
+33,Male,Body ache,Shortness of breath,Dizziness,38.7,100,93,4,Gastroenteritis,Moderate,Outpatient medication
+57,Female,Chest pain,Dizziness,Shortness of breath,38,101,96,4,Gastroenteritis,Moderate,Outpatient medication
+39,Male,Abdominal pain,Body ache,Fatigue,38.9,104,96,7,Bronchitis,Moderate,Outpatient medication
+78,Male,Cough,Vomiting,Fever,37.9,120,95,5,Bronchitis,Moderate,Outpatient medication
+17,Male,Fever,Headache,Cough,38.5,100,96,5,Flu,Moderate,Outpatient medication
+58,Female,Nausea,Shortness of breath,Abdominal pain,36.8,72,99,1,Allergy,Mild,Rest and hydration
+5,Male,Dizziness,Diarrhea,Sore throat,36.9,80,100,3,Cold,Mild,Rest and hydration
+83,Female,Body ache,Chest pain,Shortness of breath,40.1,123,88,6,Pneumonia,Severe,Hospital admission
+46,Male,Fever,Dizziness,Chest pain,37,87,97,2,Cold,Mild,Rest and hydration
+79,Male,Runny nose,Fever,Shortness of breath,36.6,65,99,3,Cold,Mild,Rest and hydration
+79,Female,Fatigue,Nausea,Loss of appetite,40,137,78,8,Septic shock,Severe,ICU admission
+39,Male,Nausea,Cough,Diarrhea,37.1,64,98,3,Cold,Mild,Rest and hydration
+61,Female,Body ache,Sore throat,Fever,37.2,86,99,3,Allergy,Mild,Rest and hydration
+7,Female,Cough,Chest pain,Abdominal pain,37.4,62,98,3,Cold,Mild,Rest and hydration
+83,Female,Cough,Vomiting,Body ache,38,116,95,3,Flu,Moderate,Outpatient medication
+89,Male,Body ache,Runny nose,Headache,38.8,106,96,5,Gastroenteritis,Moderate,Outpatient medication
+41,Female,Abdominal pain,Vomiting,Fever,37.4,92,99,0,Allergy,Mild,Rest and hydration
+65,Male,Abdominal pain,Headache,Fever,37.1,94,98,0,Cold,Mild,Rest and hydration
+6,Male,Fatigue,Body ache,Abdominal pain,38,104,96,3,Gastroenteritis,Moderate,Outpatient medication
+33,Male,Loss of appetite,Fever,Abdominal pain,37,71,98,4,Healthy,Mild,Rest and hydration
+75,Male,Sore throat,Nausea,Dizziness,39.4,131,93,8,Pneumonia,Severe,Hospital admission
+65,Male,Back pain,Headache,Abdominal pain,38.8,102,96,3,Flu,Moderate,Outpatient medication
+36,Female,Shortness of breath,Vomiting,Cough,38.9,127,90,6,Severe asthma exacerbation,Severe,Hospital admission
+10,Male,Fever,Chest pain,Dizziness,38.3,99,93,6,Bronchitis,Moderate,Outpatient medication
+73,Male,Loss of appetite,Fever,Nausea,36.3,94,96,2,Cold,Mild,Rest and hydration
+36,Female,Shortness of breath,Cough,Dizziness,36.5,85,99,0,Cold,Mild,Rest and hydration
+34,Male,Loss of appetite,Nausea,Fatigue,36.4,64,100,3,Allergy,Mild,Rest and hydration
+12,Male,Fever,Headache,Abdominal pain,36.4,82,97,0,Allergy,Mild,Rest and hydration
+50,Male,Sore throat,Fatigue,Vomiting,36.6,64,98,4,Allergy,Mild,Rest and hydration
+74,Male,Chest pain,Dizziness,Headache,37.2,68,98,3,Healthy,Mild,Rest and hydration
+47,Male,Vomiting,Fatigue,Back pain,38.4,116,96,5,Bronchitis,Moderate,Outpatient medication
+35,Male,Headache,Chest pain,Body ache,36.9,61,100,0,Cold,Mild,Rest and hydration
+64,Female,Shortness of breath,Abdominal pain,Cough,38,106,93,7,Bronchitis,Moderate,Outpatient medication
+54,Male,Abdominal pain,Vomiting,Chest pain,36.5,61,99,3,Cold,Mild,Rest and hydration
+60,Male,Diarrhea,Headache,Back pain,36.3,61,96,1,Cold,Mild,Rest and hydration
+70,Male,Abdominal pain,Dizziness,Fever,41.3,136,82,10,Acute respiratory failure,Severe,ICU admission
+3,Male,Chest pain,Cough,Dizziness,39,96,94,7,Flu,Moderate,Outpatient medication
+73,Male,Fever,Runny nose,Nausea,39.5,140,88,9,Pneumonia,Severe,Hospital admission
+35,Male,Abdominal pain,Chest pain,Diarrhea,36.8,95,98,4,Allergy,Mild,Rest and hydration
+9,Female,Chest pain,Shortness of breath,Headache,36.6,78,96,2,Cold,Mild,Rest and hydration
+7,Male,Fever,Vomiting,Abdominal pain,37.3,90,99,4,Allergy,Mild,Rest and hydration
+74,Male,Headache,Body ache,Back pain,38,108,96,3,Bronchitis,Moderate,Outpatient medication
+37,Male,Back pain,Loss of appetite,Abdominal pain,39.1,137,91,6,Pneumonia,Severe,Hospital admission
+62,Female,Cough,Fever,Headache,38.9,116,96,7,Gastroenteritis,Moderate,Outpatient medication
+65,Female,Loss of appetite,Diarrhea,Nausea,37.4,68,96,1,Allergy,Mild,Rest and hydration
+50,Female,Body ache,Vomiting,Back pain,37.2,61,98,3,Cold,Mild,Rest and hydration
+69,Female,Shortness of breath,Loss of appetite,Fever,39.5,115,91,7,Pneumonia,Severe,Hospital admission
+57,Male,Abdominal pain,Fever,Diarrhea,38.5,118,96,3,Bronchitis,Moderate,Outpatient medication
+20,Male,Runny nose,Abdominal pain,Headache,40,125,89,9,Pneumonia,Severe,Hospital admission
+52,Female,Cough,Dizziness,Chest pain,39.6,119,89,8,Pneumonia,Severe,Hospital admission
+66,Male,Runny nose,Dizziness,Cough,38.2,115,96,7,Gastroenteritis,Moderate,Outpatient medication
+89,Male,Cough,Dizziness,Abdominal pain,36.3,65,96,3,Allergy,Mild,Rest and hydration
+52,Female,Headache,Cough,Chest pain,38.3,110,94,4,Gastroenteritis,Moderate,Outpatient medication
+63,Male,Cough,Shortness of breath,Sore throat,38.5,115,96,4,Flu,Moderate,Outpatient medication
+33,Female,Runny nose,Chest pain,Headache,39.1,107,96,3,Flu,Moderate,Outpatient medication
+4,Male,Runny nose,Chest pain,Diarrhea,39.8,143,90,7,Pneumonia,Severe,Hospital admission
+8,Female,Vomiting,Diarrhea,Sore throat,36.3,67,98,3,Allergy,Mild,Rest and hydration
+59,Female,Body ache,Dizziness,Shortness of breath,39.9,127,92,7,Severe asthma exacerbation,Severe,Hospital admission
+30,Female,Loss of appetite,Nausea,Chest pain,38.8,106,96,5,Gastroenteritis,Moderate,Outpatient medication
+31,Male,Runny nose,Headache,Diarrhea,38.6,111,95,7,Bronchitis,Moderate,Outpatient medication
+45,Female,Headache,Runny nose,Diarrhea,39,130,93,8,Severe asthma exacerbation,Severe,Hospital admission
+26,Female,Back pain,Abdominal pain,Sore throat,37,67,96,1,Cold,Mild,Rest and hydration
+39,Male,Chest pain,Sore throat,Diarrhea,37.3,93,97,2,Cold,Mild,Rest and hydration
+31,Female,Shortness of breath,Loss of appetite,Abdominal pain,38.1,111,96,7,Bronchitis,Moderate,Outpatient medication
+35,Female,Headache,Abdominal pain,Vomiting,40,118,91,8,Severe asthma exacerbation,Severe,Hospital admission
+45,Female,Dizziness,Chest pain,Vomiting,37.2,71,100,1,Allergy,Mild,Rest and hydration
+72,Female,Back pain,Fatigue,Sore throat,39.1,116,93,3,Bronchitis,Moderate,Outpatient medication
+22,Male,Back pain,Runny nose,Chest pain,40.3,160,82,10,Septic shock,Severe,ICU admission
+54,Male,Nausea,Loss of appetite,Cough,37.4,70,100,1,Cold,Mild,Rest and hydration
+64,Female,Runny nose,Diarrhea,Fatigue,37.5,89,97,4,Cold,Mild,Rest and hydration
+68,Male,Chest pain,Dizziness,Shortness of breath,36.5,85,98,0,Allergy,Mild,Rest and hydration
+54,Male,Chest pain,Vomiting,Fatigue,39.9,139,89,9,Pneumonia,Severe,Hospital admission
+57,Male,Shortness of breath,Diarrhea,Nausea,36.8,92,96,2,Allergy,Mild,Rest and hydration
+76,Female,Diarrhea,Headache,Vomiting,36.7,94,97,1,Healthy,Mild,Rest and hydration
+9,Male,Abdominal pain,Headache,Chest pain,38.1,97,96,4,Gastroenteritis,Moderate,Outpatient medication
+26,Female,Diarrhea,Cough,Dizziness,37.6,61,96,1,Cold,Mild,Rest and hydration
+52,Female,Diarrhea,Dizziness,Runny nose,36.3,89,96,3,Healthy,Mild,Rest and hydration
+8,Male,Fatigue,Sore throat,Shortness of breath,39.9,128,93,6,Pneumonia,Severe,Hospital admission
+23,Male,Nausea,Fever,Loss of appetite,38,105,94,5,Gastroenteritis,Moderate,Outpatient medication
+38,Female,Shortness of breath,Dizziness,Fever,38,115,96,6,Flu,Moderate,Outpatient medication
+52,Male,Fever,Shortness of breath,Loss of appetite,38.8,107,93,5,Gastroenteritis,Moderate,Outpatient medication
+72,Female,Fever,Back pain,Runny nose,36.9,80,98,1,Cold,Mild,Rest and hydration
+34,Male,Dizziness,Chest pain,Fatigue,38.2,111,96,3,Bronchitis,Moderate,Outpatient medication
+68,Female,Dizziness,Chest pain,Fatigue,40.2,128,92,7,Pneumonia,Severe,Hospital admission
+50,Male,Body ache,Dizziness,Back pain,38.1,112,94,7,Gastroenteritis,Moderate,Outpatient medication
+9,Male,Body ache,Runny nose,Sore throat,38.3,109,96,4,Gastroenteritis,Moderate,Outpatient medication
+74,Female,Dizziness,Chest pain,Runny nose,36.5,63,98,4,Allergy,Mild,Rest and hydration
+59,Male,Vomiting,Back pain,Body ache,37.2,73,100,4,Allergy,Mild,Rest and hydration
+68,Female,Back pain,Runny nose,Shortness of breath,39.6,136,90,6,Severe asthma exacerbation,Severe,Hospital admission
+45,Female,Diarrhea,Dizziness,Cough,36.7,63,97,3,Healthy,Mild,Rest and hydration
+52,Female,Diarrhea,Back pain,Runny nose,41,149,86,8,Septic shock,Severe,ICU admission
+65,Male,Runny nose,Chest pain,Headache,37.5,76,97,4,Allergy,Mild,Rest and hydration
+43,Male,Back pain,Fever,Shortness of breath,39,126,93,8,Severe asthma exacerbation,Severe,Hospital admission
+68,Male,Sore throat,Shortness of breath,Diarrhea,38.4,110,93,4,Bronchitis,Moderate,Outpatient medication
+9,Male,Body ache,Headache,Dizziness,38.6,104,96,3,Bronchitis,Moderate,Outpatient medication
+16,Male,Fever,Runny nose,Sore throat,36.8,76,96,3,Allergy,Mild,Rest and hydration
+62,Female,Headache,Body ache,Fever,37,83,98,2,Cold,Mild,Rest and hydration
+58,Female,Cough,Back pain,Runny nose,38.9,120,89,6,Pneumonia,Severe,Hospital admission
+1,Male,Body ache,Vomiting,Cough,37.2,66,99,2,Healthy,Mild,Rest and hydration
+75,Female,Headache,Chest pain,Vomiting,38.2,114,95,7,Gastroenteritis,Moderate,Outpatient medication
+57,Female,Runny nose,Cough,Shortness of breath,39.7,145,83,8,Septic shock,Severe,ICU admission
+70,Male,Diarrhea,Nausea,Sore throat,38.6,117,94,3,Gastroenteritis,Moderate,Outpatient medication
+7,Male,Shortness of breath,Abdominal pain,Chest pain,37.2,87,100,2,Allergy,Mild,Rest and hydration
+66,Female,Vomiting,Headache,Back pain,36.3,76,97,0,Healthy,Mild,Rest and hydration
+9,Female,Runny nose,Loss of appetite,Headache,36.7,94,98,3,Cold,Mild,Rest and hydration
+34,Female,Abdominal pain,Runny nose,Body ache,37.4,69,98,2,Allergy,Mild,Rest and hydration
+56,Male,Sore throat,Loss of appetite,Fever,37.9,97,96,3,Gastroenteritis,Moderate,Outpatient medication
+48,Male,Runny nose,Vomiting,Diarrhea,39.7,126,92,9,Severe asthma exacerbation,Severe,Hospital admission
+61,Female,Body ache,Chest pain,Headache,37.9,101,95,6,Gastroenteritis,Moderate,Outpatient medication
+60,Female,Back pain,Headache,Fatigue,38.5,102,94,7,Flu,Moderate,Outpatient medication
+71,Female,Vomiting,Fatigue,Shortness of breath,38.5,105,96,5,Flu,Moderate,Outpatient medication
+80,Female,Body ache,Chest pain,Cough,37,89,100,3,Cold,Mild,Rest and hydration
+5,Female,Dizziness,Loss of appetite,Diarrhea,36.9,91,99,0,Healthy,Mild,Rest and hydration
+70,Female,Headache,Shortness of breath,Runny nose,37.5,85,98,0,Cold,Mild,Rest and hydration
+56,Female,Chest pain,Loss of appetite,Diarrhea,38.1,110,96,6,Flu,Moderate,Outpatient medication
+55,Male,Sore throat,Cough,Chest pain,36.9,73,100,2,Allergy,Mild,Rest and hydration
+63,Female,Nausea,Dizziness,Headache,37.9,98,94,6,Gastroenteritis,Moderate,Outpatient medication
+35,Male,Vomiting,Dizziness,Back pain,37.4,76,98,2,Cold,Mild,Rest and hydration
+32,Male,Fever,Nausea,Loss of appetite,36.6,95,96,3,Healthy,Mild,Rest and hydration
+68,Female,Loss of appetite,Diarrhea,Fever,40,134,81,9,Acute respiratory failure,Severe,ICU admission
+60,Female,Fatigue,Cough,Headache,36.4,88,100,2,Allergy,Mild,Rest and hydration
+67,Male,Shortness of breath,Headache,Chest pain,37,81,100,3,Allergy,Mild,Rest and hydration
+76,Female,Abdominal pain,Cough,Body ache,36.4,82,99,3,Cold,Mild,Rest and hydration
+67,Male,Back pain,Nausea,Shortness of breath,38.4,96,95,3,Flu,Moderate,Outpatient medication
+17,Female,Headache,Shortness of breath,Fatigue,36.3,83,97,1,Cold,Mild,Rest and hydration
+29,Female,Loss of appetite,Fever,Diarrhea,37.5,89,99,3,Healthy,Mild,Rest and hydration
+56,Male,Chest pain,Fever,Vomiting,37.5,63,98,4,Cold,Mild,Rest and hydration
+91,Female,Dizziness,Cough,Fatigue,38.5,120,96,4,Gastroenteritis,Moderate,Outpatient medication
+64,Female,Diarrhea,Fatigue,Nausea,39.9,143,93,9,Severe asthma exacerbation,Severe,Hospital admission
+25,Female,Loss of appetite,Body ache,Back pain,37.8,96,94,7,Flu,Moderate,Outpatient medication
+0,Male,Chest pain,Back pain,Diarrhea,36.3,85,98,4,Cold,Mild,Rest and hydration
+43,Male,Sore throat,Fatigue,Abdominal pain,39.2,97,93,4,Bronchitis,Moderate,Outpatient medication
+83,Female,Sore throat,Runny nose,Back pain,39.7,127,90,6,Severe asthma exacerbation,Severe,Hospital admission
+92,Female,Sore throat,Fever,Headache,36.6,82,99,3,Cold,Mild,Rest and hydration
+49,Male,Body ache,Loss of appetite,Nausea,39.1,107,96,6,Gastroenteritis,Moderate,Outpatient medication
+79,Female,Abdominal pain,Vomiting,Sore throat,37.8,96,95,6,Gastroenteritis,Moderate,Outpatient medication
+44,Male,Nausea,Vomiting,Fever,38.9,107,94,3,Gastroenteritis,Moderate,Outpatient medication
+73,Male,Dizziness,Chest pain,Diarrhea,36.2,62,98,1,Allergy,Mild,Rest and hydration
+94,Male,Shortness of breath,Back pain,Fever,38.3,106,95,3,Gastroenteritis,Moderate,Outpatient medication
+40,Male,Sore throat,Fatigue,Body ache,38.3,119,94,4,Bronchitis,Moderate,Outpatient medication
+6,Male,Vomiting,Chest pain,Dizziness,39,138,89,9,Pneumonia,Severe,Hospital admission
+30,Female,Fatigue,Runny nose,Diarrhea,37,89,100,3,Healthy,Mild,Rest and hydration
+83,Female,Body ache,Shortness of breath,Fever,37.9,106,95,5,Flu,Moderate,Outpatient medication
+69,Female,Headache,Fever,Dizziness,37.2,72,97,3,Cold,Mild,Rest and hydration
+60,Male,Fever,Nausea,Diarrhea,36.8,72,100,3,Allergy,Mild,Rest and hydration
+29,Male,Nausea,Chest pain,Runny nose,37.8,110,93,7,Bronchitis,Moderate,Outpatient medication
+41,Female,Sore throat,Fever,Nausea,36.6,88,97,1,Cold,Mild,Rest and hydration
+4,Male,Diarrhea,Chest pain,Nausea,36.8,72,97,3,Allergy,Mild,Rest and hydration
+46,Male,Back pain,Nausea,Headache,36.6,60,97,3,Healthy,Mild,Rest and hydration
+44,Male,Diarrhea,Chest pain,Fever,37.6,85,100,3,Healthy,Mild,Rest and hydration
+33,Female,Abdominal pain,Vomiting,Fatigue,36.6,95,100,1,Healthy,Mild,Rest and hydration
+88,Male,Nausea,Back pain,Sore throat,39.7,132,91,8,Severe asthma exacerbation,Severe,Hospital admission
+39,Male,Back pain,Runny nose,Cough,38.8,116,95,3,Gastroenteritis,Moderate,Outpatient medication
+13,Male,Vomiting,Dizziness,Loss of appetite,36.4,61,96,3,Healthy,Mild,Rest and hydration
+63,Male,Runny nose,Chest pain,Sore throat,37.2,63,98,2,Allergy,Mild,Rest and hydration
+51,Female,Chest pain,Body ache,Dizziness,38,113,93,4,Flu,Moderate,Outpatient medication
+69,Female,Shortness of breath,Abdominal pain,Sore throat,37.5,83,97,3,Allergy,Mild,Rest and hydration
+65,Male,Diarrhea,Vomiting,Fatigue,39,121,92,7,Pneumonia,Severe,Hospital admission
+73,Female,Sore throat,Vomiting,Loss of appetite,39.8,136,91,6,Severe asthma exacerbation,Severe,Hospital admission
+68,Male,Nausea,Runny nose,Shortness of breath,38.3,111,94,4,Bronchitis,Moderate,Outpatient medication
+16,Male,Loss of appetite,Headache,Nausea,38.2,120,95,3,Bronchitis,Moderate,Outpatient medication
+27,Male,Cough,Dizziness,Back pain,36.7,94,96,2,Healthy,Mild,Rest and hydration
+82,Female,Chest pain,Diarrhea,Fatigue,38.7,108,96,3,Gastroenteritis,Moderate,Outpatient medication
+67,Female,Sore throat,Abdominal pain,Fatigue,40.2,139,88,6,Pneumonia,Severe,Hospital admission
+94,Male,Fever,Headache,Nausea,37.9,112,95,7,Bronchitis,Moderate,Outpatient medication
+65,Female,Fever,Fatigue,Loss of appetite,39,106,95,3,Bronchitis,Moderate,Outpatient medication
+72,Female,Runny nose,Fever,Abdominal pain,40.1,145,92,6,Severe asthma exacerbation,Severe,Hospital admission
+40,Female,Chest pain,Abdominal pain,Diarrhea,37,74,99,3,Healthy,Mild,Rest and hydration
+45,Female,Fever,Loss of appetite,Runny nose,39.1,111,95,5,Bronchitis,Moderate,Outpatient medication
+21,Male,Chest pain,Loss of appetite,Diarrhea,36.3,63,96,0,Allergy,Mild,Rest and hydration
+32,Female,Diarrhea,Nausea,Headache,39,108,95,3,Bronchitis,Moderate,Outpatient medication
+30,Male,Loss of appetite,Fever,Dizziness,36.4,84,99,0,Cold,Mild,Rest and hydration
+68,Female,Dizziness,Nausea,Headache,39.1,104,95,4,Flu,Moderate,Outpatient medication
+4,Female,Headache,Cough,Runny nose,40.8,138,84,10,Acute respiratory failure,Severe,ICU admission
+64,Female,Nausea,Diarrhea,Runny nose,39,129,88,8,Severe asthma exacerbation,Severe,Hospital admission
+64,Male,Dizziness,Sore throat,Chest pain,37.1,91,99,1,Cold,Mild,Rest and hydration
+48,Female,Back pain,Body ache,Runny nose,36.3,72,97,1,Healthy,Mild,Rest and hydration
+57,Male,Headache,Cough,Back pain,38.2,106,96,4,Gastroenteritis,Moderate,Outpatient medication
+94,Male,Back pain,Sore throat,Body ache,38.4,115,93,3,Flu,Moderate,Outpatient medication
+23,Male,Fatigue,Vomiting,Dizziness,37.8,117,93,7,Gastroenteritis,Moderate,Outpatient medication
+34,Male,Body ache,Fever,Abdominal pain,38.3,107,93,7,Flu,Moderate,Outpatient medication
+27,Female,Diarrhea,Loss of appetite,Abdominal pain,39,98,95,6,Bronchitis,Moderate,Outpatient medication
+46,Female,Fatigue,Diarrhea,Abdominal pain,36.7,85,97,0,Cold,Mild,Rest and hydration
+45,Female,Chest pain,Cough,Vomiting,36.2,76,99,0,Healthy,Mild,Rest and hydration
+37,Male,Headache,Diarrhea,Shortness of breath,37.1,83,98,2,Healthy,Mild,Rest and hydration
+59,Female,Dizziness,Cough,Runny nose,39.7,120,93,8,Severe asthma exacerbation,Severe,Hospital admission
+48,Male,Diarrhea,Sore throat,Shortness of breath,38.8,104,96,4,Flu,Moderate,Outpatient medication
+62,Male,Cough,Fever,Diarrhea,37.3,70,100,2,Cold,Mild,Rest and hydration
+38,Female,Back pain,Dizziness,Diarrhea,38,119,93,5,Flu,Moderate,Outpatient medication
+26,Female,Body ache,Fever,Vomiting,38,96,94,7,Flu,Moderate,Outpatient medication
+89,Female,Nausea,Fever,Runny nose,37.5,78,100,2,Allergy,Mild,Rest and hydration
+53,Female,Runny nose,Dizziness,Chest pain,39,101,96,4,Bronchitis,Moderate,Outpatient medication
+62,Male,Abdominal pain,Fever,Loss of appetite,38.5,103,95,3,Gastroenteritis,Moderate,Outpatient medication
+65,Female,Runny nose,Nausea,Vomiting,38.9,114,93,7,Flu,Moderate,Outpatient medication
+2,Female,Back pain,Fatigue,Body ache,37.2,88,97,3,Healthy,Mild,Rest and hydration
+18,Female,Back pain,Vomiting,Chest pain,38.9,100,95,5,Gastroenteritis,Moderate,Outpatient medication
+75,Female,Sore throat,Vomiting,Fever,39,103,95,7,Flu,Moderate,Outpatient medication
+4,Female,Cough,Body ache,Runny nose,37.5,86,97,3,Healthy,Mild,Rest and hydration
+57,Female,Dizziness,Vomiting,Chest pain,40.7,153,89,8,Acute respiratory failure,Severe,ICU admission
+66,Male,Dizziness,Abdominal pain,Nausea,39.8,128,91,7,Pneumonia,Severe,Hospital admission
+62,Female,Fever,Vomiting,Dizziness,39.1,140,90,8,Severe asthma exacerbation,Severe,Hospital admission
+25,Female,Fatigue,Dizziness,Nausea,36.6,83,100,1,Healthy,Mild,Rest and hydration
+77,Male,Fever,Dizziness,Body ache,37.1,69,99,1,Allergy,Mild,Rest and hydration
+70,Male,Dizziness,Vomiting,Back pain,39.7,124,92,7,Severe asthma exacerbation,Severe,Hospital admission
+40,Male,Runny nose,Loss of appetite,Abdominal pain,36.8,89,97,3,Healthy,Mild,Rest and hydration
+64,Female,Cough,Runny nose,Diarrhea,36.7,93,99,1,Allergy,Mild,Rest and hydration
+1,Male,Headache,Shortness of breath,Nausea,40.1,144,86,10,Acute respiratory failure,Severe,ICU admission
+54,Female,Sore throat,Back pain,Fatigue,38.1,97,94,7,Flu,Moderate,Outpatient medication
+29,Female,Body ache,Shortness of breath,Dizziness,37.8,102,96,4,Bronchitis,Moderate,Outpatient medication
+85,Female,Fatigue,Fever,Vomiting,39.1,112,95,6,Flu,Moderate,Outpatient medication
+16,Male,Nausea,Body ache,Diarrhea,37.2,82,97,0,Healthy,Mild,Rest and hydration
+73,Male,Dizziness,Body ache,Abdominal pain,39.1,115,93,6,Bronchitis,Moderate,Outpatient medication
+7,Female,Diarrhea,Fever,Sore throat,38.8,110,94,5,Gastroenteritis,Moderate,Outpatient medication
+12,Male,Sore throat,Body ache,Runny nose,40,145,88,9,Pneumonia,Severe,Hospital admission
+82,Male,Headache,Vomiting,Abdominal pain,38.4,116,96,7,Gastroenteritis,Moderate,Outpatient medication
+47,Female,Body ache,Diarrhea,Vomiting,38.8,110,94,7,Flu,Moderate,Outpatient medication
+90,Male,Fatigue,Chest pain,Back pain,37,86,97,0,Cold,Mild,Rest and hydration
+65,Male,Sore throat,Body ache,Nausea,37,85,96,1,Healthy,Mild,Rest and hydration
+82,Male,Vomiting,Abdominal pain,Fever,36.9,89,100,2,Healthy,Mild,Rest and hydration
+44,Female,Fatigue,Fever,Diarrhea,39.1,100,93,3,Flu,Moderate,Outpatient medication
+83,Male,Nausea,Headache,Cough,37,63,99,3,Healthy,Mild,Rest and hydration
+38,Female,Headache,Nausea,Runny nose,36.5,69,97,1,Healthy,Mild,Rest and hydration
+19,Male,Runny nose,Chest pain,Dizziness,36.3,74,99,1,Healthy,Mild,Rest and hydration
+0,Female,Headache,Body ache,Chest pain,37,89,100,4,Allergy,Mild,Rest and hydration
+27,Female,Fever,Shortness of breath,Sore throat,37.2,85,99,1,Cold,Mild,Rest and hydration
+20,Female,Sore throat,Fatigue,Runny nose,38.9,113,94,4,Bronchitis,Moderate,Outpatient medication
+7,Female,Back pain,Loss of appetite,Runny nose,39.9,146,78,9,Acute respiratory failure,Severe,ICU admission
+40,Male,Runny nose,Body ache,Diarrhea,38.3,102,96,4,Bronchitis,Moderate,Outpatient medication
+57,Female,Fatigue,Back pain,Vomiting,37.4,61,100,3,Cold,Mild,Rest and hydration
+73,Male,Diarrhea,Back pain,Fatigue,38,113,94,4,Bronchitis,Moderate,Outpatient medication
+14,Male,Shortness of breath,Fatigue,Fever,37.5,81,100,3,Healthy,Mild,Rest and hydration
+6,Female,Runny nose,Body ache,Abdominal pain,38.5,99,96,3,Bronchitis,Moderate,Outpatient medication
+48,Male,Abdominal pain,Sore throat,Body ache,37.1,81,99,2,Allergy,Mild,Rest and hydration
+57,Male,Headache,Dizziness,Chest pain,37.6,71,96,2,Allergy,Mild,Rest and hydration
+70,Male,Diarrhea,Loss of appetite,Sore throat,38.7,95,93,7,Flu,Moderate,Outpatient medication
+30,Male,Shortness of breath,Vomiting,Cough,38.9,96,94,3,Flu,Moderate,Outpatient medication
+3,Female,Vomiting,Fatigue,Runny nose,36.7,61,96,2,Healthy,Mild,Rest and hydration
+11,Male,Loss of appetite,Body ache,Cough,36.5,81,98,2,Healthy,Mild,Rest and hydration
+18,Male,Chest pain,Abdominal pain,Vomiting,39.2,127,92,7,Pneumonia,Severe,Hospital admission
+31,Female,Abdominal pain,Fatigue,Fever,38.3,105,96,6,Bronchitis,Moderate,Outpatient medication
+67,Female,Fatigue,Diarrhea,Shortness of breath,38.8,113,93,3,Gastroenteritis,Moderate,Outpatient medication
+20,Female,Shortness of breath,Vomiting,Nausea,38.1,120,93,5,Gastroenteritis,Moderate,Outpatient medication
+44,Male,Back pain,Fatigue,Runny nose,36.4,60,97,0,Allergy,Mild,Rest and hydration
+39,Male,Sore throat,Headache,Fever,38,103,93,5,Gastroenteritis,Moderate,Outpatient medication
+51,Male,Body ache,Chest pain,Dizziness,38.9,101,93,5,Bronchitis,Moderate,Outpatient medication
+32,Female,Abdominal pain,Nausea,Shortness of breath,39.2,108,93,7,Gastroenteritis,Moderate,Outpatient medication
+8,Male,Body ache,Chest pain,Cough,38.5,102,95,6,Flu,Moderate,Outpatient medication
+94,Male,Back pain,Loss of appetite,Nausea,36.6,93,96,3,Allergy,Mild,Rest and hydration
+82,Male,Vomiting,Dizziness,Fever,36.8,82,99,4,Cold,Mild,Rest and hydration
+48,Female,Dizziness,Vomiting,Fatigue,36.6,76,96,0,Healthy,Mild,Rest and hydration
+83,Male,Vomiting,Dizziness,Body ache,37.9,115,96,5,Flu,Moderate,Outpatient medication
+52,Male,Sore throat,Loss of appetite,Fever,36.7,87,97,1,Healthy,Mild,Rest and hydration
+73,Female,Vomiting,Shortness of breath,Sore throat,38.5,110,96,3,Flu,Moderate,Outpatient medication
+43,Female,Back pain,Fever,Diarrhea,36.5,83,99,0,Allergy,Mild,Rest and hydration
+37,Female,Dizziness,Diarrhea,Vomiting,37.4,88,100,1,Allergy,Mild,Rest and hydration
+32,Female,Loss of appetite,Cough,Vomiting,37.5,63,100,3,Allergy,Mild,Rest and hydration
+19,Female,Sore throat,Nausea,Cough,36.2,94,96,0,Allergy,Mild,Rest and hydration
+20,Female,Chest pain,Vomiting,Dizziness,38.5,111,95,4,Bronchitis,Moderate,Outpatient medication
+20,Male,Chest pain,Nausea,Loss of appetite,36.9,67,98,2,Healthy,Mild,Rest and hydration
+44,Male,Diarrhea,Loss of appetite,Headache,38.1,120,95,7,Gastroenteritis,Moderate,Outpatient medication
+50,Male,Fever,Dizziness,Sore throat,39,111,95,6,Gastroenteritis,Moderate,Outpatient medication
+73,Female,Fatigue,Dizziness,Vomiting,36.7,75,98,2,Cold,Mild,Rest and hydration
+17,Male,Shortness of breath,Back pain,Chest pain,38.8,117,96,3,Flu,Moderate,Outpatient medication
+48,Female,Nausea,Body ache,Headache,36.6,66,98,0,Cold,Mild,Rest and hydration
+70,Male,Sore throat,Vomiting,Diarrhea,38.9,118,89,9,Severe asthma exacerbation,Severe,Hospital admission
+39,Male,Body ache,Nausea,Sore throat,39,105,93,3,Bronchitis,Moderate,Outpatient medication
+83,Female,Nausea,Abdominal pain,Body ache,38.3,111,94,7,Flu,Moderate,Outpatient medication
+22,Female,Fatigue,Vomiting,Sore throat,36.9,78,96,0,Cold,Mild,Rest and hydration
+54,Male,Diarrhea,Chest pain,Abdominal pain,36.7,88,96,2,Cold,Mild,Rest and hydration
+69,Female,Vomiting,Cough,Runny nose,38.4,117,96,5,Gastroenteritis,Moderate,Outpatient medication
+69,Male,Abdominal pain,Shortness of breath,Loss of appetite,39.2,97,96,7,Gastroenteritis,Moderate,Outpatient medication
+74,Female,Fever,Shortness of breath,Sore throat,39.9,139,88,7,Pneumonia,Severe,Hospital admission
+66,Male,Nausea,Cough,Body ache,38.5,112,96,5,Gastroenteritis,Moderate,Outpatient medication
+22,Male,Fatigue,Cough,Nausea,38.5,98,96,5,Flu,Moderate,Outpatient medication
+79,Male,Dizziness,Diarrhea,Nausea,37.1,76,99,4,Allergy,Mild,Rest and hydration
+44,Female,Nausea,Cough,Fatigue,39.1,99,93,7,Bronchitis,Moderate,Outpatient medication
+58,Male,Loss of appetite,Fatigue,Diarrhea,37.1,75,98,3,Healthy,Mild,Rest and hydration
+56,Male,Loss of appetite,Vomiting,Nausea,39,114,94,6,Gastroenteritis,Moderate,Outpatient medication
+10,Female,Diarrhea,Abdominal pain,Sore throat,36.5,77,98,4,Allergy,Mild,Rest and hydration
+27,Male,Fever,Headache,Fatigue,36.9,72,100,2,Allergy,Mild,Rest and hydration
+5,Female,Fatigue,Fever,Runny nose,37.5,60,96,4,Allergy,Mild,Rest and hydration
+33,Male,Runny nose,Abdominal pain,Vomiting,38.7,105,93,6,Gastroenteritis,Moderate,Outpatient medication
+71,Male,Dizziness,Abdominal pain,Back pain,36.3,77,97,3,Cold,Mild,Rest and hydration
+51,Female,Fatigue,Abdominal pain,Diarrhea,39.2,95,95,6,Flu,Moderate,Outpatient medication
+32,Female,Vomiting,Diarrhea,Runny nose,38.8,127,93,7,Pneumonia,Severe,Hospital admission
+0,Female,Runny nose,Fatigue,Back pain,38.8,106,93,4,Flu,Moderate,Outpatient medication
+20,Female,Abdominal pain,Vomiting,Body ache,37.2,95,99,2,Allergy,Mild,Rest and hydration
+48,Female,Dizziness,Headache,Sore throat,38.9,136,91,9,Severe asthma exacerbation,Severe,Hospital admission
+35,Female,Vomiting,Loss of appetite,Dizziness,36.8,81,98,3,Healthy,Mild,Rest and hydration
+40,Female,Headache,Vomiting,Diarrhea,36.2,69,97,1,Cold,Mild,Rest and hydration
+71,Female,Body ache,Fever,Loss of appetite,37,75,99,0,Cold,Mild,Rest and hydration
+66,Male,Runny nose,Loss of appetite,Fatigue,40,124,92,7,Severe asthma exacerbation,Severe,Hospital admission
+59,Female,Chest pain,Cough,Dizziness,38.9,98,93,7,Flu,Moderate,Outpatient medication
+48,Female,Fever,Headache,Shortness of breath,39,101,96,6,Flu,Moderate,Outpatient medication
+72,Female,Dizziness,Headache,Abdominal pain,36.3,92,96,1,Cold,Mild,Rest and hydration
+41,Female,Sore throat,Shortness of breath,Diarrhea,38.1,111,93,6,Bronchitis,Moderate,Outpatient medication
+33,Male,Body ache,Cough,Fever,37.2,92,97,2,Allergy,Mild,Rest and hydration
+71,Female,Body ache,Dizziness,Sore throat,37.6,61,98,2,Cold,Mild,Rest and hydration
+12,Male,Sore throat,Fatigue,Runny nose,36.8,80,99,1,Healthy,Mild,Rest and hydration
+32,Female,Chest pain,Fever,Runny nose,39.6,123,91,7,Severe asthma exacerbation,Severe,Hospital admission
+12,Male,Back pain,Loss of appetite,Fever,40.1,123,88,7,Pneumonia,Severe,Hospital admission
+72,Male,Abdominal pain,Vomiting,Nausea,38.9,95,94,6,Flu,Moderate,Outpatient medication
+28,Male,Vomiting,Headache,Runny nose,37.2,61,96,3,Healthy,Mild,Rest and hydration
+66,Male,Runny nose,Nausea,Body ache,38.3,99,95,7,Flu,Moderate,Outpatient medication
+31,Female,Cough,Sore throat,Dizziness,40.2,145,91,9,Pneumonia,Severe,Hospital admission
+93,Male,Loss of appetite,Fever,Back pain,38.9,114,94,5,Bronchitis,Moderate,Outpatient medication
+53,Female,Nausea,Fatigue,Headache,39.1,120,95,4,Gastroenteritis,Moderate,Outpatient medication
+13,Male,Abdominal pain,Cough,Nausea,36.4,65,99,2,Allergy,Mild,Rest and hydration
+17,Female,Back pain,Cough,Diarrhea,36.7,65,97,3,Healthy,Mild,Rest and hydration
+73,Female,Runny nose,Shortness of breath,Abdominal pain,38.4,106,93,5,Flu,Moderate,Outpatient medication
+92,Male,Shortness of breath,Abdominal pain,Runny nose,38.7,96,95,3,Gastroenteritis,Moderate,Outpatient medication
+71,Male,Back pain,Dizziness,Runny nose,37.8,115,96,4,Bronchitis,Moderate,Outpatient medication
+48,Female,Dizziness,Runny nose,Fatigue,38.2,98,94,6,Bronchitis,Moderate,Outpatient medication
+82,Female,Abdominal pain,Sore throat,Runny nose,37.3,93,100,1,Cold,Mild,Rest and hydration
+49,Female,Loss of appetite,Body ache,Nausea,37.6,78,97,4,Healthy,Mild,Rest and hydration
+75,Female,Nausea,Runny nose,Shortness of breath,36.8,64,97,1,Allergy,Mild,Rest and hydration
+62,Male,Loss of appetite,Dizziness,Fatigue,36.8,86,97,2,Cold,Mild,Rest and hydration
+32,Male,Runny nose,Sore throat,Nausea,37,89,100,1,Allergy,Mild,Rest and hydration
+88,Female,Dizziness,Back pain,Shortness of breath,40.1,146,78,10,Septic shock,Severe,ICU admission
+27,Female,Dizziness,Diarrhea,Sore throat,36.4,69,99,3,Cold,Mild,Rest and hydration
+48,Female,Vomiting,Nausea,Abdominal pain,36.8,87,98,3,Cold,Mild,Rest and hydration
+72,Male,Back pain,Fatigue,Abdominal pain,36.8,75,96,3,Cold,Mild,Rest and hydration
+71,Female,Vomiting,Loss of appetite,Dizziness,39.2,98,94,6,Flu,Moderate,Outpatient medication
+31,Female,Back pain,Loss of appetite,Abdominal pain,36.2,79,100,1,Healthy,Mild,Rest and hydration
+34,Female,Shortness of breath,Diarrhea,Fatigue,36.9,64,96,4,Allergy,Mild,Rest and hydration
+26,Female,Back pain,Chest pain,Loss of appetite,38.1,106,93,5,Bronchitis,Moderate,Outpatient medication
+32,Female,Nausea,Cough,Chest pain,39.4,120,92,6,Severe asthma exacerbation,Severe,Hospital admission
+9,Male,Vomiting,Shortness of breath,Back pain,36.5,88,98,0,Healthy,Mild,Rest and hydration
+62,Female,Vomiting,Fatigue,Sore throat,37.1,93,98,4,Cold,Mild,Rest and hydration
+38,Female,Dizziness,Chest pain,Nausea,37,87,96,0,Healthy,Mild,Rest and hydration
+37,Female,Fatigue,Vomiting,Dizziness,38.5,119,95,4,Gastroenteritis,Moderate,Outpatient medication
+46,Male,Diarrhea,Body ache,Loss of appetite,39,113,95,6,Flu,Moderate,Outpatient medication
+36,Male,Vomiting,Fatigue,Nausea,39,105,94,4,Flu,Moderate,Outpatient medication
+63,Female,Chest pain,Nausea,Fatigue,37.8,105,94,4,Bronchitis,Moderate,Outpatient medication
+72,Male,Shortness of breath,Fatigue,Loss of appetite,40.2,145,90,9,Severe asthma exacerbation,Severe,Hospital admission
+41,Female,Diarrhea,Runny nose,Cough,36.4,63,96,1,Healthy,Mild,Rest and hydration
+68,Female,Chest pain,Abdominal pain,Back pain,38,113,94,3,Flu,Moderate,Outpatient medication
+84,Male,Sore throat,Back pain,Fatigue,38.5,117,93,4,Gastroenteritis,Moderate,Outpatient medication
+54,Male,Dizziness,Nausea,Headache,39.1,132,88,7,Severe asthma exacerbation,Severe,Hospital admission
+84,Male,Cough,Back pain,Abdominal pain,40.9,132,79,10,Acute respiratory failure,Severe,ICU admission
+60,Male,Back pain,Dizziness,Body ache,37.4,67,100,2,Allergy,Mild,Rest and hydration
+28,Female,Cough,Headache,Diarrhea,39.1,99,95,5,Flu,Moderate,Outpatient medication
+43,Male,Vomiting,Back pain,Sore throat,37.2,85,98,2,Allergy,Mild,Rest and hydration
+86,Male,Headache,Body ache,Runny nose,37.9,105,96,7,Gastroenteritis,Moderate,Outpatient medication
+73,Male,Headache,Loss of appetite,Fever,36.7,63,96,1,Allergy,Mild,Rest and hydration
+67,Female,Runny nose,Chest pain,Shortness of breath,40.2,164,82,8,Septic shock,Severe,ICU admission
+26,Male,Chest pain,Fever,Sore throat,38.4,117,93,5,Bronchitis,Moderate,Outpatient medication
+45,Female,Diarrhea,Nausea,Dizziness,37.8,110,94,3,Bronchitis,Moderate,Outpatient medication
+91,Male,Cough,Abdominal pain,Dizziness,36.6,93,96,4,Cold,Mild,Rest and hydration
+11,Female,Shortness of breath,Runny nose,Loss of appetite,38.8,118,96,7,Flu,Moderate,Outpatient medication
+9,Male,Runny nose,Fatigue,Loss of appetite,39.1,109,93,4,Gastroenteritis,Moderate,Outpatient medication
+38,Female,Fatigue,Vomiting,Runny nose,36.7,92,97,0,Cold,Mild,Rest and hydration
+4,Male,Chest pain,Diarrhea,Dizziness,39.6,117,90,9,Severe asthma exacerbation,Severe,Hospital admission
+93,Male,Vomiting,Chest pain,Diarrhea,39.7,119,90,7,Severe asthma exacerbation,Severe,Hospital admission
+38,Male,Fever,Nausea,Vomiting,38.5,101,94,3,Bronchitis,Moderate,Outpatient medication
+70,Female,Chest pain,Abdominal pain,Shortness of breath,37.5,66,100,0,Allergy,Mild,Rest and hydration
+53,Female,Back pain,Body ache,Nausea,39.9,137,87,8,Septic shock,Severe,ICU admission
+94,Male,Vomiting,Headache,Shortness of breath,38.7,112,95,4,Bronchitis,Moderate,Outpatient medication
+88,Male,Chest pain,Back pain,Dizziness,38.7,97,95,5,Bronchitis,Moderate,Outpatient medication
+39,Male,Back pain,Headache,Sore throat,38.1,119,96,3,Gastroenteritis,Moderate,Outpatient medication
+62,Male,Cough,Fever,Chest pain,36.3,81,99,1,Healthy,Mild,Rest and hydration
+25,Male,Back pain,Loss of appetite,Shortness of breath,38.6,111,96,5,Gastroenteritis,Moderate,Outpatient medication
+63,Male,Runny nose,Cough,Fatigue,39,100,96,6,Bronchitis,Moderate,Outpatient medication
+79,Male,Fatigue,Nausea,Chest pain,37.4,90,98,4,Healthy,Mild,Rest and hydration
+68,Female,Runny nose,Vomiting,Fever,37.5,88,100,0,Cold,Mild,Rest and hydration
+22,Male,Dizziness,Headache,Shortness of breath,38.7,95,94,3,Gastroenteritis,Moderate,Outpatient medication
+45,Male,Body ache,Headache,Fever,37.5,91,96,2,Healthy,Mild,Rest and hydration
+32,Female,Abdominal pain,Sore throat,Diarrhea,36.8,77,96,4,Healthy,Mild,Rest and hydration
+64,Female,Back pain,Runny nose,Body ache,38.8,112,96,6,Bronchitis,Moderate,Outpatient medication
+39,Male,Chest pain,Shortness of breath,Abdominal pain,39.7,118,91,9,Severe asthma exacerbation,Severe,Hospital admission
+71,Male,Vomiting,Headache,Loss of appetite,38.9,121,93,9,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Chest pain,Shortness of breath,Back pain,37.2,70,97,4,Cold,Mild,Rest and hydration
+93,Male,Nausea,Body ache,Chest pain,38.9,128,93,6,Severe asthma exacerbation,Severe,Hospital admission
+21,Female,Loss of appetite,Headache,Fatigue,37.3,90,98,0,Allergy,Mild,Rest and hydration
+66,Female,Shortness of breath,Chest pain,Nausea,37,75,100,3,Allergy,Mild,Rest and hydration
+26,Female,Vomiting,Sore throat,Nausea,40.1,135,88,9,Pneumonia,Severe,Hospital admission
+34,Male,Back pain,Fever,Cough,39,98,94,4,Flu,Moderate,Outpatient medication
+44,Female,Vomiting,Sore throat,Headache,37.5,90,97,4,Allergy,Mild,Rest and hydration
+93,Female,Fatigue,Vomiting,Cough,37.9,110,94,3,Gastroenteritis,Moderate,Outpatient medication
+65,Female,Diarrhea,Cough,Nausea,38.8,103,93,3,Flu,Moderate,Outpatient medication
+46,Female,Headache,Loss of appetite,Body ache,36.5,64,97,1,Healthy,Mild,Rest and hydration
+26,Male,Nausea,Runny nose,Fever,37.1,93,98,1,Healthy,Mild,Rest and hydration
+46,Female,Sore throat,Dizziness,Loss of appetite,38.2,110,94,3,Bronchitis,Moderate,Outpatient medication
+71,Female,Sore throat,Headache,Abdominal pain,39.7,121,91,9,Severe asthma exacerbation,Severe,Hospital admission
+87,Female,Loss of appetite,Diarrhea,Body ache,39.6,128,89,7,Pneumonia,Severe,Hospital admission
+26,Male,Fever,Body ache,Sore throat,36.9,70,97,3,Allergy,Mild,Rest and hydration
+16,Male,Abdominal pain,Back pain,Vomiting,38.7,106,94,7,Flu,Moderate,Outpatient medication
+20,Male,Cough,Shortness of breath,Vomiting,39.4,143,92,6,Pneumonia,Severe,Hospital admission
+0,Female,Back pain,Diarrhea,Abdominal pain,37.9,119,95,4,Gastroenteritis,Moderate,Outpatient medication
+35,Female,Body ache,Sore throat,Diarrhea,36.5,84,98,2,Healthy,Mild,Rest and hydration
+54,Female,Sore throat,Abdominal pain,Body ache,36.4,60,97,4,Allergy,Mild,Rest and hydration
+75,Female,Vomiting,Dizziness,Shortness of breath,38.6,98,96,6,Gastroenteritis,Moderate,Outpatient medication
+11,Female,Body ache,Sore throat,Back pain,38.6,110,96,5,Bronchitis,Moderate,Outpatient medication
+33,Male,Vomiting,Fatigue,Sore throat,36.9,89,98,3,Healthy,Mild,Rest and hydration
+68,Male,Headache,Chest pain,Diarrhea,37,83,97,4,Allergy,Mild,Rest and hydration
+72,Female,Runny nose,Abdominal pain,Diarrhea,39.9,123,89,7,Severe asthma exacerbation,Severe,Hospital admission
+86,Female,Dizziness,Loss of appetite,Nausea,37.1,91,97,0,Allergy,Mild,Rest and hydration
+22,Female,Fatigue,Headache,Fever,37.3,75,98,4,Allergy,Mild,Rest and hydration
+49,Male,Sore throat,Chest pain,Shortness of breath,38.6,103,94,7,Bronchitis,Moderate,Outpatient medication
+67,Female,Sore throat,Nausea,Runny nose,37.6,71,97,3,Allergy,Mild,Rest and hydration
+26,Male,Fever,Sore throat,Cough,39,96,95,4,Flu,Moderate,Outpatient medication
+47,Male,Sore throat,Abdominal pain,Loss of appetite,39.1,108,96,5,Bronchitis,Moderate,Outpatient medication
+61,Female,Dizziness,Back pain,Sore throat,40.7,169,86,8,Septic shock,Severe,ICU admission
+31,Female,Diarrhea,Back pain,Runny nose,41.2,146,79,9,Septic shock,Severe,ICU admission
+4,Male,Fever,Shortness of breath,Body ache,36.5,90,100,0,Healthy,Mild,Rest and hydration
+41,Male,Dizziness,Chest pain,Fever,38.5,102,96,7,Bronchitis,Moderate,Outpatient medication
+18,Female,Abdominal pain,Shortness of breath,Vomiting,37.1,61,98,0,Healthy,Mild,Rest and hydration
+63,Male,Dizziness,Runny nose,Body ache,37.6,73,97,0,Cold,Mild,Rest and hydration
+68,Female,Abdominal pain,Vomiting,Body ache,36.4,85,99,2,Healthy,Mild,Rest and hydration
+15,Female,Nausea,Fever,Headache,36.4,95,96,1,Cold,Mild,Rest and hydration
+91,Male,Fever,Fatigue,Body ache,36.4,92,98,3,Allergy,Mild,Rest and hydration
+63,Male,Diarrhea,Shortness of breath,Abdominal pain,37.4,61,97,4,Healthy,Mild,Rest and hydration
+74,Female,Vomiting,Sore throat,Chest pain,36.9,86,100,2,Allergy,Mild,Rest and hydration
+59,Male,Back pain,Chest pain,Abdominal pain,37.9,98,94,6,Flu,Moderate,Outpatient medication
+59,Male,Abdominal pain,Fever,Headache,37.3,71,97,0,Healthy,Mild,Rest and hydration
+55,Female,Fever,Back pain,Diarrhea,36.4,94,97,4,Allergy,Mild,Rest and hydration
+56,Male,Headache,Chest pain,Vomiting,37.9,98,93,4,Gastroenteritis,Moderate,Outpatient medication
+36,Female,Fever,Headache,Cough,36.4,78,99,4,Healthy,Mild,Rest and hydration
+75,Female,Shortness of breath,Sore throat,Headache,38.9,116,93,7,Severe asthma exacerbation,Severe,Hospital admission
+1,Male,Fatigue,Body ache,Chest pain,39.1,104,93,5,Flu,Moderate,Outpatient medication
+1,Male,Sore throat,Abdominal pain,Runny nose,37.9,113,93,5,Flu,Moderate,Outpatient medication
+53,Male,Back pain,Fatigue,Diarrhea,37.5,79,97,4,Allergy,Mild,Rest and hydration
+58,Male,Vomiting,Sore throat,Chest pain,38.6,114,96,6,Gastroenteritis,Moderate,Outpatient medication
+53,Male,Fatigue,Runny nose,Sore throat,38.5,115,94,5,Bronchitis,Moderate,Outpatient medication
+70,Female,Diarrhea,Chest pain,Abdominal pain,38.6,117,93,5,Flu,Moderate,Outpatient medication
+70,Female,Sore throat,Vomiting,Cough,38.6,118,94,7,Bronchitis,Moderate,Outpatient medication
+48,Male,Fatigue,Nausea,Chest pain,38.5,120,96,6,Bronchitis,Moderate,Outpatient medication
+27,Female,Diarrhea,Chest pain,Body ache,37.3,85,97,3,Allergy,Mild,Rest and hydration
+95,Male,Diarrhea,Nausea,Vomiting,37.2,93,99,3,Cold,Mild,Rest and hydration
+91,Female,Nausea,Fatigue,Diarrhea,38.2,99,96,4,Gastroenteritis,Moderate,Outpatient medication
+55,Female,Shortness of breath,Diarrhea,Nausea,40.9,156,78,9,Septic shock,Severe,ICU admission
+71,Female,Fever,Diarrhea,Runny nose,37.1,75,98,1,Allergy,Mild,Rest and hydration
+88,Male,Cough,Runny nose,Headache,37.3,63,97,1,Cold,Mild,Rest and hydration
+14,Male,Headache,Cough,Vomiting,37.2,67,98,0,Cold,Mild,Rest and hydration
+31,Female,Cough,Back pain,Body ache,36.5,76,97,2,Allergy,Mild,Rest and hydration
+47,Male,Fatigue,Headache,Dizziness,36.6,70,99,4,Healthy,Mild,Rest and hydration
+95,Female,Chest pain,Body ache,Dizziness,37.4,65,99,2,Healthy,Mild,Rest and hydration
+57,Male,Shortness of breath,Abdominal pain,Dizziness,36.4,66,97,2,Healthy,Mild,Rest and hydration
+73,Female,Runny nose,Nausea,Abdominal pain,38.7,101,95,7,Gastroenteritis,Moderate,Outpatient medication
+81,Male,Diarrhea,Loss of appetite,Shortness of breath,38.8,113,94,7,Bronchitis,Moderate,Outpatient medication
+8,Female,Diarrhea,Back pain,Runny nose,40,138,78,8,Septic shock,Severe,ICU admission
+10,Female,Loss of appetite,Diarrhea,Abdominal pain,38.9,101,94,7,Gastroenteritis,Moderate,Outpatient medication
+63,Female,Cough,Headache,Fever,38,115,95,5,Flu,Moderate,Outpatient medication
+5,Male,Abdominal pain,Vomiting,Runny nose,37.9,108,94,6,Bronchitis,Moderate,Outpatient medication
+27,Female,Vomiting,Runny nose,Fever,37.8,101,95,7,Gastroenteritis,Moderate,Outpatient medication
+69,Female,Diarrhea,Sore throat,Headache,37.3,89,99,0,Cold,Mild,Rest and hydration
+5,Female,Shortness of breath,Back pain,Fever,38.2,100,96,6,Flu,Moderate,Outpatient medication
+42,Male,Fatigue,Body ache,Cough,36.6,79,100,3,Allergy,Mild,Rest and hydration
+53,Male,Vomiting,Loss of appetite,Body ache,37.9,115,95,7,Bronchitis,Moderate,Outpatient medication
+60,Female,Fever,Sore throat,Runny nose,40,144,83,9,Septic shock,Severe,ICU admission
+37,Male,Vomiting,Back pain,Body ache,39.3,144,92,8,Pneumonia,Severe,Hospital admission
+75,Female,Shortness of breath,Loss of appetite,Nausea,37.8,98,96,3,Bronchitis,Moderate,Outpatient medication
+37,Male,Diarrhea,Back pain,Headache,36.7,65,96,1,Cold,Mild,Rest and hydration
+50,Female,Nausea,Sore throat,Vomiting,36.5,86,96,2,Healthy,Mild,Rest and hydration
+48,Male,Abdominal pain,Diarrhea,Back pain,36.7,63,99,0,Allergy,Mild,Rest and hydration
+15,Female,Diarrhea,Chest pain,Dizziness,37.3,87,98,0,Cold,Mild,Rest and hydration
+43,Male,Chest pain,Back pain,Dizziness,36.8,71,97,2,Healthy,Mild,Rest and hydration
+37,Female,Abdominal pain,Back pain,Diarrhea,38.2,113,93,6,Flu,Moderate,Outpatient medication
+75,Female,Abdominal pain,Body ache,Chest pain,40,141,93,6,Severe asthma exacerbation,Severe,Hospital admission
+43,Female,Headache,Shortness of breath,Loss of appetite,38.3,104,95,4,Gastroenteritis,Moderate,Outpatient medication
+48,Male,Abdominal pain,Fever,Headache,38.9,99,96,6,Flu,Moderate,Outpatient medication
+43,Female,Fever,Runny nose,Headache,40.7,168,79,9,Septic shock,Severe,ICU admission
+46,Female,Cough,Fatigue,Fever,38.8,141,92,7,Pneumonia,Severe,Hospital admission
+58,Female,Headache,Runny nose,Sore throat,37.2,94,100,0,Healthy,Mild,Rest and hydration
+80,Male,Sore throat,Shortness of breath,Back pain,38.8,110,93,6,Gastroenteritis,Moderate,Outpatient medication
+27,Male,Diarrhea,Runny nose,Vomiting,37.3,68,99,1,Healthy,Mild,Rest and hydration
+53,Male,Dizziness,Fatigue,Loss of appetite,38.3,98,93,7,Flu,Moderate,Outpatient medication
+84,Female,Back pain,Fatigue,Diarrhea,36.4,76,97,0,Allergy,Mild,Rest and hydration
+50,Male,Cough,Nausea,Fever,38.6,105,96,5,Gastroenteritis,Moderate,Outpatient medication
+44,Female,Back pain,Cough,Diarrhea,39.9,144,90,6,Pneumonia,Severe,Hospital admission
+64,Female,Body ache,Dizziness,Sore throat,36.5,75,100,3,Allergy,Mild,Rest and hydration
+47,Female,Shortness of breath,Chest pain,Abdominal pain,40,152,87,9,Acute respiratory failure,Severe,ICU admission
+81,Male,Fatigue,Loss of appetite,Fever,38.8,100,96,4,Gastroenteritis,Moderate,Outpatient medication
+46,Female,Headache,Sore throat,Back pain,38.1,97,94,3,Flu,Moderate,Outpatient medication
+43,Male,Chest pain,Back pain,Diarrhea,37.1,95,100,4,Allergy,Mild,Rest and hydration
+40,Female,Shortness of breath,Sore throat,Back pain,38.6,117,96,5,Flu,Moderate,Outpatient medication
+45,Female,Diarrhea,Body ache,Sore throat,41.2,164,86,10,Acute respiratory failure,Severe,ICU admission
+54,Male,Loss of appetite,Fatigue,Dizziness,38.6,110,95,5,Bronchitis,Moderate,Outpatient medication
+31,Male,Loss of appetite,Fatigue,Sore throat,38.2,117,96,7,Gastroenteritis,Moderate,Outpatient medication
+38,Male,Shortness of breath,Sore throat,Headache,39.1,118,93,7,Bronchitis,Moderate,Outpatient medication
+69,Female,Headache,Dizziness,Nausea,38.1,120,96,3,Flu,Moderate,Outpatient medication
+75,Male,Dizziness,Runny nose,Shortness of breath,37.9,96,96,6,Bronchitis,Moderate,Outpatient medication
+11,Female,Dizziness,Fever,Vomiting,38.3,113,96,7,Bronchitis,Moderate,Outpatient medication
+54,Female,Runny nose,Dizziness,Diarrhea,38.8,98,96,4,Gastroenteritis,Moderate,Outpatient medication
+25,Male,Back pain,Fatigue,Abdominal pain,37.1,91,96,3,Healthy,Mild,Rest and hydration
+1,Male,Cough,Diarrhea,Runny nose,37.4,83,100,0,Allergy,Mild,Rest and hydration
+49,Male,Headache,Diarrhea,Shortness of breath,36.8,74,99,4,Allergy,Mild,Rest and hydration
+73,Female,Nausea,Loss of appetite,Shortness of breath,37.5,88,99,3,Allergy,Mild,Rest and hydration
+61,Female,Vomiting,Dizziness,Body ache,38.9,144,89,8,Pneumonia,Severe,Hospital admission
+78,Female,Loss of appetite,Sore throat,Dizziness,37.3,73,96,4,Healthy,Mild,Rest and hydration
+50,Female,Vomiting,Nausea,Abdominal pain,38.5,95,95,5,Gastroenteritis,Moderate,Outpatient medication
+56,Male,Chest pain,Dizziness,Vomiting,37.3,65,98,3,Allergy,Mild,Rest and hydration
+29,Female,Vomiting,Cough,Chest pain,37.2,74,96,3,Healthy,Mild,Rest and hydration
+1,Male,Nausea,Back pain,Abdominal pain,37.5,60,96,1,Healthy,Mild,Rest and hydration
+55,Male,Fatigue,Back pain,Runny nose,38.5,107,95,7,Gastroenteritis,Moderate,Outpatient medication
+10,Female,Vomiting,Fatigue,Abdominal pain,38.4,98,94,6,Bronchitis,Moderate,Outpatient medication
+75,Female,Fatigue,Headache,Vomiting,38.5,101,95,6,Gastroenteritis,Moderate,Outpatient medication
+78,Female,Runny nose,Chest pain,Vomiting,36.8,74,99,2,Healthy,Mild,Rest and hydration
+92,Female,Cough,Dizziness,Vomiting,36.9,85,96,0,Cold,Mild,Rest and hydration
+65,Male,Runny nose,Dizziness,Shortness of breath,38.1,98,94,4,Flu,Moderate,Outpatient medication
+35,Male,Vomiting,Sore throat,Nausea,39.2,122,90,6,Severe asthma exacerbation,Severe,Hospital admission
+66,Male,Sore throat,Fatigue,Shortness of breath,38.8,95,93,4,Bronchitis,Moderate,Outpatient medication
+12,Male,Diarrhea,Back pain,Loss of appetite,40.4,132,79,9,Acute respiratory failure,Severe,ICU admission
+78,Female,Back pain,Body ache,Dizziness,36.5,92,99,3,Allergy,Mild,Rest and hydration
+37,Female,Fatigue,Loss of appetite,Fever,37.5,85,97,4,Cold,Mild,Rest and hydration
+79,Male,Nausea,Chest pain,Diarrhea,40.6,143,88,9,Acute respiratory failure,Severe,ICU admission
+54,Male,Dizziness,Fever,Runny nose,38.8,109,96,5,Flu,Moderate,Outpatient medication
+25,Female,Runny nose,Fever,Cough,39.7,165,84,8,Acute respiratory failure,Severe,ICU admission
+95,Male,Abdominal pain,Fatigue,Fever,36.6,93,100,4,Cold,Mild,Rest and hydration
+74,Male,Abdominal pain,Fatigue,Vomiting,37.2,61,96,2,Cold,Mild,Rest and hydration
+85,Male,Vomiting,Runny nose,Headache,37.6,74,97,2,Allergy,Mild,Rest and hydration
+7,Male,Sore throat,Nausea,Vomiting,36.4,90,98,0,Cold,Mild,Rest and hydration
+78,Female,Vomiting,Fever,Body ache,37.4,93,97,3,Healthy,Mild,Rest and hydration
+39,Male,Abdominal pain,Body ache,Fatigue,37.6,84,98,1,Allergy,Mild,Rest and hydration
+68,Female,Chest pain,Cough,Headache,38,105,94,3,Flu,Moderate,Outpatient medication
+30,Female,Fever,Back pain,Dizziness,36.6,94,98,4,Allergy,Mild,Rest and hydration
+33,Female,Body ache,Chest pain,Cough,38.7,114,95,6,Flu,Moderate,Outpatient medication
+3,Female,Back pain,Headache,Fatigue,40.3,137,81,9,Acute respiratory failure,Severe,ICU admission
+46,Female,Back pain,Vomiting,Headache,36.8,82,98,3,Allergy,Mild,Rest and hydration
+75,Male,Back pain,Sore throat,Abdominal pain,41.3,140,89,10,Acute respiratory failure,Severe,ICU admission
+35,Female,Diarrhea,Fatigue,Cough,38.8,119,94,3,Bronchitis,Moderate,Outpatient medication
+2,Female,Diarrhea,Fever,Sore throat,37.4,77,100,2,Allergy,Mild,Rest and hydration
+24,Female,Vomiting,Runny nose,Headache,37.1,62,96,3,Healthy,Mild,Rest and hydration
+35,Male,Nausea,Cough,Diarrhea,37.1,60,99,1,Cold,Mild,Rest and hydration
+56,Male,Abdominal pain,Runny nose,Fatigue,37.5,64,98,0,Healthy,Mild,Rest and hydration
+31,Male,Abdominal pain,Chest pain,Runny nose,36.5,91,98,0,Allergy,Mild,Rest and hydration
+33,Male,Runny nose,Vomiting,Back pain,37.2,90,100,2,Cold,Mild,Rest and hydration
+25,Male,Shortness of breath,Chest pain,Fever,38.1,120,96,4,Flu,Moderate,Outpatient medication
+1,Male,Back pain,Body ache,Sore throat,38.1,112,93,3,Bronchitis,Moderate,Outpatient medication
+35,Male,Nausea,Chest pain,Headache,37,74,99,1,Allergy,Mild,Rest and hydration
+50,Male,Abdominal pain,Sore throat,Shortness of breath,37.4,93,96,2,Allergy,Mild,Rest and hydration
+68,Male,Nausea,Vomiting,Shortness of breath,36.4,63,96,0,Cold,Mild,Rest and hydration
+90,Female,Loss of appetite,Body ache,Cough,38.9,118,95,6,Flu,Moderate,Outpatient medication
+34,Male,Dizziness,Back pain,Fatigue,36.6,68,96,4,Healthy,Mild,Rest and hydration
+23,Male,Fatigue,Dizziness,Abdominal pain,37,71,98,1,Allergy,Mild,Rest and hydration
+54,Male,Vomiting,Loss of appetite,Sore throat,36.5,75,96,0,Healthy,Mild,Rest and hydration
+76,Female,Diarrhea,Fatigue,Back pain,37.3,85,99,1,Healthy,Mild,Rest and hydration
+58,Female,Cough,Headache,Loss of appetite,37,61,96,4,Allergy,Mild,Rest and hydration
+10,Male,Cough,Sore throat,Fever,36.8,64,99,4,Allergy,Mild,Rest and hydration
+1,Male,Vomiting,Headache,Chest pain,37.8,113,96,5,Flu,Moderate,Outpatient medication
+70,Male,Cough,Fatigue,Shortness of breath,39.5,142,88,8,Severe asthma exacerbation,Severe,Hospital admission
+42,Female,Cough,Vomiting,Nausea,37.4,64,99,1,Healthy,Mild,Rest and hydration
+28,Male,Abdominal pain,Fatigue,Cough,36.4,86,98,1,Healthy,Mild,Rest and hydration
+48,Female,Cough,Runny nose,Loss of appetite,37.2,76,98,2,Allergy,Mild,Rest and hydration
+85,Female,Chest pain,Loss of appetite,Sore throat,38.2,102,96,5,Gastroenteritis,Moderate,Outpatient medication
+85,Female,Back pain,Abdominal pain,Runny nose,41.2,164,80,9,Acute respiratory failure,Severe,ICU admission
+25,Male,Runny nose,Diarrhea,Loss of appetite,37.2,61,100,3,Cold,Mild,Rest and hydration
+77,Male,Fever,Headache,Loss of appetite,38,106,93,7,Gastroenteritis,Moderate,Outpatient medication
+20,Female,Headache,Fever,Abdominal pain,38.1,99,96,7,Bronchitis,Moderate,Outpatient medication
+82,Male,Sore throat,Vomiting,Headache,39.3,116,91,7,Severe asthma exacerbation,Severe,Hospital admission
+95,Female,Loss of appetite,Body ache,Chest pain,36.5,75,99,4,Cold,Mild,Rest and hydration
+45,Female,Nausea,Cough,Runny nose,39,130,93,9,Pneumonia,Severe,Hospital admission
+63,Female,Headache,Sore throat,Nausea,39.4,137,93,6,Pneumonia,Severe,Hospital admission
+75,Female,Cough,Back pain,Dizziness,37.2,75,99,2,Cold,Mild,Rest and hydration
+79,Female,Sore throat,Abdominal pain,Nausea,37.5,60,98,1,Cold,Mild,Rest and hydration
+91,Female,Nausea,Abdominal pain,Diarrhea,36.5,72,97,3,Cold,Mild,Rest and hydration
+72,Male,Abdominal pain,Shortness of breath,Sore throat,38.8,98,94,3,Gastroenteritis,Moderate,Outpatient medication
+60,Male,Sore throat,Back pain,Nausea,38.1,120,94,3,Bronchitis,Moderate,Outpatient medication
+65,Female,Headache,Diarrhea,Nausea,37.9,102,94,7,Bronchitis,Moderate,Outpatient medication
+77,Female,Back pain,Body ache,Nausea,38.6,115,96,7,Bronchitis,Moderate,Outpatient medication
+8,Female,Back pain,Runny nose,Fatigue,39.8,117,91,9,Pneumonia,Severe,Hospital admission
+41,Male,Shortness of breath,Fever,Nausea,37.1,67,99,2,Allergy,Mild,Rest and hydration
+1,Male,Sore throat,Loss of appetite,Nausea,37.2,90,97,2,Allergy,Mild,Rest and hydration
+71,Male,Nausea,Chest pain,Headache,40,115,91,6,Pneumonia,Severe,Hospital admission
+41,Female,Fatigue,Cough,Runny nose,38.9,114,93,5,Flu,Moderate,Outpatient medication
+20,Male,Runny nose,Chest pain,Fever,39.1,109,94,6,Gastroenteritis,Moderate,Outpatient medication
+2,Female,Headache,Abdominal pain,Fatigue,38.8,112,95,4,Flu,Moderate,Outpatient medication
+60,Female,Abdominal pain,Sore throat,Headache,36.4,84,98,4,Healthy,Mild,Rest and hydration
+64,Female,Shortness of breath,Runny nose,Nausea,38.2,100,95,5,Gastroenteritis,Moderate,Outpatient medication
+63,Female,Chest pain,Shortness of breath,Runny nose,40,119,88,9,Pneumonia,Severe,Hospital admission
+80,Male,Fatigue,Body ache,Runny nose,39.9,137,83,8,Acute respiratory failure,Severe,ICU admission
+0,Male,Fever,Chest pain,Body ache,36.3,60,99,4,Cold,Mild,Rest and hydration
+64,Male,Sore throat,Chest pain,Fatigue,37.4,80,97,2,Healthy,Mild,Rest and hydration
+41,Female,Dizziness,Vomiting,Diarrhea,37.3,90,100,0,Healthy,Mild,Rest and hydration
+74,Female,Chest pain,Fatigue,Loss of appetite,37.3,77,99,4,Healthy,Mild,Rest and hydration
+91,Female,Shortness of breath,Dizziness,Sore throat,37.3,73,96,2,Cold,Mild,Rest and hydration
+21,Male,Cough,Runny nose,Back pain,38,102,96,5,Flu,Moderate,Outpatient medication
+21,Male,Diarrhea,Headache,Sore throat,38.5,99,93,6,Bronchitis,Moderate,Outpatient medication
+52,Male,Dizziness,Vomiting,Fatigue,37.3,95,100,4,Healthy,Mild,Rest and hydration
+46,Male,Abdominal pain,Headache,Dizziness,38.6,105,94,5,Bronchitis,Moderate,Outpatient medication
+25,Female,Shortness of breath,Back pain,Cough,38.2,101,94,4,Flu,Moderate,Outpatient medication
+37,Male,Diarrhea,Dizziness,Chest pain,39.6,120,91,7,Pneumonia,Severe,Hospital admission
+40,Male,Abdominal pain,Loss of appetite,Back pain,38.4,118,96,5,Bronchitis,Moderate,Outpatient medication
+57,Male,Loss of appetite,Shortness of breath,Headache,39.5,127,92,9,Pneumonia,Severe,Hospital admission
+56,Male,Chest pain,Runny nose,Dizziness,38.8,95,96,6,Flu,Moderate,Outpatient medication
+64,Female,Vomiting,Headache,Back pain,38.2,99,93,5,Gastroenteritis,Moderate,Outpatient medication
+20,Male,Sore throat,Back pain,Nausea,36.7,77,98,2,Healthy,Mild,Rest and hydration
+42,Male,Fatigue,Chest pain,Runny nose,38.7,116,95,3,Bronchitis,Moderate,Outpatient medication
+56,Male,Nausea,Diarrhea,Sore throat,36.4,86,100,2,Healthy,Mild,Rest and hydration
+86,Female,Fatigue,Runny nose,Sore throat,38.8,119,95,7,Flu,Moderate,Outpatient medication
+17,Female,Diarrhea,Fatigue,Vomiting,38.1,108,94,4,Flu,Moderate,Outpatient medication
+85,Male,Dizziness,Body ache,Shortness of breath,37.2,77,100,1,Cold,Mild,Rest and hydration
+17,Female,Runny nose,Cough,Body ache,36.9,75,99,3,Cold,Mild,Rest and hydration
+44,Female,Dizziness,Vomiting,Fever,37.2,66,98,3,Cold,Mild,Rest and hydration
+51,Female,Abdominal pain,Cough,Headache,37,63,96,2,Cold,Mild,Rest and hydration
+73,Female,Loss of appetite,Sore throat,Shortness of breath,38.3,119,94,6,Gastroenteritis,Moderate,Outpatient medication
+3,Female,Fever,Abdominal pain,Diarrhea,37.5,78,98,4,Cold,Mild,Rest and hydration
+13,Male,Diarrhea,Loss of appetite,Runny nose,37.9,115,94,5,Bronchitis,Moderate,Outpatient medication
+54,Female,Headache,Shortness of breath,Fatigue,38.6,114,96,4,Flu,Moderate,Outpatient medication
+74,Female,Fever,Abdominal pain,Diarrhea,36.8,85,100,1,Cold,Mild,Rest and hydration
+90,Female,Fever,Back pain,Nausea,38.3,107,96,4,Gastroenteritis,Moderate,Outpatient medication
+48,Female,Diarrhea,Runny nose,Back pain,36.2,82,98,4,Healthy,Mild,Rest and hydration
+61,Female,Body ache,Nausea,Dizziness,39.2,118,91,6,Severe asthma exacerbation,Severe,Hospital admission
+25,Male,Nausea,Shortness of breath,Back pain,39.3,122,88,7,Pneumonia,Severe,Hospital admission
+61,Female,Back pain,Body ache,Fever,40.3,130,82,9,Acute respiratory failure,Severe,ICU admission
+65,Female,Vomiting,Back pain,Abdominal pain,37.9,106,95,4,Bronchitis,Moderate,Outpatient medication
+89,Male,Fever,Body ache,Loss of appetite,36.8,64,100,0,Allergy,Mild,Rest and hydration
+60,Male,Body ache,Vomiting,Abdominal pain,39.1,103,94,6,Bronchitis,Moderate,Outpatient medication
+48,Female,Fever,Loss of appetite,Cough,39.6,143,93,6,Pneumonia,Severe,Hospital admission
+16,Male,Headache,Body ache,Back pain,36.6,61,98,4,Cold,Mild,Rest and hydration
+68,Female,Abdominal pain,Nausea,Runny nose,40.5,156,81,8,Septic shock,Severe,ICU admission
+66,Male,Cough,Abdominal pain,Diarrhea,40.1,137,84,10,Septic shock,Severe,ICU admission
+29,Male,Abdominal pain,Cough,Back pain,38.4,109,94,6,Bronchitis,Moderate,Outpatient medication
+8,Male,Sore throat,Headache,Shortness of breath,39,145,90,6,Pneumonia,Severe,Hospital admission
+71,Female,Runny nose,Nausea,Fatigue,39.5,144,91,8,Pneumonia,Severe,Hospital admission
+76,Female,Diarrhea,Sore throat,Fever,36.9,92,100,3,Cold,Mild,Rest and hydration
+61,Female,Sore throat,Chest pain,Headache,39.1,96,96,6,Flu,Moderate,Outpatient medication
+56,Male,Nausea,Fatigue,Loss of appetite,39.1,114,96,7,Bronchitis,Moderate,Outpatient medication
+73,Female,Nausea,Chest pain,Diarrhea,36.2,77,96,2,Allergy,Mild,Rest and hydration
+55,Female,Sore throat,Headache,Chest pain,39.8,145,91,9,Severe asthma exacerbation,Severe,Hospital admission

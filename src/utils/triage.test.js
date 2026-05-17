@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { calculateTriage } from "./triage";
+import { calculateTriage, meanArterialPressure } from "./triage";
+
+describe("meanArterialPressure", () => {
+  it("PAM = (PAS + 2×PAD) / 3", () => {
+    expect(meanArterialPressure(120, 80)).toBeCloseTo(93.33, 1);
+    expect(meanArterialPressure(84, 55)).toBeCloseTo(64.67, 1);
+  });
+});
 
 describe("calculateTriage (CTAS I–V)", () => {
   it("I: alteración de conciencia", () => {
@@ -38,5 +45,55 @@ describe("calculateTriage (CTAS I–V)", () => {
 
   it("V: estable", () => {
     expect(calculateTriage(37.2, 90)).toBe("V");
+  });
+
+  it("I: taquipnea severa (FR)", () => {
+    expect(
+      calculateTriage(36.5, 80, {
+        respiratoryRate: 42,
+        bpSystolic: 120,
+        bpDiastolic: 80,
+      })
+    ).toBe("I");
+  });
+
+  it("II: taquipnea moderada (FR 30–39)", () => {
+    expect(
+      calculateTriage(36.5, 80, {
+        respiratoryRate: 32,
+        bpSystolic: 120,
+        bpDiastolic: 80,
+      })
+    ).toBe("II");
+  });
+
+  it("I: hipoperfusión por PAM baja", () => {
+    expect(
+      calculateTriage(36.5, 80, {
+        respiratoryRate: 16,
+        bpSystolic: 84,
+        bpDiastolic: 55,
+      })
+    ).toBe("I");
+  });
+
+  it("II: PAM límite baja (65–75)", () => {
+    expect(
+      calculateTriage(36.5, 80, {
+        respiratoryRate: 16,
+        bpSystolic: 100,
+        bpDiastolic: 55,
+      })
+    ).toBe("II");
+  });
+
+  it("I: PAM muy elevada", () => {
+    expect(
+      calculateTriage(36.5, 80, {
+        respiratoryRate: 16,
+        bpSystolic: 200,
+        bpDiastolic: 110,
+      })
+    ).toBe("I");
   });
 });
