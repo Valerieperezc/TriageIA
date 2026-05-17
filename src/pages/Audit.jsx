@@ -1,12 +1,6 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { usePatients } from "../hooks/usePatients";
-import { usePostLoginPerf } from "../hooks/usePostLoginPerf";
-import {
-  Download,
-  RotateCcw,
-  ClipboardList,
-  Activity,
-} from "lucide-react";
+import { Download, ClipboardList } from "lucide-react";
 import toast from "react-hot-toast";
 import {
   downloadTextFile,
@@ -34,11 +28,6 @@ function actionAccent(action) {
 
 export default function Audit() {
   const { history, loading, error, reload } = usePatients();
-  const {
-    summary: postLoginPerf,
-    resetHistory: resetPostLoginPerfBase,
-    downloadPostLoginPerfFile,
-  } = usePostLoginPerf({ syncSummaryOnStorageEvents: true });
 
   const csvContent = useMemo(() => {
     const headers = ["Paciente", "Accion", "Triage", "Actor", "Fecha"];
@@ -61,23 +50,9 @@ export default function Audit() {
     toast.success("CSV descargado");
   };
 
-  const exportPostLoginPerfCsv = useCallback(() => {
-    if (!downloadPostLoginPerfFile()) {
-      toast.error("No hay datos de telemetría para exportar");
-      return;
-    }
-    toast.success("CSV de telemetría descargado");
-  }, [downloadPostLoginPerfFile]);
-
-  const resetPostLoginPerf = useCallback(() => {
-    resetPostLoginPerfBase();
-    toast.success("Telemetría post-login reiniciada");
-  }, [resetPostLoginPerfBase]);
-
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-5">
-        {/* Header */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
@@ -100,64 +75,6 @@ export default function Audit() {
           </button>
         </div>
 
-        {/* Telemetría */}
-        <section className="card">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex items-start gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100 dark:bg-brand-950/40 dark:text-brand-200 dark:ring-brand-900/50">
-                <Activity className="h-5 w-5" />
-              </span>
-              <div>
-                <h2 className="text-base font-semibold text-ink-900 dark:text-ink-50">
-                  Telemetría UX (post-login)
-                </h2>
-                <p className="mt-0.5 text-xs text-ink-500 dark:text-ink-400">
-                  Historial local del tiempo de transición tras iniciar sesión.
-                </p>
-                {postLoginPerf.samples > 0 ? (
-                  <p
-                    className="mt-2 text-xs text-ink-600 dark:text-ink-300"
-                    data-testid="audit-post-login-summary"
-                  >
-                    Última: <strong>{postLoginPerf.lastMs} ms</strong> ·
-                    Promedio: <strong>{postLoginPerf.avgMs} ms</strong> (
-                    {postLoginPerf.samples} muestra(s))
-                  </p>
-                ) : (
-                  <p
-                    className="mt-2 text-xs text-ink-500 dark:text-ink-400"
-                    data-testid="audit-post-login-empty"
-                  >
-                    Sin muestras aún (entra al dashboard tras un login para
-                    registrar).
-                  </p>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-2 sm:shrink-0">
-              <button
-                type="button"
-                className="btn btn-secondary text-xs"
-                onClick={exportPostLoginPerfCsv}
-                data-testid="audit-post-login-export"
-              >
-                <Download className="h-3.5 w-3.5" />
-                Exportar CSV
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary text-xs"
-                onClick={resetPostLoginPerf}
-                data-testid="audit-post-login-reset"
-              >
-                <RotateCcw className="h-3.5 w-3.5" />
-                Limpiar
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Timeline de eventos */}
         {history.length === 0 ? (
           <div className="card text-center text-sm text-ink-500 dark:text-ink-400">
             No hay eventos registrados.

@@ -1,4 +1,5 @@
 import { toCsvString } from "./csv";
+import { waitReferenceMs } from "./dashboardMetrics";
 
 /**
  * CSV de pacientes (vista actual o lista completa).
@@ -27,8 +28,7 @@ export function buildPatientsCsv(patients, now = Date.now()) {
     "Alergias",
   ];
   const rows = patients.map((p) => {
-    const start =
-      typeof p.arrivedAt === "number" ? p.arrivedAt : p.createdAt;
+    const start = waitReferenceMs(p, now);
     return [
       p.name,
       p.age,

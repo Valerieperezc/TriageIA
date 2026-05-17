@@ -24,12 +24,14 @@ vi.mock("../lib/supabase", () => ({
 }));
 
 import {
+  changeLocalPassword,
   clearLocalSession,
   getCurrentSupabaseUser,
   LOCAL_SESSION_KEY,
   loginSupabase,
   loginLocalDemo,
   readLocalSession,
+  saveLocalAccountProfile,
 } from "./authService";
 
 function createMemoryStorage() {
@@ -64,11 +66,33 @@ describe("authService local demo", () => {
 
   it("persists and reads local session for valid credentials", () => {
     const user = loginLocalDemo("admin@triage.com", "123456");
-    expect(user).toEqual({ email: "admin@triage.com", role: "admin" });
+    expect(user).toMatchObject({
+      email: "admin@triage.com",
+      role: "admin",
+      displayName: "",
+    });
 
     const raw = localStorage.getItem(LOCAL_SESSION_KEY);
     expect(raw).toContain("admin@triage.com");
     expect(readLocalSession()).toEqual(user);
+  });
+
+  it("saves local profile and changes local password", () => {
+    loginLocalDemo("admin@triage.com", "123456");
+    saveLocalAccountProfile("admin@triage.com", {
+      displayName: "Admin Demo",
+      phone: "+34 600 000 000",
+    });
+    const session = readLocalSession();
+    expect(session.displayName).toBe("Admin Demo");
+    expect(session.phone).toBe("+34 600 000 000");
+
+    changeLocalPassword("admin@triage.com", "123456", "abcdef");
+    expect(loginLocalDemo("admin@triage.com", "123456")).toBeNull();
+    expect(loginLocalDemo("admin@triage.com", "abcdef")).toMatchObject({
+      email: "admin@triage.com",
+      displayName: "Admin Demo",
+    });
   });
 
   it("clears local session", () => {
@@ -103,6 +127,39 @@ describe("authService supabase login", () => {
     expect(user).toBeNull();
   });
 
+  it("throws helpful message when email is not confirmed", async () => {
+    signInWithPassword.mockResolvedValue({
+      data: { user: null },
+      error: { status: 400, message: "Email not confirmed", code: "email_not_confirmed" },
+    });
+
+    await expect(loginSupabase("a@b.com", "12345678")).rejects.toThrow(
+      "Tu correo aún no está confirmado"
+    );
+  });
+
+  it("throws with Supabase message for other auth errors", async () => {
+    signInWithPassword.mockResolvedValue({
+      data: { user: null },
+      error: { status: 403, message: "JWT expired" },
+    });
+
+    await expect(loginSupabase("admin@triage.com", "123456")).rejects.toThrow(
+      "No se pudo iniciar sesión: JWT expired"
+    );
+  });
+
+  it("throws schema fix hint when auth users have null token columns", async () => {
+    signInWithPassword.mockResolvedValue({
+      data: { user: null },
+      error: { status: 500, message: "Database error querying schema" },
+    });
+
+    await expect(loginSupabase("admin@triage.com", "123456")).rejects.toThrow(
+      /seed-demo-users\.sql/
+    );
+  });
+
   it("throws actionable message on network issues", async () => {
     signInWithPassword.mockResolvedValue({
       data: { user: null },
@@ -110,7 +167,7 @@ describe("authService supabase login", () => {
     });
 
     await expect(loginSupabase("admin@triage.com", "123456")).rejects.toThrow(
-      "No se pudo conectar al servicio de autenticación. Intenta de nuevo."
+      /No se pudo conectar al servicio de autenticación/
     );
   });
 
@@ -123,10 +180,11 @@ describe("authService supabase login", () => {
 
     const user = await loginSupabase("admin@triage.com", "123456");
 
-    expect(user).toEqual({
+    expect(user).toMatchObject({
       id: "u-1",
       email: "admin@triage.com",
       role: "admin",
+      displayName: "",
     });
   });
 });
@@ -154,10 +212,11 @@ describe("authService supabase session", () => {
 
     const user = await getCurrentSupabaseUser();
 
-    expect(user).toEqual({
+    expect(user).toMatchObject({
       id: "u-2",
       email: "medico@triage.com",
       role: "medico",
+      displayName: "",
     });
   });
 });

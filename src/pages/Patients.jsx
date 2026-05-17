@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { usePatients } from "../hooks/usePatients";
+import { useAuth } from "../hooks/useAuth";
+import { RoleWelcomeBanner } from "../components/RoleWelcomeBanner";
+import { getPatientsDefaultSort } from "../utils/roleConfig";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   Download,
@@ -42,6 +45,7 @@ const STATUS_BADGE = {
 };
 
 export default function Patients() {
+  const { user } = useAuth();
   const { patients, loading, error, reload } = usePatients();
   const nav = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -57,6 +61,14 @@ export default function Patients() {
     const interval = setInterval(() => setNow(Date.now()), 60000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const defaultSort = getPatientsDefaultSort(user?.role);
+    if (!defaultSort || searchParams.get("sort")) return;
+    const next = new URLSearchParams(searchParams);
+    next.set("sort", defaultSort);
+    setSearchParams(next, { replace: true });
+  }, [user?.role, searchParams, setSearchParams]);
 
   const filtered = useMemo(
     () => filterPatients(patients, { triage, search }),
@@ -150,14 +162,16 @@ export default function Patients() {
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-5">
-        {/* Header */}
+        <RoleWelcomeBanner />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
               <Users className="h-3 w-3" />
               Gestión de pacientes
             </span>
-            <h1 className="page-title mt-2">Pacientes</h1>
+            <h1 className="page-title mt-2" data-testid="patients-title">
+              Pacientes
+            </h1>
             <p className="page-subtitle mt-1">
               Búsqueda, filtrado y exportación del histórico de registros.
             </p>

@@ -11,6 +11,9 @@ const ok = {
   symptom: "Dolor torácico",
   temp: "37.5",
   fc: "88",
+  respiratoryRate: "16",
+  bpSystolic: "120",
+  bpDiastolic: "80",
 };
 
 describe("validateTriageForm", () => {
@@ -26,7 +29,11 @@ describe("validateTriageForm", () => {
       spo2: null,
       pain: null,
       alteredConsciousness: false,
-      respiratoryDistress: false,
+      respiratoryRate: 16,
+      bpSystolic: 120,
+      bpDiastolic: 80,
+      religion: null,
+      bloodType: null,
       fastTrack: false,
     });
     expect(typeof r.values.arrivedAt).toBe("number");
@@ -63,6 +70,9 @@ describe("validateTriagePayload / assertValidTriagePayload", () => {
       symptom: "Y",
       temp: 37.2,
       fc: 80,
+      respiratoryRate: 16,
+      bpSystolic: 118,
+      bpDiastolic: 76,
     });
     expect(r.valid).toBe(true);
     expect(r.values.age).toBe(40);
@@ -71,7 +81,16 @@ describe("validateTriagePayload / assertValidTriagePayload", () => {
 
   it("assertValidTriagePayload lanza si falla", () => {
     expect(() =>
-      assertValidTriagePayload({ name: "", age: 1, symptom: "s", temp: 37, fc: 80 })
+      assertValidTriagePayload({
+        name: "",
+        age: 1,
+        symptom: "s",
+        temp: 37,
+        fc: 80,
+        respiratoryRate: 16,
+        bpSystolic: 120,
+        bpDiastolic: 80,
+      })
     ).toThrow();
   });
 });

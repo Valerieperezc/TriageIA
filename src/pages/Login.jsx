@@ -8,6 +8,10 @@ import {
   Sun,
   Activity,
   Sparkles,
+  Shield,
+  ArrowRight,
+  Clock,
+  BarChart3,
 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -16,6 +20,8 @@ import {
   markPostLoginNavigationStart,
   shouldPrefetchPrivateAreaOnCurrentConnection,
 } from "../utils/performance";
+import { getHomePathForRole } from "../utils/roleConfig";
+import "./Login.css";
 
 async function prefetchPrivateArea() {
   await Promise.allSettled([
@@ -25,8 +31,96 @@ async function prefetchPrivateArea() {
   ]);
 }
 
+const HERO_STATS = [
+  { value: "CTAS", label: "Clasificación en segundos" },
+  { value: "24/7", label: "Cola en tiempo real" },
+  { value: "100%", label: "Historial auditado" },
+];
+
+const TRUST_ITEMS = [
+  { icon: Shield, label: "Acceso cifrado" },
+  { icon: Clock, label: "Sesión segura" },
+  { icon: BarChart3, label: "Datos en la nube" },
+];
+
+function LoginHero() {
+  return (
+    <aside className="login-hero" aria-hidden="true">
+      <span className="login-hero__glow login-hero__glow--a" />
+      <span className="login-hero__glow login-hero__glow--b" />
+      <span className="login-hero__grid" />
+
+      <div className="login-hero__inner">
+        <div>
+          <div className="login-hero__brand">
+            <span className="login-hero__logo">
+              <HeartPulse className="h-6 w-6" strokeWidth={2} />
+            </span>
+            <div>
+              <p className="login-hero__eyebrow">TriageIA</p>
+              <p className="login-hero__title">Panel clínico</p>
+            </div>
+          </div>
+
+          <h2 className="login-hero__headline">
+            Urgencias priorizadas con precisión clínica.
+          </h2>
+          <p className="login-hero__sub">
+            La plataforma que tu equipo de emergencias necesita: triage CTAS,
+            alertas críticas y trazabilidad completa en un solo lugar.
+          </p>
+
+          <div className="login-hero__stats">
+            {HERO_STATS.map((stat) => (
+              <div key={stat.value} className="login-hero__stat">
+                <p className="login-hero__stat-value">{stat.value}</p>
+                <p className="login-hero__stat-label">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="login-hero__preview">
+          <div className="login-hero__preview-card">
+            <div className="login-hero__preview-header">
+              <div className="login-hero__preview-dots">
+                <span />
+                <span />
+                <span />
+              </div>
+              <span className="login-hero__preview-label">Dashboard · Hoy</span>
+            </div>
+            <div className="login-hero__preview-bars">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span key={i} className="login-hero__preview-bar" />
+              ))}
+            </div>
+            <div className="login-hero__features">
+              <span className="login-hero__pill">
+                <Activity className="h-3.5 w-3.5" />
+                Signos vitales
+              </span>
+              <span className="login-hero__pill">
+                <HeartPulse className="h-3.5 w-3.5" />
+                Alertas CTAS I
+              </span>
+              <span className="login-hero__pill">
+                <Sparkles className="h-3.5 w-3.5" />
+                Cola en vivo
+              </span>
+            </div>
+          </div>
+          <p className="login-hero__footer">
+            © {new Date().getFullYear()} TriageIA · Uso clínico supervisado
+          </p>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 export default function Login() {
-  const { login, isSupabaseConfigured } = useAuth();
+  const { login } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
@@ -45,17 +139,18 @@ export default function Login() {
 
     setSubmitting(true);
     try {
-      const ok = await login(email, password);
-      if (!ok) {
-        return toast.error("Usuario o contraseña inválidos");
+      const loggedUser = await login(email, password);
+      if (!loggedUser) {
+        toast.error("Usuario o contraseña inválidos");
+        return;
       }
 
       markPostLoginNavigationStart();
       if (shouldPrefetchPrivateAreaOnCurrentConnection()) {
-        prefetchPrivateArea();
+        void prefetchPrivateArea();
       }
       toast.success("Bienvenido");
-      navigate("/");
+      navigate(getHomePathForRole(loggedUser.role), { replace: true });
     } catch (error) {
       const message = error?.message || "No se pudo iniciar sesión";
       toast.error(message);
@@ -65,113 +160,58 @@ export default function Login() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-ink-50 dark:bg-ink-950">
+    <div className="login-page">
+      <span className="login-page__mesh" aria-hidden />
+
       <button
         type="button"
         onClick={toggleTheme}
-        className="btn-icon absolute right-4 top-4 z-20"
+        className="btn-icon login-theme-btn"
         title={theme === "dark" ? "Modo claro" : "Modo oscuro"}
         data-testid="theme-toggle"
       >
         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </button>
 
-      <div className="mx-auto grid min-h-screen max-w-6xl grid-cols-1 lg:grid-cols-2">
-        {/* Panel marca */}
-        <div className="relative hidden overflow-hidden bg-brand-gradient p-10 text-white lg:flex lg:flex-col lg:justify-between">
-          <div className="pointer-events-none absolute inset-0 opacity-20">
-            <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-white/30 blur-3xl" />
-            <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-sky-300/40 blur-3xl" />
-          </div>
+      <div className="login-layout">
+        <LoginHero />
 
-          <div className="relative z-10">
-            <div className="flex items-center gap-3">
-              <div className="rounded-2xl bg-white/15 p-2.5 backdrop-blur">
-                <HeartPulse className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/70">
-                  TriageIA
-                </p>
-                <p className="text-lg font-bold">Panel clínico</p>
-              </div>
-            </div>
-
-            <div className="mt-16 space-y-4">
-              <h2 className="text-3xl font-bold leading-tight">
-                Clasificación de urgencias
-                <br />
-                rápida, trazable y segura.
-              </h2>
-              <p className="max-w-md text-sm text-white/80">
-                Registra pacientes, prioriza por CTAS y monitorea la cola en
-                tiempo real. El historial clínico queda auditado y disponible
-                para el equipo autorizado.
-              </p>
-            </div>
-
-            <ul className="mt-10 space-y-3 text-sm text-white/90">
-              <li className="flex items-start gap-3">
-                <span className="mt-0.5 rounded-lg bg-white/15 p-1.5">
-                  <Activity className="h-4 w-4" />
-                </span>
-                <span>Cálculo de triage con signos vitales y criterios de gravedad.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-0.5 rounded-lg bg-white/15 p-1.5">
-                  <HeartPulse className="h-4 w-4" />
-                </span>
-                <span>Alertas sonoras y visuales para pacientes críticos (CTAS I).</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-0.5 rounded-lg bg-white/15 p-1.5">
-                  <Sparkles className="h-4 w-4" />
-                </span>
-                <span>Dashboard que se reinicia cada día; historial siempre disponible.</span>
-              </li>
-            </ul>
-          </div>
-
-          <p className="relative z-10 text-xs text-white/70">
-            © {new Date().getFullYear()} TriageIA · Uso clínico supervisado
-          </p>
-        </div>
-
-        {/* Panel formulario */}
-        <div className="flex items-center justify-center px-6 py-12 sm:px-10">
-          <div className="w-full max-w-md">
-            <div className="mb-8 flex items-center gap-3 lg:hidden">
-              <div className="rounded-2xl bg-brand-gradient p-2.5 text-white shadow-soft">
+        <main className="login-form-panel">
+          <div className="login-form-panel__inner">
+            <div className="login-mobile-brand">
+              <span className="login-mobile-brand__icon">
                 <HeartPulse className="h-5 w-5" />
-              </div>
+              </span>
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.16em] text-ink-500 dark:text-ink-400">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-500 dark:text-ink-400">
                   TriageIA
                 </p>
-                <p className="text-base font-bold">Panel clínico</p>
+                <p className="text-base font-bold text-ink-900 dark:text-ink-50">Panel clínico</p>
               </div>
             </div>
 
-            <div className="card-flat space-y-5 shadow-soft-lg">
-              <div>
-                <h1 className="text-2xl font-bold text-ink-900 dark:text-ink-50">
-                  Iniciar sesión
-                </h1>
-                <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
-                  Accede con tu correo autorizado para continuar.
-                </p>
-              </div>
+            <div className="login-card">
+              <span className="login-card__badge">
+                <span className="login-card__badge-dot" />
+                Acceso seguro
+              </span>
 
-              <div>
+              <h1 className="login-card__title">Bienvenido de nuevo</h1>
+              <p className="login-card__subtitle">
+                Ingresa con tu correo institucional para acceder al panel de triage.
+              </p>
+
+              <div className="login-field">
                 <label className="form-label" htmlFor="login-email">
                   Correo electrónico
                 </label>
                 <div className="input">
-                  <Mail className="h-4 w-4 text-ink-400 dark:text-ink-500" />
+                  <Mail className="h-4 w-4 shrink-0 text-ink-400 dark:text-ink-500" />
                   <input
                     id="login-email"
                     data-testid="login-email"
                     type="email"
+                    autoComplete="email"
                     placeholder="usuario@uninorte.edu.co"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -182,16 +222,17 @@ export default function Login() {
                 </div>
               </div>
 
-              <div>
+              <div className="login-field">
                 <label className="form-label" htmlFor="login-password">
                   Contraseña
                 </label>
                 <div className="input">
-                  <Lock className="h-4 w-4 text-ink-400 dark:text-ink-500" />
+                  <Lock className="h-4 w-4 shrink-0 text-ink-400 dark:text-ink-500" />
                   <input
                     id="login-password"
                     data-testid="login-password"
                     type="password"
+                    autoComplete="current-password"
                     placeholder="Mínimo 6 caracteres"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -207,23 +248,39 @@ export default function Login() {
                 type="button"
                 onClick={handleLogin}
                 disabled={submitting}
-                className="btn btn-primary w-full py-2.5"
+                className="login-submit"
               >
-                {submitting ? "Ingresando..." : "Ingresar al sistema"}
+                {submitting ? (
+                  "Ingresando…"
+                ) : (
+                  <>
+                    Ingresar al sistema
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
               </button>
 
-              <div className="rounded-xl border border-ink-200 bg-ink-50/70 px-3 py-2 text-center text-xs text-ink-500 dark:border-ink-700 dark:bg-ink-800/60 dark:text-ink-400">
-                {isSupabaseConfigured
-                  ? "Usa tus credenciales de Supabase Auth"
-                  : "Modo local · admin@triage.com / 123456"}
+              <div className="login-divider">Plataforma clínica</div>
+
+              <div className="login-trust">
+                {TRUST_ITEMS.map((item) => {
+                  const TrustIcon = item.icon;
+                  return (
+                    <span key={item.label} className="login-trust__item">
+                      <TrustIcon className="h-3.5 w-3.5 text-brand-500 dark:text-brand-400" />
+                      {item.label}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
-            <p className="mt-6 text-center text-xs text-ink-400 dark:text-ink-500">
-              ¿Problemas para acceder? Contacta al administrador del sistema.
+            <p className="login-footer">
+              ¿Problemas para acceder?{" "}
+              <a href="mailto:soporte@triageia.local">Contacta al administrador</a>
             </p>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

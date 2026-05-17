@@ -4,9 +4,16 @@ import {
   canFinalizePatientByRole,
   canSetInAttentionByRole,
   canUpdatePatientDemographicsByRole,
+  canViewAuditByRole,
+  normalizeRole,
 } from "./permissions";
 
 describe("role permissions", () => {
+  it("normalizeRole acepta variantes", () => {
+    expect(normalizeRole(" Admin ")).toBe("admin");
+    expect(normalizeRole("recepción")).toBe("recepcion");
+  });
+
   it("allows create for recepcion", () => {
     expect(canCreatePatientByRole("recepcion")).toBe(true);
   });
@@ -33,5 +40,10 @@ describe("role permissions", () => {
 
   it("blocks demographics update for recepcion", () => {
     expect(canUpdatePatientDemographicsByRole("recepcion")).toBe(false);
+  });
+
+  it("allows audit only for admin", () => {
+    expect(canViewAuditByRole("admin")).toBe(true);
+    expect(canViewAuditByRole("medico")).toBe(false);
   });
 });

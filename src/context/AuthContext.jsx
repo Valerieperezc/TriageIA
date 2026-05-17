@@ -1,18 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { isSupabaseConfigured } from "../lib/appConfig";
+import { readLocalSession } from "../services/authService";
 import { AuthContext } from "./auth-context";
 
-const LOCAL_SESSION_KEY = "triageia:local-user";
 let authServicePromise = null;
-
-function readLocalSession() {
-  try {
-    const raw = localStorage.getItem(LOCAL_SESSION_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
 
 function loadAuthService() {
   if (!authServicePromise) {
@@ -22,6 +13,7 @@ function loadAuthService() {
 }
 
 export function AuthProvider({ children }) {
+  const loggingOutRef = useRef(false);
   const [user, setUser] = useState(() => {
     if (!isSupabaseConfigured) {
       return readLocalSession();
@@ -46,6 +38,7 @@ export function AuthProvider({ children }) {
         setLoading(false);
         unsubscribe = subscribeSupabaseAuth((nextUser) => {
           if (!mounted) return;
+          if (loggingOutRef.current && nextUser !== null) return;
           setUser(nextUser);
         });
       })
@@ -65,30 +58,68 @@ export function AuthProvider({ children }) {
     const authService = await loadAuthService();
     if (!isSupabaseConfigured) {
       const localUser = authService.loginLocalDemo(email, password);
-      if (!localUser) return false;
+      if (!localUser) return null;
       setUser(localUser);
-      return true;
+      return localUser;
     }
 
     const loggedUser = await authService.loginSupabase(email, password);
-    if (!loggedUser) return false;
+    if (!loggedUser) return null;
     setUser(loggedUser);
-    return true;
+    return loggedUser;
   };
 
-  const logout = async () => {
+  const updateAccountProfile = useCallback(async (patch) => {
+    if (!user) throw new Error("No hay sesión activa");
     const authService = await loadAuthService();
+    const next = await authService.saveAccountProfile(user, patch);
+    setUser(next);
+    return next;
+  }, [user]);
+
+  const changeAccountPassword = useCallback(async (currentPassword, newPassword) => {
+    if (!user) throw new Error("No hay sesión activa");
+    const authService = await loadAuthService();
+    await authService.changeAccountPassword(user, currentPassword, newPassword);
+  }, [user]);
+
+  const changeAccountEmail = useCallback(async (currentPassword, newEmail) => {
+    if (!user) throw new Error("No hay sesión activa");
+    const authService = await loadAuthService();
+    const next = await authService.changeAccountEmail(user, currentPassword, newEmail);
+    setUser(next);
+    return next;
+  }, [user]);
+
+  const logout = async () => {
+    loggingOutRef.current = true;
+    const authService = await loadAuthService();
+    authService.clearLocalSession();
+    setUser(null);
     if (!isSupabaseConfigured) {
-      authService.clearLocalSession();
-      setUser(null);
+      loggingOutRef.current = false;
       return;
     }
-    await authService.logoutSupabase();
-    setUser(null);
+    try {
+      await authService.logoutSupabase();
+    } catch {
+      // La sesión local ya se limpió; Supabase puede estar temporalmente inaccesible.
+    } finally {
+      loggingOutRef.current = false;
+    }
   };
 
   const value = useMemo(
-    () => ({ user, login, logout, loading, isSupabaseConfigured }),
+    () => ({
+      user,
+      login,
+      logout,
+      loading,
+      isSupabaseConfigured,
+      updateAccountProfile,
+      changeAccountPassword,
+      changeAccountEmail,
+    }),
     [user, loading]
   );
 

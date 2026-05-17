@@ -10,6 +10,46 @@ import {
   PATIENT_STATUS,
 } from "../utils/patientStatus";
 import { ArrowLeft, CheckCircle2, Lock, PlayCircle, Clock } from "lucide-react";
+import { meanArterialPressure } from "../utils/triage";
+
+const BLOOD_TYPE_OPTIONS = [
+  { value: "", label: "No indicado" },
+  { value: "A+", label: "A+" },
+  { value: "A-", label: "A-" },
+  { value: "B+", label: "B+" },
+  { value: "B-", label: "B-" },
+  { value: "AB+", label: "AB+" },
+  { value: "AB-", label: "AB-" },
+  { value: "O+", label: "O+" },
+  { value: "O-", label: "O-" },
+  { value: "desconocido", label: "Desconocido" },
+];
+
+function vitalsAlertLabels(p) {
+  const parts = [];
+  if (p.alteredConsciousness) parts.push("Alteración de conciencia");
+  const rr = p.respiratoryRate != null ? Number(p.respiratoryRate) : NaN;
+  if (Number.isFinite(rr)) {
+    if (rr >= 40) parts.push("FR muy elevada");
+    else if (rr >= 30) parts.push("Taquipnea");
+    else if (rr <= 8) parts.push("Bradipnea grave");
+    else if (rr <= 12) parts.push("Bradipnea");
+  }
+  const sys = p.bpSystolic != null ? Number(p.bpSystolic) : NaN;
+  const dia = p.bpDiastolic != null ? Number(p.bpDiastolic) : NaN;
+  const map =
+    Number.isFinite(sys) && Number.isFinite(dia)
+      ? meanArterialPressure(sys, dia)
+      : null;
+  if (map != null) {
+    if (map < 65) parts.push("PAM baja (riesgo de hipoperfusión)");
+    else if (map < 75) parts.push("PAM límite baja");
+    if (map >= 135) parts.push("PAM muy elevada");
+    else if (map >= 118) parts.push("PAM elevada");
+    else if (map >= 105) parts.push("PAM aumentada");
+  }
+  return parts;
+}
 
 const TRIAGE_BADGE = {
   I: "badge-red",
@@ -52,6 +92,8 @@ function DemographicsEditor({ patient, onPatch, onSaved }) {
     phone: patient.phone ?? "",
     companion: patient.companion ?? "",
     allergies: patient.allergies ?? "",
+    religion: patient.religion ?? "",
+    bloodType: patient.bloodType ?? "",
   }));
 
   const saveDemographics = async () => {
@@ -64,6 +106,8 @@ function DemographicsEditor({ patient, onPatch, onSaved }) {
       phone: demo.phone.trim() || null,
       companion: demo.companion.trim() || null,
       allergies: demo.allergies.trim() || null,
+      religion: demo.religion.trim() || null,
+      bloodType: demo.bloodType.trim() || null,
     };
     try {
       await onPatch(patch);
@@ -165,6 +209,35 @@ function DemographicsEditor({ patient, onPatch, onSaved }) {
             }
           />
         </div>
+        <div>
+          <label className="form-label">Religión</label>
+          <input
+            data-testid="patient-demo-religion"
+            className="input w-full"
+            placeholder="Opcional"
+            value={demo.religion}
+            onChange={(e) =>
+              setDemo((d) => ({ ...d, religion: e.target.value }))
+            }
+          />
+        </div>
+        <div>
+          <label className="form-label">Tipo de sangre</label>
+          <select
+            data-testid="patient-demo-blood-type"
+            className="input w-full"
+            value={demo.bloodType}
+            onChange={(e) =>
+              setDemo((d) => ({ ...d, bloodType: e.target.value }))
+            }
+          >
+            {BLOOD_TYPE_OPTIONS.map((o) => (
+              <option key={o.value || "none"} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <button
@@ -230,6 +303,11 @@ export default function PatientDetail() {
   const waitMin = minutesWaiting(p, now);
   const triageBadge = TRIAGE_BADGE[p.triage] ?? "badge-slate";
   const statusBadge = STATUS_BADGE[p.status] ?? "badge-slate";
+  const pam =
+    p.bpSystolic != null && p.bpDiastolic != null
+      ? meanArterialPressure(Number(p.bpSystolic), Number(p.bpDiastolic))
+      : null;
+  const pamRounded = pam != null ? Math.round(pam * 10) / 10 : null;
 
   const finalized = isTerminalStatus(p.status);
   const canMoveToAttention =
@@ -295,6 +373,7 @@ export default function PatientDetail() {
             </div>
           </div>
 
+          {canSetInAttention || canFinalizePatient ? (
           <div className="flex flex-wrap gap-2">
             <button
               data-testid="patient-status-attend"
@@ -319,6 +398,15 @@ export default function PatientDetail() {
               Finalizar
             </button>
           </div>
+          ) : (
+            <p
+              className="text-sm text-ink-600 dark:text-ink-300"
+              data-testid="patient-status-readonly-hint"
+            >
+              Tu rol solo puede consultar este paciente. Para atender o dar salida,
+              inicia sesión como médico, enfermería o administrador.
+            </p>
+          )}
         </div>
 
         {finalized && (
@@ -371,6 +459,18 @@ export default function PatientDetail() {
               label="Temperatura / FC"
               value={`${p.temp} °C · ${p.fc} lpm`}
             />
+            <InfoRow
+              label="FR / TA (PAM)"
+              value={
+                p.respiratoryRate != null &&
+                p.bpSystolic != null &&
+                p.bpDiastolic != null
+                  ? `${p.respiratoryRate} rpm · ${p.bpSystolic}/${p.bpDiastolic} mmHg${
+                      pamRounded != null ? ` · PAM ${pamRounded}` : ""
+                    }`
+                  : "—"
+              }
+            />
             {(p.spo2 != null || p.pain != null) && (
               <InfoRow
                 label="SpO₂ / Dolor"
@@ -379,18 +479,19 @@ export default function PatientDetail() {
                 }`}
               />
             )}
-            {(p.alteredConsciousness || p.respiratoryDistress) && (
+            {(p.religion || p.bloodType) && (
+              <InfoRow
+                label="Religión / Sangre"
+                value={`${p.religion || "—"} · ${p.bloodType || "—"}`}
+              />
+            )}
+            {vitalsAlertLabels(p).length > 0 && (
               <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50/80 px-3 py-2 text-sm dark:border-red-900/60 dark:bg-red-950/40">
                 <span className="text-xs font-semibold uppercase tracking-wide text-red-700 dark:text-red-300">
                   Alertas
                 </span>
                 <span className="text-right font-medium text-red-800 dark:text-red-200">
-                  {[
-                    p.alteredConsciousness && "Alteración de conciencia",
-                    p.respiratoryDistress && "Disnea",
-                  ]
-                    .filter(Boolean)
-                    .join(" · ")}
+                  {vitalsAlertLabels(p).join(" · ")}
                 </span>
               </div>
             )}

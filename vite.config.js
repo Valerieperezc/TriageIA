@@ -4,6 +4,9 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    port: 4173,
+  },
   build: {
     modulePreload: {
       resolveDependencies(_filename, deps, context) {

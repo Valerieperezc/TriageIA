@@ -29,6 +29,10 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   email text not null unique,
   role text not null default 'medico' check (role in ('admin', 'medico', 'recepcion', 'enfermeria')),
+  display_name text,
+  phone text,
+  department text,
+  job_title text,
   created_at timestamptz not null default now()
 );
 
@@ -135,7 +139,7 @@ create policy "Patients read for authenticated users"
 on public.patients
 for select
 to authenticated
-using (true)
+using (true);
 
 drop policy if exists "Patients insert by intake roles" on public.patients;
 create policy "Patients insert by intake roles"
@@ -225,6 +229,12 @@ to authenticated
 using (id = auth.uid())
 with check (id = auth.uid());
 
+-- Perfil de cuenta (nombre visible, contacto, área).
+alter table public.profiles add column if not exists display_name text;
+alter table public.profiles add column if not exists phone text;
+alter table public.profiles add column if not exists department text;
+alter table public.profiles add column if not exists job_title text;
+
 -- Proyectos ya creados: añade columna de actor si falta.
 alter table public.patient_events add column if not exists actor_email text;
 alter table public.patient_events add column if not exists request_id text;
@@ -245,6 +255,12 @@ alter table public.patients add column if not exists pain integer;
 alter table public.patients add column if not exists altered_consciousness boolean default false;
 alter table public.patients add column if not exists respiratory_distress boolean default false;
 alter table public.patients add column if not exists fast_track boolean default false;
+
+alter table public.patients add column if not exists respiratory_rate integer;
+alter table public.patients add column if not exists bp_systolic integer;
+alter table public.patients add column if not exists bp_diastolic integer;
+alter table public.patients add column if not exists religion text;
+alter table public.patients add column if not exists blood_type text;
 
 update public.patients
 set arrived_at = coalesce(arrived_at, created_at)
