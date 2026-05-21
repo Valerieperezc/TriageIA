@@ -260,7 +260,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => navigate("/patients?triage=I")}
-                className="btn btn-danger whitespace-nowrap"
+                className="btn btn-danger shrink-0 self-start sm:self-center"
               >
                 Ver cola crítica
               </button>
@@ -298,7 +298,7 @@ export default function Dashboard() {
 
         {/* Tarjetas CTAS */}
         <div>
-          <div className="mb-3 flex items-center justify-between">
+          <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-lg font-semibold text-ink-900 dark:text-ink-50">
                 Pacientes del día por CTAS
@@ -341,8 +341,8 @@ export default function Dashboard() {
             className="card space-y-3"
             data-testid="dashboard-attention-order"
           >
-            <div className="flex items-start justify-between gap-3">
-              <div>
+            <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0">
                 <h2 className="text-lg font-semibold text-ink-900 dark:text-ink-50">
                   Orden de atención (hoy)
                 </h2>
@@ -355,7 +355,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => navigate("/patients?sort=triage")}
-                className="btn btn-secondary whitespace-nowrap text-xs"
+                className="btn btn-secondary shrink-0 self-start text-xs sm:self-center"
               >
                 Ver lista completa
               </button>

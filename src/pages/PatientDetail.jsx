@@ -76,11 +76,11 @@ function fmt(ts) {
 
 function InfoRow({ label, value }) {
   return (
-    <div className="flex items-start justify-between gap-3 rounded-xl border border-ink-200/60 bg-white/70 px-3 py-2 text-sm shadow-soft-sm dark:border-ink-700 dark:bg-ink-800/50">
-      <span className="text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">
+    <div className="flex min-w-0 flex-col gap-1 rounded-xl border border-ink-200/60 bg-white/70 px-3 py-2 text-sm shadow-soft-sm sm:flex-row sm:items-start sm:justify-between sm:gap-3 dark:border-ink-700 dark:bg-ink-800/50">
+      <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">
         {label}
       </span>
-      <span className="min-w-0 text-right font-medium text-ink-800 dark:text-ink-100">
+      <span className="min-w-0 break-words font-medium text-ink-800 sm:text-right dark:text-ink-100">
         {value ?? "—"}
       </span>
     </div>

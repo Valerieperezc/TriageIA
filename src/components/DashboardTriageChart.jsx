@@ -8,8 +8,8 @@ export function DashboardTriageChart({ data }) {
   const hasData = totalPatients > 0;
 
   return (
-    <div className="card" data-testid="dashboard-triage-chart">
-      <div className="flex items-start justify-between gap-3">
+    <div className="card min-w-0" data-testid="dashboard-triage-chart">
+      <div className="flex min-w-0 items-start justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-ink-900 dark:text-ink-50">
             Distribución CTAS
@@ -21,8 +21,8 @@ export function DashboardTriageChart({ data }) {
         <span className="badge badge-slate shrink-0">Hoy</span>
       </div>
 
-      <div className="mt-4 grid items-center gap-6 md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
-        <div className="relative mx-auto aspect-square w-full max-w-[240px]">
+      <div className="mt-4 grid min-w-0 items-center gap-6 md:grid-cols-[minmax(0,220px)_minmax(0,1fr)] lg:grid-cols-[minmax(0,240px)_minmax(0,1fr)]">
+        <div className="relative mx-auto aspect-square w-full min-w-0 max-w-[240px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
