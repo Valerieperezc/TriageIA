@@ -38,3 +38,9 @@ export function canUpdatePatientDemographicsByRole(role) {
   const r = normalizeRole(role);
   return ["admin", "medico", "enfermeria"].includes(r);
 }
+
+/** Reasignar nivel CTAS definitivo (con motivo si aplica). */
+export function canReassignTriageByRole(role) {
+  const r = normalizeRole(role);
+  return ["admin", "medico", "enfermeria"].includes(r);
+}

@@ -19,3 +19,12 @@ export function isPermissionDeniedError(error) {
 export function permissionDeniedUserMessage() {
   return "No tienes permiso para esta operación.";
 }
+
+/** Clave duplicada (p. ej. request_id ya registrado en reintento idempotente). */
+export function isDuplicateKeyError(error) {
+  if (!error || typeof error !== "object") return false;
+  const code = String(error.code ?? "");
+  if (code === "23505") return true;
+  const msg = String(error.message ?? error.details ?? "").toLowerCase();
+  return msg.includes("duplicate key") || msg.includes("unique constraint");
+}

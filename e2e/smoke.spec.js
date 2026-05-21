@@ -91,6 +91,7 @@ test.describe("smoke local", () => {
     const uniqueName = `Paciente E2E ${Date.now()}`;
 
     await page.goto("/triage");
+    await page.getByTestId("triage-chief-complaint").selectOption("abdominal_pain");
     await page.getByTestId("triage-name").fill(uniqueName);
     await page.getByTestId("triage-age").fill("34");
     await page.getByTestId("triage-symptom").fill("Dolor abdominal");

@@ -1,13 +1,7 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { getCtasLevelInfo } from "../constants/ctasProtocol";
 
 const COLORS = ["#dc2626", "#f97316", "#f59e0b", "#65a30d", "#0ea5e9"];
-const TRIAGE_LABELS = {
-  I: "Resucitación",
-  II: "Emergente",
-  III: "Urgente",
-  IV: "Menos urgente",
-  V: "No urgente",
-};
 
 export function DashboardTriageChart({ data }) {
   const totalPatients = data.reduce((acc, item) => acc + item.value, 0);
@@ -61,6 +55,7 @@ export function DashboardTriageChart({ data }) {
 
         <div className="grid gap-2 sm:grid-cols-2">
           {data.map((item, index) => {
+            const info = getCtasLevelInfo(item.name);
             const pct =
               totalPatients > 0
                 ? Math.round((item.value / totalPatients) * 100)
@@ -68,7 +63,10 @@ export function DashboardTriageChart({ data }) {
             return (
               <div
                 key={item.name}
-                className="flex items-center justify-between gap-3 rounded-xl border border-ink-200/70 bg-white/60 px-3 py-2 text-sm shadow-soft-sm dark:border-ink-700 dark:bg-ink-800/50"
+                className={`flex items-center justify-between gap-3 rounded-xl border px-3 py-2 text-sm shadow-soft-sm ${
+                  info?.cardSurfaceClass ??
+                  "border-ink-200/70 bg-white/60 dark:border-ink-700 dark:bg-ink-800/50"
+                }`}
               >
                 <div className="flex min-w-0 items-center gap-3">
                   <span
@@ -78,10 +76,10 @@ export function DashboardTriageChart({ data }) {
                   />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold text-ink-800 dark:text-ink-100">
-                      CTAS {item.name}
+                      CTAS {item.name} · {info?.label ?? item.name}
                     </p>
-                    <p className="truncate text-[11px] text-ink-500 dark:text-ink-400">
-                      {TRIAGE_LABELS[item.name] ?? item.name}
+                    <p className="line-clamp-2 text-[11px] font-medium text-ink-600 dark:text-ink-300">
+                      {info?.urgencyMessage ?? ""}
                     </p>
                   </div>
                 </div>

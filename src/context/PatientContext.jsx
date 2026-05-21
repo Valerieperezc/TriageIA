@@ -8,8 +8,14 @@ import {
   fetchPatients,
   updatePatientDemographics,
   updatePatientStatus,
+  updatePatientTriage,
 } from "../services/triageService";
-import { calculateTriage } from "../utils/triage";
+import { CTAS_PROTOCOL_VERSION } from "../constants/ctasProtocol";
+import {
+  formatOverrideSummary,
+  suggestCtasLevel,
+  validateTriageAssignment,
+} from "../utils/ctasTriage";
 import { assertValidTriagePayload } from "../utils/triageFormValidation";
 import {
   assertAllowedClientStatus,
@@ -25,6 +31,7 @@ import {
   canCreatePatientByRole,
   canFinalizePatientByRole,
   canSetInAttentionByRole,
+  canReassignTriageByRole,
   canUpdatePatientDemographicsByRole,
 } from "../utils/permissions";
 import { PatientContext } from "./patient-context";
@@ -61,6 +68,19 @@ function createUuid() {
   return `00000000-0000-4000-8000-${random}`;
 }
 
+/** La operación principal ya se guardó; la auditoría no debe bloquear la UI. */
+async function recordAuditEventSafely(event, { onRetry } = {}) {
+  try {
+    await retryAsync(() => createAuditEvent(event), {
+      delaysMs: ACTION_RETRY_DELAYS_MS,
+      shouldRetry: shouldRetryTransientError,
+      onRetry,
+    });
+  } catch (err) {
+    console.warn("[TriageIA] No se pudo registrar evento de auditoría:", err);
+  }
+}
+
 export function PatientProvider({ children }) {
   const { user } = useAuth();
   const { soundEnabled } = useSoundPreference();
@@ -75,6 +95,7 @@ export function PatientProvider({ children }) {
   const canSetInAttention = canSetInAttentionByRole(role);
   const canFinalizePatient = canFinalizePatientByRole(role);
   const canUpdateDemographics = canUpdatePatientDemographicsByRole(role);
+  const canReassignTriage = canReassignTriageByRole(role);
 
   const markRetry = useCallback(() => {
     setRetryStats((prev) => ({
@@ -175,18 +196,48 @@ export function PatientProvider({ children }) {
     }
 
     const values = assertValidTriagePayload(raw);
-    const triage = calculateTriage(values.temp, values.fc, {
-      spo2: values.spo2,
-      pain: values.pain,
-      alteredConsciousness: values.alteredConsciousness,
-      respiratoryRate: values.respiratoryRate,
-      bpSystolic: values.bpSystolic,
-      bpDiastolic: values.bpDiastolic,
+    const suggestion = suggestCtasLevel({
+      chiefComplaintCode: values.chiefComplaintCode,
+      redFlags: values.redFlags,
+      fastTrack: values.fastTrack,
+      age: values.age,
+      temp: values.temp,
+      fc: values.fc,
+      vitals: {
+        spo2: values.spo2,
+        pain: values.pain,
+        alteredConsciousness: values.alteredConsciousness,
+        respiratoryRate: values.respiratoryRate,
+        bpSystolic: values.bpSystolic,
+        bpDiastolic: values.bpDiastolic,
+      },
     });
+
+    const triageSuggested = suggestion.level;
+    const triageAssigned = raw.triageAssigned ?? triageSuggested;
+    const assignmentCheck = validateTriageAssignment({
+      suggested: triageSuggested,
+      assigned: triageAssigned,
+      overrideReasonCode: raw.overrideReasonCode,
+      overrideNote: raw.overrideNote,
+    });
+    if (!assignmentCheck.valid) {
+      throw new Error(assignmentCheck.error);
+    }
+
+    const triageOverrideReason =
+      triageAssigned !== triageSuggested
+        ? formatOverrideSummary(raw.overrideReasonCode, raw.overrideNote)
+        : null;
+
     const payload = {
       id: createUuid(),
       ...values,
-      triage,
+      triage: triageAssigned,
+      triageSuggested,
+      triageOverrideReason,
+      protocolVersion: CTAS_PROTOCOL_VERSION,
+      ctasRedFlags: values.redFlags,
       status: "En espera",
     };
 
@@ -203,19 +254,20 @@ export function PatientProvider({ children }) {
           markRetry();
         },
       });
-      await retryAsync(
-        () =>
-          createAuditEvent({
-            patient_id: createdPatient.id,
-            patient_name: createdPatient.name,
-            action: "Paciente creado",
-            triage: createdPatient.triage,
-            actor_email: actorEmail ?? undefined,
-            request_id: createAuditRequestId,
-          }),
+      const createAuditAction = createdPatient.triageOverrideReason
+        ? `Paciente creado (CTAS ${createdPatient.triage}, sugerido ${createdPatient.triageSuggested}; ${createdPatient.triageOverrideReason})`
+        : `Paciente creado (CTAS ${createdPatient.triage})`;
+
+      await recordAuditEventSafely(
         {
-          delaysMs: ACTION_RETRY_DELAYS_MS,
-          shouldRetry: shouldRetryTransientError,
+          patient_id: createdPatient.id,
+          patient_name: createdPatient.name,
+          action: createAuditAction,
+          triage: createdPatient.triage,
+          actor_email: actorEmail ?? undefined,
+          request_id: createAuditRequestId,
+        },
+        {
           onRetry: () => {
             hadRetry = true;
             markRetry();
@@ -227,7 +279,7 @@ export function PatientProvider({ children }) {
       setHistory((prev) => [
         {
           name: createdPatient.name,
-          action: "Paciente creado",
+          action: createAuditAction,
           triage: createdPatient.triage,
           actor: actorEmail,
           date: new Date().toLocaleString(),
@@ -235,8 +287,11 @@ export function PatientProvider({ children }) {
         ...prev,
       ]);
 
-      // Alerta sonora para casos criticos.
-      if (triage === "I" && soundEnabled) {
+      // Alerta sonora para casos criticos (asignado o sugerido I).
+      if (
+        (triageAssigned === "I" || triageSuggested === "I") &&
+        soundEnabled
+      ) {
         const audio = new Audio(CRITICAL_ALARM_URL);
         audio.play().catch(() => null);
       }
@@ -285,19 +340,16 @@ export function PatientProvider({ children }) {
           markRetry();
         },
       });
-      await retryAsync(
-        () =>
-          createAuditEvent({
-            patient_id: id,
-            patient_name: patient.name || "Paciente",
-            action: `Estado: ${status}`,
-            triage: patient.triage,
-            actor_email: actorEmail ?? undefined,
-            request_id: statusAuditRequestId,
-          }),
+      await recordAuditEventSafely(
         {
-          delaysMs: ACTION_RETRY_DELAYS_MS,
-          shouldRetry: shouldRetryTransientError,
+          patient_id: id,
+          patient_name: patient.name || "Paciente",
+          action: `Estado: ${status}`,
+          triage: patient.triage,
+          actor_email: actorEmail ?? undefined,
+          request_id: statusAuditRequestId,
+        },
+        {
           onRetry: () => {
             hadRetry = true;
             markRetry();
@@ -337,6 +389,107 @@ export function PatientProvider({ children }) {
     }
   };
 
+  const reassignTriage = async (id, { triageAssigned, overrideReasonCode, overrideNote }) => {
+    if (!canReassignTriage) {
+      throw new Error("No tienes permisos para reasignar el nivel CTAS.");
+    }
+    const patient = patients.find((p) => p.id === id);
+    if (!patient) {
+      throw new Error("Paciente no encontrado.");
+    }
+    const triageSuggested = patient.triageSuggested ?? patient.triage;
+    const assignmentCheck = validateTriageAssignment({
+      suggested: triageSuggested,
+      assigned: triageAssigned,
+      overrideReasonCode,
+      overrideNote,
+    });
+    if (!assignmentCheck.valid) {
+      throw new Error(assignmentCheck.error);
+    }
+
+    const triageOverrideReason =
+      triageAssigned !== triageSuggested
+        ? formatOverrideSummary(overrideReasonCode, overrideNote)
+        : null;
+
+    const actorEmail = user?.email ?? null;
+    const auditRequestId = createRequestId(`audit:triage:${id}:${triageAssigned}`);
+    let hadRetry = false;
+
+    try {
+      await retryAsync(
+        () =>
+          updatePatientTriage(id, {
+            triage: triageAssigned,
+            triageSuggested,
+            triageOverrideReason,
+            protocolVersion: patient.protocolVersion ?? CTAS_PROTOCOL_VERSION,
+          }),
+        {
+          delaysMs: ACTION_RETRY_DELAYS_MS,
+          shouldRetry: shouldRetryTransientError,
+          onRetry: () => {
+            hadRetry = true;
+            markRetry();
+          },
+        }
+      );
+      const auditAction = triageOverrideReason
+        ? `CTAS reasignado: ${patient.triage} → ${triageAssigned} (sugerido ${triageSuggested}; ${triageOverrideReason})`
+        : `CTAS reasignado: ${patient.triage} → ${triageAssigned}`;
+
+      await recordAuditEventSafely(
+        {
+          patient_id: id,
+          patient_name: patient.name || "Paciente",
+          action: auditAction,
+          triage: triageAssigned,
+          actor_email: actorEmail ?? undefined,
+          request_id: auditRequestId,
+        },
+        {
+          onRetry: () => {
+            hadRetry = true;
+            markRetry();
+          },
+        }
+      );
+
+      setPatients((prev) =>
+        prev.map((p) =>
+          p.id === id
+            ? {
+                ...p,
+                triage: triageAssigned,
+                triageSuggested,
+                triageOverrideReason,
+              }
+            : p
+        )
+      );
+      setHistory((prev) => [
+        {
+          action: auditAction,
+          name: patient.name,
+          triage: triageAssigned,
+          actor: actorEmail,
+          date: new Date().toLocaleString(),
+        },
+        ...prev,
+      ]);
+      if (hadRetry) {
+        markRecoveredAction();
+      }
+    } catch (err) {
+      if (hadRetry) {
+        markFailedAction();
+      }
+      setError(err.message || "No se pudo reasignar el triage.");
+      throw err;
+    }
+  };
+
   const patchPatientDemographics = async (id, patch) => {
     if (!canUpdateDemographics) {
       throw new Error("No tienes permisos para actualizar datos del paciente.");
@@ -357,19 +510,16 @@ export function PatientProvider({ children }) {
           markRetry();
         },
       });
-      await retryAsync(
-        () =>
-          createAuditEvent({
-            patient_id: id,
-            patient_name: patch.name ?? patient.name ?? "Paciente",
-            action: "Datos del paciente completados o actualizados",
-            triage: patient.triage,
-            actor_email: actorEmail ?? undefined,
-            request_id: demoAuditRequestId,
-          }),
+      await recordAuditEventSafely(
         {
-          delaysMs: ACTION_RETRY_DELAYS_MS,
-          shouldRetry: shouldRetryTransientError,
+          patient_id: id,
+          patient_name: patch.name ?? patient.name ?? "Paciente",
+          action: "Datos del paciente completados o actualizados",
+          triage: patient.triage,
+          actor_email: actorEmail ?? undefined,
+          request_id: demoAuditRequestId,
+        },
+        {
           onRetry: () => {
             hadRetry = true;
             markRetry();
@@ -406,6 +556,7 @@ export function PatientProvider({ children }) {
       value={{
         patients,
         addPatient,
+        reassignTriage,
         updateStatus,
         patchPatientDemographics,
         history,
@@ -418,6 +569,7 @@ export function PatientProvider({ children }) {
         canSetInAttention,
         canFinalizePatient,
         canUpdateDemographics,
+        canReassignTriage,
       }}
     >
       {children}
