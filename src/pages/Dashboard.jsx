@@ -11,7 +11,6 @@ import {
   Clock,
   ListTree,
   MinusCircle,
-  Plus,
   Timer,
   Users,
 } from "lucide-react";
@@ -25,6 +24,7 @@ import { CRITICAL_ALARM_URL } from "../constants/alarm";
 import { useSoundPreference } from "../hooks/useSoundPreference";
 import { useAuth } from "../hooks/useAuth";
 import { RoleWelcomeBanner } from "../components/RoleWelcomeBanner";
+import { DashboardQuickActions } from "../components/DashboardQuickActions";
 import {
   CtasDashboardCard,
   CtasLevelBadge,
@@ -183,6 +183,7 @@ export default function Dashboard() {
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-6">
         <RoleWelcomeBanner />
+        <DashboardQuickActions />
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
@@ -207,16 +208,6 @@ export default function Dashboard() {
           </div>
 
           <div className="flex flex-wrap gap-2 self-start md:self-end">
-            {canCreatePatient ? (
-              <button
-                type="button"
-                onClick={() => navigate("/triage")}
-                className="btn btn-primary"
-              >
-                <Plus className="h-4 w-4" />
-                Registrar paciente
-              </button>
-            ) : null}
             {canSetInAttention ? (
               <button
                 type="button"

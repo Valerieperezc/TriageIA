@@ -164,6 +164,20 @@ function mapSupabaseProfileRow(data) {
   };
 }
 
+/** Si el proyecto Supabase no tiene columnas extendidas en profiles, no reintentar. */
+let extendedProfileColumnsAvailable = null;
+
+function isMissingProfileColumnError(error) {
+  const msg = String(error?.message ?? error?.details ?? "");
+  const code = String(error?.code ?? "");
+  return (
+    /column/i.test(msg) ||
+    /42703/.test(msg) ||
+    /PGRST204/.test(code) ||
+    /schema cache/i.test(msg)
+  );
+}
+
 async function fetchSupabaseProfile(userId, email) {
   const supabase = await getSupabaseClient();
 
@@ -177,16 +191,6 @@ async function fetchSupabaseProfile(userId, email) {
   };
 
   try {
-    const { data: full, error: fullError } = await withTimeout(
-      readProfile("role, display_name, phone, department, job_title"),
-      AUTH_OP_TIMEOUT_MS,
-      "Tiempo de espera al leer el perfil"
-    );
-
-    if (!fullError && full) {
-      return mapSupabaseProfileRow(full);
-    }
-
     const { data: basic, error: basicError } = await withTimeout(
       readProfile("role, email"),
       AUTH_OP_TIMEOUT_MS,
@@ -194,14 +198,30 @@ async function fetchSupabaseProfile(userId, email) {
     );
 
     if (!basicError && basic) {
+      if (extendedProfileColumnsAvailable !== false) {
+        const { data: extra, error: extraError } = await withTimeout(
+          readProfile("display_name, phone, department, job_title"),
+          AUTH_OP_TIMEOUT_MS,
+          "Tiempo de espera al leer el perfil"
+        );
+
+        if (!extraError && extra) {
+          extendedProfileColumnsAvailable = true;
+          return mapSupabaseProfileRow({ ...basic, ...extra });
+        }
+
+        if (extraError && isMissingProfileColumnError(extraError)) {
+          extendedProfileColumnsAvailable = false;
+        } else if (extraError && import.meta.env.DEV) {
+          console.warn("[TriageIA] Perfil extendido:", extraError.message);
+        }
+      }
+
       return mapSupabaseProfileRow(basic);
     }
 
-    if (import.meta.env.DEV) {
-      console.warn(
-        "[TriageIA] No se pudo leer profiles:",
-        fullError?.message ?? basicError?.message
-      );
+    if (import.meta.env.DEV && basicError) {
+      console.warn("[TriageIA] No se pudo leer profiles:", basicError.message);
     }
   } catch (err) {
     if (import.meta.env.DEV) {

@@ -270,18 +270,9 @@ export default function Triage() {
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="mx-auto max-w-3xl space-y-5">
-        <button
-          type="button"
-          onClick={cancelRegistration}
-          data-testid="triage-cancel"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 transition hover:text-brand-600 dark:text-ink-400 dark:hover:text-brand-300"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden />
-          Cancelar registro
-        </button>
-
         {/* Header */}
-        <div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
             <Stethoscope className="h-3 w-3" />
             Registro de triage
@@ -289,6 +280,16 @@ export default function Triage() {
           <h1 className="page-title mt-2" data-testid="triage-page-title">
             Registrar paciente
           </h1>
+          </div>
+          <button
+            type="button"
+            onClick={cancelRegistration}
+            data-testid="triage-cancel"
+            className="btn btn-secondary shrink-0 self-start"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            Volver al dashboard
+          </button>
         </div>
 
         {/* Fast track */}
@@ -684,7 +685,7 @@ export default function Triage() {
             data-testid="triage-cancel-footer"
             className="btn btn-secondary w-full sm:w-auto"
           >
-            Cancelar registro
+            Volver al dashboard
           </button>
           <button
             data-testid="triage-submit"
