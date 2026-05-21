@@ -178,15 +178,16 @@ export default function Login() {
 
         <main className="login-form-panel">
           <div className="login-form-panel__inner">
-            <div className="login-mobile-brand">
-              <span className="login-mobile-brand__icon">
-                <HeartPulse className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-500 dark:text-ink-400">
-                  TriageIA
-                </p>
-                <p className="text-base font-bold text-ink-900 dark:text-ink-50">Panel clínico</p>
+            <div className="login-top-banner" aria-hidden="true">
+              <span className="login-top-banner__glow" />
+              <div className="login-top-banner__inner">
+                <span className="login-top-banner__icon">
+                  <HeartPulse className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="login-top-banner__eyebrow">TriageIA</p>
+                  <p className="login-top-banner__title">Panel clínico</p>
+                </div>
               </div>
             </div>
 
@@ -198,14 +199,14 @@ export default function Login() {
 
               <h1 className="login-card__title">Bienvenido de nuevo</h1>
               <p className="login-card__subtitle">
-                Ingresa con tu correo institucional para acceder al panel de triage.
+                Ingresa con tu correo institucional para acceder al panel clínico.
               </p>
 
               <div className="login-field">
-                <label className="form-label" htmlFor="login-email">
+                <label className="login-field__label" htmlFor="login-email">
                   Correo electrónico
                 </label>
-                <div className="input">
+                <div className="input login-input">
                   <Mail className="h-4 w-4 shrink-0 text-ink-400 dark:text-ink-500" />
                   <input
                     id="login-email"
@@ -223,10 +224,10 @@ export default function Login() {
               </div>
 
               <div className="login-field">
-                <label className="form-label" htmlFor="login-password">
+                <label className="login-field__label" htmlFor="login-password">
                   Contraseña
                 </label>
-                <div className="input">
+                <div className="input login-input">
                   <Lock className="h-4 w-4 shrink-0 text-ink-400 dark:text-ink-500" />
                   <input
                     id="login-password"

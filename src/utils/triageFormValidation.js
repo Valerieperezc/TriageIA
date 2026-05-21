@@ -1,3 +1,5 @@
+import { isValidChiefComplaintCode } from "../constants/ctasProtocol";
+
 /** Rangos clínicos razonables para evitar errores de registro (no sustituyen criterio médico). */
 export const TRIAGE_FORM_LIMITS = {
   ageMin: 0,
@@ -70,12 +72,26 @@ export function validateTriageForm(raw, options = {}) {
   let name = nameRaw;
   let symptom = symptomRaw;
 
+  const chiefComplaintCode = trimOrEmpty(raw?.chiefComplaintCode);
+  const redFlags = Array.isArray(raw?.redFlags)
+    ? raw.redFlags.filter((c) => typeof c === "string" && c.trim())
+    : [];
+
   if (fastTrack) {
     if (!name) name = "Paciente sin identificar";
     if (!symptom) symptom = "Crítico / datos incompletos";
   } else {
     if (!name) errors.name = "El nombre es obligatorio.";
     if (!symptom) errors.symptom = "El síntoma principal es obligatorio.";
+  }
+
+  let resolvedChiefComplaint = chiefComplaintCode;
+  if (fastTrack && !resolvedChiefComplaint) {
+    resolvedChiefComplaint = "other";
+  } else if (!resolvedChiefComplaint) {
+    errors.chiefComplaintCode = "Seleccione el motivo de consulta (CTAS).";
+  } else if (!isValidChiefComplaintCode(resolvedChiefComplaint)) {
+    errors.chiefComplaintCode = "Motivo de consulta no válido.";
   }
 
   const ageStr =
@@ -254,6 +270,8 @@ export function validateTriageForm(raw, options = {}) {
       bloodType: bloodType || null,
       arrivedAt: arrivedAtMs,
       fastTrack,
+      chiefComplaintCode: resolvedChiefComplaint,
+      redFlags,
     },
   };
 }
@@ -304,6 +322,8 @@ export function validateTriagePayload(input) {
     bloodType: input?.bloodType ?? "",
     arrivedAt: input?.arrivedAt,
     fastTrack: input?.fastTrack,
+    chiefComplaintCode: input?.chiefComplaintCode ?? "",
+    redFlags: input?.redFlags ?? [],
   });
 }
 

@@ -1,26 +1,15 @@
 import { useMemo, useState } from "react";
 import { usePatients } from "../hooks/usePatients";
 import toast from "react-hot-toast";
-import { calculateTriage } from "../utils/triage";
+import {
+  CTAS_CHIEF_COMPLAINTS,
+  CTAS_RED_FLAGS,
+} from "../constants/ctasProtocol";
+import { TriageCtasAssignment } from "../components/TriageCtasAssignment";
+import { suggestCtasLevel, validateTriageAssignment } from "../utils/ctasTriage";
 import { parseTempInput, validateTriageForm } from "../utils/triageFormValidation";
 import { DataState } from "../components/DataState";
 import { AlertTriangle, Stethoscope } from "lucide-react";
-
-const TRIAGE_PREVIEW_STYLES = {
-  I: "badge-red",
-  II: "badge-orange",
-  III: "badge-amber",
-  IV: "badge-lime",
-  V: "badge-blue",
-};
-
-const TRIAGE_PREVIEW_LABEL = {
-  I: "Resucitación (crítico)",
-  II: "Emergente",
-  III: "Urgente",
-  IV: "Menos urgente",
-  V: "No urgente",
-};
 
 const BLOOD_TYPE_OPTIONS = [
   { value: "", label: "No indicado" },
@@ -83,8 +72,15 @@ function parseIntOrNaN(raw) {
 export default function Triage() {
   const { addPatient, canCreatePatient, loading, error, reload } = usePatients();
 
+  const [triageAssigned, setTriageAssigned] = useState("");
+  const [overrideReasonCode, setOverrideReasonCode] = useState("");
+  const [overrideNote, setOverrideNote] = useState("");
+  const [assignmentError, setAssignmentError] = useState("");
+
   const [form, setForm] = useState(() => ({
     fastTrack: false,
+    chiefComplaintCode: "",
+    redFlags: [],
     name: "",
     age: "",
     symptom: "",
@@ -107,13 +103,20 @@ export default function Triage() {
   }));
   const [fieldErrors, setFieldErrors] = useState({});
 
-  const previewTriage = useMemo(() => {
+  const ctasSuggestion = useMemo(() => {
+    const chief =
+      form.chiefComplaintCode || (form.fastTrack ? "other" : "");
+    if (!chief && !form.fastTrack) return null;
+
     const t = parseTempInput(form.temp);
     const fcRaw = form.fc === "" || form.fc == null ? "" : String(form.fc).trim();
     const f = fcRaw === "" ? NaN : Number(fcRaw.replace(",", "."));
     const fr = parseIntOrNaN(form.respiratoryRate);
     const sys = parseIntOrNaN(form.bpSystolic);
     const dia = parseIntOrNaN(form.bpDiastolic);
+    const ageRaw = form.age === "" || form.age == null ? "" : String(form.age).trim();
+    const age = ageRaw === "" ? 0 : Number(ageRaw);
+
     if (
       !Number.isFinite(t) ||
       !Number.isFinite(f) ||
@@ -128,24 +131,24 @@ export default function Triage() {
     const spo2 = spo2Raw === "" ? null : Number(spo2Raw);
     const painRaw = form.pain === "" || form.pain == null ? "" : String(form.pain).trim();
     const pain = painRaw === "" ? null : Number(painRaw);
-    return calculateTriage(t, f, {
-      spo2: Number.isFinite(spo2) ? spo2 : null,
-      pain: Number.isFinite(pain) ? pain : null,
-      alteredConsciousness: form.alteredConsciousness,
-      respiratoryRate: fr,
-      bpSystolic: sys,
-      bpDiastolic: dia,
+
+    return suggestCtasLevel({
+      chiefComplaintCode: chief,
+      redFlags: form.redFlags,
+      fastTrack: form.fastTrack,
+      age,
+      temp: t,
+      fc: f,
+      vitals: {
+        spo2: Number.isFinite(spo2) ? spo2 : null,
+        pain: Number.isFinite(pain) ? pain : null,
+        alteredConsciousness: form.alteredConsciousness,
+        respiratoryRate: fr,
+        bpSystolic: sys,
+        bpDiastolic: dia,
+      },
     });
-  }, [
-    form.temp,
-    form.fc,
-    form.respiratoryRate,
-    form.bpSystolic,
-    form.bpDiastolic,
-    form.spo2,
-    form.pain,
-    form.alteredConsciousness,
-  ]);
+  }, [form]);
 
   const updateField = (key, value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -171,25 +174,56 @@ export default function Triage() {
 
     setFieldErrors({});
 
-    try {
-      const triageLevel = calculateTriage(result.values.temp, result.values.fc, {
+    const suggestion = suggestCtasLevel({
+      chiefComplaintCode: result.values.chiefComplaintCode,
+      redFlags: result.values.redFlags,
+      fastTrack: result.values.fastTrack,
+      age: result.values.age,
+      temp: result.values.temp,
+      fc: result.values.fc,
+      vitals: {
         spo2: result.values.spo2,
         pain: result.values.pain,
         alteredConsciousness: result.values.alteredConsciousness,
         respiratoryRate: result.values.respiratoryRate,
         bpSystolic: result.values.bpSystolic,
         bpDiastolic: result.values.bpDiastolic,
-      });
+      },
+    });
+
+    const assigned = triageAssigned || suggestion.level;
+    const assignmentCheck = validateTriageAssignment({
+      suggested: suggestion.level,
+      assigned,
+      overrideReasonCode,
+      overrideNote,
+    });
+    if (!assignmentCheck.valid) {
+      setAssignmentError(assignmentCheck.error);
+      toast.error(assignmentCheck.error);
+      return;
+    }
+    setAssignmentError("");
+
+    try {
       await addPatient({
         ...result.values,
         arrivedAt: result.values.arrivedAt,
         fastTrack: result.values.fastTrack,
+        triageAssigned: assigned,
+        overrideReasonCode,
+        overrideNote,
       });
       toast.success(
-        `Paciente registrado — triage ${triageLevel}${result.values.fastTrack ? " (ingreso mínimo)" : ""}`
+        `Paciente registrado — CTAS ${assigned} (sugerido ${suggestion.level})${result.values.fastTrack ? " · ingreso mínimo" : ""}`
       );
+      setTriageAssigned("");
+      setOverrideReasonCode("");
+      setOverrideNote("");
       setForm({
         fastTrack: false,
+        chiefComplaintCode: "",
+        redFlags: [],
         name: "",
         age: "",
         symptom: "",
@@ -216,7 +250,15 @@ export default function Triage() {
     }
   };
 
-  const triageLabel = previewTriage;
+  const toggleRedFlag = (code) => {
+    setForm((prev) => {
+      const set = new Set(prev.redFlags);
+      if (set.has(code)) set.delete(code);
+      else set.add(code);
+      return { ...prev, redFlags: [...set] };
+    });
+  };
+
   const fast = form.fastTrack;
 
   return (
@@ -268,6 +310,55 @@ export default function Triage() {
               presión arterial.
             </p>
           </div>
+        ) : null}
+
+        {/* Motivo CTAS */}
+        {!fast ? (
+          <section className="card space-y-4">
+            <SectionHeader
+              title="Motivo de consulta (CTAS)"
+              description="Seleccione la presentación principal; la sugerencia combina motivo, discriminadores y signos vitales."
+            />
+            <Field
+              label="Presentación principal"
+              error={fieldErrors.chiefComplaintCode}
+            >
+              <select
+                data-testid="triage-chief-complaint"
+                className="input w-full"
+                value={form.chiefComplaintCode}
+                onChange={(e) =>
+                  updateField("chiefComplaintCode", e.target.value)
+                }
+              >
+                <option value="">Seleccione motivo…</option>
+                {CTAS_CHIEF_COMPLAINTS.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.label}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <div className="space-y-2">
+              <p className="form-label">Discriminadores / banderas rojas</p>
+                <div className="grid gap-2 sm:grid-cols-2">
+                {CTAS_RED_FLAGS.map((flag) => (
+                  <label
+                    key={flag.code}
+                    className="flex cursor-pointer items-start gap-2 rounded-lg border border-ink-200/80 px-3 py-2 text-xs dark:border-ink-700"
+                  >
+                    <input
+                      type="checkbox"
+                      className="mt-0.5 h-4 w-4 accent-red-600"
+                      checked={form.redFlags.includes(flag.code)}
+                      onChange={() => toggleRedFlag(flag.code)}
+                    />
+                    <span>{flag.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </section>
         ) : null}
 
         {/* Datos del paciente */}
@@ -556,37 +647,23 @@ export default function Triage() {
           </section>
         ) : null}
 
-        {/* Preview + submit */}
-        <div className="card sticky bottom-4 flex flex-col gap-3 shadow-soft-lg sm:flex-row sm:items-center sm:justify-between">
-          {triageLabel ? (
-            <div
-              data-testid="triage-preview"
-              className="flex items-center gap-3"
-            >
-              <span className={`badge ${TRIAGE_PREVIEW_STYLES[triageLabel] ?? "badge-slate"}`}>
-                CTAS {triageLabel}
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-ink-800 dark:text-ink-100">
-                  Clasificación prevista
-                </p>
-                <p className="text-xs text-ink-500 dark:text-ink-400">
-                  {TRIAGE_PREVIEW_LABEL[triageLabel]}
-                </p>
-              </div>
-            </div>
-          ) : (
-            <p className="text-xs text-ink-500 dark:text-ink-400">
-              Completa temperatura, FC, frecuencia respiratoria y presión arterial
-              para ver la clasificación prevista.
-            </p>
-          )}
+        <TriageCtasAssignment
+          suggestion={ctasSuggestion}
+          triageAssigned={triageAssigned}
+          onTriageAssignedChange={setTriageAssigned}
+          overrideReasonCode={overrideReasonCode}
+          onOverrideReasonChange={setOverrideReasonCode}
+          overrideNote={overrideNote}
+          onOverrideNoteChange={setOverrideNote}
+          assignmentError={assignmentError}
+        />
 
+        <div className="card sticky bottom-4 flex justify-end shadow-soft-lg">
           <button
             data-testid="triage-submit"
             type="button"
             onClick={submit}
-            disabled={!canCreatePatient}
+            disabled={!canCreatePatient || !ctasSuggestion?.level}
             className="btn btn-primary w-full sm:w-auto"
           >
             Registrar paciente

@@ -1,5 +1,7 @@
+import { CTAS_PROTOCOL_VERSION } from "../constants/ctasProtocol";
 import { getSupabaseClient, isSupabaseConfigured } from "../lib/supabase";
 import {
+  isDuplicateKeyError,
   isPermissionDeniedError,
   permissionDeniedUserMessage,
 } from "../utils/supabaseErrors";
@@ -38,6 +40,11 @@ function normalizeLocalPatient(p) {
     temp: p.temp,
     fc: p.fc,
     triage: p.triage,
+    triageSuggested: p.triageSuggested ?? p.triage,
+    triageOverrideReason: p.triageOverrideReason ?? null,
+    protocolVersion: p.protocolVersion ?? CTAS_PROTOCOL_VERSION,
+    chiefComplaintCode: p.chiefComplaintCode ?? null,
+    ctasRedFlags: Array.isArray(p.ctasRedFlags) ? p.ctasRedFlags : [],
     status: p.status,
     createdAt,
     arrivedAt,
@@ -75,6 +82,13 @@ function mapDbPatient(patient) {
     temp: Number(patient.temp),
     fc: patient.fc,
     triage: patient.triage,
+    triageSuggested: patient.triage_suggested ?? patient.triage,
+    triageOverrideReason: patient.triage_override_reason ?? null,
+    protocolVersion: patient.protocol_version ?? CTAS_PROTOCOL_VERSION,
+    chiefComplaintCode: patient.chief_complaint_code ?? null,
+    ctasRedFlags: Array.isArray(patient.ctas_red_flags)
+      ? patient.ctas_red_flags
+      : [],
     status: patient.status,
     createdAt,
     arrivedAt,
@@ -113,6 +127,13 @@ function toSupabaseInsertRow(payload) {
     temp: payload.temp,
     fc: payload.fc,
     triage: payload.triage,
+    triage_suggested: payload.triageSuggested ?? payload.triage,
+    triage_override_reason: payload.triageOverrideReason ?? null,
+    protocol_version: payload.protocolVersion ?? CTAS_PROTOCOL_VERSION,
+    chief_complaint_code: payload.chiefComplaintCode ?? null,
+    ctas_red_flags: Array.isArray(payload.ctasRedFlags)
+      ? payload.ctasRedFlags
+      : [],
     status: payload.status ?? "En espera",
     arrived_at: new Date(
       payload.arrivedAt != null ? payload.arrivedAt : Date.now()
@@ -296,6 +317,59 @@ export async function updatePatientDemographics(id, patch) {
   if (error) throwIfPermissionDenied(error);
 }
 
+const TRIAGE_PATCH_KEYS = new Set([
+  "triage",
+  "triageSuggested",
+  "triageOverrideReason",
+  "protocolVersion",
+]);
+
+function toSupabaseTriagePatch(patch) {
+  const out = {};
+  if (patch.triage !== undefined) out.triage = patch.triage;
+  if (patch.triageSuggested !== undefined) {
+    out.triage_suggested = patch.triageSuggested;
+  }
+  if (patch.triageOverrideReason !== undefined) {
+    out.triage_override_reason = patch.triageOverrideReason;
+  }
+  if (patch.protocolVersion !== undefined) {
+    out.protocol_version = patch.protocolVersion;
+  }
+  return out;
+}
+
+/**
+ * Reasignación de nivel CTAS (asignado) con trazabilidad.
+ * @param {string} id
+ * @param {object} patch
+ */
+export async function updatePatientTriage(id, patch) {
+  const safe = {};
+  for (const k of Object.keys(patch)) {
+    if (TRIAGE_PATCH_KEYS.has(k)) safe[k] = patch[k];
+  }
+  if (Object.keys(safe).length === 0) return;
+
+  if (!isSupabaseConfigured) {
+    const list = readLocal(PATIENTS_KEY);
+    const updated = list.map((item) => {
+      if (item.id !== id) return item;
+      const base = normalizeLocalPatient(item);
+      return normalizeLocalPatient({ ...base, ...safe });
+    });
+    writeLocal(PATIENTS_KEY, updated);
+    return;
+  }
+
+  const supabase = await getSupabaseClient();
+  const row = toSupabaseTriagePatch(safe);
+  if (Object.keys(row).length === 0) return;
+
+  const { error } = await supabase.from("patients").update(row).eq("id", id);
+  if (error) throwIfPermissionDenied(error);
+}
+
 export async function fetchAuditEvents() {
   if (!isSupabaseConfigured) {
     return readLocal(EVENTS_KEY)
@@ -376,21 +450,12 @@ export async function createAuditEvent(event) {
     row.request_id = event.request_id;
   }
 
-  const q = event.request_id
-    ? supabase
-        .from("patient_events")
-        .upsert(row, { onConflict: "request_id", ignoreDuplicates: true })
-    : supabase.from("patient_events").insert(row);
+  const { error } = await supabase.from("patient_events").insert(row);
 
-  let { error } = await q;
-  if (
-    error &&
-    event.request_id &&
-    String(error.message ?? "").toLowerCase().includes("request_id")
-  ) {
-    const fallbackRow = { ...row };
-    delete fallbackRow.request_id;
-    ({ error } = await supabase.from("patient_events").insert(fallbackRow));
+  if (error) {
+    if (event.request_id && isDuplicateKeyError(error)) {
+      return;
+    }
+    throwIfPermissionDenied(error);
   }
-  if (error) throwIfPermissionDenied(error);
 }

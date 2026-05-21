@@ -19,7 +19,7 @@ import {
 
 const NAV_DEF = {
   dashboard: {
-    to: "/",
+    to: "/dashboard",
     end: true,
     icon: LayoutDashboard,
     label: "Dashboard",

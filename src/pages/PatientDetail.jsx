@@ -11,6 +11,18 @@ import {
 } from "../utils/patientStatus";
 import { ArrowLeft, CheckCircle2, Lock, PlayCircle, Clock } from "lucide-react";
 import { meanArterialPressure } from "../utils/triage";
+import {
+  CTAS_OVERRIDE_REASONS,
+  getChiefComplaintByCode,
+  getCtasLevelInfo,
+} from "../constants/ctasProtocol";
+import { isUndertriage, validateTriageAssignment } from "../utils/ctasTriage";
+import {
+  CtasLevelBadge,
+  CtasLevelPicker,
+  CtasLevelSummary,
+  CtasUrgencyMessage,
+} from "../components/CtasLevelDisplay";
 
 const BLOOD_TYPE_OPTIONS = [
   { value: "", label: "No indicado" },
@@ -50,14 +62,6 @@ function vitalsAlertLabels(p) {
   }
   return parts;
 }
-
-const TRIAGE_BADGE = {
-  I: "badge-red",
-  II: "badge-orange",
-  III: "badge-amber",
-  IV: "badge-lime",
-  V: "badge-blue",
-};
 
 const STATUS_BADGE = {
   "En espera": "badge-amber",
@@ -252,6 +256,99 @@ function DemographicsEditor({ patient, onPatch, onSaved }) {
   );
 }
 
+function PatientTriageReassign({ patient, onSave }) {
+  const suggested = patient.triageSuggested ?? patient.triage;
+  const [assigned, setAssigned] = useState(patient.triage);
+  const [reasonCode, setReasonCode] = useState("");
+  const [note, setNote] = useState("");
+
+  const undertriage = isUndertriage(suggested, assigned);
+
+  const save = () => {
+    const check = validateTriageAssignment({
+      suggested,
+      assigned,
+      overrideReasonCode: reasonCode,
+      overrideNote: note,
+    });
+    if (!check.valid) {
+      toast.error(check.error);
+      return;
+    }
+    onSave({
+      triageAssigned: assigned,
+      overrideReasonCode: reasonCode,
+      overrideNote: note,
+    });
+  };
+
+  return (
+    <section className="card space-y-3" data-testid="patient-triage-reassign">
+      <h2 className="text-base font-semibold text-ink-900 dark:text-ink-50">
+        Reasignar nivel CTAS
+      </h2>
+      <div className="space-y-2">
+        <p className="text-xs text-ink-500 dark:text-ink-400">
+          Sugerencia del sistema al ingreso:
+        </p>
+        <CtasLevelSummary level={suggested} testId="patient-reassign-suggested" />
+      </div>
+      <p className="text-xs text-ink-500 dark:text-ink-400">
+        Elija el nivel definitivo. Si asigna menos urgente que la sugerencia,
+        documente el motivo.
+      </p>
+      <CtasLevelPicker
+        value={assigned}
+        onChange={setAssigned}
+        testIdPrefix="patient-reassign"
+        ariaLabel="Reasignar nivel CTAS"
+      />
+      {assigned ? (
+        <div
+          className={`rounded-lg border px-3 py-2 ${
+            getCtasLevelInfo(assigned)?.cardSurfaceClass ?? ""
+          }`}
+        >
+          <CtasUrgencyMessage level={assigned} />
+        </div>
+      ) : null}
+      {undertriage ? (
+        <div className="space-y-2 rounded-lg border border-amber-300/80 bg-amber-50/80 p-3 dark:border-amber-800/60 dark:bg-amber-950/30">
+          <select
+            className="input w-full"
+            value={reasonCode}
+            onChange={(e) => setReasonCode(e.target.value)}
+            data-testid="patient-reassign-reason"
+          >
+            <option value="">Motivo del cambio…</option>
+            {CTAS_OVERRIDE_REASONS.map((r) => (
+              <option key={r.code} value={r.code}>
+                {r.label}
+              </option>
+            ))}
+          </select>
+          <textarea
+            className="input min-h-[60px] w-full"
+            placeholder="Nota clínica (obligatoria si «Otro»)"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            data-testid="patient-reassign-note"
+          />
+        </div>
+      ) : null}
+      <button
+        type="button"
+        className="btn btn-primary"
+        data-testid="patient-reassign-save"
+        onClick={save}
+        disabled={assigned === patient.triage}
+      >
+        Guardar nivel CTAS
+      </button>
+    </section>
+  );
+}
+
 export default function PatientDetail() {
   const { id } = useParams();
   const {
@@ -261,6 +358,8 @@ export default function PatientDetail() {
     canSetInAttention,
     canFinalizePatient,
     canUpdateDemographics,
+    canReassignTriage,
+    reassignTriage,
     loading,
     error,
     reload,
@@ -301,7 +400,6 @@ export default function PatientDetail() {
   }
 
   const waitMin = minutesWaiting(p, now);
-  const triageBadge = TRIAGE_BADGE[p.triage] ?? "badge-slate";
   const statusBadge = STATUS_BADGE[p.status] ?? "badge-slate";
   const pam =
     p.bpSystolic != null && p.bpDiastolic != null
@@ -354,7 +452,31 @@ export default function PatientDetail() {
           <div>
             <h1 className="page-title">{p.name}</h1>
             <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className={`badge ${triageBadge}`}>CTAS {p.triage}</span>
+              <CtasLevelBadge
+                level={p.triage}
+                className="ring-1 ring-ink-200/80 dark:ring-ink-600"
+              />
+              <span
+                className="text-xs font-medium text-ink-600 dark:text-ink-300"
+                data-testid="patient-triage-assigned"
+              >
+                (asignado)
+              </span>
+              {p.triageSuggested && p.triageSuggested !== p.triage ? (
+                <span data-testid="patient-triage-suggested">
+                  <CtasLevelBadge level={p.triageSuggested} />
+                  <span className="ml-1 text-xs text-ink-500">sugerido</span>
+                </span>
+              ) : null}
+              {p.triageOverrideReason ? (
+                <span
+                  className="badge badge-amber"
+                  title={p.triageOverrideReason}
+                  data-testid="patient-triage-override"
+                >
+                  Cambio documentado
+                </span>
+              ) : null}
               <span
                 className={`badge ${statusBadge}`}
                 data-testid="patient-detail-status"
@@ -364,6 +486,12 @@ export default function PatientDetail() {
               {p.fastTrack ? (
                 <span className="badge badge-amber">Ingreso mínimo</span>
               ) : null}
+            </div>
+            <CtasUrgencyMessage
+              level={p.triage}
+              className="mt-2 text-ink-700 dark:text-ink-300"
+            />
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <span className="badge badge-slate">
                 <Clock className="mr-1 h-3 w-3" />
                 <span data-testid="patient-wait-minutes">
@@ -424,6 +552,20 @@ export default function PatientDetail() {
         )}
       </section>
 
+      {canReassignTriage && !finalized ? (
+        <PatientTriageReassign
+          patient={p}
+          onSave={async (payload) => {
+            try {
+              await reassignTriage(p.id, payload);
+              toast.success("Nivel CTAS actualizado");
+            } catch (e) {
+              toast.error(e?.message || "No se pudo actualizar el triage");
+            }
+          }}
+        />
+      ) : null}
+
       {/* Dos columnas: tiempos + clínico */}
       <div className="grid gap-4 md:grid-cols-2">
         <section className="card space-y-3">
@@ -455,6 +597,24 @@ export default function PatientDetail() {
           <div className="space-y-2">
             <InfoRow label="Edad" value={p.age} />
             <InfoRow label="Síntoma" value={p.symptom} />
+            <InfoRow
+              label="Motivo CTAS"
+              value={
+                getChiefComplaintByCode(p.chiefComplaintCode)?.label ??
+                p.chiefComplaintCode ??
+                "—"
+              }
+            />
+            <InfoRow
+              label="Sugerencia / asignado"
+              value={`${p.triageSuggested ?? p.triage} → ${p.triage}`}
+            />
+            {p.triageOverrideReason ? (
+              <InfoRow label="Motivo de cambio" value={p.triageOverrideReason} />
+            ) : null}
+            {p.protocolVersion ? (
+              <InfoRow label="Protocolo" value={p.protocolVersion} />
+            ) : null}
             <InfoRow
               label="Temperatura / FC"
               value={`${p.temp} °C · ${p.fc} lpm`}

@@ -19,24 +19,13 @@ import { downloadTextFile } from "../utils/csv";
 import { paginateSlice } from "../utils/pagination";
 import { parseSortParam, sortPatients } from "../utils/patientSort";
 import { minutesWaiting } from "../utils/dashboardMetrics";
+import { getCtasLevelInfo } from "../constants/ctasProtocol";
+import {
+  CtasLevelBadge,
+  CtasUrgencyMessage,
+} from "../components/CtasLevelDisplay";
 
 const PAGE_SIZE = 15;
-
-const TRIAGE_BADGE = {
-  I: "badge-red",
-  II: "badge-orange",
-  III: "badge-amber",
-  IV: "badge-lime",
-  V: "badge-blue",
-};
-
-const TRIAGE_BORDER = {
-  I: "border-l-red-500",
-  II: "border-l-orange-500",
-  III: "border-l-amber-500",
-  IV: "border-l-lime-500",
-  V: "border-l-sky-500",
-};
 
 const STATUS_BADGE = {
   "En espera": "badge-amber",
@@ -260,8 +249,9 @@ export default function Patients() {
           <div className="space-y-2">
             {rows.map((p) => {
               const minutes = minutesWaiting(p, now);
-              const triageCls = TRIAGE_BORDER[p.triage] ?? "border-l-ink-300";
-              const triageBadge = TRIAGE_BADGE[p.triage] ?? "badge-slate";
+              const triageInfo = getCtasLevelInfo(p.triage);
+              const triageCls =
+                triageInfo?.borderAccentClass ?? "border-l-ink-300";
               const statusBadge = STATUS_BADGE[p.status] ?? "badge-slate";
 
               return (
@@ -276,12 +266,14 @@ export default function Patients() {
                       <p className="truncate text-sm font-semibold text-ink-900 dark:text-ink-50">
                         {p.name}
                       </p>
-                      <span className={`badge ${triageBadge}`}>
-                        CTAS {p.triage}
-                      </span>
+                      <CtasLevelBadge level={p.triage} />
                       <span className={`badge ${statusBadge}`}>{p.status}</span>
                     </div>
-                    <p className="mt-1 truncate text-xs text-ink-500 dark:text-ink-400">
+                    <CtasUrgencyMessage
+                      level={p.triage}
+                      className="mt-0.5 text-ink-600 dark:text-ink-400"
+                    />
+                    <p className="mt-0.5 truncate text-xs text-ink-500 dark:text-ink-400">
                       {p.symptom || "Sin síntoma registrado"}
                     </p>
                   </div>

@@ -26,6 +26,11 @@ import { useSoundPreference } from "../hooks/useSoundPreference";
 import { useAuth } from "../hooks/useAuth";
 import { RoleWelcomeBanner } from "../components/RoleWelcomeBanner";
 import {
+  CtasDashboardCard,
+  CtasLevelBadge,
+  CtasUrgencyMessage,
+} from "../components/CtasLevelDisplay";
+import {
   getRoleWorkspaceSubtitle,
   getRoleWorkspaceTitle,
 } from "../utils/roleConfig";
@@ -39,13 +44,6 @@ const DashboardTriageChart = lazy(() =>
 /** CTAS: I (más urgente) … V (menos urgente) */
 const TRIAGE_LEVELS = ["I", "II", "III", "IV", "V"];
 const TRIAGE_ORDER = { I: 1, II: 2, III: 3, IV: 4, V: 5 };
-const TRIAGE_LABELS = {
-  I: "Resucitación",
-  II: "Emergente",
-  III: "Urgente",
-  IV: "Menos urgente",
-  V: "No urgente",
-};
 const TRIAGE_ROW_STYLES = {
   I: "border-red-500/70 bg-red-50/70 dark:bg-red-950/30",
   II: "border-orange-500/70 bg-orange-50/60 dark:bg-orange-950/20",
@@ -61,20 +59,6 @@ const TRIAGE_DOT_STYLES = {
   V: "bg-sky-500 text-white",
 };
 const TRIAGE_CARD_ICONS = [AlertTriangle, Clock, Activity, ListTree, MinusCircle];
-const TRIAGE_ICON_CLASS = [
-  "text-red-500",
-  "text-orange-500",
-  "text-amber-500",
-  "text-lime-600",
-  "text-sky-500",
-];
-const TRIAGE_ACCENT_BAR = [
-  "from-red-500 to-red-600",
-  "from-orange-400 to-orange-600",
-  "from-amber-400 to-amber-600",
-  "from-lime-500 to-lime-600",
-  "from-sky-500 to-sky-600",
-];
 
 function KpiCard({ icon: Icon, label, value, hint, accent = "brand", testid }) {
   const accentMap = {
@@ -118,43 +102,6 @@ function KpiCard({ icon: Icon, label, value, hint, accent = "brand", testid }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function TriageCard({ level, count, Icon, iconClass, accent, onClick }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="card card-hover relative flex items-center justify-between gap-3 overflow-hidden p-4 text-left"
-    >
-      <div
-        className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent}`}
-        aria-hidden
-      />
-      <div className="flex items-center gap-3">
-        <div className="rounded-xl bg-ink-100 p-2 dark:bg-ink-800">
-          <Icon className={`h-5 w-5 ${iconClass}`} />
-        </div>
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">
-            CTAS {level}
-          </p>
-          <p className="text-xs text-ink-500 dark:text-ink-400">
-            {TRIAGE_LABELS[level]}
-          </p>
-        </div>
-      </div>
-      <div className="text-right">
-        <p className="text-2xl font-bold text-ink-900 dark:text-ink-50">
-          {count}
-        </p>
-        <p className="flex items-center justify-end gap-0.5 text-[11px] font-medium text-ink-500 dark:text-ink-400">
-          Ver cola
-          <ArrowUpRight className="h-3 w-3" />
-        </p>
-      </div>
-    </button>
   );
 }
 
@@ -376,13 +323,11 @@ export default function Dashboard() {
             {TRIAGE_LEVELS.map((level, i) => {
               const Icon = TRIAGE_CARD_ICONS[i];
               return (
-                <TriageCard
+                <CtasDashboardCard
                   key={level}
                   level={level}
                   count={data[i].value}
-                  Icon={Icon}
-                  iconClass={TRIAGE_ICON_CLASS[i]}
-                  accent={TRIAGE_ACCENT_BAR[i]}
+                  icon={Icon}
                   onClick={() => navigate(`/patients?triage=${level}`)}
                 />
               );
@@ -449,13 +394,14 @@ export default function Dashboard() {
                         <p className="truncate text-sm font-semibold text-ink-900 dark:text-ink-50">
                           {patient.name}
                         </p>
-                        <span className="badge badge-slate shrink-0">
-                          CTAS {patient.triage}
-                        </span>
+                        <CtasLevelBadge level={patient.triage} className="shrink-0" />
                       </div>
+                      <CtasUrgencyMessage
+                        level={patient.triage}
+                        className="mt-0.5 text-ink-600 dark:text-ink-400"
+                      />
                       <p className="mt-0.5 truncate text-xs text-ink-500 dark:text-ink-400">
-                        {patient.symptom} ·{" "}
-                        {TRIAGE_LABELS[patient.triage] ?? "Sin clasificar"}
+                        {patient.symptom}
                       </p>
                     </div>
                     <div className="shrink-0 text-right">

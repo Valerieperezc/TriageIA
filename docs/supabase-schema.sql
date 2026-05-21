@@ -238,9 +238,11 @@ alter table public.profiles add column if not exists job_title text;
 -- Proyectos ya creados: añade columna de actor si falta.
 alter table public.patient_events add column if not exists actor_email text;
 alter table public.patient_events add column if not exists request_id text;
-create unique index if not exists patient_events_request_id_unique
-on public.patient_events (request_id)
-where request_id is not null;
+-- PostgREST no admite upsert con índice único parcial; usar constraint UNIQUE (varios NULL permitidos).
+drop index if exists public.patient_events_request_id_unique;
+alter table public.patient_events drop constraint if exists patient_events_request_id_key;
+alter table public.patient_events
+  add constraint patient_events_request_id_key unique (request_id);
 
 -- A5: triage ampliado, identificación, tiempos (llegada / primera atención), ingreso mínimo.
 alter table public.patients add column if not exists arrived_at timestamptz;
@@ -297,3 +299,23 @@ alter table public.patients drop constraint if exists patients_triage_check;
 alter table public.patients
   add constraint patients_triage_check
   check (triage in ('I', 'II', 'III', 'IV', 'V'));
+
+-- CTAS clínico: sugerencia del sistema vs asignación del profesional (triage = asignado).
+alter table public.patients add column if not exists triage_suggested text;
+alter table public.patients add column if not exists triage_override_reason text;
+alter table public.patients add column if not exists protocol_version text;
+alter table public.patients add column if not exists chief_complaint_code text;
+alter table public.patients add column if not exists ctas_red_flags text[] default '{}';
+
+update public.patients
+set triage_suggested = triage
+where triage_suggested is null and triage is not null;
+
+update public.patients
+set protocol_version = 'ctas-triageia-2026-01'
+where protocol_version is null;
+
+alter table public.patients drop constraint if exists patients_triage_suggested_check;
+alter table public.patients
+  add constraint patients_triage_suggested_check
+  check (triage_suggested is null or triage_suggested in ('I', 'II', 'III', 'IV', 'V'));

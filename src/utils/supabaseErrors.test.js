@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  isDuplicateKeyError,
   isPermissionDeniedError,
   permissionDeniedUserMessage,
 } from "./supabaseErrors";
@@ -23,5 +24,12 @@ describe("supabaseErrors", () => {
 
   it("returns stable user-facing copy", () => {
     expect(permissionDeniedUserMessage()).toMatch(/permiso/i);
+  });
+
+  it("detects duplicate key for idempotent audit", () => {
+    expect(isDuplicateKeyError({ code: "23505" })).toBe(true);
+    expect(
+      isDuplicateKeyError({ message: "duplicate key value violates unique constraint" })
+    ).toBe(true);
   });
 });

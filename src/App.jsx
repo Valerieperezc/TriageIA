@@ -6,6 +6,7 @@ import { getHomePathForRole } from "./utils/roleConfig";
 
 const Login = lazy(() => import("./pages/Login"));
 const RoleHome = lazy(() => import("./pages/RoleHome"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Patients = lazy(() => import("./pages/Patients"));
 const Triage = lazy(() => import("./pages/Triage"));
 const PatientDetail = lazy(() => import("./pages/PatientDetail"));
@@ -65,6 +66,16 @@ export default function App() {
               <Private>
                 <PrivateAppLayout>
                   <RoleHome />
+                </PrivateAppLayout>
+              </Private>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Private>
+                <PrivateAppLayout>
+                  <Dashboard />
                 </PrivateAppLayout>
               </Private>
             }
