@@ -1,55 +1,11 @@
 import { useMemo } from "react";
-import {
-  LayoutDashboard,
-  Users,
-  ClipboardList,
-  ShieldCheck,
-  Stethoscope,
-  AlertTriangle,
-  Settings,
-} from "lucide-react";
+import { AlertTriangle, ShieldCheck } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { usePatients } from "../hooks/usePatients";
 import { accountInitials, roleLabel } from "../utils/accountProfile";
-import {
-  getRoleCapabilityLabels,
-  getSidebarNavOrder,
-} from "../utils/roleConfig";
-
-const NAV_DEF = {
-  dashboard: {
-    to: "/dashboard",
-    end: true,
-    icon: LayoutDashboard,
-    label: "Dashboard",
-    visible: () => true,
-  },
-  patients: {
-    to: "/patients",
-    icon: Users,
-    label: "Pacientes",
-    visible: () => true,
-  },
-  triage: {
-    to: "/triage",
-    icon: Stethoscope,
-    label: "Registrar triage",
-    visible: (_user, { canCreatePatient }) => canCreatePatient,
-  },
-  audit: {
-    to: "/audit",
-    icon: ClipboardList,
-    label: "Historial",
-    visible: (user) => user?.role === "admin",
-  },
-  settings: {
-    to: "/settings",
-    icon: Settings,
-    label: "Configuración",
-    visible: () => true,
-  },
-};
+import { getRoleCapabilityLabels } from "../utils/roleConfig";
+import { getVisibleNavItems } from "../config/appNavigation";
 
 export default function Sidebar() {
   const { pathname } = useLocation();
@@ -64,12 +20,10 @@ export default function Sidebar() {
     [patients]
   );
 
-  const navItems = useMemo(() => {
-    const order = getSidebarNavOrder(user?.role);
-    return order
-      .map((key) => NAV_DEF[key])
-      .filter((def) => def && def.visible(user, { canCreatePatient }));
-  }, [user, canCreatePatient]);
+  const navItems = useMemo(
+    () => getVisibleNavItems(user, { canCreatePatient }),
+    [user, canCreatePatient]
+  );
 
   const capabilityLabels = useMemo(
     () => getRoleCapabilityLabels(user?.role),

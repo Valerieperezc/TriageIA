@@ -172,28 +172,30 @@ export default function Patients() {
             className="btn btn-primary"
           >
             <Download className="h-4 w-4" />
-            Exportar CSV (vista actual)
+            <span className="hidden sm:inline">Exportar CSV (vista actual)</span>
+            <span className="sm:hidden">Exportar CSV</span>
           </button>
         </div>
 
         {/* Filtros */}
         <div className="card space-y-4">
-          <div className="grid gap-3 md:grid-cols-[1fr_auto_auto] md:items-end">
-            <div>
+          <div className="grid min-w-0 gap-3 md:grid-cols-[1fr_auto_auto] md:items-end">
+            <div className="min-w-0">
               <label className="form-label">Buscar</label>
-              <div className="input">
-                <Search className="h-4 w-4 text-ink-400 dark:text-ink-500" />
+              <div className="input w-full min-w-0">
+                <Search className="h-4 w-4 shrink-0 text-ink-400 dark:text-ink-500" />
                 <input
+                  className="min-w-0"
                   placeholder="Nombre o síntoma"
                   value={search}
                   onChange={handleSearchChange}
                 />
               </div>
             </div>
-            <div>
+            <div className="min-w-0">
               <label className="form-label">Ordenar por</label>
               <select
-                className="input min-w-[220px]"
+                className="input w-full min-w-0 md:min-w-[220px]"
                 value={sortMode}
                 onChange={(e) => setSortFilter(e.target.value)}
               >

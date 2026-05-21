@@ -58,8 +58,8 @@ export default function Topbar() {
   }, [retryHealth.level]);
 
   return (
-    <div className="sticky top-4 z-20 rounded-2xl border border-ink-200/70 bg-white/70 px-4 py-3 shadow-soft backdrop-blur-xl dark:border-ink-800 dark:bg-ink-900/70">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div className="sticky top-0 z-20 min-w-0 max-w-full rounded-2xl border border-ink-200/70 bg-white/70 px-3 py-2.5 shadow-soft backdrop-blur-xl sm:top-4 sm:px-4 sm:py-3 dark:border-ink-800 dark:bg-ink-900/70">
+      <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         {/* Brand/summary */}
         <div className="flex items-center gap-3">
           <div className="rounded-xl bg-brand-50 p-2 text-brand-600 ring-1 ring-brand-100 dark:bg-brand-950/40 dark:text-brand-200 dark:ring-brand-900/50">
@@ -104,24 +104,28 @@ export default function Topbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-wrap items-center justify-end gap-2">
+        <div className="flex min-w-0 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
           {retryStats?.totalRetries > 0 && (
             <>
               <span
                 data-testid="retry-indicator"
-                className={`rounded-full px-3 py-1 text-[11px] font-semibold ${retryHealth.badgeClass}`}
+                className={`max-w-full truncate rounded-full px-2 py-1 text-[10px] font-semibold sm:px-3 sm:text-[11px] ${retryHealth.badgeClass}`}
                 title={`Reintentos: ${retryStats.totalRetries} | Recuperaciones carga: ${retryStats.recoveredLoads} | Recuperaciones acciones: ${retryStats.recoveredActions} | Fallos carga: ${retryStats.failedLoads} | Fallos acciones: ${retryStats.failedActions} | Último: ${lastRetryText}`}
               >
-                {retryHealth.label} · {retryStats.totalRetries}
+                <span className="hidden sm:inline">{retryHealth.label} · </span>
+                {retryStats.totalRetries}
               </span>
               <button
                 type="button"
                 onClick={resetRetryStats}
-                className="btn btn-warning text-xs"
+                className="btn btn-warning px-2.5 text-xs sm:px-4"
                 title="Limpiar métricas de reintentos"
                 data-testid="retry-reset"
               >
-                Limpiar
+                <span className="hidden sm:inline">Limpiar</span>
+                <span className="sm:hidden" aria-hidden>
+                  ×
+                </span>
               </button>
             </>
           )}
@@ -157,10 +161,11 @@ export default function Topbar() {
             <button
               type="button"
               onClick={() => nav("/triage")}
-              className="btn btn-primary"
+              className="btn btn-primary px-3 sm:px-4"
+              title="Registrar paciente"
             >
               <Plus className="h-4 w-4" />
-              Paciente
+              <span className="hidden sm:inline">Paciente</span>
             </button>
           )}
 
