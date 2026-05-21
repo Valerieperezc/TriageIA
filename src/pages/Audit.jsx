@@ -1,12 +1,5 @@
-import { useMemo } from "react";
 import { usePatients } from "../hooks/usePatients";
-import { Download, ClipboardList } from "lucide-react";
-import toast from "react-hot-toast";
-import {
-  downloadTextFile,
-  getAuditHistoryExportFilename,
-  toCsvString,
-} from "../utils/csv";
+import { ClipboardList } from "lucide-react";
 import { DataState } from "../components/DataState";
 
 const TRIAGE_BADGE = {
@@ -29,50 +22,18 @@ function actionAccent(action) {
 export default function Audit() {
   const { history, loading, error, reload } = usePatients();
 
-  const csvContent = useMemo(() => {
-    const headers = ["Paciente", "Accion", "Triage", "Actor", "Fecha"];
-    const rows = history.map((h) => [
-      h.name ?? "",
-      h.action ?? "",
-      h.triage ?? "",
-      h.actor ?? "",
-      h.date ?? "",
-    ]);
-    return "\uFEFF" + toCsvString(headers, rows);
-  }, [history]);
-
-  const exportCsv = () => {
-    if (!history.length) {
-      toast.error("No hay eventos para exportar");
-      return;
-    }
-    downloadTextFile(getAuditHistoryExportFilename(), csvContent);
-    toast.success("CSV descargado");
-  };
-
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-5">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
-              <ClipboardList className="h-3 w-3" />
-              Auditoría
-            </span>
-            <h1 className="page-title mt-2">Historial</h1>
-            <p className="page-subtitle mt-1">
-              Eventos de auditoría del sistema desde el inicio de operación.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={exportCsv}
-            disabled={!history.length}
-            className="btn btn-primary"
-          >
-            <Download className="h-4 w-4" />
-            Exportar CSV
-          </button>
+        <div>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
+            <ClipboardList className="h-3 w-3" />
+            Auditoría
+          </span>
+          <h1 className="page-title mt-2">Historial</h1>
+          <p className="page-subtitle mt-1">
+            Eventos de auditoría del sistema desde el inicio de operación.
+          </p>
         </div>
 
         {history.length === 0 ? (

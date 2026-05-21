@@ -4,18 +4,9 @@ import { useAuth } from "../hooks/useAuth";
 import { RoleWelcomeBanner } from "../components/RoleWelcomeBanner";
 import { getPatientsDefaultSort } from "../utils/roleConfig";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import {
-  Download,
-  ChevronLeft,
-  ChevronRight,
-  Search,
-  Users,
-} from "lucide-react";
-import toast from "react-hot-toast";
+import { ChevronLeft, ChevronRight, Search, Users } from "lucide-react";
 import { filterPatients } from "../utils/patientFilters";
 import { DataState } from "../components/DataState";
-import { buildPatientsCsv } from "../utils/patientCsv";
-import { downloadTextFile } from "../utils/csv";
 import { paginateSlice } from "../utils/pagination";
 import { parseSortParam, sortPatients } from "../utils/patientSort";
 import { minutesWaiting } from "../utils/dashboardMetrics";
@@ -128,17 +119,6 @@ export default function Patients() {
     });
   };
 
-  const exportCsv = () => {
-    if (!sorted.length) {
-      toast.error("No hay filas para exportar");
-      return;
-    }
-    const stamp = new Date().toISOString().slice(0, 10);
-    const csv = buildPatientsCsv(sorted, now);
-    downloadTextFile(`triageia-pacientes-${stamp}.csv`, csv);
-    toast.success("CSV descargado (vista actual)");
-  };
-
   const triageChips = [
     { value: "", label: "Todos" },
     { value: "I", label: "I" },
@@ -152,29 +132,17 @@ export default function Patients() {
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-5">
         <RoleWelcomeBanner />
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
-              <Users className="h-3 w-3" />
-              Gestión de pacientes
-            </span>
-            <h1 className="page-title mt-2" data-testid="patients-title">
-              Pacientes
-            </h1>
-            <p className="page-subtitle mt-1">
-              Búsqueda, filtrado y exportación del histórico de registros.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={exportCsv}
-            disabled={!sorted.length}
-            className="btn btn-primary"
-          >
-            <Download className="h-4 w-4" />
-            <span className="hidden sm:inline">Exportar CSV (vista actual)</span>
-            <span className="sm:hidden">Exportar CSV</span>
-          </button>
+        <div>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
+            <Users className="h-3 w-3" />
+            Gestión de pacientes
+          </span>
+          <h1 className="page-title mt-2" data-testid="patients-title">
+            Pacientes
+          </h1>
+          <p className="page-subtitle mt-1">
+            Búsqueda y filtrado del listado de pacientes.
+          </p>
         </div>
 
         {/* Filtros */}
