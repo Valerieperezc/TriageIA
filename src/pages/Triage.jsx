@@ -8,7 +8,6 @@ import {
 import { TriageCtasAssignment } from "../components/TriageCtasAssignment";
 import { suggestCtasLevel, validateTriageAssignment } from "../utils/ctasTriage";
 import { parseTempInput, validateTriageForm } from "../utils/triageFormValidation";
-import { BackToDashboard } from "../components/BackToDashboard";
 import { DataState } from "../components/DataState";
 import { AlertTriangle, Stethoscope } from "lucide-react";
 
@@ -266,8 +265,7 @@ export default function Triage() {
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="mx-auto max-w-3xl space-y-5">
         {/* Header */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div className="min-w-0">
+        <div className="min-w-0">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
             <Stethoscope className="h-3 w-3" />
             Registro de triage
@@ -275,11 +273,6 @@ export default function Triage() {
           <h1 className="page-title mt-2" data-testid="triage-page-title">
             Registrar paciente
           </h1>
-          </div>
-          <BackToDashboard
-            testId="triage-cancel"
-            className="self-start"
-          />
         </div>
 
         {/* Fast track */}
@@ -666,13 +659,9 @@ export default function Triage() {
         />
 
         <div
-          className="card sticky bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-10 flex flex-col gap-2 shadow-soft-lg sm:bottom-4 sm:flex-row sm:justify-end md:bottom-4"
+          className="card sticky bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-10 flex justify-end shadow-soft-lg sm:bottom-4 md:bottom-4"
           data-testid="triage-actions"
         >
-          <BackToDashboard
-            testId="triage-cancel-footer"
-            className="w-full sm:w-auto"
-          />
           <button
             data-testid="triage-submit"
             type="button"
