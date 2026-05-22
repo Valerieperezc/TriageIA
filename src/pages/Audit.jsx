@@ -1,5 +1,6 @@
 import { usePatients } from "../hooks/usePatients";
 import { ClipboardList } from "lucide-react";
+import { BackToDashboard } from "../components/BackToDashboard";
 import { DataState } from "../components/DataState";
 
 const TRIAGE_BADGE = {
@@ -25,6 +26,7 @@ export default function Audit() {
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="space-y-5">
+        <BackToDashboard variant="link" />
         <div>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
             <ClipboardList className="h-3 w-3" />

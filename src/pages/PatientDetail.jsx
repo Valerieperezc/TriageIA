@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { usePatients } from "../hooks/usePatients";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import { BackToDashboard } from "../components/BackToDashboard";
 import { DataState } from "../components/DataState";
 import { minutesWaiting } from "../utils/dashboardMetrics";
 import {
@@ -438,13 +439,16 @@ export default function PatientDetail() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-5">
-      <Link
-        to="/patients"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-600 dark:text-ink-400 dark:hover:text-brand-300"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Volver a pacientes
-      </Link>
+      <div className="flex flex-wrap items-center gap-3">
+        <BackToDashboard variant="link" />
+        <Link
+          to="/patients"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand-600 dark:text-ink-400 dark:hover:text-brand-300"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Volver a pacientes
+        </Link>
+      </div>
 
       {/* Header */}
       <section className="card space-y-3">
