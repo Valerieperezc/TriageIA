@@ -1,5 +1,30 @@
 # Informe: Arquitectura y pruebas de la app TriageIA
 
+
+**Proyecto:** TriageIA  
+**Tipo de documento:** Informe técnico  
+**Tema:** Arquitectura de software y estrategia de pruebas  
+**Fecha:** Mayo de 2026  
+
+
+### Presentado por
+
+Valerie Pérez Contreras
+
+
+### Dirigido a
+
+Augusto Salazar Silva
+
+
+### Institución
+
+Universidad del Norte
+**Programa académico:** Ingeniería de Sistemas y Computación
+
+---
+
+
 ## Introduccion
 
 TriageIA es una aplicacion desarrollada para apoyar el proceso de triage en servicios de urgencias. Su objetivo principal es registrar pacientes, sugerir una prioridad clinica segun signos vitales y criterios CTAS, controlar el estado de atencion y ofrecer trazabilidad de las acciones realizadas por el personal autorizado.
