@@ -9,6 +9,7 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
+import { BackToDashboard } from "./BackToDashboard";
 import toast from "react-hot-toast";
 import { useAuth } from "../hooks/useAuth";
 import { useSoundPreference } from "../hooks/useSoundPreference";
@@ -30,7 +31,7 @@ export function AppToolbar({ onOpenMobileMenu, mobileMenuOpen }) {
 
   const onSettings = pathname === "/settings";
   const onTriage = pathname === "/triage";
-  const onDashboard = pathname === "/dashboard";
+  const onDashboard = pathname === "/dashboard" || pathname === "/";
 
   const showTheme = !onSettings && !onDashboard;
   const showSound = !onSettings && !onDashboard;
@@ -59,17 +60,20 @@ export function AppToolbar({ onOpenMobileMenu, mobileMenuOpen }) {
       className="sticky top-0 z-20 flex min-w-0 items-center justify-between gap-2 py-2"
       data-testid="app-toolbar"
     >
-      <button
-        type="button"
-        onClick={onOpenMobileMenu}
-        className="btn-icon shrink-0 md:hidden"
-        aria-label="Abrir menú de navegación"
-        aria-controls="mobile-menu-drawer"
-        aria-expanded={mobileMenuOpen}
-        data-testid="mobile-menu-toggle"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
+      <div className="flex min-w-0 items-center gap-2">
+        <button
+          type="button"
+          onClick={onOpenMobileMenu}
+          className="btn-icon shrink-0 md:hidden"
+          aria-label="Abrir menú de navegación"
+          aria-controls="mobile-menu-drawer"
+          aria-expanded={mobileMenuOpen}
+          data-testid="mobile-menu-toggle"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+        <BackToDashboard testId="toolbar-back-to-dashboard" />
+      </div>
 
       {hasActions ? (
         <div className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
@@ -143,7 +147,7 @@ export function AppToolbar({ onOpenMobileMenu, mobileMenuOpen }) {
           ) : null}
         </div>
       ) : (
-        <div className="flex-1 md:hidden" aria-hidden />
+        <div className="flex-1" aria-hidden />
       )}
     </div>
   );

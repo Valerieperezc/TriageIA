@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { usePatients } from "../hooks/usePatients";
 import toast from "react-hot-toast";
 import {
@@ -9,8 +8,9 @@ import {
 import { TriageCtasAssignment } from "../components/TriageCtasAssignment";
 import { suggestCtasLevel, validateTriageAssignment } from "../utils/ctasTriage";
 import { parseTempInput, validateTriageForm } from "../utils/triageFormValidation";
+import { BackToDashboard } from "../components/BackToDashboard";
 import { DataState } from "../components/DataState";
-import { AlertTriangle, ArrowLeft, Stethoscope } from "lucide-react";
+import { AlertTriangle, Stethoscope } from "lucide-react";
 
 const BLOOD_TYPE_OPTIONS = [
   { value: "", label: "No indicado" },
@@ -71,7 +71,6 @@ function parseIntOrNaN(raw) {
 }
 
 export default function Triage() {
-  const navigate = useNavigate();
   const { addPatient, canCreatePatient, loading, error, reload } = usePatients();
 
   const [triageAssigned, setTriageAssigned] = useState("");
@@ -263,10 +262,6 @@ export default function Triage() {
 
   const fast = form.fastTrack;
 
-  const cancelRegistration = () => {
-    navigate("/dashboard");
-  };
-
   return (
     <DataState loading={loading} error={error} onRetry={reload}>
       <div className="mx-auto max-w-3xl space-y-5">
@@ -281,15 +276,10 @@ export default function Triage() {
             Registrar paciente
           </h1>
           </div>
-          <button
-            type="button"
-            onClick={cancelRegistration}
-            data-testid="triage-cancel"
-            className="btn btn-secondary shrink-0 self-start"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden />
-            Volver al dashboard
-          </button>
+          <BackToDashboard
+            testId="triage-cancel"
+            className="self-start"
+          />
         </div>
 
         {/* Fast track */}
@@ -679,14 +669,10 @@ export default function Triage() {
           className="card sticky bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-10 flex flex-col gap-2 shadow-soft-lg sm:bottom-4 sm:flex-row sm:justify-end md:bottom-4"
           data-testid="triage-actions"
         >
-          <button
-            type="button"
-            onClick={cancelRegistration}
-            data-testid="triage-cancel-footer"
-            className="btn btn-secondary w-full sm:w-auto"
-          >
-            Volver al dashboard
-          </button>
+          <BackToDashboard
+            testId="triage-cancel-footer"
+            className="w-full sm:w-auto"
+          />
           <button
             data-testid="triage-submit"
             type="button"

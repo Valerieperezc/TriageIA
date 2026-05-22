@@ -16,6 +16,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import toast from "react-hot-toast";
+import { BackToDashboard } from "../components/BackToDashboard";
 import { useAuth } from "../hooks/useAuth";
 import { usePostLoginPerf } from "../hooks/usePostLoginPerf";
 import { useSoundPreference } from "../hooks/useSoundPreference";
@@ -194,6 +195,7 @@ export default function Settings() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
+      <BackToDashboard variant="link" />
       <div>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-700 dark:border-brand-800/60 dark:bg-brand-950/50 dark:text-brand-200">
           <SettingsIcon className="h-3 w-3" />
