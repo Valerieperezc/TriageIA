@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { createElement, lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { usePatients } from "../hooks/usePatients";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -60,7 +60,7 @@ const TRIAGE_DOT_STYLES = {
 };
 const TRIAGE_CARD_ICONS = [AlertTriangle, Clock, Activity, ListTree, MinusCircle];
 
-function KpiCard({ icon: Icon, label, value, hint, accent = "brand", testid }) {
+function KpiCard({ icon, label, value, hint, accent = "brand", testid }) {
   const accentMap = {
     brand: "from-brand-500 to-brand-700 text-brand-600 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/40",
     emerald:
@@ -85,7 +85,7 @@ function KpiCard({ icon: Icon, label, value, hint, accent = "brand", testid }) {
         <div
           className={`rounded-xl p-2.5 ${bgClass} ${darkBgClass} ${textClass} ${darkTextClass}`}
         >
-          <Icon className="h-5 w-5" />
+          {createElement(icon, { className: "h-5 w-5" })}
         </div>
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-400">
@@ -107,8 +107,7 @@ function KpiCard({ icon: Icon, label, value, hint, accent = "brand", testid }) {
 
 export default function Dashboard() {
   const { user } = useAuth();
-  const { patients, loading, error, reload, canCreatePatient, canSetInAttention } =
-    usePatients();
+  const { patients, loading, error, reload, canSetInAttention } = usePatients();
   const { soundEnabled } = useSoundPreference();
   const navigate = useNavigate();
   const role = user?.role;
