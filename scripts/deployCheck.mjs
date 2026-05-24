@@ -25,9 +25,11 @@ function run() {
     "docs/supabase-schema.sql",
     "docs/Deployment-V1.md",
     "docs/Go-Live-Checklist.md",
+    "docs/Mobile-App.md",
     ".github/workflows/ci.yml",
     "vercel.json",
     "public/_redirects",
+    "capacitor.config.json",
   ];
 
   for (const file of requiredFiles) {
@@ -53,6 +55,16 @@ function run() {
     assertCheck(
       /"deploy:check"\s*:\s*"/.test(pkg),
       "`package.json` no define el script `deploy:check`",
+      failures
+    );
+    assertCheck(
+      /"cap:sync"\s*:\s*"/.test(pkg),
+      "`package.json` no define el script `cap:sync` (app móvil)",
+      failures
+    );
+    assertCheck(
+      /"build:mobile"\s*:\s*"/.test(pkg),
+      "`package.json` no define el script `build:mobile` (app móvil)",
       failures
     );
   }
@@ -104,7 +116,7 @@ function run() {
   }
 
   console.log(
-    "Deploy check OK: documentos, env, SPA (Vercel/Netlify) y pipeline listos."
+    "Deploy check OK: documentos, env, SPA (Vercel/Netlify), app móvil (Capacitor) y pipeline listos."
   );
 }
 

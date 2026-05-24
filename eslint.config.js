@@ -8,6 +8,8 @@ export default defineConfig([
   globalIgnores([
     'dist',
     'coverage',
+    'android/**',
+    'ios/**',
     '**/*.css',
     'e2e/**',
     'playwright-report/**',

@@ -1,6 +1,6 @@
 # TriageIA
 
-**Versión actual:** 1.59.0 (ver `CHANGELOG.md`). Entrega técnica MVP cerrada: `docs/Program-Closure.md`. Estado de épicas/stories: `docs/BMAD-Stories.md`.
+**Versión actual:** 1.60.0 (ver `CHANGELOG.md`). Entrega técnica MVP cerrada: `docs/Program-Closure.md`. Estado de épicas/stories: `docs/BMAD-Stories.md`.
 
 Aplicacion de triage desarrollada con React + Vite y persistencia en Supabase.
 
@@ -24,6 +24,14 @@ Aplicacion de triage desarrollada con React + Vite y persistencia en Supabase.
 
 ## Build de produccion
 - `npm run build`
+
+## App móvil (Android / iOS)
+- Guía completa: `docs/Mobile-App.md`
+- `npm run cap:sync` — build + sincroniza proyectos nativos
+- `npm run cap:android` — abre Android Studio
+- `npm run cap:ios` — abre Xcode (macOS)
+
+Requisitos: Android Studio (Android) o Xcode (iOS). Configura `.env` antes del build para incluir Supabase en la app.
 
 ## Calidad y pruebas
 - `npm run lint`

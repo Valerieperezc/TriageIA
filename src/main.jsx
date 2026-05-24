@@ -5,6 +5,9 @@ import { AuthProvider } from "./context/AuthContext";
 import { ThemePreferenceProvider } from "./context/ThemePreferenceContext";
 import { AppToaster } from "./components/AppToaster";
 import { AppShell } from "./components/AppShell";
+import { initNativeApp } from "./lib/nativeApp";
+
+initNativeApp();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemePreferenceProvider>

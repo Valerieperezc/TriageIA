@@ -3,8 +3,9 @@
 
 **Proyecto:** TriageIA  
 **Tipo de documento:** Informe técnico  
-**Tema:** Arquitectura de software y estrategia de pruebas  
+**Tema:** Arquitectura de software, app móvil y estrategia de pruebas  
 **Fecha:** Mayo de 2026  
+**Versión del producto:** 1.60.0
 
 
 ### Presentado por
@@ -29,9 +30,11 @@ Universidad del Norte
 
 TriageIA es una aplicacion desarrollada para apoyar el proceso de triage en servicios de urgencias. Su objetivo principal es registrar pacientes, sugerir una prioridad clinica segun signos vitales y criterios CTAS, controlar el estado de atencion y ofrecer trazabilidad de las acciones realizadas por el personal autorizado.
 
-La app esta construida con React, Vite y Supabase. Aunque se ejecuta como aplicacion web, su arquitectura esta preparada para una experiencia responsive, con navegacion movil, barra inferior, menu lateral adaptable y flujos pensados para uso operativo en pantallas de escritorio o dispositivos moviles.
+La app esta construida con React, Vite y Supabase. **A partir de la version 1.60.0, TriageIA es una aplicacion web y una app movil nativa para Android e iOS**, empaquetada con Capacitor. El mismo codigo React se ejecuta en navegador (Vercel/Netlify) y dentro de un contenedor nativo en dispositivos moviles.
 
-Este informe explica como la arquitectura y las pruebas impactan directamente en TriageIA, tomando como base los modulos reales del proyecto, sus flujos principales y sus mecanismos de calidad.
+Su arquitectura esta preparada para una experiencia responsive y operativa en cualquier canal: navegacion movil, barra inferior, menu lateral adaptable, areas seguras (`safe-area-inset`) y flujos pensados para uso en escritorio, tablet o telefono en urgencias.
+
+Este informe explica como la arquitectura, la capa movil y las pruebas impactan directamente en TriageIA, tomando como base los modulos reales del proyecto, sus flujos principales y sus mecanismos de calidad.
 
 ## Objetivo de la aplicacion
 
@@ -101,6 +104,47 @@ La persistencia y comunicacion con datos esta centralizada en servicios:
 
 TriageIA usa Supabase como backend para autenticacion y base de datos. Cuando no existe configuracion de Supabase en el entorno local, la app puede trabajar con almacenamiento local como fallback. Esto facilita pruebas, desarrollo y demostraciones sin depender siempre de una conexion externa.
 
+## App movil nativa (Capacitor)
+
+TriageIA ya no es solo una web responsive: **es una app movil instalable** en Android e iOS. La estrategia elegida fue **Capacitor 8**, que envuelve el build web de Vite en un contenedor nativo sin reescribir la interfaz en otro framework.
+
+### Por que Capacitor
+
+- Reutiliza el 100 % del codigo React, Vite, Tailwind y Supabase existente.
+- Permite publicar en Google Play y App Store con proyectos nativos en `android/` e `ios/`.
+- La version web sigue funcionando igual: un solo repositorio, dos canales de distribucion.
+
+### Componentes moviles agregados
+
+| Recurso | Funcion |
+|---------|---------|
+| `capacitor.config.json` | Configuracion de la app (nombre, ID, splash, barra de estado) |
+| `android/` | Proyecto Gradle para Android Studio |
+| `ios/` | Proyecto Xcode para iPhone/iPad |
+| `src/lib/nativeApp.js` | Inicializacion nativa (status bar, splash, teclado) |
+| `src/hooks/useNativeBackButton.js` | Boton atras de Android integrado con React Router |
+| `docs/Mobile-App.md` | Guia de build, emuladores y publicacion |
+
+### Comportamiento dual web / movil
+
+- En **navegador**, la app funciona como antes: rutas SPA, login, Supabase y fallback local.
+- En **dispositivo nativo**, Capacitor detecta la plataforma y activa plugins solo cuando corresponde (`Capacitor.isNativePlatform()`).
+- Los componentes moviles ya existentes (`MobileNav`, `MobileMenuDrawer`, `MobileStickyHeader`) siguen usandose en ambos entornos.
+- El build usa `base: './'` en Vite para que los assets carguen correctamente en WebView y en hosting web.
+
+### Scripts moviles
+
+- `npm run build:mobile` — genera el build en `dist/`.
+- `npm run cap:sync` — build + copia a proyectos nativos.
+- `npm run cap:android` / `npm run cap:ios` — abre Android Studio o Xcode.
+- `npm run cap:run:android` / `npm run cap:run:ios` — ejecuta en emulador o dispositivo.
+
+### Requisitos para compilar la app movil
+
+- **Android:** Android Studio, JDK 17+, emulador o dispositivo fisico.
+- **iOS:** macOS, Xcode 15+, simulador o iPhone.
+- **Ambos:** `.env` con Supabase configurado antes del build (las variables se incluyen en el paquete).
+
 ## Flujo principal de la app
 
 El flujo operativo de TriageIA inicia con el login. Una vez autenticado, el usuario entra a una experiencia segun su rol:
@@ -140,6 +184,8 @@ Ademas, la persistencia de eventos permite reconstruir acciones relevantes, lo c
 
 Una arquitectura ordenada tambien mejora la experiencia. Los componentes de carga, notificaciones, navegacion movil y estados de datos permiten que el usuario reciba informacion clara durante el uso. En urgencias, esto es importante porque el flujo debe ser rapido, directo y confiable.
 
+En movil, la barra de estado, el splash screen y el boton atras de Android se integran con la UI existente para que la app se sienta nativa sin cambiar los flujos clinicos.
+
 ## Estrategia de pruebas
 
 TriageIA incluye pruebas automatizadas con Vitest y Playwright. La estrategia combina pruebas unitarias para reglas internas y pruebas end to end para validar que la app cargue y responda como producto.
@@ -149,8 +195,9 @@ Los scripts principales son:
 - `npm run lint`: revision estatica de calidad.
 - `npm run test:run`: ejecucion de pruebas unitarias.
 - `npm run test:coverage`: cobertura de modulos criticos.
-- `npm run test:e2e`: pruebas end to end con Playwright.
-- `npm run deploy:check`: verificacion previa a despliegue.
+- `npm run test:e2e`: pruebas end to end con Playwright (canal web).
+- `npm run deploy:check`: verificacion previa a despliegue (web + movil).
+- `npm run cap:sync`: build y sincronizacion con proyectos Android/iOS.
 
 ## Pruebas unitarias relevantes
 
@@ -197,18 +244,22 @@ Estos riesgos son especialmente importantes porque la aplicacion se relaciona co
 
 ## Despliegue y calidad
 
-El proyecto incluye configuracion para despliegue como SPA:
+El proyecto incluye configuracion para despliegue web como SPA y distribucion movil nativa:
 
-- `vercel.json` para Vercel.
-- `public/_redirects` para Netlify.
-- `docs/Deployment-V1.md` y `docs/Go-Live-Checklist.md` como guias operativas.
+- `vercel.json` para Vercel (web).
+- `public/_redirects` para Netlify (web).
+- `capacitor.config.json`, `android/` e `ios/` para app movil.
+- `docs/Mobile-App.md` con guia de compilacion y publicacion movil.
+- `docs/Deployment-V1.md` y `docs/Go-Live-Checklist.md` como guias operativas web.
 
-Tambien cuenta con documentos de apoyo como PRD, brief, notas de version y cierre tecnico. Esto ayuda a que la app no dependa solo del codigo, sino tambien de una documentacion que explique el alcance, los requisitos y los pasos de salida a produccion.
+Tambien cuenta con documentos de apoyo como PRD, brief, notas de version y cierre tecnico. Esto ayuda a que la app no dependa solo del codigo, sino tambien de una documentacion que explique el alcance, los requisitos y los pasos de salida a produccion en ambos canales.
 
 ## Conclusiones
 
 TriageIA no es una aplicacion generica: es una herramienta orientada al registro, priorizacion y seguimiento de pacientes en urgencias. Por eso, su arquitectura y sus pruebas son esenciales para sostener la calidad del producto.
 
-La arquitectura separa interfaz, logica de negocio, servicios, permisos y persistencia. Esta organizacion facilita mantenimiento, escalabilidad y seguridad. Las pruebas validan reglas criticas como CTAS, permisos, formularios, metricas y servicios, reduciendo el riesgo de errores antes del despliegue.
+**TriageIA ya es una app movil.** Con Capacitor, el mismo producto se distribuye como aplicacion web (navegador) y como app nativa instalable en Android e iOS, manteniendo un unico codigo fuente y las mismas reglas clinicas CTAS.
 
-En conjunto, arquitectura y pruebas permiten que TriageIA sea mas confiable, mantenible y preparada para evolucionar como una app clinico-operativa.
+La arquitectura separa interfaz, logica de negocio, servicios, permisos y persistencia. Esta organizacion facilita mantenimiento, escalabilidad y seguridad. Las pruebas automatizadas validan reglas criticas como CTAS, permisos, formularios, metricas y servicios, reduciendo el riesgo de errores antes del despliegue web o de la compilacion movil.
+
+En conjunto, arquitectura, capa movil y pruebas permiten que TriageIA sea mas confiable, mantenible y preparada para evolucionar como una app clinico-operativa en cualquier dispositivo.

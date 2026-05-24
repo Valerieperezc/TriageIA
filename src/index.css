@@ -30,6 +30,12 @@ body {
   max-width: 100%;
 }
 
+html.native-app body {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 html.dark body {
   @apply bg-ink-950 text-ink-100;
   background-image:

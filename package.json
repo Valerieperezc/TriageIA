@@ -1,7 +1,7 @@
 {
   "name": "triageia",
   "private": true,
-  "version": "1.59.0",
+  "version": "1.60.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,9 +17,23 @@
     "data:generate": "node scripts/generateSyntheticDataset.mjs --out data/synthetic_patients.csv --rows 2000 --seed 42",
     "data:seed-sql": "node scripts/seedDataset.mjs --csv data/synthetic_patients.csv --mapping data/synthetic_patients.mapping.json --out data/synthetic_seed.sql",
     "data:yale-extract": "python scripts/extractKaggleTriage.py --out data/yale_triage.csv --limit 10000 --seed 42",
-    "data:yale-sql": "node scripts/seedDataset.mjs --csv data/yale_triage.csv --mapping data/yale_triage.mapping.json --out data/yale_seed.sql"
+    "data:yale-sql": "node scripts/seedDataset.mjs --csv data/yale_triage.csv --mapping data/yale_triage.mapping.json --out data/yale_seed.sql",
+    "build:mobile": "vite build",
+    "cap:sync": "npm run build:mobile && npx cap sync",
+    "cap:android": "npm run cap:sync && npx cap open android",
+    "cap:ios": "npm run cap:sync && npx cap open ios",
+    "cap:run:android": "npm run cap:sync && npx cap run android",
+    "cap:run:ios": "npm run cap:sync && npx cap run ios"
   },
   "dependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/cli": "^8.3.4",
+    "@capacitor/core": "^8.3.4",
+    "@capacitor/ios": "^8.3.4",
+    "@capacitor/keyboard": "^8.0.3",
+    "@capacitor/splash-screen": "^8.0.1",
+    "@capacitor/status-bar": "^8.0.2",
     "@supabase/supabase-js": "^2.103.0",
     "lucide-react": "^1.8.0",
     "react": "^19.2.4",

@@ -2,6 +2,17 @@
 
 Todas las notas relevantes por versión se documentan aquí.
 
+## [1.60.0] - 2026-05-23
+
+### App móvil (Capacitor)
+
+- **Android e iOS:** empaquetado nativo con Capacitor 8 reutilizando el código React/Vite existente.
+- **`capacitor.config.json`**, proyectos `android/` e `ios/`, scripts `cap:sync`, `cap:android`, `cap:ios`, `cap:run:*`.
+- **`src/lib/nativeApp.js`:** barra de estado, splash screen y teclado en dispositivos nativos.
+- **`src/hooks/useNativeBackButton.js`:** botón atrás de Android integrado con React Router.
+- **`docs/Mobile-App.md`:** guía de build, emuladores y publicación.
+- **Vite:** `base: './'` para assets compatibles con WebView nativo.
+
 ## [1.59.0] - 2026-04-14
 
 ### Delivery — cierre épica **D1** en repositorio (D1-S3)

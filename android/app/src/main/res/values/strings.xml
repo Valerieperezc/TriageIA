@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TriageIA</string>
+    <string name="title_activity_main">TriageIA</string>
+    <string name="package_name">com.triageia.app</string>
+    <string name="custom_url_scheme">com.triageia.app</string>
+</resources>
