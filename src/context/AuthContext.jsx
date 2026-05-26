@@ -69,6 +69,11 @@ export function AuthProvider({ children }) {
     return loggedUser;
   };
 
+  const register = useCallback(async (payload) => {
+    const authService = await loadAuthService();
+    return authService.registerAccount(payload);
+  }, []);
+
   const updateAccountProfile = useCallback(async (patch) => {
     if (!user) throw new Error("No hay sesión activa");
     const authService = await loadAuthService();
@@ -113,6 +118,7 @@ export function AuthProvider({ children }) {
     () => ({
       user,
       login,
+      register,
       logout,
       loading,
       isSupabaseConfigured,
@@ -120,7 +126,7 @@ export function AuthProvider({ children }) {
       changeAccountPassword,
       changeAccountEmail,
     }),
-    [user, loading]
+    [user, loading, register]
   );
 
   return (

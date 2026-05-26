@@ -92,7 +92,7 @@ export function getSidebarNavOrder(role) {
       return ["dashboard", "triage", "patients", "settings"];
     case "admin":
     default:
-      return ["dashboard", "patients", "triage", "audit", "settings"];
+      return ["dashboard", "patients", "triage", "audit", "adminUsers", "settings"];
   }
 }
 

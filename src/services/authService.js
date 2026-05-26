@@ -9,6 +9,16 @@ import {
   mergeProfileIntoUser,
 } from "../utils/accountProfile";
 import { normalizeRole } from "../utils/permissions";
+import {
+  isProfileApproved,
+  normalizeProfileStatus,
+  validateRegistrationInput,
+} from "../utils/userAccounts";
+import {
+  isAuthRateLimitError,
+  isMissingProfileColumnError,
+  isRlsRecursionError,
+} from "../utils/supabaseErrors";
 import { withTimeout } from "../utils/retry";
 
 const AUTH_OP_TIMEOUT_MS = 20_000;
@@ -20,16 +30,18 @@ const DEMO_ROLE_BY_EMAIL = {
   "enfermeria@triage.com": "enfermeria",
 };
 
-const USERS = [
+export const LOCAL_SESSION_KEY = "triageia:local-user";
+export const LOCAL_PROFILES_KEY = "triageia:account-profiles";
+export const LOCAL_PASSWORDS_KEY = "triageia:local-passwords";
+export const LOCAL_USER_REGISTRY_KEY = "triageia:user-registry";
+export const LOCAL_DEMO_ROLE_OVERRIDES_KEY = "triageia:demo-role-overrides";
+
+export const USERS = [
   { email: "admin@triage.com", role: "admin", password: "123456" },
   { email: "medico@triage.com", role: "medico", password: "123456" },
   { email: "recepcion@triage.com", role: "recepcion", password: "123456" },
   { email: "enfermeria@triage.com", role: "enfermeria", password: "123456" },
 ];
-
-export const LOCAL_SESSION_KEY = "triageia:local-user";
-export const LOCAL_PROFILES_KEY = "triageia:account-profiles";
-export const LOCAL_PASSWORDS_KEY = "triageia:local-passwords";
 
 function isInvalidCredentialsError(error) {
   const msg = String(error?.message ?? "").toLowerCase();
@@ -58,7 +70,7 @@ function normalizeAuthError(error) {
 
   if (msgLower.includes("email not confirmed") || code === "email_not_confirmed") {
     return new Error(
-      "Tu correo aún no está confirmado. En Supabase: Authentication → Providers → Email → desactiva “Confirm email” para pruebas, o abre el usuario y confirma el correo."
+      "Tu cuenta aún no está habilitada. Si acabas de registrarte, espera a que un administrador la apruebe en el panel de Usuarios. Después podrás iniciar sesión con tu correo y contraseña."
     );
   }
 
@@ -109,6 +121,57 @@ function writeJsonMap(key, map) {
   localStorage.setItem(key, JSON.stringify(map));
 }
 
+export function readLocalUserRegistry() {
+  try {
+    const raw = localStorage.getItem(LOCAL_USER_REGISTRY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function writeLocalUserRegistry(entries) {
+  localStorage.setItem(LOCAL_USER_REGISTRY_KEY, JSON.stringify(entries));
+}
+
+export function readDemoRoleOverrides() {
+  return readJsonMap(LOCAL_DEMO_ROLE_OVERRIDES_KEY);
+}
+
+export function writeDemoRoleOverrides(map) {
+  writeJsonMap(LOCAL_DEMO_ROLE_OVERRIDES_KEY, map);
+}
+
+function findDemoUser(email) {
+  return USERS.find((u) => u.email === email) ?? null;
+}
+
+function findRegistryUser(email) {
+  return readLocalUserRegistry().find((u) => u.email === email) ?? null;
+}
+
+function profileStatusError(status) {
+  const normalized = normalizeProfileStatus(status);
+  if (normalized === "pending") {
+    return new Error(
+      "Tu cuenta está en espera de aprobación. Un administrador debe habilitarla desde el panel de Usuarios; entonces podrás iniciar sesión."
+    );
+  }
+  if (normalized === "rejected") {
+    return new Error(
+      "Tu cuenta fue rechazada. Contacta al administrador si necesitas acceso."
+    );
+  }
+  return null;
+}
+
+function assertProfileCanLogin(status) {
+  const err = profileStatusError(status);
+  if (err) throw err;
+}
+
 function readLocalProfileForEmail(email) {
   const map = readJsonMap(LOCAL_PROFILES_KEY);
   return { ...emptyAccountProfile(), ...(map[email] ?? {}) };
@@ -141,22 +204,75 @@ export function clearLocalSession() {
 }
 
 export function loginLocalDemo(email, password) {
-  const expected = getLocalPasswordForEmail(email);
+  const demo = findDemoUser(email);
+  const registry = findRegistryUser(email);
+  const account = demo ?? registry;
+  if (!account) return null;
+
+  const expected = demo
+    ? getLocalPasswordForEmail(email)
+    : registry?.password;
   if (!expected || expected !== password) return null;
-  const found = USERS.find((u) => u.email === email);
-  if (!found) return null;
+
+  const status = demo ? "approved" : registry.status;
+  try {
+    assertProfileCanLogin(status);
+  } catch (err) {
+    throw err;
+  }
+
   const localUser = mergeProfileIntoUser(
-    { email: found.email, role: found.role },
-    readLocalProfileForEmail(email)
+    {
+      email: account.email,
+      role: account.role,
+      status,
+    },
+    {
+      ...readLocalProfileForEmail(email),
+      displayName: registry?.displayName ?? readLocalProfileForEmail(email).displayName,
+    }
   );
   writeLocalSession(localUser);
   return localUser;
 }
 
-function mapSupabaseProfileRow(data) {
+export function registerLocalDemo(payload) {
+  const { valid, errors, values } = validateRegistrationInput(payload);
+  if (!valid) {
+    const first = Object.values(errors)[0];
+    throw new Error(first || "Datos de registro no válidos");
+  }
+
+  if (findDemoUser(values.email) || findRegistryUser(values.email)) {
+    throw new Error("Este correo ya está registrado");
+  }
+
+  const registry = readLocalUserRegistry();
+  registry.push({
+    id: `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    email: values.email,
+    password: values.password,
+    role: values.role,
+    displayName: values.displayName,
+    status: "pending",
+    createdAt: new Date().toISOString(),
+  });
+  writeLocalUserRegistry(registry);
+  saveLocalAccountProfile(values.email, { displayName: values.displayName });
+
+  return {
+    email: values.email,
+    pending: true,
+  };
+}
+
+function mapSupabaseProfileRow(data, { legacyWithoutStatusColumn = false } = {}) {
   const role = normalizeRole(data?.role) ?? "medico";
   return {
     role,
+    status: normalizeProfileStatus(data?.status, {
+      legacyWithoutColumn: legacyWithoutStatusColumn,
+    }),
     displayName: data?.display_name ?? "",
     phone: data?.phone ?? "",
     department: data?.department ?? "",
@@ -164,64 +280,40 @@ function mapSupabaseProfileRow(data) {
   };
 }
 
-/** Si el proyecto Supabase no tiene columnas extendidas en profiles, no reintentar. */
-let extendedProfileColumnsAvailable = null;
-
-function isMissingProfileColumnError(error) {
-  const msg = String(error?.message ?? error?.details ?? "");
-  const code = String(error?.code ?? "");
-  return (
-    /column/i.test(msg) ||
-    /42703/.test(msg) ||
-    /PGRST204/.test(code) ||
-    /schema cache/i.test(msg)
-  );
-}
+const PROFILE_READ_COLUMN_SETS = [
+  "role, email, status, display_name, phone, department, job_title",
+  "role, email, status, display_name",
+  "role, email, status",
+  "role, email",
+];
 
 async function fetchSupabaseProfile(userId, email) {
   const supabase = await getSupabaseClient();
 
-  const readProfile = async (columns) => {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select(columns)
-      .eq("id", userId)
-      .single();
-    return { data, error };
-  };
-
   try {
-    const { data: basic, error: basicError } = await withTimeout(
-      readProfile("role, email"),
-      AUTH_OP_TIMEOUT_MS,
-      "Tiempo de espera al leer el perfil"
-    );
+    for (const columns of PROFILE_READ_COLUMN_SETS) {
+      const { data, error } = await withTimeout(
+        supabase.from("profiles").select(columns).eq("id", userId).single(),
+        AUTH_OP_TIMEOUT_MS,
+        "Tiempo de espera al leer el perfil"
+      );
 
-    if (!basicError && basic) {
-      if (extendedProfileColumnsAvailable !== false) {
-        const { data: extra, error: extraError } = await withTimeout(
-          readProfile("display_name, phone, department, job_title"),
-          AUTH_OP_TIMEOUT_MS,
-          "Tiempo de espera al leer el perfil"
-        );
-
-        if (!extraError && extra) {
-          extendedProfileColumnsAvailable = true;
-          return mapSupabaseProfileRow({ ...basic, ...extra });
-        }
-
-        if (extraError && isMissingProfileColumnError(extraError)) {
-          extendedProfileColumnsAvailable = false;
-        } else if (extraError && import.meta.env.DEV) {
-          console.warn("[TriageIA] Perfil extendido:", extraError.message);
-        }
+      if (!error && data) {
+        const legacyWithoutStatusColumn = !columns.includes("status");
+        return mapSupabaseProfileRow(data, { legacyWithoutStatusColumn });
       }
 
-      return mapSupabaseProfileRow(basic);
+      if (isRlsRecursionError(error)) break;
+      if (!isMissingProfileColumnError(error)) {
+        const msg = String(error?.message ?? "").toLowerCase();
+        if (!msg.includes("status") && Number(error?.status) !== 400) break;
+      }
     }
 
-    if (import.meta.env.DEV && basicError) {
-      console.warn("[TriageIA] No se pudo leer profiles:", basicError.message);
+    if (import.meta.env.DEV) {
+      console.warn(
+        "[TriageIA] No se pudo leer profiles. Si eres admin, ejecuta docs/fix-admin-login.sql en Supabase."
+      );
     }
   } catch (err) {
     if (import.meta.env.DEV) {
@@ -229,16 +321,38 @@ async function fetchSupabaseProfile(userId, email) {
     }
   }
 
-  const fallbackRole =
-    DEMO_ROLE_BY_EMAIL[String(email ?? "").trim().toLowerCase()] ?? "medico";
-  return { ...mapSupabaseProfileRow(null), role: fallbackRole };
+  const emailKey = String(email ?? "").trim().toLowerCase();
+  const demoRole = DEMO_ROLE_BY_EMAIL[emailKey];
+  return mapSupabaseProfileRow(
+    demoRole
+      ? { role: demoRole, status: "approved" }
+      : { role: "medico", status: "pending" }
+  );
 }
 
-async function buildSupabaseUser(sessionUser) {
+async function buildSupabaseUser(sessionUser, { enforceApproval = true } = {}) {
   const profile = await fetchSupabaseProfile(sessionUser.id, sessionUser.email);
+  const role = normalizeRole(profile.role) ?? "medico";
+  let status = profile.status;
+
+  // Admin atascado en pending tras migración: puede entrar para gestionar usuarios
+  if (enforceApproval && role === "admin" && status === "pending") {
+    status = "approved";
+  }
+
+  if (enforceApproval && !isProfileApproved(status)) {
+    const supabase = await getSupabaseClient();
+    await supabase.auth.signOut();
+    throw profileStatusError(status);
+  }
   return mergeProfileIntoUser(
-    { id: sessionUser.id, email: sessionUser.email, role: profile.role },
-    profile
+    {
+      id: sessionUser.id,
+      email: sessionUser.email,
+      role,
+      status,
+    },
+    { ...profile, role, status }
   );
 }
 
@@ -389,6 +503,103 @@ export async function probeSupabaseAuthReachable() {
   }
 }
 
+async function applyPendingRegistrationProfile(supabase, userId, values) {
+  const { error: rpcError } = await supabase.rpc("sync_own_profile_pending", {
+    p_display_name: values.displayName,
+    p_role: values.role,
+  });
+
+  if (!rpcError) return;
+
+  const rpcMsg = String(rpcError?.message ?? "").toLowerCase();
+  const rpcMissing =
+    rpcError?.code === "PGRST202" || rpcMsg.includes("sync_own_profile_pending");
+
+  const { error: updateError } = await supabase
+    .from("profiles")
+    .update({
+      display_name: values.displayName,
+      role: values.role,
+      status: "pending",
+    })
+    .eq("id", userId);
+
+  if (!updateError) return;
+
+  if (import.meta.env.DEV) {
+    console.warn(
+      "[TriageIA] No se pudo marcar perfil como pendiente:",
+      rpcMissing ? updateError.message : rpcError.message
+    );
+  }
+}
+
+export async function registerSupabase(payload) {
+  if (!isSupabaseConfigured) {
+    throw new Error("El registro requiere Supabase configurado en .env");
+  }
+
+  const { valid, errors, values } = validateRegistrationInput(payload);
+  if (!valid) {
+    const first = Object.values(errors)[0];
+    throw new Error(first || "Datos de registro no válidos");
+  }
+
+  const supabase = await getSupabaseClient();
+  const { data, error } = await withTimeout(
+    supabase.auth.signUp({
+      email: values.email,
+      password: values.password,
+      options: {
+        data: {
+          display_name: values.displayName,
+          role: values.role,
+        },
+      },
+    }),
+    AUTH_OP_TIMEOUT_MS,
+    "Tiempo de espera al registrar la cuenta"
+  );
+
+  if (error) {
+    if (isAuthRateLimitError(error)) {
+      throw new Error(
+        "Demasiados intentos de registro. Espera unos minutos antes de volver a intentarlo."
+      );
+    }
+    const msg = String(error.message ?? "").toLowerCase();
+    if (msg.includes("already registered") || msg.includes("user already registered")) {
+      throw new Error("Este correo ya está registrado");
+    }
+    const normalized = normalizeAuthError(error);
+    throw normalized ?? new Error("No se pudo completar el registro");
+  }
+
+  const userId = data.user?.id ?? data.session?.user?.id;
+
+  if (data.session?.user) {
+    await applyPendingRegistrationProfile(supabase, data.session.user.id, values);
+    await supabase.auth.signOut();
+  } else if (userId) {
+    // Sin sesión activa: el trigger handle_new_user debe crear el perfil en pending.
+    await applyPendingRegistrationProfile(supabase, userId, values);
+  }
+
+  return {
+    email: values.email,
+    pending: true,
+    message:
+      "Solicitud registrada. Aparecerás como pendiente en el panel de Usuarios hasta que un administrador te habilite.",
+  };
+}
+
+export async function registerAccount(payload) {
+  if (!isSupabaseConfigured) {
+    return registerLocalDemo(payload);
+  }
+  return registerSupabase(payload);
+}
+
 export async function loginSupabase(email, password) {
   if (!isSupabaseConfigured) return null;
   const supabase = await getSupabaseClient();
@@ -406,7 +617,7 @@ export async function loginSupabase(email, password) {
   return withTimeout(
     buildSupabaseUser(data.user),
     AUTH_OP_TIMEOUT_MS,
-    "Tiempo de espera al cargar tu perfil. Comprueba la tabla profiles en Supabase."
+    "Tiempo de espera al cargar tu perfil."
   );
 }
 

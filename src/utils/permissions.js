@@ -1,5 +1,8 @@
 const VALID_ROLES = new Set(["admin", "medico", "recepcion", "enfermeria"]);
 
+/** Roles que el administrador puede asignar en el panel de usuarios. */
+export const ADMIN_ASSIGNABLE_ROLES = ["admin", "medico", "recepcion", "enfermeria"];
+
 /** Normaliza el rol leído de Supabase o sesión local. */
 export function normalizeRole(role) {
   const raw = String(role ?? "")
@@ -16,6 +19,10 @@ export function normalizeRole(role) {
 }
 
 export function canViewAuditByRole(role) {
+  return normalizeRole(role) === "admin";
+}
+
+export function canManageUsersByRole(role) {
   return normalizeRole(role) === "admin";
 }
 

@@ -11,6 +11,7 @@ const Patients = lazy(() => import("./pages/Patients"));
 const Triage = lazy(() => import("./pages/Triage"));
 const PatientDetail = lazy(() => import("./pages/PatientDetail"));
 const Audit = lazy(() => import("./pages/Audit"));
+const AdminUsers = lazy(() => import("./pages/AdminUsers"));
 const Settings = lazy(() => import("./pages/Settings"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivateAppLayout = lazy(() => import("./layouts/PrivateAppLayout"));
@@ -116,6 +117,16 @@ export default function App() {
               <Private allowedRoles={["admin"]}>
                 <PrivateAppLayout>
                   <Audit />
+                </PrivateAppLayout>
+              </Private>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <Private allowedRoles={["admin"]}>
+                <PrivateAppLayout>
+                  <AdminUsers />
                 </PrivateAppLayout>
               </Private>
             }

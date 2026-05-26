@@ -29,6 +29,7 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   email text not null unique,
   role text not null default 'medico' check (role in ('admin', 'medico', 'recepcion', 'enfermeria')),
+  status text not null default 'approved' check (status in ('pending', 'approved', 'rejected')),
   display_name text,
   phone text,
   department text,
@@ -42,10 +43,25 @@ language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  requested_role text;
+  requested_name text;
 begin
-  insert into public.profiles (id, email, role)
-  values (new.id, new.email, 'medico')
-  on conflict (id) do update set email = excluded.email;
+  requested_role := coalesce(nullif(trim(new.raw_user_meta_data->>'role'), ''), 'medico');
+  if requested_role not in ('admin', 'medico', 'recepcion', 'enfermeria') then
+    requested_role := 'medico';
+  end if;
+
+  requested_name := nullif(trim(new.raw_user_meta_data->>'display_name'), '');
+
+  insert into public.profiles (id, email, role, display_name, status)
+  values (new.id, new.email, requested_role, requested_name, 'pending')
+  on conflict (id) do update
+    set email = excluded.email,
+        display_name = coalesce(excluded.display_name, public.profiles.display_name),
+        role = excluded.role,
+        status = coalesce(public.profiles.status, 'pending');
+
   return new;
 end;
 $$;
@@ -58,6 +74,54 @@ for each row execute function public.handle_new_user();
 alter table public.patients enable row level security;
 alter table public.patient_events enable row level security;
 alter table public.profiles enable row level security;
+
+-- Helpers RLS (SECURITY DEFINER evita recursión en políticas de profiles)
+create or replace function public.is_approved_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select exists (
+    select 1 from public.profiles
+    where id = auth.uid() and role = 'admin' and status = 'approved'
+  );
+$$;
+
+create or replace function public.is_profile_approved()
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select coalesce(
+    (select status = 'approved' from public.profiles where id = auth.uid()),
+    false
+  );
+$$;
+
+create or replace function public.current_user_has_role(allowed_roles text[])
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select coalesce(
+    (
+      select role = any (allowed_roles)
+      from public.profiles
+      where id = auth.uid() and status = 'approved'
+    ),
+    false
+  );
+$$;
+
+grant execute on function public.is_approved_admin() to authenticated;
+grant execute on function public.is_profile_approved() to authenticated;
+grant execute on function public.current_user_has_role(text[]) to authenticated;
 
 -- Endurecimiento de validaciones en capa de datos (A2-S1).
 do $$
@@ -139,7 +203,7 @@ create policy "Patients read for authenticated users"
 on public.patients
 for select
 to authenticated
-using (true);
+using (public.is_profile_approved());
 
 drop policy if exists "Patients insert by intake roles" on public.patients;
 create policy "Patients insert by intake roles"
@@ -147,12 +211,7 @@ on public.patients
 for insert
 to authenticated
 with check (
-  exists (
-    select 1
-    from public.profiles p
-    where p.id = auth.uid()
-      and p.role in ('admin', 'recepcion', 'enfermeria')
-  )
+  public.current_user_has_role(array['admin', 'recepcion', 'enfermeria'])
 );
 
 drop policy if exists "Patients update by clinical roles" on public.patients;
@@ -161,23 +220,13 @@ on public.patients
 for update
 to authenticated
 using (
-  exists (
-    select 1
-    from public.profiles p
-    where p.id = auth.uid()
-      and p.role in ('admin', 'medico', 'enfermeria')
-  )
+  public.current_user_has_role(array['admin', 'medico', 'enfermeria'])
 )
 with check (
-  exists (
-    select 1
-    from public.profiles p
-    where p.id = auth.uid()
-      and (
-        p.role = 'admin'
-        or p.role = 'medico'
-        or (p.role = 'enfermeria' and status <> 'Finalizado')
-      )
+  public.current_user_has_role(array['admin', 'medico'])
+  or (
+    public.current_user_has_role(array['enfermeria'])
+    and status <> 'Finalizado'
   )
 );
 
@@ -189,14 +238,7 @@ create policy "Patient events read for admin"
 on public.patient_events
 for select
 to authenticated
-using (
-  exists (
-    select 1
-    from public.profiles p
-    where p.id = auth.uid()
-      and p.role = 'admin'
-  )
-);
+using (public.is_approved_admin());
 
 drop policy if exists "Patient events insert for authenticated users" on public.patient_events;
 drop policy if exists "Patient events insert by operational roles" on public.patient_events;
@@ -206,20 +248,24 @@ on public.patient_events
 for insert
 to authenticated
 with check (
-  exists (
-    select 1
-    from public.profiles p
-    where p.id = auth.uid()
-      and p.role in ('admin', 'medico', 'enfermeria', 'recepcion')
-  )
+  public.current_user_has_role(array['admin', 'medico', 'enfermeria', 'recepcion'])
 );
 
+drop policy if exists "Admin can read all profiles" on public.profiles;
 drop policy if exists "User can read own profile" on public.profiles;
-create policy "User can read own profile"
+create policy "Profiles read own or admin"
 on public.profiles
 for select
 to authenticated
-using (id = auth.uid());
+using (id = auth.uid() or public.is_approved_admin());
+
+drop policy if exists "Admin can update profiles for approval" on public.profiles;
+create policy "Admin can update profiles for approval"
+on public.profiles
+for update
+to authenticated
+using (public.is_approved_admin())
+with check (public.is_approved_admin());
 
 drop policy if exists "User can update own profile" on public.profiles;
 create policy "User can update own profile"

@@ -103,7 +103,10 @@ describe("authService local demo", () => {
 });
 
 function mockProfileRole(role = "admin", error = null) {
-  const single = vi.fn().mockResolvedValue({ data: role ? { role } : null, error });
+  const single = vi.fn().mockResolvedValue({
+    data: role ? { role, status: "approved" } : null,
+    error,
+  });
   const eq = vi.fn(() => ({ single }));
   const select = vi.fn(() => ({ eq }));
   from.mockReturnValue({ select });
@@ -134,7 +137,7 @@ describe("authService supabase login", () => {
     });
 
     await expect(loginSupabase("a@b.com", "12345678")).rejects.toThrow(
-      "Tu correo aún no está confirmado"
+      /panel de Usuarios/
     );
   });
 

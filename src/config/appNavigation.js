@@ -4,6 +4,7 @@ import {
   ClipboardList,
   Stethoscope,
   Settings,
+  UserCog,
 } from "lucide-react";
 import { getSidebarNavOrder } from "../utils/roleConfig";
 
@@ -35,6 +36,13 @@ export const NAV_DEF = {
     icon: ClipboardList,
     label: "Historial",
     shortLabel: "Historial",
+    visible: (user) => user?.role === "admin",
+  },
+  adminUsers: {
+    to: "/admin/users",
+    icon: UserCog,
+    label: "Usuarios",
+    shortLabel: "Usuarios",
     visible: (user) => user?.role === "admin",
   },
   settings: {
